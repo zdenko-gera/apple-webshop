@@ -1,4 +1,4 @@
-# `Szallítmányozás` Projektterv `2021`
+# `Szallítmányozás` Projektterv `2023`
 
 ## 1. Összefoglaló 
 
@@ -113,6 +113,7 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
  - `Dell Inspiron 5558 laptop (CPU: i5 5200U, RAM: 8 GB, GPU: Nvidia 920M)`
  - `Acer Aspire 573g laptop (CPU: i3 5005U, RAM: 4 GB, GPU: Nvidia 920M)`
  - `Asztali számítógép (CPU: i7 7700k, RAM: 16GB, GPU: Nvidia GTX1070)`
+ - Acer Aspire A515-45 (CPU: Ryzen 5 5500U, RAM: 16GB, GPU: Processzorba integrált Radeon Graphics Vega 7)
 
 A projekt a következő technológiákat/szoftvereket fogja használni a munka során: 
 
@@ -122,7 +123,7 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
  - `Thymeleaf dinamikus tartalom megjelenítés a felhasználói felületen`
  - `Maven szoftverprojekt menedzselő szoftver`
  - `Eclipse IDE fejlesztőkörnyezet`
- - `Git verziókövető (GitLab)`
+ - Git verziókövető (GitLab)
  
 ```
 Milyen gépet használnak a projekttagok, milyen operációs rendszeren fejlesztenek, milyen szoftverkörnyezetben, stb.
@@ -147,7 +148,7 @@ Pl.: betegség, szoftver-hardver probléma, tag kiesése, extrém ZH időszak, p
 ## 6. Jelentések
 
 ### 6.1. Munka menedzsment
-A munkát `Teszt Elek` koordinálja. `Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről email-ben tájékoztatja a projektcsapatot.`
+A munkát Petrányi Dominik koordinálja. `Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről email-ben tájékoztatja a projektcsapatot.`
 
 ```
 Írd le, hogy ki menedzseli a munkát (tipikusan a projekt menedzser), mik a feladatai, és azokat hogyan hajtja végre.
@@ -157,17 +158,17 @@ A munkát `Teszt Elek` koordinálja. `Fő feladata, hogy folyamatosan egyeztesse
 
 `A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, illetve hogy megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben memó készül.`
 
-`1. megbeszélés:`
- - `Időpont: 2021.09.15.`
- - `Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103`
- - `Résztvevők: Teszt Elek, Remek Elek, Lev Elek`
- - `Érintett témák: Ismerkedés, projekttéma kiválasztása`
+1. megbeszélés:
+ - Időpont: 2021.09.13.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
+ - Érintett témák: Kiválasztottuk a projektünk témáját.
 
-`2. megbeszélés:`
- - `Időpont: 2021.09.22.`
- - `Hely: Pivovár - Szeged, Vitéz utca 26.`
- - `Résztvevők: Teszt Elek, Remek Elek, Lev Elek`
- - `Érintett témák: A projektben használt technológiák rögzítése, a projektterv áttekintése, szerepkörök és vállalások kiosztása`
+2. megbeszélés:
+ - Időpont: 2021.09.20.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
+ - Érintett témák: Megbeszéltük, hogy előreláthatólag ki melyik részén dolgozik a projektnek.
 
 `3. Megbeszélés:`
  - `Időpont: 2021.09.29.`
@@ -219,10 +220,10 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 | Szállítandó |                 Neve                                                        |   Határideje  |
 |:-----------:|:---------------------------------------------------------------------------:|:-------------:|
-|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | `2021-10-04`  |
-|    P1+D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | `2021-10-18`  |
-|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | `2021-11-08`  |
-|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | `2021-11-27`  |
+|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | 2023-10-11  |
+|    D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | 2023-10-25  |
+|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | 2023-11-15  |
+|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | 2023-12-04  |
 
 ```
 D - dokumentáció, P - prototípus
