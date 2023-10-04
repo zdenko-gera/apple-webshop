@@ -1,8 +1,8 @@
-# `Szallítmányozás` Projektterv `2023`
+# `Webshop` Projektterv `2023`
 
 ## 1. Összefoglaló 
 
-`A hatékony szállítmányozás lényege, hogy a küldemény a lehető legkisebb költséggel, legbiztonságosabban, és legoptimálisabb időben jusson el a rendeltetési helyére. Ez tipikusan megkövetel egy online is elérhető nyilvántartást, ahol rugalmasan és egyszerűen lehet kezelni a kapcsolódó feladatokat. Éppen ezért ennek a projektnek a célja, hogy a szállítmányozással foglalkozó cégek számára egy webalkalmazást fejlesszünk, amely képes leváltani a hagyományos, papír alapú nyilvántartásokat. Legyen szó árukészletről, sofőrökről vagy útvonalakról, a cél, hogy a kapcsolódó funkciókat egy letisztult felületen keresztül tudja elérni a szállítmányozással foglalkozó cég adminisztrátorai.`
+A projektünk egy Apple termékeket áruló webshop, amelynek célja az Apple rajongók számára egy kényelmes és megbízható online vásárlási platform biztosítása. Az oldalunkon széles választékban kínálunk Apple termékeket, mint például iPhone-ok, MacBook-ok, iPad-ek és kiegészítők. Az apple termékek népszerűsége folyamatosan nő, és a felhasználók gyors és egyszerű vásárlási lehetőséget várnak tőlünk, mi pedig emellé nyomott áron biztosítjuk kedvenc termékeiket. Célunk, hogy magas színvonalú szolgáltatást nyújtsunk és egy olyan online teret hozzunk létre, ahol az Apple termékeket kedvelők könnyen megtalálhatják és megvásárolhatják a kívánt eszközöket és tartozékokat.
 
 ```
 Ide írj egy tömör és általános leírást (4-6 mondatban), hogy miről szól a projekt és miért van a weboldalra szükség. 
@@ -19,7 +19,7 @@ Az eredetileg is feketével írt részek törlése tilos, azok közösek.
 
 ## 2. A projekt bemutatása
 
-`Ez a projektterv a Szallítmányozás projektet mutatja be, amely 2021-09-20-től 2021-11-27-ig tart, azaz összesen 68 napon keresztül fog futni. A projekten három fejlesztő fog dolgozni, az elvégzett feladatokat pedig négy alkalommal fogjuk prezentálni a megrendelőnek, annak érdekében, hogy biztosítsuk a projekt folyamatos előrehaladását.`
+Ez a projektterv a webshop projektet mutatja be, amely 2023-09-11-től 2023-12-05-ig tart, azaz összesen 85 napon keresztül fog futni. A projekten hat fejlesztő fog dolgozni, az elvégzett feladatokat pedig négy alkalommal fogjuk prezentálni a megrendelőnek, annak érdekében, hogy biztosítsuk a projekt folyamatos előrehaladását.
 
 ```
 A megvalósítás további általános leírása, pl. mennyi ideig tart a projekt, mennyi főből áll a csapat, 
@@ -28,7 +28,7 @@ mennyi átadandó lesz a megrendelőnek átadva a félév során (szintén 2-3 m
 
 ### 2.1. Rendszerspecifikáció
 
-`A rendszernek képesnek kell lennie arra, hogy egy adott szállítmányozó cég raktárait illetve a raktárak állapotát (telítettség, fizikai pozíció, speciális tulajdonság pl. veszélyes anyag tárolás) nyilvántartsa annak érdekében, hogy az adminisztrátorok képesek legyenek egy-egy bejövő szállítmányozási kérést kiszolgálni a raktárak vagy külső helyszín között. Ezenkívül a szállítmányozó cég alkalmazásában álló sofőröket, illetve a cég kamionjait is kezelnie kell (pl. van-e képzettsége veszélyes anyag szállítására, elérhető-e éppen a megfelelő pótkocsi a szállításhoz). A bejövő szállítmányozási kérés alapján az alkalmazás számolja ki leghamarabb mikor teljesíthető a kérés, majd jelenítsük meg grafikusan egy útvonalat, amely alapján - akár több raktár érintésével - a külső helyszínre szállítja az anyagot. Minden funkció a megfelelő felhasználói jogosultság mellett használható, annak függvényében írható, olvasható vagy nem megtekinthető az adat.`
+A fő cél az Apple termékek értékesítésére szakosodott webshop létrehozása, ahol a felhasználók könnyedén böngészhetik és vásárolhatják meg a legújabb Apple eszközöket és tartozékokat. Az Apple termékek rajongóinak közösségi funkciót is kínálunk, ahol a felhasználók véleményt cserélhetnek a termékekről, értékelhetik őket és megoszthatják tapasztalataikat. Az oldal tartalmazni fog egy részt, ahol hírek és információk találhatók az Apple világából, beleértve a legújabb termékleírásokat, teszteket és frissítéseket. Ez segít a felhasználóknak naprakészen maradni a legfrissebb Apple hírekkel. A projekt keretében kiemelten fogunk foglalkozni a felhasználói élmény és a felhasználói interakciók optimalizálásával, hogy az oldal egyszerűen kezelhető legyen mind a mobil, mind a asztali eszközökön, ezáltal az Apple termékek iránt érdeklődők számára még vonzóbbá téve a vásárlást.
 
 ```
 Itt már specifikusabban, részletesebben írd le, hogy mik a fő célok, mit fog tudni a rendszer (4-6 mondatban), 
@@ -43,8 +43,8 @@ ami a projekt keretében kerül megvalósításra. Mik a megrendelő és a felha
  - Kosár kezelése (CRUD)
  - Rendelések kezelése (CRUD)
  - A termékek közötti szűrés, illetve keresés
- - Felhasználóként üzenet küldése az adminnak 
- - Termék összehasonlító táblázatosan
+ - Felhasználóként posztolás a fórumon
+ - Felhasználói beállítások szerkesztése
 
 ```
 Itt lehet pontosan felsorolni a rendszerrel szemben támasztott funkcionális igényeket, azaz amit a rendszernek tudnia kell. 
@@ -56,10 +56,11 @@ Azaz a funkcióhoz tartozó adat létrehozása, olvasása, frissítése, törlé
 
 ### 2.3. Nem funkcionális követelmények
 
- - `A kliens oldal böngészőfüggetlen legyen`
- - `Reszponzív megjelenés`
- - `Az érzékeny adatokat biztonságosan tároljuk`
- - `A legfrissebb technológiákat használja a rendszer`
+ - A kliens oldal böngészőfüggetlen legyen
+ - Reszponzív megjelenés
+ - Modern design
+ - Az érzékeny adatokat biztonságosan tároljuk
+ - A legfrissebb technológiákat használja a rendszer
 
 ```
 A rendszer nem funkcionális követelményei, pl.: milyen környezetben fusson, milyen teljesítményt kell produkálnia, 
@@ -68,9 +69,9 @@ milyen megjelenéssel kell rendelkeznie. Ha lehetséges, akkor ezeket a feladato
 
 ## 3. Költség- és erőforrás-szükségletek
 
-Az erőforrásigényünk összesen `57` személynap, átlagosan `19` személynap/fő.
+Az erőforrásigényünk összesen 102 személynap, átlagosan 17 személynap/fő.
 
-A rendelkezésünkre áll összesen `3 * 70 = 210` pont.
+A rendelkezésünkre áll összesen 6 * 70 = 420 pont.
 
 ```
 Becsült sarokszámok, a rendelkezésre álló erőforrás fejenként általában 17-21 személynap, 
@@ -79,10 +80,14 @@ a pontok száma = fejenként a projektre kapható maxpont * tagok száma.
 
 ## 4. Szervezeti felépítés és felelősségmegosztás
 
-A projekt megrendelője `Dr. Márkus András`. A `Szállítmányozás` projektet a projektcsapat fogja végrehajtani, amely `jelenleg három fejlesztőből áll. A csapatban található tapasztalt és pályakezdő webprogramozó is, A tapasztalt projekttagok több éve dolgoznak az iparban, számos sikeres projektten vannak túl.`
- - `Teszt Elek (3 év ipari tapasztalat a Számító Gép Kft.-nél)`
- - `Remek Elek (3 év egyetemi tapasztalat)`
- - `Lev Elek (<1 év tapasztalatő)`
+A projekt megrendelője Dr. Kertész Attila. A Webshop projektet a projektcsapat fogja végrehajtani, amely jelenleg hat fejlesztőből áll. A csapatban kizárólag pályakezdő programozó található.
+
+ - Bényei Anna Dorina
+ - Molnár-Farkas Noel
+ - Gera Zdenkó
+ - Nagy Vencel
+ - Varga Zoltán
+ - Petrányi Dominik (2 év egyetemi tapasztalat, jelenleg szoftverfejlesztő gyakornok a RabIT Solutions Zrt-nél)
 
 ```
 Itt lehet részletezni pl. a tagok szakmai tapasztalatait, vagy akár a releváns gyakorlati helyeket, munkahelyeket megemlíteni.
@@ -92,11 +97,14 @@ Itt lehet részletezni pl. a tagok szakmai tapasztalatait, vagy akár a releván
 
 A projekt a következő emberekből áll:
 
-| Név          | Pozíció          |   E-mail cím (stud-os)        |
-|--------------|------------------|-------------------------------|
-| `Teszt Elek` | Projektmenedzser | `h123456@stud.u-szeged.hu`    |
-| `Remek Elek` | Projekt tag      | `h654321@stud.u-szeged.hu`    |
-| `Lev Elek`   | Projekt tag      | `h000000@stud.u-szeged.hu`    |
+| Név              | Pozíció          |   E-mail cím (stud-os)        |
+|------------------|------------------|-------------------------------|
+|   Petrányi Dominik   | Projektmenedzser | h268432@stud.u-szeged.hu    |
+|  Bényei Anna Dorina  |   Projekt tag    | `h654321@stud.u-szeged.hu`    |
+|  Molnár-Farkas Noel  |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
+|     Gera Zdenkó      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
+|     Varga Zoltán     |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
+|     Nagy Vencel      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
 
 ```
 Betölthető pozíciók: projektmenedzser, projekt tag.
@@ -113,18 +121,14 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
  - `Acer Aspire 573g laptop (CPU: i3 5005U, RAM: 4 GB, GPU: Nvidia 920M)`
  - `Asztali számítógép (CPU: i7 7700k, RAM: 16GB, GPU: Nvidia GTX1070)`
  - Acer Aspire A515-45 (CPU: Ryzen 5 5500U, RAM: 16GB, GPU: Processzorba integrált Radeon Graphics Vega 7)
+ - Dell XPS 15 9570 (CPU: Intel i7 8750H, RAM: 16GB, GPU: NVIDIA GeForce GTX 1050 Ti, OS: Windows 10)
 
 A projekt a következő technológiákat/szoftvereket fogja használni a munka során: 
 
- - `Heroku platformszolgáltatás a webalkalmazás hosztolásához`
- - `Heroku által biztosított PostgreSQL adatbázisszerver`
-
- - `Thymeleaf dinamikus tartalom megjelenítés a felhasználói felületen`
- - `Maven szoftverprojekt menedzselő szoftver`
- - `Eclipse IDE fejlesztőkörnyezet`
  - Git verziókövető (GitLab)
  - Java Spring Boot keretrendszer
  - IntelliJ IDEA fejlesztőkörnyezet
+ - MySQL adatbázisszerver
  
 ```
 Milyen gépet használnak a projekttagok, milyen operációs rendszeren fejlesztenek, milyen szoftverkörnyezetben, stb.
@@ -134,8 +138,8 @@ Milyen gépet használnak a projekttagok, milyen operációs rendszeren fejleszt
 
 | Kockázat                                    | Leírás                                                                                                                                                                                     | Valószínűség | Hatás  |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------|
-| `Betegség`                                  | `Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása`        | `nagy`       | `erős` |
-| `Kommunikációs fennakadás a csapattagokkal` | `A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések` | `kis`        | `erős` |
+| Betegség                                 | Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása        | nagy       | erős |
+| Kommunikációs fennakadás a csapattagokkal | A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések | kis        | erős |
 
 ```
 A rizikótényezők bemutatása, amely hátráltathatja a projekt befejezését. 
@@ -149,7 +153,7 @@ Pl.: betegség, szoftver-hardver probléma, tag kiesése, extrém ZH időszak, p
 ## 6. Jelentések
 
 ### 6.1. Munka menedzsment
-A munkát Petrányi Dominik koordinálja. `Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről email-ben tájékoztatja a projektcsapatot.`
+A munkát Petrányi Dominik koordinálja. Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről üzenetben tájékoztatja a projektcsapatot.
 
 ```
 Írd le, hogy ki menedzseli a munkát (tipikusan a projekt menedzser), mik a feladatai, és azokat hogyan hajtja végre.
@@ -157,7 +161,7 @@ A munkát Petrányi Dominik koordinálja. `Fő feladata, hogy folyamatosan egyez
 
 ### 6.2. Csoportgyűlések
 
-`A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, illetve hogy megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben memó készül.`
+A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, illetve hogy megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben memó készül.
 
 1. megbeszélés:
  - Időpont: 2021.09.13.
@@ -194,7 +198,7 @@ Az alábbi lehetőségek vannak a szoftver megfelelő minőségének biztosítá
 
 ### 6.4. Átadás, eredmények elfogadása
 
-A projekt eredményeit a megrendelő, `Dr. Márkus András` fogja elfogadni. A projektterven változásokat csak a megrendelő írásos engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek. 
+A projekt eredményeit a megrendelő, Dr. Kertész Attila fogja elfogadni. A projektterven változásokat csak a megrendelő írásos engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek. 
 Az elfogadás feltételeire és beadás formájára vonatkozó részletes leírás a következő honlapon olvasható: https://okt.inf.szte.hu/rf1/
 
 ### 6.5. Státuszjelentés
@@ -205,9 +209,9 @@ Minden mérföldkő leadásnál a projekten dolgozók jelentést tesznek a mérf
 
 ### 7.1. Tervezett szoftverfolyamat modell és architektúra
 
-`A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel a fejlesztés során nagy hangsúlyt fektetünk a folyamatos kommunikcióra. A fejlesztés során a szoftver specifikációi rugalmasan vátozhatnak, és ezzel a módszertannal tudunk a leggyorsabban alkalmazkodni az új elvárásokhoz.`
+A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel a fejlesztés során nagy hangsúlyt fektetünk a folyamatos kommunikcióra. A fejlesztés során a szoftver specifikációi rugalmasan vátozhatnak, és ezzel a módszertannal tudunk a leggyorsabban alkalmazkodni az új elvárásokhoz.
 
-`A webalkalmazás az MVC (modell-view-controller) felépítést követi, a szerver és a kliens függetlenek, csupán API végpontok segítségével kommunikálnak.`
+A webalkalmazás az MVC (modell-view-controller) felépítést követi, a szerver és a kliens függetlenek, csupán API végpontok segítségével kommunikálnak.
 
 ```
 Milyen szoftverfolyamat modellt követve állítja elő a csapat a specifikációnak megfelelő prototípusokat? Miért ezt választja? 
