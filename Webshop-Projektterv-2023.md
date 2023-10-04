@@ -111,7 +111,7 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
  - `Munkaállomások: 3 db, Windows 10-es operációs rendszerrel`
  - `Dell Inspiron 5558 laptop (CPU: i5 5200U, RAM: 8 GB, GPU: Nvidia 920M)`
  - `Acer Aspire 573g laptop (CPU: i3 5005U, RAM: 4 GB, GPU: Nvidia 920M)`
- - `Asztali számítógép (CPU: i7 7700k, RAM: 16GB, GPU: Nvidia GTX1070)`
+ - Acer aspire 5 a515-55g-55jf (CPU: i5-1035G1, RAM: 8GB, GPU: NVIDIA® GeForce® MX350 2GB GDDR5)
  - Acer Aspire A515-45 (CPU: Ryzen 5 5500U, RAM: 16GB, GPU: Processzorba integrált Radeon Graphics Vega 7)
 
 A projekt a következő technológiákat/szoftvereket fogja használni a munka során: 
