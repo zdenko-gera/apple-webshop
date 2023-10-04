@@ -100,7 +100,7 @@ A projekt a következő emberekből áll:
 | Név              | Pozíció          |   E-mail cím (stud-os)        |
 |------------------|------------------|-------------------------------|
 |   Petrányi Dominik   | Projektmenedzser | h268432@stud.u-szeged.hu    |
-|  Bényei Anna Dorina  |   Projekt tag    | `h654321@stud.u-szeged.hu`    |
+|  Bényei Anna Dorina  |   Projekt tag    | h255398@stud.u-szeged.hu    |
 |  Molnár-Farkas Noel  |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
 |     Gera Zdenkó      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
 |     Varga Zoltán     |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
