@@ -37,15 +37,14 @@ ami a projekt keretében kerül megvalósításra. Mik a megrendelő és a felha
 
 ### 2.2. Funkcionális követelmények
 
- - `Felhasználók kezelése (admin, raktáros, sofőr) (CRUD)`
- - `Felhasználói munkamenet megvalósítása több jogosultsági szinttel `
- - `Raktárak kezelése (CRUD)`
- - `Árukészletek kezelése (CRUD)`
- - `Járművek kezelése (CRUD)`
- - `Fuvarok/szállítmányok kezelése (CRUD)`
- - `Email-es kiértesítés új szállítmány esetén az adott raktárosnak és sofőrnek`
- - `Fuvar útvonalának megjelenítése térképen a kezdő és a végponttal együtt`
- - `Biztonsági mentés automatikus létrehozása`
+ - Felhasználók kezelése (admin, vásárló) (CRUD)
+ - Felhasználói munkamenet megvalósítása több jogosultsági szinttel (Admin, egyszerű felhasználó)
+ - Árukészletek kezelése (CRUD)
+ - Kosár kezelése (CRUD)
+ - Rendelések kezelése (CRUD)
+ - A termékek közötti szűrés, illetve keresés
+ - Felhasználóként üzenet küldése az adminnak 
+ - Termék összehasonlító táblázatosan
 
 ```
 Itt lehet pontosan felsorolni a rendszerrel szemben támasztott funkcionális igényeket, azaz amit a rendszernek tudnia kell. 
@@ -119,11 +118,13 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 
  - `Heroku platformszolgáltatás a webalkalmazás hosztolásához`
  - `Heroku által biztosított PostgreSQL adatbázisszerver`
- - `Spring Boot keretrendszer`
+
  - `Thymeleaf dinamikus tartalom megjelenítés a felhasználói felületen`
  - `Maven szoftverprojekt menedzselő szoftver`
  - `Eclipse IDE fejlesztőkörnyezet`
  - Git verziókövető (GitLab)
+ - Java Spring Boot keretrendszer
+ - IntelliJ IDEA fejlesztőkörnyezet
  
 ```
 Milyen gépet használnak a projekttagok, milyen operációs rendszeren fejlesztenek, milyen szoftverkörnyezetben, stb.
@@ -170,11 +171,11 @@ A munkát Petrányi Dominik koordinálja. `Fő feladata, hogy folyamatosan egyez
  - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
  - Érintett témák: Megbeszéltük, hogy előreláthatólag ki melyik részén dolgozik a projektnek.
 
-`3. Megbeszélés:`
- - `Időpont: 2021.09.29.`
- - `Hely: TIK – Szeged, Ady tér 10.`
- - `Résztvevők: Teszt Elek, Remek Elek`
- - `Érintett témák: Egyeztetés az UML diagramokról, illetve az adatbázis táblák és kapcsolatok meghatározása`
+3. Megbeszélés:
+ - Időpont: 2021.10.04.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
+ - Érintett témák: Megbeszéltük, hogy hogyan kell használni a gitet, ki is próbáltuk azt, a projekt funkcióit nagyvonalakban egyeztettük.
 
 ```
 A memókat a teljes projekt során vezetni kell, amely tartalmazza a következőket: 
@@ -220,10 +221,10 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 | Szállítandó |                 Neve                                                        |   Határideje  |
 |:-----------:|:---------------------------------------------------------------------------:|:-------------:|
-|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | 2023-10-11  |
-|    D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | 2023-10-25  |
-|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | 2023-11-15  |
-|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | 2023-12-04  |
+|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | 2023-10-10  |
+|    D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | 2023-10-24  |
+|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | 2023-11-14  |
+|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | 2023-12-05  |
 
 ```
 D - dokumentáció, P - prototípus
