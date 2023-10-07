@@ -1,39 +1,16 @@
-# `Webshop` Projektterv `2023`
+# Webshop Projektterv 2023
 
 ## 1. Összefoglaló 
 
 A projektünk egy Apple termékeket áruló webshop, amelynek célja az Apple rajongók számára egy kényelmes és megbízható online vásárlási platform biztosítása. Az oldalunkon széles választékban kínálunk Apple termékeket, mint például iPhone-ok, MacBook-ok, iPad-ek és kiegészítők. Az apple termékek népszerűsége folyamatosan nő, és a felhasználók gyors és egyszerű vásárlási lehetőséget várnak tőlünk, mi pedig emellé nyomott áron biztosítjuk kedvenc termékeiket. Célunk, hogy magas színvonalú szolgáltatást nyújtsunk és egy olyan online teret hozzunk létre, ahol az Apple termékeket kedvelők könnyen megtalálhatják és megvásárolhatják a kívánt eszközöket és tartozékokat.
 
-```
-Ide írj egy tömör és általános leírást (4-6 mondatban), hogy miről szól a projekt és miért van a weboldalra szükség. 
-Itt konkrét funkciót még nem kell megemlíteni.
-
-A dokumentumban a szürke háttérrel rendelkező szövegnek illetve a blokkokkal (keretben) kiemelt szövegeknek két jelentése van: 
-(a) minta/sablon szöveg, amit le kell cserélni (pl. gyakorlatvezető neve).
-(b) segítő/magyarázó szöveg. 
-
-Az átadott (beadott) dokumentumban már nem szerepelhetnek se szürke hátterű, se blokkban szereplő részek!
-Azaz a dokumentum kitöltése közben ezeket formázás nélküli szövegre kell cserélni.
-Az eredetileg is feketével írt részek törlése tilos, azok közösek.
-```
-
 ## 2. A projekt bemutatása
 
 Ez a projektterv a webshop projektet mutatja be, amely 2023-09-11-től 2023-12-05-ig tart, azaz összesen 85 napon keresztül fog futni. A projekten hat fejlesztő fog dolgozni, az elvégzett feladatokat pedig négy alkalommal fogjuk prezentálni a megrendelőnek, annak érdekében, hogy biztosítsuk a projekt folyamatos előrehaladását.
 
-```
-A megvalósítás további általános leírása, pl. mennyi ideig tart a projekt, mennyi főből áll a csapat, 
-mennyi átadandó lesz a megrendelőnek átadva a félév során (szintén 2-3 mondattal leírva).
-```
-
 ### 2.1. Rendszerspecifikáció
 
 A fő cél az Apple termékek értékesítésére szakosodott webshop létrehozása, ahol a felhasználók könnyedén böngészhetik és vásárolhatják meg a legújabb Apple eszközöket és tartozékokat. Az Apple termékek rajongóinak közösségi funkciót is kínálunk, ahol a felhasználók véleményt cserélhetnek a termékekről, értékelhetik őket és megoszthatják tapasztalataikat. Az oldal tartalmazni fog egy részt, ahol hírek és információk találhatók az Apple világából, beleértve a legújabb termékleírásokat, teszteket és frissítéseket. Ez segít a felhasználóknak naprakészen maradni a legfrissebb Apple hírekkel. A projekt keretében kiemelten fogunk foglalkozni a felhasználói élmény és a felhasználói interakciók optimalizálásával, hogy az oldal egyszerűen kezelhető legyen mind a mobil, mind a asztali eszközökön, ezáltal az Apple termékek iránt érdeklődők számára még vonzóbbá téve a vásárlást.
-
-```
-Itt már specifikusabban, részletesebben írd le, hogy mik a fő célok, mit fog tudni a rendszer (4-6 mondatban), 
-ami a projekt keretében kerül megvalósításra. Mik a megrendelő és a felhasználók igényei?
-```
 
 ### 2.2. Funkcionális követelmények
 
@@ -45,14 +22,6 @@ ami a projekt keretében kerül megvalósításra. Mik a megrendelő és a felha
  - A termékek közötti szűrés, illetve keresés
  - Felhasználóként posztolás a fórumon
  - Felhasználói beállítások szerkesztése
-
-```
-Itt lehet pontosan felsorolni a rendszerrel szemben támasztott funkcionális igényeket, azaz amit a rendszernek tudnia kell. 
-Ezeket a feladatokat kell majd a csapattagok között szétosztani a 8-as fejezetben.
-
-A CRUD rövidítés a következőt jelenti: Create, Read, Update, Delete.
-Azaz a funkcióhoz tartozó adat létrehozása, olvasása, frissítése, törlése.
-```
 
 ### 2.3. Nem funkcionális követelmények
 
@@ -103,7 +72,7 @@ A projekt a következő emberekből áll:
 |  Bényei Anna Dorina  |   Projekt tag    | h255398@stud.u-szeged.hu    |
 |  Molnár-Farkas Noel  |   Projekt tag    | h267706@stud.u-szeged.hu    |
 |     Gera Zdenkó      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
-|     Varga Zoltán     |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
+|     Varga Zoltán     |   Projekt tag    | h270521@stud.u-szeged.hu    |
 |     Nagy Vencel      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
 
 ```
@@ -116,9 +85,7 @@ Betölthető pozíciók: projektmenedzser, projekt tag.
 
 A projekt a következő munkaállomásokat fogja használni a munka során:
 
- - `Munkaállomások: 3 db, Windows 10-es operációs rendszerrel`
- - `Dell Inspiron 5558 laptop (CPU: i5 5200U, RAM: 8 GB, GPU: Nvidia 920M)`
- - `Acer Aspire 573g laptop (CPU: i3 5005U, RAM: 4 GB, GPU: Nvidia 920M)`
+ - Munkaállomások: 6 db, Windows 10-es operációs rendszerrel
  - Acer aspire 5 a515-55g-55jf (CPU: i5-1035G1, RAM: 8GB, GPU: NVIDIA® GeForce® MX350 2GB GDDR5)
  - Acer Aspire A515-45 (CPU: Ryzen 5 5500U, RAM: 16GB, GPU: Processzorba integrált Radeon Graphics Vega 7)
  - Dell XPS 15 9570 (CPU: Intel i7 8750H, RAM: 16GB, GPU: NVIDIA GeForce GTX 1050 Ti, OS: Windows 10)
@@ -252,7 +219,7 @@ Részfeladatai a következők:
 
 #### 8.1.1. Projektterv kitöltése
 
-Felelős: `Mindenki`
+Felelős: Mindenki
 
 Tartam:  `4 nap`
 
@@ -277,7 +244,7 @@ Ennek a feladatnak az a célja, hogy `a rendszerarchitektúrát, az adatbázist 
 
 Részfeladatai a következők:
 
-#### 8.2.1. Use Case diagram
+#### 8.2.1. Használati eset diagram
 
 Felelős: `Teszt Elek`
 
@@ -285,7 +252,7 @@ Tartam:  `3 nap`
 
 Erőforrásigény:  `1 személynap`
 
-#### 8.2.2. Class diagram
+#### 8.2.2. Osztály diagram
 
 Felelős: `Lev Elek`
 
@@ -293,7 +260,7 @@ Tartam:  `4 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### 8.2.3. Sequence diagram
+#### 8.2.3. Szekvencia diagram
 
 Felelős: `Remek Elek`
 
@@ -303,13 +270,21 @@ Erőforrásigény:  `2 személynap`
 
 #### 8.2.4. Egyed-kapcsolat diagram adatbázishoz
 
-Felelős: `Remek Elek`
+Felelős: Varga Zoltán
 
-Tartam:  `4 nap`
+Tartam:  2 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  0.5 személynap
 
-#### 8.2.5. Package diagram
+#### 8.2.5. Relációs adatbázisséma kialakítása
+
+Felelős: Varga Zoltán
+
+Tartam:  2 nap
+
+Erőforrásigény:  0.5 személynap
+
+#### 8.2.6. Csomag diagram
 
 Felelős: `Teszt Elek`
 
@@ -317,7 +292,7 @@ Tartam:  `3 nap`
 
 Erőforrásigény:  `0.5 személynap`
 
-#### 8.2.6. Képernyőtervek
+#### 8.2.7. Képernyőtervek
 
 Felelős: `Teszt Elek`
 
@@ -325,7 +300,7 @@ Tartam:  `3 nap`
 
 Erőforrásigény:  `1 személynap`
 
-#### 8.2.7. Bemutató elkészítése
+#### 8.2.8. Bemutató elkészítése
 
 Felelős: `Lev Elek`
 
@@ -343,7 +318,7 @@ Ennek a feladatnak az a célja, hogy `egy működő prototípust hozzunk létre,
 
 Részfeladatai a következők:
 
-#### `8.3.1. Felhasználók kezelése (admin, raktáros, sofőr) (CR)`
+#### 8.3.1. Felhasználók kezelése (admin, egyszerű felhasználó) (C)
 
 Felelős: `Teszt Elek`
 
@@ -351,7 +326,15 @@ Tartam:  `5 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.2. Felhasználók kezelése (admin, raktáros, sofőr) (UD)`
+#### 8.3.2. Felhasználók kezelése (admin, egyszerű felhasználó) (R)
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2 személynap`
+
+#### 8.3.3. Felhasználók kezelése (admin, egyszerű felhasználó) (U)
 
 Felelős: `Remek Elek`
 
@@ -359,7 +342,15 @@ Tartam:  `4 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.3. Felhasználók kezeléséhez szükséges adatok létrehozása az adatbázisban`
+#### 8.3.4. Felhasználók kezelése (admin, egyszerű felhasználó) (D)
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2 személynap`
+
+#### 8.3.5. Felhasználók kezeléséhez szükséges adatok létrehozása az adatbázisban
 
 Felelős: `Lev Elek`
 
@@ -367,7 +358,7 @@ Tartam:  `3 nap`
 
 Erőforrásigény:  `1 személynap`
 
-#### `8.3.4. Felhasználói munkamenet megvalósítása több jogosultsági szinttel`
+#### 8.3.6. Felhasználói munkamenet megvalósítása több jogosultsági szinttel
 
 Felelős: `Teszt Elek `
 
@@ -375,23 +366,7 @@ Tartam:  `10 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.5. Raktárak kezelése (CRUD)`
-
-Felelős: `Teszt Elek`
-
-Tartam:  `3 nap`
-
-Erőforrásigény:  `1 személynap`
-
-#### `8.3.6. Raktárkezeléshez szükséges adatok létrehozása az adatbázisban`
-
-Felelős: `Remek Elek`
-
-Tartam:  `4 nap`
-
-Erőforrásigény:  `2 személynap`
-
-#### `8.3.7. Árukészletek kezelése (C)`
+#### 8.3.8. Árukészletek kezelése (CR)
 
 Felelős: `Remek Elek `
 
@@ -399,15 +374,7 @@ Tartam:  `4 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.8. Árukészletek kezelése (R)`
-
-Felelős: `Lev Elek`
-
-Tartam:  `3 nap`
-
-Erőforrásigény:  `1 személynap`
-
-#### `8.3.9. Árukészletek kezelése (UD)`
+#### 8.3.9. Árukészletek kezelése (UD)
 
 Felelős: `Lev Elek`
 
@@ -415,7 +382,7 @@ Tartam:  `5 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.10. Árukészletek kezeléséhez szükséges adatok létrehozása az adatbázisban`
+#### 8.3.10. Árukészletek kezeléséhez szükséges adatok létrehozása az adatbázisban
 
 Felelős: `Lev Elek`
 
@@ -423,39 +390,7 @@ Tartam:  `5 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.11. Járművek kezelése (CRUD) és a szükséges adatok létrehozása az adatbázisban`
-
-Felelős: `Lev Elek`
-
-Tartam:  `3 nap`
-
-Erőforrásigény:  `2 személynap`
-
-#### `8.3.12. Fuvarok/szállítmányok kezelése (CR)`
-
-Felelős: `Teszt Elek`
-
-Tartam:  `4 nap`
-
-Erőforrásigény:  `2 személynap`
-
-#### `8.3.13. Fuvarok/szállítmányok kezelése (UD)`
-
-Felelős: `Teszt Elek `
-
-Tartam:  `5 nap`
-
-Erőforrásigény:  `2 személynap`
-
-#### `8.3.14. Fuvarok/szállítmányok szükséges adatok létrehozása az adatbázisban`
-
-Felelős: `Remek Elek `
-
-Tartam:  `3 nap`
-
-Erőforrásigény:  `1 személynap`
-
-#### `8.3.15. Email-es kiértesítés új szállítmány esetén az adott raktárosnak és sofőrnek`
+#### 8.3.11. Email-es értesítés rendelés leadásakor
 
 Felelős: `Remek Elek`
 
@@ -463,7 +398,7 @@ Tartam:  `4 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### `8.3.16. Fuvar útvonalának megjelenítése térképen a kezdő és a végponttal együtt`
+#### 8.3.12. Kosár kezelése (CRUD)
 
 Felelős: `Remek Elek`
 
@@ -471,7 +406,7 @@ Tartam:  `5 nap`
 
 Erőforrásigény:  `3 személynap`
 
-#### `8.3.17. Biztonsági mentés automatikus létrehozása`
+#### 8.3.13. Rendelés kezelése (CR)
 
 Felelős: `Lev Elek`
 
@@ -479,7 +414,15 @@ Tartam:  `3 nap`
 
 Erőforrásigény:  `1 személynap`
 
-#### 8.3.18. Tesztelési dokumentum az összes funkcióhoz (TP, TC)
+#### 8.3.13. Rendelés kezelése (UD)
+
+Felelős: `Lev Elek`
+
+Tartam:  `3 nap`
+
+Erőforrásigény:  `1 személynap`
+
+#### 8.3.14. Tesztelési dokumentum az összes funkcióhoz (TP, TC)
 
 Felelős: `Mindenki`
 
@@ -491,7 +434,7 @@ Erőforrásigény:  `1 személynap/fő`
 Itt csak a könnyebb áttekinthetőség végett szerepel mindenki felelősként, azonban ezt a feladatot is részfeladatokra kell bontani.
 ```
 
-#### `8.3.19. A prototípus kitelepítése éles környezetbe` 
+#### 8.3.15. A prototípus kitelepítése éles környezetbe
 
 Felelős: `Teszt Elek`
 
@@ -511,7 +454,9 @@ Ennek a feladatnak az a célja, hogy `az előző mérföldkő hiányzó funkció
 
 Részfeladatai a következők:
 
-#### 8.4.1. Javított minőségű prototípus új funkciókkal
+
+
+#### 8.4.1. Böngésző független frontend létrehozása
 
 Felelős: `Teszt Elek`
 
@@ -519,7 +464,47 @@ Tartam:  `5 nap`
 
 Erőforrásigény:  `2.5 személynap`
 
-#### 8.4.2. Javított minőségű prototípus javított funkciókkal
+#### 8.4.2. Reszponzív kinézet létrehozása
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2.5 személynap`
+
+#### 8.4.3. Keresési/szűrési funkció a termékek között
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2.5 személynap`
+
+#### 8.4.4. Fórumon való böngészés - mindenkinek (R)
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2.5 személynap`
+
+#### 8.4.5. Fórumon való hozzászólás - regisztrált felhasználóknak (CUD)
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2.5 személynap`
+
+#### 8.4.6. Fórum használatához szükséges adatok létrehozása az adatbázisban (CUD)
+
+Felelős: `Teszt Elek`
+
+Tartam:  `5 nap`
+
+Erőforrásigény:  `2.5 személynap`
+
+#### 8.4.7. Felhasználói adatok módosítása (CRUD)
 
 Felelős: `Lev Elek`
 
@@ -527,7 +512,7 @@ Tartam:  `5 nap`
 
 Erőforrásigény:  `2 személynap`
 
-#### 8.4.3. Javított minőségű prototípus a korábbi hiányzó funkciókkal
+#### 8.4.8. Javított minőségű prototípus a korábbi hiányzó funkciókkal
 
 Felelős: `Remek Elek`
 
