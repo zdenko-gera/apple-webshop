@@ -71,7 +71,7 @@ A projekt a következő emberekből áll:
 |   Petrányi Dominik   | Projektmenedzser | h268432@stud.u-szeged.hu    |
 |  Bényei Anna Dorina  |   Projekt tag    | h255398@stud.u-szeged.hu    |
 |  Molnár-Farkas Noel  |   Projekt tag    | h267706@stud.u-szeged.hu    |
-|     Gera Zdenkó      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
+|     Gera Zdenkó      |   Projekt tag    | h157872@stud.u-szeged.hu    |
 |     Varga Zoltán     |   Projekt tag    | h270521@stud.u-szeged.hu    |
 |     Nagy Vencel      |   Projekt tag    | `h000000@stud.u-szeged.hu`    |
 
@@ -90,6 +90,7 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
  - Acer Aspire A515-45 (CPU: Ryzen 5 5500U, RAM: 16GB, GPU: Processzorba integrált Radeon Graphics Vega 7)
  - Dell XPS 15 9570 (CPU: Intel i7 8750H, RAM: 16GB, GPU: NVIDIA GeForce GTX 1050 Ti, OS: Windows 10)
  - Dell G15 5510 (CPU: Intel i7 11800H, RAM: 16GB, GPU: NVIDIA® GeForce® 3050 Ti, OS: Windows 10)
+ - Dell Latitude E5470 (CPU: Intel i3 6100U, RAM: 8GB, GPU: Intel HD Graphics 520)
 
 A projekt a következő technológiákat/szoftvereket fogja használni a munka során: 
 
