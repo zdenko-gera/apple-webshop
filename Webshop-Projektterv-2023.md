@@ -85,18 +85,20 @@ Betölthető pozíciók: projektmenedzser, projekt tag.
 
 A projekt a következő munkaállomásokat fogja használni a munka során:
 
-- Munkaállomások: 6 db, Windows 10-es operációs rendszerrel
+- Munkaállomások: 5 db, Windows 10-es operációs rendszerrel és 1db, macOS operációs rendszerrel rendelkező munkafelület
 - Acer aspire 5 a515-55g-55jf (CPU: i5-1035G1, RAM: 8GB, GPU: NVIDIA® GeForce® MX350 2GB GDDR5)
 - Acer Aspire A515-45 (CPU: Ryzen 5 5500U, RAM: 16GB, GPU: Processzorba integrált Radeon Graphics Vega 7)
 - Dell XPS 15 9570 (CPU: Intel i7 8750H, RAM: 16GB, GPU: NVIDIA GeForce GTX 1050 Ti, OS: Windows 10)
 - Dell G15 5510 (CPU: Intel i7 11800H, RAM: 16GB, GPU: NVIDIA® GeForce® 3050 Ti, OS: Windows 10)
 - Dell Latitude E5470 (CPU: Intel i3 6100U, RAM: 8GB, GPU: Intel HD Graphics 520)
+- Apple MacBook Air (CPU: M1 Chip, RAM: 16GB)
 
 A projekt a következő technológiákat/szoftvereket fogja használni a munka során:
 
 - Git verziókövető (GitLab)
 - Java Spring Boot keretrendszer
 - IntelliJ IDEA fejlesztőkörnyezet
+- Visual Studio Code fejlesztőkörnyezet
 - MySQL adatbázisszerver
 - Bootstrap CSS framework
 
@@ -209,7 +211,7 @@ Alapvetően egy feladatnak 1 felelőse lehet, de kivételt képez pl. a 9.1.1. r
 
 ### 8.1. Projektterv (1. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `megvalósításhoz szükséges lépéseket, az erőforrásigényeket, az ütemezést, a felelősöket és a feladatok sorrendjét meghatározzuk, majd vizualizáljuk Gantt diagram segítségével.`
+Ennek a feladatnak az a célja, hogy megvalósításhoz szükséges lépéseket, az erőforrásigényeket, az ütemezést, a felelősöket és a feladatok sorrendjét meghatározzuk, majd vizualizáljuk Gantt diagram segítségével.
 
 Részfeladatai a következők:
 
@@ -217,17 +219,17 @@ Részfeladatai a következők:
 
 Felelős: Mindenki
 
-Tartam: `4 nap`
+Tartam: 7 nap
 
-Erőforrásigény: `1 személynap/fő`
+Erőforrásigény: 0.5 személynap/fő
 
 #### 8.1.2. Bemutató elkészítése
 
-Felelős: `Teszt Elek`
+Felelős: Bényei Anna
 
-Tartam: `2 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 0.5 személynap
 
 ```
 A mérföldkőhöz tartozó feladatok bemutatása PPT keretében, pl. téma, tervezett funkciók, tagok, Gantt diagram.`
@@ -235,41 +237,41 @@ A mérföldkőhöz tartozó feladatok bemutatása PPT keretében, pl. téma, ter
 
 ### 8.2. UML és adatbázis- és képernyőtervek (2. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `a rendszerarchitektúrát, az adatbázist és webalkalmazás kinézetét megtervezzük.`
+Ennek a feladatnak az a célja, hogy a rendszerarchitektúrát, az adatbázist és webalkalmazás kinézetét megtervezzük.
 
 Részfeladatai a következők:
 
 #### 8.2.1. Használati eset diagram
 
-Felelős: `Teszt Elek`
+Felelős: Gera Zdenkó
 
-Tartam: `3 nap`
+Tartam: 3 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 1.5 személynap
 
 #### 8.2.2. Osztály diagram
 
-Felelős: `Lev Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `4 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 2 személynap
 
 #### 8.2.3. Szekvencia diagram
 
-Felelős: `Remek Elek`
+Felelős: Molnár-Farkas Noel
 
-Tartam: `3 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 2 személynap
 
 #### 8.2.4. Egyed-kapcsolat diagram adatbázishoz
 
 Felelős: Varga Zoltán
 
-Tartam: 2 nap
+Tartam: 3 nap
 
-Erőforrásigény: 0.5 személynap
+Erőforrásigény: 1 személynap
 
 #### 8.2.5. Relációs adatbázisséma kialakítása
 
@@ -277,31 +279,39 @@ Felelős: Varga Zoltán
 
 Tartam: 2 nap
 
-Erőforrásigény: 0.5 személynap
+Erőforrásigény: 1 személynap
 
 #### 8.2.6. Csomag diagram
 
-Felelős: `Teszt Elek`
+Felelős: Bényei Anna
 
-Tartam: `3 nap`
+Tartam: 3 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 0.5 személynap
 
-#### 8.2.7. Képernyőtervek
+#### 8.2.7. Képernyőtervek (Főoldal, Termék oldal, Webshop)
 
-Felelős: `Teszt Elek`
+Felelős: Nagy Vencel
 
-Tartam: `3 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 2 személynap
+
+#### 8.2.7. Képernyőtervek (Bejeltkezési oldal, AdminPage)
+
+Felelős: Bényi Anna
+
+Tartam: 4 nap
+
+Erőforrásigény: 2 személynap
 
 #### 8.2.8. Bemutató elkészítése
 
-Felelős: `Lev Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 0.5 személynap
 
 ```
 A mérföldkőhöz tartozó feladatok bemutatása PPT keretében (elkészült diagramok és képernyőtervek)`
@@ -309,121 +319,153 @@ A mérföldkőhöz tartozó feladatok bemutatása PPT keretében (elkészült di
 
 ### 8.3. Prototípus I. (3. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `egy működő prototípust hozzunk létre, ahol a vállalt funkcionális követelmények nagy része már prezentálható állapotban van.`
+Ennek a feladatnak az a célja, hogy egy működő prototípust hozzunk létre, ahol a vállalt funkcionális követelmények nagy része már prezentálható állapotban van.
 
 Részfeladatai a következők:
 
-#### 8.3.1. Felhasználók kezelése (admin, egyszerű felhasználó) (C)
+#### 8.3.1. Felhasználók kezelése (admin, egyszerű felhasználó) (CR)
 
-Felelős: `Teszt Elek`
+Felelős: Varga Zoltán
 
-Tartam: `5 nap`
+Tartam: 6 nap
 
-Erőforrásigény: `2 személynap`
-
-#### 8.3.2. Felhasználók kezelése (admin, egyszerű felhasználó) (R)
-
-Felelős: `Teszt Elek`
-
-Tartam: `5 nap`
-
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 3 személynap
 
 #### 8.3.3. Felhasználók kezelése (admin, egyszerű felhasználó) (U)
 
-Felelős: `Remek Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `4 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 1 személynap
 
 #### 8.3.4. Felhasználók kezelése (admin, egyszerű felhasználó) (D)
 
-Felelős: `Teszt Elek`
+Felelős: Molnár-Farkas Noel
 
-Tartam: `5 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 1 személynap
 
 #### 8.3.5. Felhasználók kezeléséhez szükséges adatok létrehozása az adatbázisban
 
-Felelős: `Lev Elek`
+Felelős: Gera Zdenkó
 
-Tartam: `3 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 3 személynap
 
 #### 8.3.6. Felhasználói munkamenet megvalósítása több jogosultsági szinttel
 
-Felelős: `Teszt Elek `
+Felelős: Molnár-Farkas Noel
 
-Tartam: `10 nap`
+Tartam: 10 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 4 személynap
 
 #### 8.3.8. Árukészletek kezelése (CR)
 
-Felelős: `Remek Elek `
+Felelős: Gera Zdenkó
 
-Tartam: `4 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 2 személynap
 
 #### 8.3.9. Árukészletek kezelése (UD)
 
-Felelős: `Lev Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `5 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 2 személynap
 
 #### 8.3.10. Árukészletek kezeléséhez szükséges adatok létrehozása az adatbázisban
 
-Felelős: `Lev Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `5 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `2 személynap`
-
-#### 8.3.11. Email-es értesítés rendelés leadásakor
-
-Felelős: `Remek Elek`
-
-Tartam: `4 nap`
-
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 1 személynap
 
 #### 8.3.12. Kosár kezelése (CRUD)
 
-Felelős: `Remek Elek`
+Felelős: Varga Zoltán
 
-Tartam: `5 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `3 személynap`
+Erőforrásigény: 3 személynap
 
 #### 8.3.13. Rendelés kezelése (CR)
 
-Felelős: `Lev Elek`
+Felelős: Varga Zoltán
 
-Tartam: `3 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 2 személynap
 
 #### 8.3.13. Rendelés kezelése (UD)
 
-Felelős: `Lev Elek`
+Felelős: Varga Zoltán
 
-Tartam: `3 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 2 személynap
+
+#### 8.3.14 Főoldal létrehozása (HTML, CSS)
+
+Felelős: Nagy Vencel
+
+Tartam: 7 nap
+
+Erőforrásigény: 2.5 személynap/fő
+
+#### 8.3.14 Webhop létrehozása (HTML, CSS)
+
+Felelős: Bényei Anna
+
+Tartam: 6 nap
+
+Erőforrásigény: 2.5 személynap/fő
+
+#### 8.3.14 AdminPage létrehozása (HTML, CSS)
+
+Felelős: Nagy Vencel
+
+Tartam: 3 nap
+
+Erőforrásigény: 1.5 személynap/fő
+
+#### 8.3.14 Bejelentkezés/Regisztráció oldal létrehozása (HTML, CSS)
+
+Felelős: Nagy Vencel
+
+Tartam: 5 nap
+
+Erőforrásigény: 2.5 személynap/fő
+
+#### 8.3.14 Termék oldal (HTML, CSS)
+
+Felelős: Bényei Anna
+
+Tartam: 4 nap
+
+Erőforrásigény: 2 személynap/fő
+
+#### 8.3.14 Profil oldal létrehozása (HTML, CSS)
+
+Felelős: Nagy Vencel
+
+Tartam: 3 nap
+
+Erőforrásigény: 1.5 személynap/fő
 
 #### 8.3.14. Tesztelési dokumentum az összes funkcióhoz (TP, TC)
 
-Felelős: `Mindenki`
+Felelős: Mindenki
 
-Tartam: `7 nap`
+Tartam: 7 nap
 
-Erőforrásigény: `1 személynap/fő`
+Erőforrásigény: 1 személynap/fő
 
 ```
 Itt csak a könnyebb áttekinthetőség végett szerepel mindenki felelősként, azonban ezt a feladatot is részfeladatokra kell bontani.
@@ -431,11 +473,11 @@ Itt csak a könnyebb áttekinthetőség végett szerepel mindenki felelősként,
 
 #### 8.3.15. A prototípus kitelepítése éles környezetbe
 
-Felelős: `Teszt Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `1 nap`
+Tartam: 3 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 1.5 személynap
 
 ```
 A feladatokat a 2.2-es és a 2.3-as pont alapján kell meghatározni és lehető legrészletesebben definiálni.
@@ -445,145 +487,129 @@ A bemutató során a prototípus aktuális állását kell prezentálni.
 
 ### 8.4. Prototípus II. (4. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `az előző mérföldkő hiányzó funkcióit pótoljuk, illetve a hibásan működő funkciókat és az esetlegesen felmerülő új funkciókat megvalósítsuk. Továbbá az alkalmazás alapos tesztelése is a mérföldkőben történik az előző mérföldkőben összeállított tesztesetek alapján.`
+Ennek a feladatnak az a célja, hogy az előző mérföldkő hiányzó funkcióit pótoljuk, illetve a hibásan működő funkciókat és az esetlegesen felmerülő új funkciókat megvalósítsuk. Továbbá az alkalmazás alapos tesztelése is a mérföldkőben történik az előző mérföldkőben összeállított tesztesetek alapján.
 
 Részfeladatai a következők:
 
 #### 8.4.1. Böngésző független frontend létrehozása
 
-Felelős: `Teszt Elek`
+Felelős: Bényei Anna
 
-Tartam: `5 nap`
+Tartam: 6 nap
 
-Erőforrásigény: `2.5 személynap`
+Erőforrásigény: 3 személynap
 
 #### 8.4.2. Reszponzív kinézet létrehozása
 
-Felelős: `Teszt Elek`
+Felelős: Nagy Vencel
 
-Tartam: `5 nap`
+Tartam: 6 nap
 
-Erőforrásigény: `2.5 személynap`
+Erőforrásigény: 3 személynap
 
 #### 8.4.3. Keresési/szűrési funkció a termékek között
 
-Felelős: `Teszt Elek`
+Felelős: Molnár-Farkas Noel
 
-Tartam: `5 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `2.5 személynap`
+Erőforrásigény: 2.5 személynap
 
 #### 8.4.4. Fórumon való böngészés - mindenkinek (R)
 
-Felelős: `Teszt Elek`
+Felelős: Varga Zoltán
 
-Tartam: `5 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `2.5 személynap`
+Erőforrásigény: 2.5 személynap
 
 #### 8.4.5. Fórumon való hozzászólás - regisztrált felhasználóknak (CUD)
 
-Felelős: `Teszt Elek`
+Felelős: Varga Zoltán
 
-Tartam: `5 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `2.5 személynap`
+Erőforrásigény: 2.5 személynap
 
-#### 8.4.6. Fórum használatához szükséges adatok létrehozása az adatbázisban (CUD)
+#### 8.4.6. Fórum használatához szükséges adatok létrehozása az adatbázisban
 
-Felelős: `Teszt Elek`
+Felelős: Varga Zoltán
 
-Tartam: `5 nap`
+Tartam: 3 nap
 
-Erőforrásigény: `2.5 személynap`
+Erőforrásigény: 1 személynap
 
 #### 8.4.7. Felhasználói adatok módosítása (CRUD)
 
-Felelős: `Lev Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `5 nap`
+Tartam: 5 nap
 
-Erőforrásigény: `2 személynap`
+Erőforrásigény: 2 személynap
 
-#### 8.4.8. Javított minőségű prototípus a korábbi hiányzó funkciókkal
+#### 8.3.11. Email-es értesítés rendelés leadásakor
 
-Felelős: `Remek Elek`
+Felelős: Varga Zoltán
 
-Tartam: `5 nap`
+Tartam: 4 nap
 
-Erőforrásigény: `1.5 személynap`
+Erőforrásigény: 2 személynap
 
-#### `8.4.4. Felhasználói munkamenet tesztelése (TR)`
+#### 8.4.4. Felhasználói munkamenet tesztelése (TR)
 
-Felelős: `Teszt Elek`
+Felelős: Gera Zdenkó
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 1 személynap
 
-#### `8.4.5. Raktárak kezelésének tesztelése (TR)`
+#### 8.4.5. Rendelés kezelésének tesztelése (TR)
 
-Felelős: `Remek Elek`
+Felelős: Molnár-Farkas Noel
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 1.5 személynap
 
-#### `8.4.6. Árukészletek kezelésének tesztelése (TR)`
+#### 8.4.6. Reszponzivitás kezelésének tesztelése (TR)
 
-Felelős: `Teszt Elek`
+Felelős: Bényei Anna
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `1 személynap`
+Erőforrásigény: 1.5 személynap
 
-#### `8.4.7. Járművek kezelésének tesztelése (TR)`
+#### 8.4.6. Böngésző függetlenség kezelésének tesztelése (TR)
 
-Felelős: `Remek Elek`
+Felelős: Nagy Vencel
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 1.5 személynap
 
-#### `8.4.8. Fuvarok kezelésének tesztelése (TR)`
+#### 8.4.6. Árukészlet kezelésének tesztelése (TR)
 
-Felelős: `Lev Elek`
+Felelős: Varga Zoltán
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 1 személynap
 
-#### `8.4.9. Email-es funkciók tesztelése (TR)`
+#### 8.4.6. Felhasználói élmény kezelésének tesztelése (TR)
 
-Felelős: `Remek Elek`
+Felelős: Nagy Vencel
 
-Tartam: `1 nap`
+Tartam: 2 nap
 
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 1 személynap
 
-#### `8.4.10. Térképes funkciók tesztelése (TR)`
+#### 8.4.12. A prototípus kitelepítésének frissítése
 
-Felelős: `Lev Elek`
+Felelős: Petrányi Dominik
 
-Tartam: `1 nap`
+Tartam: 1 nap
 
-Erőforrásigény: `0.5 személynap`
-
-#### `8.4.11. Biztonsági mentés tesztelése (TR)`
-
-Felelős: `Lev Elek`
-
-Tartam: `1 nap`
-
-Erőforrásigény: `0.5 személynap`
-
-#### `8.4.12. A prototípus kitelepítésének frissítése`
-
-Felelős: `Teszt Elek`
-
-Tartam: `1 nap`
-
-Erőforrásigény: `0.5 személynap`
+Erőforrásigény: 1 személynap
 
 ```
 Működő végleges program, a frissített tesztelési dokumentációval. A 3. mérföldkőhöz képest funkiconálisan többet kell tudnia az oldalnak.
