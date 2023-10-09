@@ -124,10 +124,6 @@ Pl.: betegség, szoftver-hardver probléma, tag kiesése, extrém ZH időszak, p
 ### 6.1. Munka menedzsment
 A munkát Petrányi Dominik koordinálja. Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről üzenetben tájékoztatja a projektcsapatot.
 
-```
-Írd le, hogy ki menedzseli a munkát (tipikusan a projekt menedzser), mik a feladatai, és azokat hogyan hajtja végre.
-```
-
 ### 6.2. Csoportgyűlések
 
 A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, illetve hogy megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben memó készül.
