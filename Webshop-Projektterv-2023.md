@@ -140,12 +140,19 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük, hogy előreláthatólag ki melyik részén dolgozik a projektnek.
 
-3. Megbeszélés:
+3. megbeszélés:
 
 - Időpont: 2021.10.04.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük, hogy hogyan kell használni a gitet, ki is próbáltuk azt, a projekt funkcióit nagyvonalakban egyeztettük.
+
+4. megbeszélés:
+
+- Időpont: 2023.10.09
+- Hely: Blue Café - Szeged, Somogyi utca 20.
+- Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
+- Érintett témák: Megbeszéltük a project fontosabb funkciót, illetve elosztottuk a feladatokat.
 
 ```
 A memókat a teljes projekt során vezetni kell, amely tartalmazza a következőket:
