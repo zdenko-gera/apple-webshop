@@ -40,7 +40,7 @@ milyen megjelenéssel kell rendelkeznie. Ha lehetséges, akkor ezeket a feladato
 
 Az erőforrásigényünk összesen 102 személynap, átlagosan 17 személynap/fő.
 
-A rendelkezésünkre áll összesen 6 \* 70 = 420 pont.
+A rendelkezésünkre áll összesen 6 * 70 = 420 pont.
 
 ```
 Becsült sarokszámok, a rendelkezésre álló erőforrás fejenként általában 17-21 személynap,
