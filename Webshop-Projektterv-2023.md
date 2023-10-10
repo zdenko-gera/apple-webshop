@@ -31,10 +31,6 @@ A fő cél az Apple termékek értékesítésére szakosodott webshop létrehoz�
 - Az érzékeny adatokat biztonságosan tároljuk
 - A legfrissebb technológiákat használja a rendszer
 
-```
-A rendszer nem funkcionális követelményei, pl.: milyen környezetben fusson, milyen teljesítményt kell produkálnia,
-milyen megjelenéssel kell rendelkeznie. Ha lehetséges, akkor ezeket a feladatokat is ki kell osztani a csapattagok között.
-```
 
 ## 3. Költség- és erőforrás-szükségletek
 
@@ -42,10 +38,6 @@ Az erőforrásigényünk összesen 102 személynap, átlagosan 17 személynap/f�
 
 A rendelkezésünkre áll összesen 6 * 70 = 420 pont.
 
-```
-Becsült sarokszámok, a rendelkezésre álló erőforrás fejenként általában 17-21 személynap,
-a pontok száma = fejenként a projektre kapható maxpont * tagok száma.
-```
 
 ## 4. Szervezeti felépítés és felelősségmegosztás
 
@@ -58,9 +50,6 @@ A projekt megrendelője Dr. Kertész Attila. A Webshop projektet a projektcsapat
 - Varga Zoltán
 - Petrányi Dominik (2 év egyetemi tapasztalat, jelenleg szoftverfejlesztő gyakornok a RabIT Solutions Zrt-nél)
 
-```
-Itt lehet részletezni pl. a tagok szakmai tapasztalatait, vagy akár a releváns gyakorlati helyeket, munkahelyeket megemlíteni.
-```
 
 ### 4.1 Projektcsapat
 
@@ -75,9 +64,7 @@ A projekt a következő emberekből áll:
 | Varga Zoltán       | Projekt tag      | h270521@stud.u-szeged.hu |
 | Nagy Vencel        | Projekt tag      | h268010@stud.u-szeged.hu |
 
-```
-Betölthető pozíciók: projektmenedzser, projekt tag.
-```
+
 
 ## 5. A munka feltételei
 
@@ -118,9 +105,6 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 
 A munkát Petrányi Dominik koordinálja. Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről üzenetben tájékoztatja a projektcsapatot.
 
-```
-Írd le, hogy ki menedzseli a munkát (tipikusan a projekt menedzser), mik a feladatai, és azokat hogyan hajtja végre.
-```
 
 ### 6.2. Csoportgyűlések
 
@@ -154,11 +138,6 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük a project fontosabb funkciót, illetve elosztottuk a feladatokat.
 
-```
-A memókat a teljes projekt során vezetni kell, amely tartalmazza a következőket:
-jelenlévők listája, megbeszélés helye és ideje, megbeszélt tevékenységek, felmerült kérdések és igények.
-Lényege, hogy betekintést kapjunk hogyan szerveződnek, zajlanak a csoportgyűlések, milyen problémák, kérdések merültek fel.
-```
 
 ### 6.3. Minőségbiztosítás
 
@@ -187,10 +166,6 @@ A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel
 
 A webalkalmazás az MVC (modell-view-controller) felépítést követi, a szerver és a kliens függetlenek, csupán API végpontok segítségével kommunikálnak.
 
-```
-Milyen szoftverfolyamat modellt követve állítja elő a csapat a specifikációnak megfelelő prototípusokat? Miért ezt választja?
-A csapat milyen architektúrát választ a projekt megvalósításához? Milyen rétegek (logikai, adat, GUI) lesznek?`
-```
 
 ### 7.2. Átadandók és határidők
 
@@ -203,18 +178,12 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 |    P1+D3    |       Prototípus I. és tesztelési dokumentáció, egyéni jelentés       | 2023-11-14 |
 |    P2+D4    | Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés | 2023-12-05 |
 
-```
-D - dokumentáció, P - prototípus
-```
 
 ## 8. Feladatlista
 
 A következőkben a tervezett feladatok részletes összefoglalása található.
 
-```
-Alapvetően egy feladatnak 1 felelőse lehet, de kivételt képez pl. a 9.1.1. részfeladat, mivel az első mérföldkőben
-2 kötelező feladat van, ezt nem bontjuk részfeladatokra.
-```
+
 
 ### 8.1. Projektterv (1. mérföldkő)
 
@@ -228,7 +197,7 @@ Felelős: Mindenki
 
 Tartam: 7 nap
 
-Erőforrásigény: 0.5 személynap/fő
+Erőforrásigény: 1 személynap/fő
 
 #### 8.1.2. Bemutató elkészítése
 
@@ -238,9 +207,6 @@ Tartam: 2 nap
 
 Erőforrásigény: 0.5 személynap
 
-```
-A mérföldkőhöz tartozó feladatok bemutatása PPT keretében, pl. téma, tervezett funkciók, tagok, Gantt diagram.`
-```
 
 ### 8.2. UML és adatbázis- és képernyőtervek (2. mérföldkő)
 
@@ -320,9 +286,6 @@ Tartam: 2 nap
 
 Erőforrásigény: 0.5 személynap
 
-```
-A mérföldkőhöz tartozó feladatok bemutatása PPT keretében (elkészült diagramok és képernyőtervek)`
-```
 
 ### 8.3. Prototípus I. (3. mérföldkő)
 
@@ -412,7 +375,7 @@ Erőforrásigény: 2 személynap
 
 #### 8.3.13. Rendelés kezelése (UD)
 
-Felelős: Varga Zoltán
+Felelős: Gera Zdenkó
 
 Tartam: 4 nap
 
@@ -474,9 +437,6 @@ Tartam: 7 nap
 
 Erőforrásigény: 1 személynap/fő
 
-```
-Itt csak a könnyebb áttekinthetőség végett szerepel mindenki felelősként, azonban ezt a feladatot is részfeladatokra kell bontani.
-```
 
 #### 8.3.15. A prototípus kitelepítése éles környezetbe
 
@@ -486,11 +446,6 @@ Tartam: 3 nap
 
 Erőforrásigény: 1.5 személynap
 
-```
-A feladatokat a 2.2-es és a 2.3-as pont alapján kell meghatározni és lehető legrészletesebben definiálni.
-Lehetőség szerint az összetett feladatokat bontsuk fel részfeladatokra.
-A bemutató során a prototípus aktuális állását kell prezentálni.
-```
 
 ### 8.4. Prototípus II. (4. mérföldkő)
 
@@ -524,7 +479,7 @@ Erőforrásigény: 2.5 személynap
 
 #### 8.4.4. Fórumon való böngészés - mindenkinek (R)
 
-Felelős: Varga Zoltán
+Felelős: Gera Zdenkó
 
 Tartam: 5 nap
 
@@ -618,10 +573,6 @@ Tartam: 1 nap
 
 Erőforrásigény: 1 személynap
 
-```
-Működő végleges program, a frissített tesztelési dokumentációval. A 3. mérföldkőhöz képest funkiconálisan többet kell tudnia az oldalnak.
-
-```
 
 ## 9. Részletes időbeosztás
 
@@ -644,9 +595,12 @@ minden módosítható oszlopában legalább 1 pontnak szerepelni kell.
 
 | Név          | M1    | M2    | M3   | M4    | Összesen |
 | ------------ | ----- | ----- | ---- | ----- | -------- |
-| `Teszt Elek` | `1.5` | `1.5` | `11` | `5`   | `19`     |
-| `Remek Elek` | `1`   | `4`   | `13` | `3`   | `21`     |
-| `Lev Elek`   | `1`   | `2.5` | `10` | `3.5` | `17`     |
+| Bényei Anna | 1.5 | 2.5 | 5.5 | 4.5   | 14     |
+| Gera Zdenkó | 1   | 1.5   | 8 | 3.5   | 14     |
+| Molnár-Farkas Noel| 1   | 2 | 6 | 4 | 13     |
+| Nagy Vencel   | 1   | 2 | 9 | 5.5 | 17.5     |
+| Petrányi Dominik| 1   | 2.5 | 5 | 3 | 11.5     |
+| Varga Zoltán   | 1   | 2 | 9 | 6.5 | 18.5     |
 
 ### 10.2. Részletes feladatszámok
 
@@ -654,6 +608,9 @@ minden módosítható oszlopában legalább 1 pontnak szerepelni kell.
 | ------------ | --- | --- | --- | --- | -------- |
 | `Teszt Elek` | `2` | `2` | `7` | `4` | `15`     |
 | `Remek Elek` | `1` | `2` | `7` | `4` | `14`     |
+| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
+| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
+| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
 | `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
 
 ### 10.3. Részletes költségvetés
@@ -665,4 +622,4 @@ minden módosítható oszlopában legalább 1 pontnak szerepelni kell.
 | `Remek Elek`                       | `4` | `15` | `35` | `16` | 70        |
 | `Lev Elek`                         | `4` | `12` | `30` | `24` | 70        |
 
-Szeged, `2021-10-25`.
+Szeged, 2023-10-10
