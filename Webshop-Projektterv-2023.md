@@ -31,7 +31,6 @@ A fő cél az Apple termékek értékesítésére szakosodott webshop létrehoz�
 - Az érzékeny adatokat biztonságosan tároljuk
 - A legfrissebb technológiákat használja a rendszer
 
-
 ## 3. Költség- és erőforrás-szükségletek
 
 Az erőforrásigényünk összesen 102 személynap, átlagosan 17 személynap/fő.
@@ -50,7 +49,6 @@ A projekt megrendelője Dr. Kertész Attila. A Webshop projektet a projektcsapat
 - Varga Zoltán
 - Petrányi Dominik (2 év egyetemi tapasztalat, jelenleg szoftverfejlesztő gyakornok a RabIT Solutions Zrt-nél)
 
-
 ### 4.1 Projektcsapat
 
 A projekt a következő emberekből áll:
@@ -63,8 +61,6 @@ A projekt a következő emberekből áll:
 | Gera Zdenkó        | Projekt tag      | h157872@stud.u-szeged.hu |
 | Varga Zoltán       | Projekt tag      | h270521@stud.u-szeged.hu |
 | Nagy Vencel        | Projekt tag      | h268010@stud.u-szeged.hu |
-
-
 
 ## 5. A munka feltételei
 
@@ -105,7 +101,6 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 
 A munkát Petrányi Dominik koordinálja. Fő feladata, hogy folyamatosan egyeztessen a csapattagokkal az előrehaladásról és a fellépő problémákról, esetlegesen a megoldásban is segítséget nyújhat a projekt csúszásának elkerülése végett. További feladata a heti szinten tartandó csoportgyűlések időpontjának és helyszínének leszervezése, erről üzenetben tájékoztatja a projektcsapatot.
 
-
 ### 6.2. Csoportgyűlések
 
 A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, illetve hogy megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben memó készül.
@@ -138,7 +133,6 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük a project fontosabb funkciót, illetve elosztottuk a feladatokat.
 
-
 ### 6.3. Minőségbiztosítás
 
 Az elkészült terveket a terveken nem dolgozó csapattársak közül átnézik, hogy megfelel-e a specifikációnak és az egyes diagramtípusok összhangban vannak-e egymással. A meglévő rendszerünk helyes működését a prototípusok bemutatása előtt a tesztelési dokumentumban leírtak végrehajtása alapján ellenőrizzük és összevetjük a specifikációval, hogy az elvárt eredményt kapjuk-e. További tesztelési lehetőségek: unit tesztek írása az egyes modulokhoz vagy a kód közös átnézése (code review) egy, a vizsgált modul programozásában nem résztvevő csapattaggal. Szoftverünk minőségét a végső leadás előtt javítani kell a rendszerünkre lefuttatott kódelemzés során kapott metrikaértékek és szabálysértések figyelembevételével.
@@ -166,7 +160,6 @@ A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel
 
 A webalkalmazás az MVC (modell-view-controller) felépítést követi, a szerver és a kliens függetlenek, csupán API végpontok segítségével kommunikálnak.
 
-
 ### 7.2. Átadandók és határidők
 
 A főbb átadandók és határidők a projekt időtartama alatt a következők:
@@ -178,12 +171,9 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 |    P1+D3    |       Prototípus I. és tesztelési dokumentáció, egyéni jelentés       | 2023-11-14 |
 |    P2+D4    | Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés | 2023-12-05 |
 
-
 ## 8. Feladatlista
 
 A következőkben a tervezett feladatok részletes összefoglalása található.
-
-
 
 ### 8.1. Projektterv (1. mérföldkő)
 
@@ -206,7 +196,6 @@ Felelős: Bényei Anna
 Tartam: 2 nap
 
 Erőforrásigény: 0.5 személynap
-
 
 ### 8.2. UML és adatbázis- és képernyőtervek (2. mérföldkő)
 
@@ -270,7 +259,7 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.2.7. Képernyőtervek (Bejeltkezési oldal, AdminPage)
+#### 8.2.8. Képernyőtervek (Bejeltkezési oldal, AdminPage)
 
 Felelős: Bényi Anna
 
@@ -278,14 +267,13 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.2.8. Bemutató elkészítése
+#### 8.2.9. Bemutató elkészítése
 
 Felelős: Petrányi Dominik
 
 Tartam: 2 nap
 
 Erőforrásigény: 0.5 személynap
-
 
 ### 8.3. Prototípus I. (3. mérföldkő)
 
@@ -301,7 +289,7 @@ Tartam: 6 nap
 
 Erőforrásigény: 3 személynap
 
-#### 8.3.3. Felhasználók kezelése (admin, egyszerű felhasználó) (U)
+#### 8.3.2. Felhasználók kezelése (admin, egyszerű felhasználó) (U)
 
 Felelős: Petrányi Dominik
 
@@ -309,7 +297,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1 személynap
 
-#### 8.3.4. Felhasználók kezelése (admin, egyszerű felhasználó) (D)
+#### 8.3.3. Felhasználók kezelése (admin, egyszerű felhasználó) (D)
 
 Felelős: Molnár-Farkas Noel
 
@@ -317,7 +305,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1 személynap
 
-#### 8.3.5. Felhasználók kezeléséhez szükséges adatok létrehozása az adatbázisban
+#### 8.3.4. Felhasználók kezeléséhez szükséges adatok létrehozása az adatbázisban
 
 Felelős: Gera Zdenkó
 
@@ -325,7 +313,7 @@ Tartam: 5 nap
 
 Erőforrásigény: 3 személynap
 
-#### 8.3.6. Felhasználói munkamenet megvalósítása több jogosultsági szinttel
+#### 8.3.5. Felhasználói munkamenet megvalósítása több jogosultsági szinttel
 
 Felelős: Molnár-Farkas Noel
 
@@ -333,7 +321,7 @@ Tartam: 10 nap
 
 Erőforrásigény: 4 személynap
 
-#### 8.3.8. Árukészletek kezelése (CR)
+#### 8.3.6. Árukészletek kezelése (CR)
 
 Felelős: Gera Zdenkó
 
@@ -341,7 +329,7 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.3.9. Árukészletek kezelése (UD)
+#### 8.3.7. Árukészletek kezelése (UD)
 
 Felelős: Petrányi Dominik
 
@@ -349,7 +337,7 @@ Tartam: 5 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.3.10. Árukészletek kezeléséhez szükséges adatok létrehozása az adatbázisban
+#### 8.3.8. Árukészletek kezeléséhez szükséges adatok létrehozása az adatbázisban
 
 Felelős: Petrányi Dominik
 
@@ -357,7 +345,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1 személynap
 
-#### 8.3.12. Kosár kezelése (CRUD)
+#### 8.3.9. Kosár kezelése (CRUD)
 
 Felelős: Varga Zoltán
 
@@ -365,7 +353,7 @@ Tartam: 5 nap
 
 Erőforrásigény: 3 személynap
 
-#### 8.3.13. Rendelés kezelése (CR)
+#### 8.3.10. Rendelés kezelése (CR)
 
 Felelős: Varga Zoltán
 
@@ -373,7 +361,7 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.3.13. Rendelés kezelése (UD)
+#### 8.3.11. Rendelés kezelése (UD)
 
 Felelős: Gera Zdenkó
 
@@ -381,7 +369,7 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.3.14 Főoldal létrehozása (HTML, CSS)
+#### 8.3.12. Főoldal létrehozása (HTML, CSS)
 
 Felelős: Nagy Vencel
 
@@ -389,7 +377,7 @@ Tartam: 7 nap
 
 Erőforrásigény: 2.5 személynap/fő
 
-#### 8.3.14 Webhop létrehozása (HTML, CSS)
+#### 8.3.13. Webhop létrehozása (HTML, CSS)
 
 Felelős: Bényei Anna
 
@@ -397,7 +385,7 @@ Tartam: 6 nap
 
 Erőforrásigény: 2.5 személynap/fő
 
-#### 8.3.14 AdminPage létrehozása (HTML, CSS)
+#### 8.3.14. AdminPage létrehozása (HTML, CSS)
 
 Felelős: Nagy Vencel
 
@@ -405,7 +393,7 @@ Tartam: 3 nap
 
 Erőforrásigény: 1.5 személynap/fő
 
-#### 8.3.14 Bejelentkezés/Regisztráció oldal létrehozása (HTML, CSS)
+#### 8.3.15. Bejelentkezés/Regisztráció oldal létrehozása (HTML, CSS)
 
 Felelős: Nagy Vencel
 
@@ -413,7 +401,7 @@ Tartam: 5 nap
 
 Erőforrásigény: 2.5 személynap/fő
 
-#### 8.3.14 Termék oldal (HTML, CSS)
+#### 8.3.16. Termék oldal (HTML, CSS)
 
 Felelős: Bényei Anna
 
@@ -421,7 +409,7 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap/fő
 
-#### 8.3.14 Profil oldal létrehozása (HTML, CSS)
+#### 8.3.17. Profil oldal létrehozása (HTML, CSS)
 
 Felelős: Nagy Vencel
 
@@ -429,7 +417,7 @@ Tartam: 3 nap
 
 Erőforrásigény: 1.5 személynap/fő
 
-#### 8.3.14. Tesztelési dokumentum az összes funkcióhoz (TP, TC)
+#### 8.3.18. Tesztelési dokumentum az összes funkcióhoz (TP, TC)
 
 Felelős: Mindenki
 
@@ -437,15 +425,13 @@ Tartam: 7 nap
 
 Erőforrásigény: 1 személynap/fő
 
-
-#### 8.3.15. A prototípus kitelepítése éles környezetbe
+#### 8.3.19. A prototípus kitelepítése éles környezetbe
 
 Felelős: Petrányi Dominik
 
 Tartam: 3 nap
 
 Erőforrásigény: 1.5 személynap
-
 
 ### 8.4. Prototípus II. (4. mérföldkő)
 
@@ -509,7 +495,7 @@ Tartam: 5 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.3.11. Email-es értesítés rendelés leadásakor
+#### 8.4.8. Email-es értesítés rendelés leadásakor
 
 Felelős: Varga Zoltán
 
@@ -517,7 +503,7 @@ Tartam: 4 nap
 
 Erőforrásigény: 2 személynap
 
-#### 8.4.4. Felhasználói munkamenet tesztelése (TR)
+#### 8.4.9. Felhasználói munkamenet tesztelése (TR)
 
 Felelős: Gera Zdenkó
 
@@ -525,7 +511,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1 személynap
 
-#### 8.4.5. Rendelés kezelésének tesztelése (TR)
+#### 8.4.10. Rendelés kezelésének tesztelése (TR)
 
 Felelős: Molnár-Farkas Noel
 
@@ -533,7 +519,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1.5 személynap
 
-#### 8.4.6. Reszponzivitás kezelésének tesztelése (TR)
+#### 8.4.11. Reszponzivitás kezelésének tesztelése (TR)
 
 Felelős: Bényei Anna
 
@@ -541,7 +527,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1.5 személynap
 
-#### 8.4.6. Böngésző függetlenség kezelésének tesztelése (TR)
+#### 8.4.12. Böngésző függetlenség kezelésének tesztelése (TR)
 
 Felelős: Nagy Vencel
 
@@ -549,7 +535,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1.5 személynap
 
-#### 8.4.6. Árukészlet kezelésének tesztelése (TR)
+#### 8.4.13. Árukészlet kezelésének tesztelése (TR)
 
 Felelős: Varga Zoltán
 
@@ -557,7 +543,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1 személynap
 
-#### 8.4.6. Felhasználói élmény kezelésének tesztelése (TR)
+#### 8.4.14. Felhasználói élmény kezelésének tesztelése (TR)
 
 Felelős: Nagy Vencel
 
@@ -565,7 +551,7 @@ Tartam: 2 nap
 
 Erőforrásigény: 1 személynap
 
-#### 8.4.12. A prototípus kitelepítésének frissítése
+#### 8.4.15. A prototípus kitelepítésének frissítése
 
 Felelős: Petrányi Dominik
 
@@ -573,23 +559,11 @@ Tartam: 1 nap
 
 Erőforrásigény: 1 személynap
 
-
 ## 9. Részletes időbeosztás
 
 ![image](./MINTA-gantt-diagram.png)
 
-```
-Ide kell berakni a Gantt diagramot, amely a 9. fejezetben található részfeladatokat tartalmazza felelős/tartam bontásban.
-```
-
 ## 10. Projekt költségvetés
-
-```
-Az egyes leadások alkalmával rögzített erőforrásigényt, az elvállalt feladatok számát
-és az adott mérföldkőben végzett munkáért szerezhető pontszámot kell beírni minden emberre külön-külön.
-Figyeljünk arra, hogy mivel mindenkinek minden mérföldkövön dolgoznia kell, ezért a 10.3-as táblázat
-minden módosítható oszlopában legalább 1 pontnak szerepelni kell.
-```
 
 ### 10.1. Részletes erőforrásigény (személynap)
 
