@@ -578,14 +578,14 @@ Erőforrásigény: 1 személynap
 
 ### 10.2. Részletes feladatszámok
 
-| Név          | M1  | M2  | M3  | M4  | Összesen |
-| ------------ | --- | --- | --- | --- | -------- |
-| Petrányi Dominik | 1 | 2 | 5 | 2 | 10     |
-| Bényei Anna | 2 | 2 | 3 | 2 | 9     |
-| Gera Zdenkó   | 1 | 1 | 4 | 2 | 8     |
-| Molnár-Farkas Noel  | 1 | 1 | 3 | 2 | 7     |
-| Varga Zoltán  | 1 | 2 | 4 | 4 | 11     |
-| Nagy Vencel  | 1 | 1 | 5 | 3 | 10     |
+| Név                 | M1  | M2  | M3  | M4  | Összesen |
+| ------------        | --- | --- | --- | --- | -------- |
+| Petrányi Dominik    | 1   | 2   | 5   | 2   | 10       |
+| Bényei Anna         | 2   | 2   | 3   | 2   | 9        |
+| Gera Zdenkó         | 1   | 1   | 4   | 2   | 8        |
+| Molnár-Farkas Noel  | 1   | 1   | 3   | 2   | 7        |
+| Varga Zoltán        | 1   | 2   | 4   | 4   | 11       |
+| Nagy Vencel         | 1   | 1   | 5   | 3   | 10       |
 
 ### 10.3. Részletes költségvetés
 
