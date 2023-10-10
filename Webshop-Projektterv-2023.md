@@ -107,21 +107,21 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
 
 1. megbeszélés:
 
-- Időpont: 2021.09.13.
+- Időpont: 2023.09.13.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Kiválasztottuk a projektünk témáját.
 
 2. megbeszélés:
 
-- Időpont: 2021.09.20.
+- Időpont: 2023.09.20.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük, hogy előreláthatólag ki melyik részén dolgozik a projektnek.
 
 3. megbeszélés:
 
-- Időpont: 2021.10.04.
+- Időpont: 2023.10.04.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük, hogy hogyan kell használni a gitet, ki is próbáltuk azt, a projekt funkcióit nagyvonalakban egyeztettük.
@@ -592,11 +592,11 @@ Erőforrásigény: 1 személynap
 | Név                                | M1  | M2   | M3   | M4   | Összesen  |
 | ---------------------------------- | --- | ---- | ---- | ---- | --------- |
 | Maximálisan megszerezhető pontszám | (7) | (20) | (35) | (28) | 100% (70) |
-| Bényei Anna                      | 2 |       ? | ? | ? | 70        |
-| Nagy Vencel                      | 1 |       ? | ? | ? | 70        |
-| Gera Zdenkó                      | 1 |       ? | ? | ? | 70        |
-| Varga Zoltán                     | 1 |       ? | ? | ? | 70        |
-| Petrányi Dominik                 | 1 |       ? | ? | ? | 70        |
-| Molnár-Farkas Noel               | 1 |       ? | ? | ? | 70        |
+| Bényei Anna                      | 7 |       17 | 25 | 21 | 70        |
+| Nagy Vencel                      | 4 |       10 | 32 | 24 | 70        |
+| Gera Zdenkó                      | 4 |       10 | 30 | 26 | 70        |
+| Varga Zoltán                     | 4 |       10 | 32 | 24 | 70        |
+| Petrányi Dominik                 | 4 |       14 | 28 | 24 | 70        |
+| Molnár-Farkas Noel               | 4 |       10 | 30 | 26 | 70        |
 
 Szeged, 2023-10-10
