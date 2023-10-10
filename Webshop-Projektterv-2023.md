@@ -129,7 +129,7 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
 4. megbeszélés:
 
 - Időpont: 2023.10.09
-- Hely: Blue Café - Szeged, Somogyi utca 20.
+- Hely: Blues Café - Szeged, Somogyi utca 20.
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük a project fontosabb funkciót, illetve elosztottuk a feladatokat.
 
@@ -261,7 +261,7 @@ Erőforrásigény: 2 személynap
 
 #### 8.2.8. Képernyőtervek (Bejeltkezési oldal, AdminPage)
 
-Felelős: Bényi Anna
+Felelős: Bényei Anna
 
 Tartam: 4 nap
 
@@ -580,20 +580,23 @@ Erőforrásigény: 1 személynap
 
 | Név          | M1  | M2  | M3  | M4  | Összesen |
 | ------------ | --- | --- | --- | --- | -------- |
-| `Teszt Elek` | `2` | `2` | `7` | `4` | `15`     |
-| `Remek Elek` | `1` | `2` | `7` | `4` | `14`     |
-| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
-| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
-| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
-| `Lev Elek`   | `1` | `2` | `7` | `4` | `14`     |
+| Petrányi Dominik | 1 | 2 | 5 | 2 | 10     |
+| Bényei Anna | 2 | 2 | 3 | 2 | 9     |
+| Gera Zdenkó   | 1 | 1 | 4 | 2 | 8     |
+| Molnár-Farkas Noel  | 1 | 1 | 3 | 2 | 7     |
+| Varga Zoltán  | 1 | 2 | 4 | 4 | 11     |
+| Nagy Vencel  | 1 | 1 | 5 | 3 | 10     |
 
 ### 10.3. Részletes költségvetés
 
 | Név                                | M1  | M2   | M3   | M4   | Összesen  |
 | ---------------------------------- | --- | ---- | ---- | ---- | --------- |
 | Maximálisan megszerezhető pontszám | (7) | (20) | (35) | (28) | 100% (70) |
-| `Teszt Elek`                       | `7` | `10` | `28` | `25` | 70        |
-| `Remek Elek`                       | `4` | `15` | `35` | `16` | 70        |
-| `Lev Elek`                         | `4` | `12` | `30` | `24` | 70        |
+| Bényei Anna                      | 2 |       ? | ? | ? | 70        |
+| Nagy Vencel                      | 1 |       ? | ? | ? | 70        |
+| Gera Zdenkó                      | 1 |       ? | ? | ? | 70        |
+| Varga Zoltán                     | 1 |       ? | ? | ? | 70        |
+| Petrányi Dominik                 | 1 |       ? | ? | ? | 70        |
+| Molnár-Farkas Noel               | 1 |       ? | ? | ? | 70        |
 
 Szeged, 2023-10-10
