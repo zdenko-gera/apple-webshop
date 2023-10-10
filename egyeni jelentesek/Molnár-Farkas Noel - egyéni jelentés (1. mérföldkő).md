@@ -1,7 +1,6 @@
 Összefoglaló az 1. mérföldkőben végzett munkáról
 
-Projekt tag: Bényei Anna
-
+Projekt tag: Molnár-Farkas Noel
 
 Vállalásaim a mérföldkőben:
 
