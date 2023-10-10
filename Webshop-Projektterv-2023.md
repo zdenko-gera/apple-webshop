@@ -35,8 +35,7 @@ A fő cél az Apple termékek értékesítésére szakosodott webshop létrehoz�
 
 Az erőforrásigényünk összesen 102 személynap, átlagosan 17 személynap/fő.
 
-A rendelkezésünkre áll összesen 6 * 70 = 420 pont.
-
+A rendelkezésünkre áll összesen 6 \* 70 = 420 pont.
 
 ## 4. Szervezeti felépítés és felelősségmegosztás
 
@@ -561,42 +560,42 @@ Erőforrásigény: 1 személynap
 
 ## 9. Részletes időbeosztás
 
-![image](./MINTA-gantt-diagram.png)
+![image](./Webshop-gantt-diagram-1.png)
 
 ## 10. Projekt költségvetés
 
 ### 10.1. Részletes erőforrásigény (személynap)
 
-| Név          | M1    | M2    | M3   | M4    | Összesen |
-| ------------ | ----- | ----- | ---- | ----- | -------- |
-| Bényei Anna | 1.5 | 2.5 | 5.5 | 4.5   | 14     |
-| Gera Zdenkó | 1   | 1.5   | 8 | 3.5   | 14     |
-| Molnár-Farkas Noel| 1   | 2 | 6 | 4 | 13     |
-| Nagy Vencel   | 1   | 2 | 9 | 5.5 | 17.5     |
-| Petrányi Dominik| 1   | 2.5 | 5 | 3 | 11.5     |
-| Varga Zoltán   | 1   | 2 | 9 | 6.5 | 18.5     |
+| Név                | M1  | M2  | M3  | M4  | Összesen |
+| ------------------ | --- | --- | --- | --- | -------- |
+| Bényei Anna        | 1.5 | 2.5 | 5.5 | 4.5 | 14       |
+| Gera Zdenkó        | 1   | 1.5 | 8   | 3.5 | 14       |
+| Molnár-Farkas Noel | 1   | 2   | 6   | 4   | 13       |
+| Nagy Vencel        | 1   | 2   | 9   | 5.5 | 17.5     |
+| Petrányi Dominik   | 1   | 2.5 | 5   | 3   | 11.5     |
+| Varga Zoltán       | 1   | 2   | 9   | 6.5 | 18.5     |
 
 ### 10.2. Részletes feladatszámok
 
-| Név          | M1  | M2  | M3  | M4  | Összesen |
-| ------------ | --- | --- | --- | --- | -------- |
-| Petrányi Dominik | 1 | 2 | 5 | 2 | 10     |
-| Bényei Anna | 2 | 2 | 3 | 2 | 9     |
-| Gera Zdenkó   | 1 | 1 | 4 | 2 | 8     |
-| Molnár-Farkas Noel  | 1 | 1 | 3 | 2 | 7     |
-| Varga Zoltán  | 1 | 2 | 4 | 4 | 11     |
-| Nagy Vencel  | 1 | 1 | 5 | 3 | 10     |
+| Név                | M1  | M2  | M3  | M4  | Összesen |
+| ------------------ | --- | --- | --- | --- | -------- |
+| Petrányi Dominik   | 1   | 2   | 5   | 2   | 10       |
+| Bényei Anna        | 2   | 2   | 3   | 2   | 9        |
+| Gera Zdenkó        | 1   | 1   | 4   | 2   | 8        |
+| Molnár-Farkas Noel | 1   | 1   | 3   | 2   | 7        |
+| Varga Zoltán       | 1   | 2   | 4   | 4   | 11       |
+| Nagy Vencel        | 1   | 1   | 5   | 3   | 10       |
 
 ### 10.3. Részletes költségvetés
 
 | Név                                | M1  | M2   | M3   | M4   | Összesen  |
 | ---------------------------------- | --- | ---- | ---- | ---- | --------- |
 | Maximálisan megszerezhető pontszám | (7) | (20) | (35) | (28) | 100% (70) |
-| Bényei Anna                      | 7 |       17 | 25 | 21 | 70        |
-| Nagy Vencel                      | 4 |       10 | 32 | 24 | 70        |
-| Gera Zdenkó                      | 4 |       10 | 30 | 26 | 70        |
-| Varga Zoltán                     | 4 |       10 | 32 | 24 | 70        |
-| Petrányi Dominik                 | 4 |       14 | 28 | 24 | 70        |
-| Molnár-Farkas Noel               | 4 |       10 | 30 | 26 | 70        |
+| Bényei Anna                        | 7   | 17   | 25   | 21   | 70        |
+| Nagy Vencel                        | 4   | 10   | 32   | 24   | 70        |
+| Gera Zdenkó                        | 4   | 10   | 30   | 26   | 70        |
+| Varga Zoltán                       | 4   | 10   | 32   | 24   | 70        |
+| Petrányi Dominik                   | 4   | 14   | 28   | 24   | 70        |
+| Molnár-Farkas Noel                 | 4   | 10   | 30   | 26   | 70        |
 
 Szeged, 2023-10-10
