@@ -1,6 +1,6 @@
 ### Összefoglaló az 1. mérföldkőben végzett munkáról
 
-### Projekt tag: Gera Zdenkó
+### Projekt tag: Molnár-Farkas Noel
 
 ___
 
