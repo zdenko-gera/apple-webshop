@@ -194,7 +194,7 @@ Felelős: Bényei Anna
 
 Tartam: 2 nap
 
-Erőforrásigény: 0.5 személynap
+Erőforrásigény: 1.5 személynap
 
 ### 8.2. UML és adatbázis- és képernyőtervek (2. mérföldkő)
 
@@ -568,7 +568,7 @@ Erőforrásigény: 1 személynap
 
 | Név                | M1  | M2  | M3  | M4  | Összesen |
 | ------------------ | --- | --- | --- | --- | -------- |
-| Bényei Anna        | 1.5 | 2.5 | 5.5 | 4.5 | 14       |
+| Bényei Anna        | 2.5 | 2.5 | 5.5 | 4.5 | 15       |
 | Gera Zdenkó        | 1   | 1.5 | 8   | 3.5 | 14       |
 | Molnár-Farkas Noel | 1   | 2   | 6   | 4   | 13       |
 | Nagy Vencel        | 1   | 2   | 9   | 5.5 | 17.5     |
