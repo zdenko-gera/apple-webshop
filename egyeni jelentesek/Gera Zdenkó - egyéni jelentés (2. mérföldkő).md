@@ -12,6 +12,8 @@ ___
 
      - https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/issues/22
 
+     - https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/issues/13
+
     ##### A feladat elvégzését alátámasztó commit(ok):
 
     - https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/9b3b096d54e6a54ca704c93d4de134da19f2ec45
