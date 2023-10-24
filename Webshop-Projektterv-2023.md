@@ -378,7 +378,7 @@ Erőforrásigény: 2.5 személynap/fő
 
 #### 8.3.13. Webhop létrehozása (HTML, CSS)
 
-Felelős: Bényei Anna
+Felelős: Nagy Vencel
 
 Tartam: 6 nap
 
@@ -386,7 +386,7 @@ Erőforrásigény: 2.5 személynap/fő
 
 #### 8.3.14. AdminPage létrehozása (HTML, CSS)
 
-Felelős: Nagy Vencel
+Felelős: Bényei Anna
 
 Tartam: 3 nap
 
@@ -394,7 +394,7 @@ Erőforrásigény: 1.5 személynap/fő
 
 #### 8.3.15. Bejelentkezés/Regisztráció oldal létrehozása (HTML, CSS)
 
-Felelős: Nagy Vencel
+Felelős: Bényei Anna
 
 Tartam: 5 nap
 
@@ -402,7 +402,7 @@ Erőforrásigény: 2.5 személynap/fő
 
 #### 8.3.16. Termék oldal (HTML, CSS)
 
-Felelős: Bényei Anna
+Felelős: Nagy Vencel
 
 Tartam: 4 nap
 
@@ -410,7 +410,7 @@ Erőforrásigény: 2 személynap/fő
 
 #### 8.3.17. Profil oldal létrehozása (HTML, CSS)
 
-Felelős: Nagy Vencel
+Felelős: Bényei Anna
 
 Tartam: 3 nap
 
@@ -431,6 +431,14 @@ Felelős: Petrányi Dominik
 Tartam: 3 nap
 
 Erőforrásigény: 1.5 személynap
+
+#### 8.3.20. Adatbázis létrehozása SQL
+
+Felelős: Petrányi Dominik
+
+Tartam: 2 nap
+
+Erőforrásigény: 1 személynap
 
 ### 8.4. Prototípus II. (4. mérföldkő)
 
