@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+h{
+	display: block;
+    font-size: 1.5em;
+    font-weight: bold; 
+}
+h1{
+	text-align: center;
+	font-size: 2em;
+    letter-spacing: 2.25px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: white;
+}
+
+
+section {
+    background-color: #eee;
+    margin: 5% auto;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+main {
+    padding: 0 7vw;
+    min-height: 100vh;
+}
+
+.login, .registration {
+   
+    width: 100%;
+    font-size: 1.2em;
+    letter-spacing: 2.25px;
+}
+
+
+.form-input {
+    display: block;
+    margin: 1.5% auto;
+    padding: 1.5%;
+    width: 100%;
+}
+
+.btn {
+    width: 50%;
+    
+}
+
+fieldset {
+    border: none;
+}
+
+input[type="submit"], input[type="signup"] {
+    background-color: #068fff;
+    font-weight: bold;
+    height: 3rem;
+    text-align: center;
+    max-width: 100%;
+    padding: 0.5rem;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    letter-spacing: 2.25px;
+}
+
+input[type="submit"]:hover, input[type="signup"]:hover {
+    background-color: #6D707D;
+}
+a{
+	text-decoration:none;
+	
+}

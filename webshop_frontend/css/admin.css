@@ -1,0 +1,31 @@
+table,th,td{
+	border: 1px solid black;
+	text-align: center;
+}
+table{
+	width: 90%;
+	margin: 5% auto;
+    padding: 1%;
+}
+th{
+	background-color: #068fff;
+	color: white;
+}
+a{
+	text-decoration:none;
+}
+a.block:link{
+  color: black;
+}
+
+a.block:visited{
+  color: red;
+}
+
+a.block:hover {
+  color: blue;
+}
+
+a.block:active {
+  color: red;
+}

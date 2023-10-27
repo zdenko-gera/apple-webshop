@@ -1,0 +1,156 @@
+.homepage-hero {
+  height: 28rem;
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding-inline: 3rem;
+}
+.homepage-hero-text {
+  flex: 1;
+  position: absolute;
+  height: 25rem;
+  width: 40%;
+  margin-top: 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+}
+
+.homepage-hero-text-header-iphone {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.homepage-hero-text-header-iphone img {
+  max-width: 100%;
+  max-height: 100%;
+  height: 1.5rem;
+}
+.homepage-hero-text-header h2 {
+  font-family: Inter;
+  font-size: 3em;
+  font-weight: 700;
+  line-height: normal;
+  background: linear-gradient(180deg, #565654 0%, #898886 72.92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.homepage-hero-mainPic img {
+  width: 25rem;
+  max-width: 100%;
+  max-width: 100%;
+  transform: rotate(-15deg);
+  flex-shrink: 0;
+}
+.homepage-hero-mainPic {
+  flex: 1;
+  position: absolute;
+  top: -1rem;
+  left: 4rem;
+}
+
+.homepage-buyAttract {
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.homepage-buyAttract-mainText {
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+.homepage-buyattract-buttonContainer {
+  display: flex;
+}
+.homepage-buyattract-buttonContainer p {
+  color: #068fff;
+  font-size: 1.3em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 2px;
+  margin-right: 0.6rem;
+}
+.homepage-buyattract-buttonContainer img {
+  height: 100%;
+  width: 1.5rem;
+}
+
+.homepage-newsLetter {
+  height: 18rem;
+  background-color: #eee;
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.homepage-newsLetter h3 {
+  color: #000;
+  font-size: 2.2em;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 3px;
+  margin-bottom: 1.3rem;
+}
+.homepage-newsLetter-textBox {
+  flex: 0.75;
+}
+.homepage-newsLetter-textBox p {
+  font-size: 1.1em;
+}
+.homepage-newsLetter-inputBox-container {
+  flex: 1;
+}
+
+.homepage-newsLetter span {
+  color: red;
+  font-size: 1em;
+}
+
+.homepage-newsLetter input {
+  width: 15rem;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 0.5px solid #8f8f8f;
+  background: #fff;
+  font-size: 1em;
+  padding-inline: 2em;
+  margin-bottom: 1rem;
+}
+#newsLetter-email {
+  width: 34.5rem;
+}
+
+.homepage-newProducts {
+  display: flex;
+  flex-direction: column;
+  height: 120%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.homepage-newProducts-text {
+  text-align: center;
+}
+
+.homepage-newProducts-gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(2rem, auto);
+  padding: 2.5rem 5rem;
+}
+.homepage-newProducts-gridItem {
+  border: 1px solid #8f8f8f;
+  background: #fff;
+}
+.homepage-newProducts-gridItem-productPicture img {
+  height: 300px;
+}
