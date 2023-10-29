@@ -1,7 +1,11 @@
 package com.project.webshop.Controllers;
 
 import com.project.webshop.Models.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
 public class UserController {
     UserModel userModel;
     CartModel cartModel;
@@ -14,8 +18,15 @@ public class UserController {
     public UserController() {
     }
 
-    public void register(String email, String firstname, String lastname, String password1, String password2) {
-
+    @PostMapping(value="registerUser")
+    public String register(@RequestParam("email") String email,
+                         @RequestParam("firstname") String firstname,
+                         @RequestParam("lastname") String lastname,
+                         @RequestParam("password1") String password1,
+                         @RequestParam("password2") String password2) {
+        System.out.println("halo");
+        System.out.println(email + " " + firstname + " " + lastname + " " + password1 + " " + password2);
+        return "redirect:/";
     }
 
     public void loginUser(String email, String password) {

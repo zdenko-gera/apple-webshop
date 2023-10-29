@@ -1,4 +1,4 @@
-package com.project.webshop;
+package com.project.webshop.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class helloController {
+public class PageController {
     @GetMapping("index")
     public String index() {
 		return "index.html";
@@ -17,7 +17,26 @@ public class helloController {
     }
     @GetMapping("Signup")
     public String Signup() {
-        System.out.println("halo");
         return "Signup.html";
+    }
+
+    @GetMapping("Block")
+    public String Block() {
+        return "Block.html";
+    }
+
+    @GetMapping("Admin_user")
+    public String Admin_user() {
+        return "Admin_user.html";
+    }
+
+    @GetMapping("Admin_order")
+    public String Admin_order() {
+        return "Admin_order.html";
+    }
+
+    @GetMapping("Admin")
+    public String Admin() {
+        return "Admin.html";
     }
 }

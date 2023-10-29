@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,31 +87,31 @@
       	<section>
             <h1>Regisztráció</h1>
             <div class="registration">
-                <form action="#" method="post" autocomplete="off">
+                <form action="#" th:action="@{/registerUser}" method="post">
                     <fieldset>
                         <label>
                             Vezetéknév:
                         </label>
-                        <input type="text"maxlength="20" placeholder="Valami" required
-                               class="form-input">
+                        <input type="text" maxlength="20" placeholder="Valami" required
+                               class="form-input" name="lastname" id="lastname">
                         <label>
                             Keresztnév:
                         </label>
                         <input type="text" maxlength="20" placeholder="István" required
-                               class="form-input">
+                               class="form-input" name="firstname" id="firstname">
                         <label>
                             E-mail cím:
                         </label>
                         <input type="email" placeholder="valaki@gmail.com" required
-                               class="form-input">
+                               class="form-input" name="email" id="email">
                         <label>
                             Jelszó:
                         </label>
-                        <input type="password" maxlength="25" required class="form-input">
+                        <input type="password" maxlength="25" required class="form-input" name="password1" id="password1">
                         <label>
                             Jelszó ismét:
                         </label>
-                        <input type="password" maxlength="25" required class="form-input">
+                        <input type="password" maxlength="25" required class="form-input" name="password2" id="password2">
                         
                     </fieldset>
                     
