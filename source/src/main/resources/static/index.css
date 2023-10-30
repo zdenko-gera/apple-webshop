@@ -10,40 +10,43 @@
 .homepage-hero-text {
   flex: 1;
   position: absolute;
-  height: 25rem;
+  height: 20rem;
   width: 40%;
-  margin-top: 1.5rem;
+  margin-top: 4rem;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding-inline: 2rem;
 }
 
 .homepage-hero-text-header-iphone {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
 }
 .homepage-hero-text-header-iphone img {
-  max-width: 100%;
-  max-height: 100%;
-  height: 1.5rem;
+  height: 2rem;
+  margin-right: 0.5rem;
 }
-.homepage-hero-text-header h2 {
+
+.homepage-hero-text h2 {
   font-family: Inter;
-  font-size: 3em;
+  font-size: 4em;
   font-weight: 700;
   line-height: normal;
   background: linear-gradient(180deg, #565654 0%, #898886 72.92%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 1rem 0 5rem 0;
 }
-
+.homepage-hero-text h3 {
+  font-size: 2.8em;
+}
 .homepage-hero-mainPic img {
-  width: 25rem;
+  width: 70vh;
   max-width: 100%;
   max-width: 100%;
   transform: rotate(-15deg);
@@ -77,6 +80,7 @@
   line-height: 36px;
   letter-spacing: 2px;
   margin-right: 0.6rem;
+  cursor: pointer;
 }
 .homepage-buyattract-buttonContainer img {
   height: 100%;
