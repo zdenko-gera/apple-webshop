@@ -15,6 +15,14 @@ public class PageController {
     public String Login() {
         return "Login.html";
     }
+    @GetMapping("Webshop")
+    public String Webshop() {
+        return "Webshop.html";
+    }
+    @GetMapping("Productpage")
+    public String Productpage() {
+        return "Productpage.html";
+    }
     @GetMapping("Signup")
     public String Signup() {
         return "Signup.html";
