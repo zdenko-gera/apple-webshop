@@ -89,30 +89,29 @@
             <div class="registration">
                 <form action="#" th:action="@{/registerUser}" method="post">
                     <fieldset>
-                        <label>
+                        <label for="lastname">
                             Vezetéknév:
                         </label>
                         <input type="text" maxlength="20" placeholder="Valami" required
                                class="form-input" name="lastname" id="lastname">
-                        <label>
+                        <label for="firstname">
                             Keresztnév:
                         </label>
                         <input type="text" maxlength="20" placeholder="István" required
                                class="form-input" name="firstname" id="firstname">
-                        <label>
+                        <label for="email">
                             E-mail cím:
                         </label>
                         <input type="email" placeholder="valaki@gmail.com" required
                                class="form-input" name="email" id="email">
-                        <label>
+                        <label for="password1">
                             Jelszó:
                         </label>
-                        <input type="password" maxlength="25" required class="form-input" name="password1" id="password1">
-                        <label>
+                        <input type="password" maxlength="100" required class="form-input" name="password1" id="password1">
+                        <label for="password2">
                             Jelszó ismét:
                         </label>
-                        <input type="password" maxlength="25" required class="form-input" name="password2" id="password2">
-                        
+                        <input type="password" maxlength="100" required class="form-input" name="password2" id="password2">
                     </fieldset>
                     
                     <input type="submit" name="signup-btn" value="Regisztráció" class="form-input btn">

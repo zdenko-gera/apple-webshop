@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,17 +87,17 @@
       	<section>
             <h1>Bejelentkezés</h1>
             <div class="login">
-                <form action="#" method="post" autocomplete="off">
+                <form action="#" th:action="@{/loginUser}" method="post">
                     <fieldset>
-                        <label>
+                        <label for="email">
                             E-mail cím:
                         </label>
-                        <input type="text" maxlength="20" placeholder="jozsika@gmail.com" required
-                               class="form-input">
-                        <label>
+                        <input type="text" maxlength="100" placeholder="jozsika@gmail.com" required
+                               class="form-input" id="email" name="email">
+                        <label for="password">
                             Jelszó:
                         </label>
-                        <input type="password" maxlength="25" required class="form-input">
+                        <input type="password" maxlength="100" required class="form-input" id="password" name="password">
                     </fieldset>
                     <input type="submit" name="login-btn" value="Bejelentkezés" class="form-input gomb">
                 </form>

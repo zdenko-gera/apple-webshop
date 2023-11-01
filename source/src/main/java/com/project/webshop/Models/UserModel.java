@@ -85,7 +85,6 @@ public class UserModel {
         return password.length() >= 8;
     }
 
-
     public String getEmail() {
         return email;
     }
