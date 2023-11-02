@@ -15,6 +15,10 @@ public class View {
     public String Login() {
         return "Login.html";
     }
+    @GetMapping("Cart")
+    public String Cart() {
+        return "Cart.html";
+    }
     @GetMapping("Webshop")
     public String Webshop() {
         return "Webshop.html";
