@@ -3,8 +3,6 @@ package com.project.webshop.Models;
 import com.project.webshop.DAO.UserDAO;
 
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 
@@ -34,55 +32,6 @@ public class UserModel {
         commentModel = new CommentModel(-1, -1, -1, email, null, null);
         orderModel = new OrderModel(-1, -1, email, null, null);
         userDAO = new UserDAO();
-    }
-
-    /**
-     * Leellenőrzi az email cím formátumát, hogy megfelelő-e. Az email cím formátuma akkor megfelelő, ha:
-     * <li>a @ karakter előtti rész csak kisbetűt, nagybetűt, vagy számot tartalmaz, de nem kezdődhet számmal. <br>
-     * illetve legalább egy betű van benne, felső korlát nincs megadva. </li>
-     * <li>van benne @ karakter</li>
-     * <li>a @ karakter után nem lehet '.', '_' vagy '-' karakter.</li>
-     * <li>a @ karakter után, de a . előtt van legalább 1 karakter, ami kisbetű, vagy nagybetű, szám nem lehet</li>
-     * <li>ezután van 1 darab '.'</li>
-     * <li>a pont után van legalább egy darab karakter, de nincs felső határa</li>
-     * <li>nem végződik '.'-ra vagy '_'-ra vagy '-'-ra</li>
-     *
-     * @param email Az email cím, amiről ellenőrizni kell, hogy megfelelő-e a formátuma
-     * @return true, ha jó a formátum, false különben
-     */
-    public static String checkRegistrationData(String email, String firstname, String lastname, String password1, String password2) {
-        String error = "?error=";
-
-        if(!emailValidation(email)) {
-            error += "emailFormat_";
-        }
-
-        if(!passwordValidation(password1) || !passwordValidation(password2)) {
-            error += "passwordLength_";
-        }
-
-        if(!password1.equals(password2)) {
-            error += "passwordNotEqual_";
-        }
-
-        if(firstname.trim().equals("") || lastname.trim().equals("")) {
-            error += "nameError_";
-        }
-
-        if(error.charAt(error.length() - 1) == '_') {
-            error = error.substring(0, error.length() - 1);
-        }
-
-        return error;
-    }
-    public static boolean emailValidation(String email) {
-        String regex = "([a-zA-Z]([a-zA-Z0-9]*))@([a-zA-Z]{1,})[.]([a-zA-Z]{1,})$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.find();
-    }
-    public static boolean passwordValidation(String password) {
-        return password.length() >= 8;
     }
 
     public String getEmail() {
@@ -120,5 +69,14 @@ public class UserModel {
     }
     public UserDAO getUserDAO() {
         return userDAO;
+    }
+    public CartModel getCartModel() {
+        return cartModel;
+    }
+    public BillingDetailsModel getBillingDetailsModel() {
+        return billingDetailsModel;
+    }
+    public DeliveryDetailsModel getDeliveryDetailsModel() {
+        return deliveryDetailsModel;
     }
 }

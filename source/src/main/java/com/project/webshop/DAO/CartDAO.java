@@ -17,6 +17,10 @@ public class CartDAO {
     }
 
 
+    public boolean insertCart(String email) {
+        String sqlCode = "INSERT INTO cart (email) VALUES (?)";
+        return jdbcTemplate.update(sqlCode, email) == 1;
+    }
     /**
      * Ebben a függvényben van megvalósítva a kosárhoz hozzáadás
      * @param email A felhasználó email címe

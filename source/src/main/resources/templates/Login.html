@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="Homepage.css" />
     <link rel="stylesheet" href="general.css" />
      <link rel="stylesheet" href="Login.css" />
+     <link rel="stylesheet" href="error.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -86,6 +87,7 @@
     <main>
       	<section>
             <h1>Bejelentkezés</h1>
+            <p class="error-container" th:if="${error != null}" th:text="${error}"></p>
             <div class="login">
                 <form action="#" th:action="@{/loginUser}" method="post">
                     <fieldset>
