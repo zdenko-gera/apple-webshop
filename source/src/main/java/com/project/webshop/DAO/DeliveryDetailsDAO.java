@@ -15,6 +15,10 @@ public class DeliveryDetailsDAO {
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
     }
 
+    public boolean insertDeliveryDetails(String email) {
+        String sqlCode = "INSERT INTO deliverydetails (email, postalcode, city, street, housenumber) VALUES (?,?,?,?,?)";
+        return jdbcTemplate.update(sqlCode, email, -1, "", "", -1) == 1;
+    }
     /**
      * Ebben a függvényben van megvalósítva a szállítási adatok módosítását végző SQL kód
      * @param email A felhasználó email címe egyértelműen azonosítja a sort az adatbázisban (kulcs)

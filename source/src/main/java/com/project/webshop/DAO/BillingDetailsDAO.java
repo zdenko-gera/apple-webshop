@@ -16,6 +16,10 @@ public class BillingDetailsDAO {
     }
 
 
+    public boolean insertBillingDetails(String email) {
+        String sqlCode = "INSERT INTO billingdetails (email, postalcode, city, street, housenumber) VALUES (?,?,?,?,?)";
+        return jdbcTemplate.update(sqlCode, email, -1, "", "", -1) == 1;
+    }
     /**
      * @param email A felhasználó email címe egyértelműen azonosítja a sort az adatbázisban (kulcs)
      * @param postalcode A leendő számla irányítószáma

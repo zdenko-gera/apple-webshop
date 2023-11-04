@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Okt 29. 14:13
--- Kiszolgáló verziója: 10.4.24-MariaDB
--- PHP verzió: 8.1.6
+-- Létrehozás ideje: 2023. Nov 03. 18:47
+-- Kiszolgáló verziója: 10.4.27-MariaDB
+-- PHP verzió: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,12 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `billingdetails` (
-  `email` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(100) NOT NULL,
   `postalcode` int(11) NOT NULL,
-  `city` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `street` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `street` varchar(30) NOT NULL,
   `housenumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `billingdetails`
+--
+
+INSERT INTO `billingdetails` (`email`, `postalcode`, `city`, `street`, `housenumber`) VALUES
+('admin@teszt.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
 
@@ -43,8 +50,15 @@ CREATE TABLE `billingdetails` (
 
 CREATE TABLE `cart` (
   `cartID` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8_hungarian_ci NOT NULL
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `cart`
+--
+
+INSERT INTO `cart` (`cartID`, `email`) VALUES
+(3, 'admin@teszt.com');
 
 -- --------------------------------------------------------
 
@@ -54,10 +68,10 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `comment` (
   `commentID` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(100) NOT NULL,
   `productID` int(11) NOT NULL,
   `publishDate` date NOT NULL,
-  `comment` varchar(200) COLLATE utf8_hungarian_ci NOT NULL,
+  `comment` varchar(200) NOT NULL,
   `rate` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -68,12 +82,19 @@ CREATE TABLE `comment` (
 --
 
 CREATE TABLE `deliverydetails` (
-  `email` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(100) NOT NULL,
   `postalcode` int(11) NOT NULL,
-  `city` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `street` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `street` varchar(30) NOT NULL,
   `housenumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `deliverydetails`
+--
+
+INSERT INTO `deliverydetails` (`email`, `postalcode`, `city`, `street`, `housenumber`) VALUES
+('admin@teszt.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
 
@@ -82,7 +103,7 @@ CREATE TABLE `deliverydetails` (
 --
 
 CREATE TABLE `images` (
-  `imagePath` varchar(200) COLLATE utf8_hungarian_ci NOT NULL,
+  `imagePath` varchar(200) NOT NULL,
   `productID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -118,7 +139,7 @@ CREATE TABLE `ordereditems` (
 
 CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(100) NOT NULL,
   `price` int(12) NOT NULL,
   `orderDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -131,10 +152,10 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `product` (
   `productID` int(11) NOT NULL,
-  `productType` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `productType` varchar(30) NOT NULL,
   `price` int(12) NOT NULL,
-  `name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `description` varchar(250) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(250) DEFAULT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -161,13 +182,20 @@ INSERT INTO `product` (`productID`, `productType`, `price`, `name`, `description
 --
 
 CREATE TABLE `user` (
-  `email` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `password` varchar(200) COLLATE utf8_hungarian_ci NOT NULL,
-  `firstname` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `lastname` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
   `registrationDate` date NOT NULL,
-  `role` varchar(15) COLLATE utf8_hungarian_ci NOT NULL
+  `role` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `user`
+--
+
+INSERT INTO `user` (`email`, `password`, `firstname`, `lastname`, `registrationDate`, `role`) VALUES
+('admin@teszt.com', '$2a$10$RNdFkyRtzQ3tDhLmsgjU7.vFoBYOiYiMXLMkagpQqgf.sUo4F0oK2', 'Admin', 'Teszt', '2023-11-03', 'admin');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -248,7 +276,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `comment`
@@ -276,13 +304,13 @@ ALTER TABLE `product`
 -- Megkötések a táblához `billingdetails`
 --
 ALTER TABLE `billingdetails`
-  ADD CONSTRAINT `billingdetails_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `billingdetails_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `comment`
@@ -295,7 +323,7 @@ ALTER TABLE `comment`
 -- Megkötések a táblához `deliverydetails`
 --
 ALTER TABLE `deliverydetails`
-  ADD CONSTRAINT `deliverydetails_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `deliverydetails_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `images`

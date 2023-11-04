@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="Header.css" />
     <link rel="stylesheet" href="Homepage.css" />
     <link rel="stylesheet" href="general.css" />
-    <link rel="stylesheet" href="Login.css" />
+     <link rel="stylesheet" href="Login.css" />
+     <link rel="stylesheet" href="error.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,18 +40,67 @@
     <div id="header"></div>
 
     <main>
-      <section>
-        <h1>Bejelentkezés</h1>
-        <div class="login">
-          <form action="#" method="post" autocomplete="off">
-            <fieldset>
-              <label> E-mail cím: </label>
-              <input
-                type="text"
-                maxlength="20"
-                placeholder="jozsika@gmail.com"
-                required
-                class="form-input"
+      	<section>
+            <h1>Bejelentkezés</h1>
+            <p class="error-container" th:if="${error != null}" th:text="${error}"></p>
+            <div class="login">
+                <form action="#" th:action="@{/loginUser}" method="post">
+                    <fieldset>
+                        <label for="email">
+                            E-mail cím:
+                        </label>
+                        <input type="text" maxlength="100" placeholder="jozsika@gmail.com" required
+                               class="form-input" id="email" name="email">
+                        <label for="password">
+                            Jelszó:
+                        </label>
+                        <input type="password" maxlength="100" required class="form-input" id="password" name="password">
+                    </fieldset>
+                    <input type="submit" name="login-btn" value="Bejelentkezés" class="form-input gomb">
+                </form>
+                
+            </div>
+        </section>
+        <h2>Ha még nem regisztrált</h2>
+         <a href="Signup.html"><input type="submit" name="signup-btn" value="Regisztráció" class="form-input btn"></a>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="footer-fastLinks">
+          <div class="footer-fastLinks-header">
+            <h3>Gyors linkek</h3>
+          </div>
+          <div class="footer-fastLinks-links">
+            <a href="">Áruház</a>
+            <a href="">Hírlevél</a>
+            <a href="">Elérhetőségek</a>
+            <a href="">ÁSZF</a>
+          </div>
+        </div>
+        <div class="footer-logo">
+          <h2><span>i</span>Shop</h2>
+        </div>
+        <div class="footer-connection">
+          <div class="footer-connection-header">
+            <h3>Elérhetőségek</h3>
+          </div>
+          <div class="footer-connection-textContainer">
+            <div class="footer-connection-textContainer-element">
+              <img
+                src="pictures/FooterPic/alternate-map-marked.svg"
+                alt="map"
+              />
+              <p>Szeged, Ady tér 10, 6722</p>
+            </div>
+            <div class="footer-connection-textContainer-element">
+              <img src="pictures/FooterPic/envelope.svg" alt="email" />
+              <p>info@ishop.com</p>
+            </div>
+            <div class="footer-connection-textContainer-element">
+              <img
+                src="pictures/FooterPic/alternate-phone.svg"
+                alt="phone"
               />
               <label> Jelszó: </label>
               <input

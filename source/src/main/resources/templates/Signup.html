@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="Header.css" />
     <link rel="stylesheet" href="Homepage.css" />
     <link rel="stylesheet" href="general.css" />
-    <link rel="stylesheet" href="Login.css" />
+     <link rel="stylesheet" href="Login.css" />
+     <link rel="stylesheet" href="error.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,39 +40,75 @@
     <div id="header"></div>
 
     <main>
-      <section>
-        <h1>Regisztráció</h1>
-        <div class="registration">
-          <form action="#" th:action="@{/registerUser}" method="post">
-            <fieldset>
-              <label> Vezetéknév: </label>
-              <input
-                type="text"
-                maxlength="20"
-                placeholder="Valami"
-                required
-                class="form-input"
-                name="lastname"
-                id="lastname"
-              />
-              <label> Keresztnév: </label>
-              <input
-                type="text"
-                maxlength="20"
-                placeholder="István"
-                required
-                class="form-input"
-                name="firstname"
-                id="firstname"
-              />
-              <label> E-mail cím: </label>
-              <input
-                type="email"
-                placeholder="valaki@gmail.com"
-                required
-                class="form-input"
-                name="email"
-                id="email"
+      	<section>
+            <h1>Regisztráció</h1>
+            <div class="registration">
+                <form action="#" th:action="@{/registerUser}" method="post">
+                    <fieldset>
+                        <label for="lastname">Vezetéknév:</label>
+                        <p class="error-container" th:if="${name != null}" th:text="${name}"></p>
+                        <input type="text" maxlength="20" placeholder="Valami"
+                               class="form-input" name="lastname" id="lastname" required>
+
+                        <label for="firstname">Keresztnév:</label>
+                        <p class="error-container" th:if="${name != null}" th:text="${name}"></p>
+                        <input type="text" maxlength="20" placeholder="István"
+                               class="form-input" name="firstname" id="firstname" required>
+
+
+                        <label for="email">E-mail cím:</label>
+                        <p class="error-container" th:if="${emailNull != null}" th:text="${emailNull}"></p>
+                        <p class="error-container" th:if="${emailNull == null and emailFormat != null}" th:text="${emailFormat}"></p>
+                        <p class="error-container" th:if="${emailNull == null and emailFormat == null and emailUsed != null}" th:text="${emailUsed}"></p>
+                        <input type="email" placeholder="valaki@gmail.com"
+                               class="form-input" name="email" id="email" required>
+
+
+                        <label for="password1">
+                            Jelszó:
+                        </label>
+                        <p class="error-container" th:if="${pwLength != null}" th:text="${pwLength}"></p>
+                        <p class="error-container" th:if="${pwLength == null and pwEqual != null}" th:text="${pwEqual}"></p>
+                        <input type="password" maxlength="100" class="form-input" name="password1" id="password1" required>
+
+
+                        <label for="password2">Jelszó ismét:</label>
+                        <p class="error-container" th:if="${pwLength != null}" th:text="${pwLength}"></p>
+                        <p class="error-container" th:if="${pwLength == null and pwEqual != null}" th:text="${pwEqual}"></p>
+                        <input type="password" maxlength="100" class="form-input" name="password2" id="password2" required>
+                    </fieldset>
+                    
+                    <input type="submit" name="signup-btn" value="Regisztráció" class="form-input btn">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="footer-fastLinks">
+          <div class="footer-fastLinks-header">
+            <h3>Gyors linkek</h3>
+          </div>
+          <div class="footer-fastLinks-links">
+            <a href="">Áruház</a>
+            <a href="">Hírlevél</a>
+            <a href="">Elérhetőségek</a>
+            <a href="">ÁSZF</a>
+          </div>
+        </div>
+        <div class="footer-logo">
+          <h2><span>i</span>Shop</h2>
+        </div>
+        <div class="footer-connection">
+          <div class="footer-connection-header">
+            <h3>Elérhetőségek</h3>
+          </div>
+          <div class="footer-connection-textContainer">
+            <div class="footer-connection-textContainer-element">
+              <img
+                src="pictures/FooterPic/alternate-map-marked.svg"
+                alt="map"
               />
               <label> Jelszó: </label>
               <input
