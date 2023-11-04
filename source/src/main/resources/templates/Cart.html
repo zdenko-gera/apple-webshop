@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iShop</title>
+    <link rel="stylesheet" href="Footer.css" />
+    <link rel="stylesheet" href="Header.css" />
+    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("#header").load("../templates/Header.html");
+      });
+      $(function () {
+        $("#footer").load("../templates/Footer.html");
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <main>
+      <div class="cart-header">
+        <h2>Kosarad tartalma (3 termék)</h2>
+      </div>
+      <div class="cart">
+        <div class="cart-table">
+          <table>
+            <tr class="cart-table-head">
+              <th>Kép</th>
+              <th>Termék név</th>
+              <th>Ár</th>
+              <th>Mennyiség</th>
+            </tr>
+            <tr>
+              <td class="cart-table-imgContainer">
+                <img
+                  src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
+                  alt="iphone"
+                />
+              </td>
+              <td><h3>iPhone 15 max Pro</h3></td>
+              <td><h2>540 000 Ft</h2></td>
+              <td class="cart-amount">
+                <button class="cart-amount">+</button>
+                <span>4</span>
+                <button class="cart-amount">-</button>
+              </td>
+              <td class="cart-table-removeContainer">
+                <button>
+                  <img
+                    class="cart-table-remove"
+                    src="pictures/HeaderPic/x-circle-fill.png"
+                    alt="x"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cart-table-imgContainer">
+                <img
+                  src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
+                  alt="iphone"
+                />
+              </td>
+              <td><h3>iPhone 15 max Pro</h3></td>
+              <td><h2>540 000 Ft</h2></td>
+              <td class="cart-amount">
+                <button class="cart-amount">+</button>
+                <span>4</span>
+                <button class="cart-amount">-</button>
+              </td>
+              <td class="cart-table-removeContainer">
+                <button>
+                  <img
+                    class="cart-table-remove"
+                    src="pictures/HeaderPic/x-circle-fill.png"
+                    alt="x"
+                  />
+                </button>
+              </td>
+            </tr>
+
+            <tr class="cart-table-endPrice">
+              <td></td>
+              <td></td>
+              <td>Összesen:</td>
+              <td><h3>500 000 Ft</h3></td>
+            </tr>
+          </table>
+        </div>
+        <div class="order-button">
+          <button class="orderButton">Rendelés</button>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+  </body>
+</html>

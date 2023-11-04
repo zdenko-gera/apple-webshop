@@ -1,0 +1,66 @@
+main {
+  height: 100%;
+  margin-bottom: 10vh;
+}
+.cart-header {
+  text-align: center;
+  margin: 5rem;
+}
+
+table {
+  text-align: center;
+  border: solid 1px #eeeeee;
+  margin: 2rem;
+  width: 95%;
+  border-spacing: 0; /* Removes the cell spacing via CSS */
+  border-collapse: collapse;
+}
+table tr {
+  border: solid 1px #eeeeee;
+}
+table th {
+  border-bottom: solid 1px #eeeeee;
+  height: 3rem;
+}
+.cart-table-head {
+  font-size: 1.3em;
+}
+.cart-table-imgContainer {
+  height: 10rem;
+}
+.cart-table-imgContainer img {
+  height: 100%;
+}
+.cart-table-remove {
+  height: 3rem;
+}
+.cart-amount button {
+  background-color: white;
+  border: solid 1px #8f8f8f;
+  height: 30px;
+  width: 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.cart-amount span {
+  background-color: white;
+  border: solid 1px #8f8f8f;
+  padding: 0px 8.5px;
+  font-size: 1.3em;
+}
+
+.cart-table-removeContainer button {
+  background-color: white;
+  border: none;
+}
+.cart-table-removeContainer img {
+  height: 30px;
+  cursor: pointer;
+}
+.cart-table-endPrice {
+  text-align: right;
+}
+.order-button {
+  text-align: right;
+  margin-right: 5rem;
+}

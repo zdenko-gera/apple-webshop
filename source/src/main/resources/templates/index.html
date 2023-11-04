@@ -20,6 +20,19 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("#header").load("../templates/Header.html");
+      });
+      $(function () {
+        $("#footer").load("../templates/Footer.html");
+      });
+    </script>
   </head>
   <body>
     <header>
@@ -299,52 +312,6 @@
       </div>
     </main>
 
-    <footer>
-      <div class="footer">
-        <div class="footer-fastLinks">
-          <div class="footer-fastLinks-header">
-            <h3>Gyors linkek</h3>
-          </div>
-          <div class="footer-fastLinks-links">
-            <a href="Webshop">Áruház</a>
-            <a href="">Hírlevél</a>
-            <a href="">Elérhetőségek</a>
-            <a href="">ÁSZF</a>
-          </div>
-        </div>
-        <div class="footer-logo">
-          <h2><span>i</span>Shop</h2>
-        </div>
-        <div class="footer-connection">
-          <div class="footer-connection-header">
-            <h3>Elérhetőségek</h3>
-          </div>
-          <div class="footer-connection-textContainer">
-            <div class="footer-connection-textContainer-element">
-              <img
-                src="pictures/FooterPic/alternate-map-marked.svg"
-                alt="map"
-              />
-              <p>Szeged, Ady tér 10, 6722</p>
-            </div>
-            <div class="footer-connection-textContainer-element">
-              <img src="pictures/FooterPic/envelope.svg" alt="email" />
-              <p>info@ishop.com</p>
-            </div>
-            <div class="footer-connection-textContainer-element">
-              <img src="pictures/FooterPic/alternate-phone.svg" alt="phone" />
-              <p>+36/20-000-000</p>
-            </div>
-            <div class="footer-connection-textContainer-element">
-              <img src="pictures/FooterPic/alternate-phone.svg" alt="phone" />
-              <p>+36/70-111-111</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>Copyright © 2023. Minden jog fenntartva.</p>
-      </div>
-    </footer>
+    <div id="footer"></div>
   </body>
 </html>
