@@ -4,11 +4,13 @@ import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.project.webshop.SpringSecurity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -104,15 +106,50 @@ public class UserController {
     public void addComment(int productID, String comment, int rating) {
 
     }
-    @PostMapping(value="changePassword")
-    public void changePassword(@RequestParam("oldPassword") String oldPassword,
-                               @RequestParam("newPassword1") String newPassword1,
-                               @RequestParam("newPassword2") String newPassword2) {
 
+    /**
+     * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban (amennyiben létezik
+     * a felhasználó), majd lekéri az adatait. Leellenőrzi, hogy a formban megadott régi jelszó egyezik-e a user jelenlegi jelszavával.
+     * Ezt a SpringSecurity.passwordEncoder().mathes(raw, hashed) függvény oldja meg. Azt is leellenőrzi, hogy a 2 megadott új
+     * jelszó megegyezik-e.
+     * @param oldPassword
+     * @param newPassword1
+     * @param newPassword2
+     * @param request
+     */
+    @PostMapping(value="changePassword")
+    public void changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword1") String newPassword1,
+                               @RequestParam("newPassword2") String newPassword2, HttpServletRequest request) {
+
+        HttpSession httpSession = request.getSession(false);
+        UserDAO userDAO = new UserDAO();
+        Object email = httpSession.getAttribute("email");
+
+        if(email != null){
+            UserModel user = userDAO.getUserDataByEmail(email.toString());
+            if(SpringSecurity.passwordEncoder().matches(oldPassword,user.getPassword()) && newPassword1.equals(newPassword2)){
+                userDAO.updateUserPasswordByEmail(user, oldPassword, newPassword1, newPassword2);
+            }
+        }
     }
 
-    public void changeName(String firstname, String lastname) {
-
+    /**
+     * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban
+     * (amennyiben létezik), majd lekéri az adatait.
+     * @param firstname
+     * @param lastname
+     * @param request
+     */
+    @PostMapping(value="changeName")
+    public void changeName(@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        UserDAO userDAO = new UserDAO();
+        Object email = session.getAttribute("email");
+        
+        if(email != null){
+            UserModel user = userDAO.getUserDataByEmail(email.toString());
+            userDAO.updateUserNameByEmail(user, firstname, lastname);
+        }
     }
 
     public void renderHomepage() {

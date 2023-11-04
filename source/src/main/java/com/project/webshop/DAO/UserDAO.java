@@ -79,4 +79,30 @@ public class UserDAO {
                                             user.get("role").toString(),
                                             LocalDate.parse(user.get("registrationDate").toString()));
     }
+
+    /**
+     * A user jelszavát módosítja, majd az adatbázisba is bekerül a módosítás.
+     * @param user
+     * @param oldPassword
+     * @param newPassword1
+     * @param newPassword2
+     */
+    public void updateUserPasswordByEmail(UserModel user, String oldPassword, String newPassword1, String newPassword2) {
+        user.setPassword(newPassword1);
+        String sqlCode = "update user set password = '" + user.getPassword() + "' where email='" + user.getEmail() + "';";
+        jdbcTemplate.update(sqlCode);
+    }
+
+    /**
+     * Beállítja a user nevét a megadott stringekre, majd az adatbázisban is módosítja az adatokat.
+     * @param user
+     * @param firstname
+     * @param lastname
+     */
+    public void updateUserNameByEmail(UserModel user, String firstname, String lastname){
+        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        String sqlCode = "update user set firstname = '"+firstname+"', lastname = '"+lastname+"' where email = '"+user.getEmail()+"';";
+        jdbcTemplate.update(sqlCode);
+    }
 }
