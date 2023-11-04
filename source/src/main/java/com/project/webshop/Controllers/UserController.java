@@ -104,8 +104,10 @@ public class UserController {
     public void addComment(int productID, String comment, int rating) {
 
     }
-
-    public void changePassword(String oldPassword, String newPassword1, String newPassword2) {
+    @PostMapping(value="changePassword")
+    public void changePassword(@RequestParam("oldPassword") String oldPassword,
+                               @RequestParam("newPassword1") String newPassword1,
+                               @RequestParam("newPassword2") String newPassword2) {
 
     }
 
