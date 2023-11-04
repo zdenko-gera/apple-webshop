@@ -2,6 +2,8 @@ package com.project.webshop.Models;
 
 import com.project.webshop.DAO.ProductDAO;
 
+import java.util.ArrayList;
+
 public class ProductModel {
     private int productID, price, quantity;
 
@@ -11,9 +13,16 @@ public class ProductModel {
      *
      * Zoli, 10.27
     */
-    private String productType, name, description, images;
+
+    /**
+     * Arraylist típust adtam az imagesnek a jobb használhatóság érdekében.
+     *
+     * Zdenkó, 11.04.
+     */
+    private String productType, name, description;
+    private ArrayList images;
     ProductDAO productDAO;
-    public ProductModel(int productID, int price, int quantity, String productType, String name, String description, String images) {
+    public ProductModel(int productID, int price, int quantity, String productType, String name, String description, ArrayList images) {
         this.productID = productID;
         this.price = price;
         this.quantity = quantity;
@@ -27,5 +36,61 @@ public class ProductModel {
 
     public ProductDAO getProductDAO() {
         return productDAO;
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ArrayList getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList images) {
+        this.images = images;
     }
 }
