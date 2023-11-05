@@ -145,7 +145,7 @@ public class UserController {
         HttpSession session = request.getSession(false);
         UserDAO userDAO = new UserDAO();
         Object email = session.getAttribute("email");
-        
+
         if(email != null){
             UserModel user = userDAO.getUserDataByEmail(email.toString());
             userDAO.updateUserNameByEmail(user, firstname, lastname);

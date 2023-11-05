@@ -1,6 +1,8 @@
 package com.project.webshop.Models;
 
 import com.project.webshop.DAO.ProductDAO;
+import lombok.Generated;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 
