@@ -19,6 +19,15 @@ import java.util.regex.Pattern;
 public class UserController {
     public UserController() {}
 
+    /**
+     * Megvalósítja a felhasználó regisztrációját. A request paraméteren keresztül lekéri a formból az adatokat.
+     * Ezután ellenőrzi, hogy megfelelőek-e. Ha van error, belerakja a Modelbe, majd returnöl a "Signup" oldalra.
+     * Ekkor megmarad a Model, és abból lehet visszajelezni a felhasználónak a hibaüzeneteket Thymeleaf segítségével.
+     * Ha helyesek az adatok, akkor létrehoz egy Usert és hozzáadja az adatbázishoz, illetve az alap adatokat is létrehozza.
+     * @param request Ez egy olyan cucc, amit amikor a felhasználó be akar regisztrálni, kapunk egy ilyet, és ebben vannak benne bizonyos adatok, például a session is ebből kérhető le
+     * @param model Ez hasonló ahhoz, a felhasználó elküld egy Modelt, és ebbe is lehet adatokat írni, amit thymeleaffel meg lehet jeleníteni. Hibaüzenet kezelésre van használva
+     * @return Egy olyan string, ami átirányít az azonos nevű html oldalra.
+     */
     @PostMapping(value="registerUser")
     public String register(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
@@ -64,6 +73,17 @@ public class UserController {
         return "redirect:/";
     }
 
+    /**
+     * Megvalósítja a felhasználó bejelentkezését. A request paraméteren keresztül lekéri a formból az adatokat,
+     * illetve egy HttpSessiont (false paraméterrel. ez annyit csinál, hogy lekérdezi, de nem készít újat).
+     * Ezután ellenőrzi, hogy megfelelőek-e a belépési adatok. Ha helyesek az adatok, akkor megnézi, hogy van-e session,
+     * és ha nincs, létrehoz egyet true paraméterrel, és a sessionhöz hozzáadja az emailcímet, és a UserModel adatait.
+     * Ha hibásak az adatok, belerakja a Modelbe, majd returnöl a "Signup" oldalra. Ekkor megmarad a Model,
+     * és abból lehet megjeleníteni Thymeleaf segítségével visszajelzést.
+     * @param request Ez egy olyan cucc, amit amikor a felhasználó be akar regisztrálni, kapunk egy ilyet, és ebben vannak benne bizonyos adatok, például a session is ebből kérhető le
+     * @param model Ez hasonló ahhoz, a felhasználó elküld egy Modelt, és ebbe is lehet adatokat írni, amit thymeleaffel meg lehet jeleníteni. Hibaüzenet kezelésre van használva
+     * @return Egy olyan string, ami átirányít az azonos nevű html oldalra.
+     */
     @PostMapping(value="loginUser")
     public String loginUser(@RequestParam("email") String email,
                             @RequestParam("password") String password, HttpServletRequest request, Model model) {
@@ -84,6 +104,12 @@ public class UserController {
         return "Login";
     }
 
+    /**
+     * Ez megvalósítja a felhasznalo kijelentkezését. lekéri a sessiont false paraméterrel (nem csinál újat).
+     * Ha nem null, tehát van session, akkor invalidateli azt, tehát kijelentkezteti a felhasználót.
+     * @param request Ebben van eltárolva a session is többek között
+     * @return Egy stringet, ami redirectel a főoldalra.
+     */
     @GetMapping("logout")
     public String logoutUser(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
@@ -91,7 +117,7 @@ public class UserController {
             //Egyszerűen törli a sessiont
             httpSession.invalidate();
         }
-        System.out.println("siker");
+
         return "redirect:/Index?logout=success";
     }
 
@@ -110,7 +136,7 @@ public class UserController {
     /**
      * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban (amennyiben létezik
      * a felhasználó), majd lekéri az adatait. Leellenőrzi, hogy a formban megadott régi jelszó egyezik-e a user jelenlegi jelszavával.
-     * Ezt a SpringSecurity.passwordEncoder().mathes(raw, hashed) függvény oldja meg. Azt is leellenőrzi, hogy a 2 megadott új
+     * Ezt a SpringSecurity.passwordEncoder().matches(raw, hashed) függvény oldja meg. Azt is leellenőrzi, hogy a 2 megadott új
      * jelszó megegyezik-e.
      * @param oldPassword
      * @param newPassword1
