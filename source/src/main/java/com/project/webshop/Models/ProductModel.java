@@ -18,12 +18,16 @@ public class ProductModel {
      * Arraylist típust adtam az imagesnek a jobb használhatóság érdekében.
      *
      * Zdenkó, 11.04.
+     *
+     * ProductId adattagot 'eltávolítottam', mert AUTO_INCREMENT tulajdonságú az adatbázisban
+     *
+     * Zdenkó, 11.05.
      */
     private String productType, name, description;
-    private ArrayList images;
+    private ArrayList<String> images;
     ProductDAO productDAO;
-    public ProductModel(int productID, int price, int quantity, String productType, String name, String description, ArrayList images) {
-        this.productID = productID;
+    public ProductModel(int price, int quantity, String productType, String name, String description, ArrayList<String> images) {
+        //this.productID = productID;
         this.price = price;
         this.quantity = quantity;
         this.productType = productType;
@@ -38,13 +42,13 @@ public class ProductModel {
         return productDAO;
     }
 
-    public int getProductID() {
+    /*public int getProductID() {
         return productID;
     }
 
     public void setProductID(int productID) {
         this.productID = productID;
-    }
+    }*/
 
     public int getPrice() {
         return price;
@@ -86,11 +90,11 @@ public class ProductModel {
         this.description = description;
     }
 
-    public ArrayList getImages() {
+    public ArrayList<String> getImages() {
         return images;
     }
 
-    public void setImages(ArrayList images) {
+    public void setImages(ArrayList<String> images) {
         this.images = images;
     }
 }
