@@ -195,7 +195,21 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`email`, `password`, `firstname`, `lastname`, `registrationDate`, `role`) VALUES
-('admin@teszt.com', '$2a$10$RNdFkyRtzQ3tDhLmsgjU7.vFoBYOiYiMXLMkagpQqgf.sUo4F0oK2', 'Admin', 'Teszt', '2023-11-03', 'admin');
+('admin@teszt.com', '$2a$10$RNdFkyRtzQ3tDhLmsgjU7.vFoBYOiYiMXLMkagpQqgf.sUo4F0oK2', 'Admin', 'Teszt', '2023-11-03', 'admin'),
+('acsgabor@gmail.com', '$2a$10$WJ9TVwadswdlZ5kU9EnRWOJG6j5yIHpU4jXPZ0ApFidie3Nsp3SFe', 'Gábor', 'Ács', '2023-11-04', 'user'),
+('angelagriffin@gmail.com', '$2a$10$omlgCuJ3YUsNvtcy.cN0DOXV30LQsut1JNX7gPILh4AmqsEovGcpy', 'Angela', 'Griffin', '2023-11-05', 'user'),
+('anitaplain@gmail.com', '$2a$10$w.ZccVEnt4bhsVxJ.nPwFOvnaza4k09BOFC28cDKXQ3l8TLhKdecy', 'Anita', 'Plain', '2023-11-05', 'user'),
+('borbelyattila@gmail.com', '$2a$10$wNisriopHxVRQVHfm1Ty8eG8O6tEDx/ExmpCP2wRUU7lqJEE96sM.', 'Attila', 'Borbély', '2023-11-04', 'user'),
+('edwarddaum@outlook.com', '$2a$10$SEhf0pG30ySlEDJVXRkXkOjSiR5tg/IrfEp4LRHAOtRsXuQb11i/C', 'Edward', 'Daum', '2023-11-05', 'user'),
+('georgefriday@gmail.com', '$2a$10$BQyasHmNsFY6TU6yHdbDm.M2hUddOE16DBje5T0NAKaIA19fg8XEu', 'George', 'Friday', '2023-11-05', 'user'),
+('gerazdenko@gmail.com', '$2a$10$tsufDzjC4K90GhOqtujvnOincKQ0kxoQCWpShStw4214TcujZgaQa', 'Zdenkó', 'Gera', '2023-11-04', 'user'),
+('harmonika@gmail.com', '$2a$10$OQr5YBsUiwxoMfUMfKEAgO7fnzpmk6Ajr.y/jwwVVP/a6EZS6ND0y', 'Mónika', 'Har', '2023-11-05', 'user'),
+('johncena@gmail.com', '$2a$10$RN2rzmaRjhnPk4GPkamRcecKmevy/Qo90GeWcF6p7LVUGB5dWw73K', 'John', 'Cena', '2023-11-05', 'user'),
+('johndoe@gmail.com', '$2a$10$uNEjxgwuYkCLNLhwRHiP8.6D4WETgNgawSCxmuxoww2W2JFaT/Pa2', 'Doe', 'John', '2023-11-04', 'user'),
+('kathywade@gmail.com', '$2a$10$E.mr9rupvlwT4nZhwTOe8.0Ekffi6M70MjkhdZ85MxFkOr8dLemcK', 'Kathy', 'Wade', '2023-11-05', 'user'),
+('kovacsistvan@gmail.com', '$2a$10$Dv6xvKAw4RXoewpywE2.GOvt.qybFMfbY.bI67P9.uMiGpO1wCsGS', 'István', 'Kovács', '2023-11-04', 'user'),
+('parazita@gmail.com', '$2a$10$F/OsT73z0nvXZzN1L.eIm./xVQ5zjIWT9H9rI0bncp3g.yXZCqS2m', 'Zita', 'Para', '2023-11-04', 'user'),
+('tothjanos@gmail.com', '$2a$10$/gq8ERrjefkcibOgkxGR5eyBSD/0MhTVZCPhizRoDWSs3dsSAaEtG', 'János', 'Tóth', '2023-11-04', 'user');
 
 --
 -- Indexek a kiírt táblákhoz
