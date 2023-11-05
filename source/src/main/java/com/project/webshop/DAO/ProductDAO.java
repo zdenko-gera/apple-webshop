@@ -55,7 +55,7 @@ public class ProductDAO {
             return null;
         }
 
-        return new ProductModel((int) product.get("productID"), (int) product.get("price"), (int) product.get("quantity"),
+        return new ProductModel((int) product.get("price"), (int) product.get("quantity"),
                 product.get("productType").toString(), product.get("name").toString(),product.get("description").toString(),
                 (ArrayList<String>) product.get("images"));
     }
