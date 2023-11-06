@@ -55,11 +55,11 @@ public class UserDAO {
     /**
      * Ez a függvény valósítja meg a felhasználói fiók törlését
      * @param email A törlendő fiók email címe
-     * @param password A törlendő fiók jelszava (biztonsági okok miatt)
      * @return true ha sikeres a törlés, false ha nem
      */
-    public boolean deleteUser(String email, String password) {
-        return false;
+    public boolean deleteUser(String email) {
+        String sqlCode = "DELETE FROM user WHERE user.email = ?";
+        return jdbcTemplate.update(sqlCode, email) == 1;
     }
 
     public UserModel getUserDataByEmail(String email) {
