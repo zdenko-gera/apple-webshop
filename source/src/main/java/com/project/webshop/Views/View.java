@@ -23,6 +23,22 @@ public class View {
         }
         return "Login.html";
     }
+    @GetMapping("Shops")
+    public String Shops() {
+        return "Shops.html";
+    }
+    @GetMapping("Profil")
+    public String Profil() {
+        return "Profil.html";
+    }
+    @GetMapping("Info")
+    public String Info() {
+        return "info.html";
+    }
+    @GetMapping("ÁSZF")
+    public String ÁSZF() {
+        return "ÁSZF.html";
+    }
     @GetMapping("Cart")
     public String Cart() {
         return "Cart.html";
@@ -31,7 +47,7 @@ public class View {
     public String Webshop() {
         return "Webshop.html";
     }
-    @GetMapping("Product")
+    @GetMapping("Productpage")
     public String Productpage() {
         return "Productpage.html";
     }

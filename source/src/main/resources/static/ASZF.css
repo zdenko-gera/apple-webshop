@@ -1,0 +1,23 @@
+ol {
+  counter-reset: item;
+  border-bottom: 2px solid black;
+  border-width: 50%;
+}
+li {
+  display: block;
+}
+li:before {
+  content: counters(item, ".") " ";
+  counter-increment: item;
+}
+li {
+  font-size: 1.1em;
+  margin-bottom: 1rem;
+}
+.head span {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+main {
+  padding: 2rem;
+}

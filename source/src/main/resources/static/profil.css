@@ -8,6 +8,12 @@ form {
   margin: 0 auto;
   margin-top: 6vh;
   margin-bottom: 30vh;
+  box-shadow: 0px 0px 10px 5px #bdbebe;
+  padding: 0.5rem;
+}
+h3 {
+  text-align: center;
+  margin: 0.5rem 0;
 }
 
 form fieldset {
@@ -17,13 +23,14 @@ form fieldset {
 }
 
 form input {
-  width: 100%;
+  width: 60%;
   display: block;
   margin: 1.5% auto;
   padding: 1.5%;
-  width: 100%;
 }
-
+form label {
+  text-align: center;
+}
 input[type="submit"],
 input[type="signup"] {
   background-color: #068fff;
