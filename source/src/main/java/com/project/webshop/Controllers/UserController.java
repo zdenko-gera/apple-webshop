@@ -1,16 +1,17 @@
 package com.project.webshop.Controllers;
 
+import com.project.webshop.DAO.CartDAO;
 import com.project.webshop.DAO.UserDAO;
+import com.project.webshop.Models.CartModel;
 import com.project.webshop.Models.UserModel;
+import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.project.webshop.SpringSecurity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -96,6 +97,7 @@ public class UserController {
             if(httpSession == null) {
                 httpSession = request.getSession(true);
             }
+
             httpSession.setAttribute("email", new UserDAO().getUserDataByEmail(email));
             return "redirect:/";
         }
@@ -119,6 +121,41 @@ public class UserController {
         }
 
         return "redirect:/Index?logout=success";
+    }
+
+    /**
+     * Hozzáad egy új terméket a kosárhoz, amennyiben a felhasználó be van jelentkezve. Lekéri a termék ID-ját egy hidden
+     * inputon keresztül, illetve a darabszámot, megnézi, hogy a termék a kosárban van-e, (ha igen nem csinál semmit), és ha
+     * nincs akkor hozzáadja. Azt, hogy benne van-e a kosárban nem az adatbázisból kéri le, hanem a sessionből lekéri a
+     * UserModelt, és abból a CartModelt, és abban nézi meg. Ez utóbbi csak a productID-kat és darabszámokat tartalmazza.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
+    @PostMapping("addToCart")
+    public String addToCart(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
+
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        int quantity = 0;
+        if(!request.getParameter("quantity").equals("")) {
+            quantity = Integer.parseInt(request.getParameter("quantity"));
+        }
+        if(quantity <= 0) {
+            return "redirect:/Webshop";
+        }
+
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        CartModel cart = user.getCartModel();
+
+        if(!user.getCartModel().hasItem(productID)) {
+            cart.addItemToCart(productID, quantity);
+            cart.getCartDAO().addToCart(cart.getCartID(), productID, quantity);
+        }
+
+        return "redirect:/Cart";
     }
 
     public void updateCart(int itemID, int quantity) {

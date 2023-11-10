@@ -15,7 +15,12 @@ public class BillingDetailsDAO {
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
     }
 
-
+    /**
+     * Regisztrációkor hozzáadja az alap adatokat a számlázási adatokhoz. Ezek a felhasználó oldalán nem jelennek meg
+     * amíg nem változtatja meg, értelemszerűen egy -1-et nem írunk ki irányítószámnak, hanem nem írunk oda semmit.
+     * @param email Az új felhasználó email címe
+     * @return true ha sikeres, false különben
+     */
     public boolean insertBillingDetails(String email) {
         String sqlCode = "INSERT INTO billingdetails (email, postalcode, city, street, housenumber) VALUES (?,?,?,?,?)";
         return jdbcTemplate.update(sqlCode, email, -1, "", "", -1) == 1;
@@ -28,15 +33,15 @@ public class BillingDetailsDAO {
      * @param housenumber A leendő számla házszáma
      * Ebben a függvényben van megvalósítva a számlázási adatok módosítását végző SQL kód
      */
-    public void updateBillingDetails(String email, int postalcode, String city, String street, int housenumber) {
-
-    }
+    public void updateBillingDetails(String email, int postalcode, String city, String street, int housenumber) {}
 
     /**
      * Lekéri az adatbázisból a felhasználó számlázási adatait, és egy Map formájában visszaadja
+     * @param email A felhasználó email címe
      * @return számlázási adatok Map formában
      */
-    public Map getBillingDetails() {
-        return null;
+    public Map getBillingDetails(String email) {
+        String sqlCode = "SELECT * FROM billingdetails WHERE billingdetails.email = ?";
+        return jdbcTemplate.queryForList(sqlCode, email).get(0);
     }
 }

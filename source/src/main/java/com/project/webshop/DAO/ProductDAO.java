@@ -5,7 +5,12 @@ import com.project.webshop.Models.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Table(name="product")
 public class ProductDAO {
@@ -31,12 +36,32 @@ public class ProductDAO {
     }
 
     /**
-     * Visszaadja egy adott termék ProdectModeljét
+     * Visszaadja egy adott termék ProdectModeljét a neve alapján
      * @param name A termék neve
      * @return egy termék ProductModeljét
      */
     public ProductModel getProduct(String name) {
         return null;
+    }
+
+    /**
+     * Visszaadja egy adott termék ProdectModeljét az ID-ja alapján
+     * @param productID A termék ID-ja
+     * @return egy termék ProductModelje
+     */
+    public Map<String, Object> getProduct(int productID) {
+        String sqlCode = "SELECT * FROM product WHERE productID = ?";
+        return jdbcTemplate.queryForList(sqlCode, productID).get(0);
+    }
+
+    /**
+     * Visszaadja az összes terméket egy lista formájában amiben Map-ek vannak melynek kulcsa az attribútum neve
+     * az adatbázisban, értéke meg az attribútum értéke
+     * @return A termékek listába rakva
+     */
+    public List<Map<String, Object>> getProducts() {
+        String sqlCode = "SELECT * FROM product";
+        return jdbcTemplate.queryForList(sqlCode);
     }
 
     /**

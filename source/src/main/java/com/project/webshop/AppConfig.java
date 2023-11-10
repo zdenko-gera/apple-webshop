@@ -19,6 +19,7 @@ public class AppConfig {
         dataSourceBuilder.url("jdbc:mysql://localhost/webshop");
         dataSourceBuilder.username("webshop");
         dataSourceBuilder.password("webshop");
+
         return dataSourceBuilder.build();
     }
 }

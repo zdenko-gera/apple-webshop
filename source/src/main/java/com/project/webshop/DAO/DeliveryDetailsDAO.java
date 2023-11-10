@@ -15,6 +15,12 @@ public class DeliveryDetailsDAO {
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
     }
 
+    /**
+     * Regisztrációkor hozzáadja az alap adatokat a szállítási adatokhoz. Ezek a felhasználó oldalán nem jelennek meg,
+     * amíg nem változtatja meg, értelemszerűen egy -1-et nem írunk ki irányítószámnak, hanem nem írunk oda semmit.
+     * @param email Az új felhasználó email címe
+     * @return true ha sikeres, false különben
+     */
     public boolean insertDeliveryDetails(String email) {
         String sqlCode = "INSERT INTO deliverydetails (email, postalcode, city, street, housenumber) VALUES (?,?,?,?,?)";
         return jdbcTemplate.update(sqlCode, email, -1, "", "", -1) == 1;
@@ -33,9 +39,11 @@ public class DeliveryDetailsDAO {
 
     /**
      * Lekéri az adatbázisból a felhasználó számlázási adatait, és egy Map formájában visszaadja
+     * @param email A felhasználó email címe
      * @return számlázási adatok Map formában
      */
-    public Map getDeliveryDetails() {
-        return null;
+    public Map getDeliveryDetails(String email) {
+        String sqlCode = "SELECT * FROM deliverydetails WHERE deliverydetails.email = ?";
+        return jdbcTemplate.queryForList(sqlCode, email).get(0);
     }
 }

@@ -28,4 +28,8 @@ public class ProductModel {
     public ProductDAO getProductDAO() {
         return productDAO;
     }
+
+    public int getProductID() {
+        return productID;
+    }
 }
