@@ -164,11 +164,14 @@
               </button>
             </div>
             <div>
-              <button
-                class="productpage-main-textContainer-buttons-buy orderButton"
-              >
-                Kosárba
-              </button>
+              <form action="#" th:action="@{/addToCart}" method="post">
+                <input
+                        type="submit"
+                        name="signup-btn"
+                        value="Regisztráció"
+                        class="form-input btn"
+                />
+              </form>
             </div>
           </div>
         </div>
