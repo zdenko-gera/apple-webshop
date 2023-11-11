@@ -118,19 +118,39 @@ public class UserController {
      * @param request
      */
     @PostMapping(value="changePassword")
-    public void changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword1") String newPassword1,
-                               @RequestParam("newPassword2") String newPassword2, HttpServletRequest request) {
+    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword1") String newPassword1,
+                               @RequestParam("newPassword2") String newPassword2, HttpServletRequest request, Model model) {
 
         HttpSession httpSession = request.getSession(false);
         UserDAO userDAO = new UserDAO();
         Object email = httpSession.getAttribute("email");
+        boolean error = false;
 
-        if(email != null){
-            UserModel user = userDAO.getUserDataByEmail(email.toString());
-            if(SpringSecurity.passwordEncoder().matches(oldPassword,user.getPassword()) && newPassword1.equals(newPassword2)){
-                userDAO.updateUserPasswordByEmail(user, oldPassword, newPassword1, newPassword2);
-            }
+        if(email == null){
+            model.addAttribute("emailNull", "Váratlen hiba történt!");
+            error = true;
+            return "redirect:/";
         }
+        if(!userDAO.checkCredentials(email.toString(), oldPassword)){
+            model.addAttribute("wrongPw", "A megadott jelszó nem egyezik");
+            error = true;
+        }
+        if(!newPassword1.equals(newPassword2)){
+            model.addAttribute("pwNoMatch", "Az új jelszavak nem egyeznek!");
+            error = true;
+        }
+        if(!passwordValidation(newPassword1) || !passwordValidation(newPassword2)) {
+            model.addAttribute("pwNotValid", "A jelszónak 8 karakternél hosszabbnak kell lennie!");
+            error = true;
+        }
+
+        if(error){
+            return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
+        }
+
+        UserModel user = userDAO.getUserDataByEmail(email.toString());
+        userDAO.updateUserPasswordByEmail(user, oldPassword, newPassword1, newPassword2);
+        return "redirect:/";
     }
 
     /**
@@ -141,15 +161,32 @@ public class UserController {
      * @param request
      */
     @PostMapping(value="changeName")
-    public void changeName(@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname, HttpServletRequest request) {
+    public String changeName(@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname
+            , HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         UserDAO userDAO = new UserDAO();
         Object email = session.getAttribute("email");
+        boolean error = false;
 
-        if(email != null){
-            UserModel user = userDAO.getUserDataByEmail(email.toString());
-            userDAO.updateUserNameByEmail(user, firstname, lastname);
+        if(email == null){
+            model.addAttribute("emailNull", "Váratlen hiba történt!");
+            error = true;
+            return "redirect:/";
         }
+        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z-9].*")){
+            model.addAttribute("wrongLastName", "A megadott utónév nem megfelelő formátumú");
+            error = true;
+        }
+        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z-9].*")){
+            model.addAttribute("wrongFirstName", "A megadott keresztnév nem megfelelő formátumú");
+            error = true;
+        }
+
+        if(error) return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
+
+        UserModel user = userDAO.getUserDataByEmail(email.toString());
+        userDAO.updateUserNameByEmail(user, firstname, lastname);
+        return "redirect:/";
     }
 
     public void renderHomepage() {
