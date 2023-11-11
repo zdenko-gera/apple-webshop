@@ -2,11 +2,13 @@ package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.CartDAO;
 import com.project.webshop.DAO.UserDAO;
+import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +41,7 @@ public class UserController {
         boolean error = false;
 
 
-        if(email == "") {
+        if(email.equals("")) {
             model.addAttribute("emailNull", "Email cím megadása kötelező!");
             error = true;
         }
@@ -66,11 +68,13 @@ public class UserController {
 
         if(error) return "Signup";
 
+
         UserModel user = new UserModel(email, password1, firstname, lastname, "user", java.time.LocalDate.now());
         user.getUserDAO().insertUser(user);
         user.getCartModel().getCartDAO().insertCart(email);
         user.getBillingDetailsModel().getBillingDetailsDAO().insertBillingDetails(email);
         user.getDeliveryDetailsModel().getDeliveryDetailsDAO().insertDeliveryDetails(email);
+
         return "redirect:/";
     }
 
@@ -162,8 +166,20 @@ public class UserController {
 
     }
 
-    public void createOrder(int cartID) {
+    @PostMapping("createOrder")
+    public String createOrder(HttpServletRequest request, Model model) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        new OrderDAO().createOrder(user);
+
+
+        user.getCartModel().getCartDAO().clearCart(user.getEmail());
+        user.getCartModel().clearCart();
+        return "Index";
     }
 
     public void addComment(int productID, String comment, int rating) {

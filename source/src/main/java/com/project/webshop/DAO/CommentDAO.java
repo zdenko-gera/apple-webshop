@@ -13,6 +13,7 @@ public class CommentDAO {
     public CommentDAO() {
         appConfig = new AppConfig();
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
+        jdbcTemplate.setQueryTimeout(5);
     }
 
 

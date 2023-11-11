@@ -53,21 +53,30 @@ public class UserModel {
         userDAO = new UserDAO();
 
         List<Map<String, Object>> cart = cartModel.getCartDAO().getCart(email);
-        for(int i = 0; i < cart.size(); i++) {
-            cartModel.addItemToCart((Integer) cart.get(i).get("productID"), (Integer) cart.get(i).get("quantity"));
+        for (Map<String, Object> item : cart) {
+            System.out.println("HalikaMalika");
+            cartModel.addItemToCart((Integer) item.get("productID"), (Integer) item.get("quantity"));
         }
 
-        Map billingdetails = billingDetailsModel.billingDetailsDAO.getBillingDetails(email);
-        billingDetailsModel.setPostalcode((Integer) billingdetails.get("postalcode"));
-        billingDetailsModel.setCity((String) billingdetails.get("city"));
-        billingDetailsModel.setStreet((String) billingdetails.get("street"));
-        billingDetailsModel.setHousenumber((Integer) billingdetails.get("housenumber"));
+        try {
+            Map billingdetails = billingDetailsModel.billingDetailsDAO.getBillingDetails(email);
+            billingDetailsModel.setPostalcode((Integer) billingdetails.get("postalcode"));
+            billingDetailsModel.setCity((String) billingdetails.get("city"));
+            billingDetailsModel.setStreet((String) billingdetails.get("street"));
+            billingDetailsModel.setHousenumber((Integer) billingdetails.get("housenumber"));
+        } catch (Exception e) {
+            System.err.println(e);
+        }
 
-        Map deliverydetails = deliveryDetailsModel.getDeliveryDetailsDAO().getDeliveryDetails(email);
-        deliveryDetailsModel.setPostalcode((Integer) deliverydetails.get("postalcode"));
-        deliveryDetailsModel.setCity((String) deliverydetails.get("city"));
-        deliveryDetailsModel.setStreet((String) deliverydetails.get("street"));
-        deliveryDetailsModel.setHousenumber((Integer) deliverydetails.get("housenumber"));
+        try {
+            Map deliverydetails = deliveryDetailsModel.getDeliveryDetailsDAO().getDeliveryDetails(email);
+            deliveryDetailsModel.setPostalcode((Integer) deliverydetails.get("postalcode"));
+            deliveryDetailsModel.setCity((String) deliverydetails.get("city"));
+            deliveryDetailsModel.setStreet((String) deliverydetails.get("street"));
+            deliveryDetailsModel.setHousenumber((Integer) deliverydetails.get("housenumber"));
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     public String getEmail() {

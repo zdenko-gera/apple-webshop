@@ -13,6 +13,7 @@ public class DeliveryDetailsDAO {
     public DeliveryDetailsDAO() {
         appConfig = new AppConfig();
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
+        jdbcTemplate.setQueryTimeout(5);
     }
 
     /**
