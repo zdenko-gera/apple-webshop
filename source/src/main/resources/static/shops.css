@@ -4,6 +4,7 @@ main {
 .google-map {
   width: 100vh;
   padding-bottom: 50%;
+  text-align: center;
   position: relative;
 }
 
@@ -11,7 +12,7 @@ main {
   display: block;
   height: 100%;
   width: 100%;
-  left: 25%;
+  left: 30%;
   top: 0;
   margin: 0 auto;
   position: absolute;

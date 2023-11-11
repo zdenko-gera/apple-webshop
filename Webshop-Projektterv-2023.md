@@ -104,33 +104,54 @@ A munkát Petrányi Dominik koordinálja. Fő feladata, hogy folyamatosan egyezt
 
 A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, illetve hogy megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben memó készül.
 
-1. megbeszélés:
+1. Megbeszélés:
 
 - Időpont: 2023.09.13.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Kiválasztottuk a projektünk témáját.
 
-2. megbeszélés:
+2. Megbeszélés:
 
 - Időpont: 2023.09.20.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük, hogy előreláthatólag ki melyik részén dolgozik a projektnek.
 
-3. megbeszélés:
+3. Megbeszélés:
 
 - Időpont: 2023.10.04.
 - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Bényei Anna, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük, hogy hogyan kell használni a gitet, ki is próbáltuk azt, a projekt funkcióit nagyvonalakban egyeztettük.
 
-4. megbeszélés:
+4. Megbeszélés:
 
-- Időpont: 2023.10.09
+- Időpont: 2023.10.09.
 - Hely: Blues Café - Szeged, Somogyi utca 20.
 - Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
 - Érintett témák: Megbeszéltük a project fontosabb funkciót, illetve elosztottuk a feladatokat.
+
+5. Megbeszélés:
+
+- Időpont: 2023.10.23.
+- Hely: TIK alagsor
+- Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
+- Érintett témák: Megbeszéltük, hogy kinek mi nem megy és hogy hogyan halad a projekt, mik a jövőbeli teendők. 
+
+6. Megbeszélés:
+
+- Időpont: 2023.10.30.
+- Hely: TIK alagsor
+- Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
+- Érintett témák: Megbeszéltük az új mérföldkő feladatait, a Spring Boot rejtelmeit :) .
+
+7. Megbeszélés:
+
+- Időpont: 2023.11.06.
+- Hely: TIK alagsor
+- Résztvevők: Varga Zoltán, Nagy Vencel, Petrányi Dominik, Gera Zdenkó, Molnár-Farkas Noel
+- Érintett témák: Megbeszéltük ki hogyan halad a feladataival, illetve egyéni kérdéseket, problémákat oldottunk meg. Technikai dolgokról is szó esett. 
 
 ### 6.3. Minőségbiztosítás
 

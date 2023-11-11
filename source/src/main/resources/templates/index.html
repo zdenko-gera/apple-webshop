@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="Header.css" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="general.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,22 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&display=swap"
+      href="http://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      $(function () {
-        $("#header").load("../templates/Header.html");
-      });
-      $(function () {
-        $("#footer").load("../templates/Footer.html");
-      });
-    </script>
   </head>
   <body>
     <header>
@@ -44,10 +32,10 @@
           <a href="Webshop" class="header-links-link">Webáruház</a>
         </div>
         <div class="header-links-container">
-          <a href="Webshop" class="header-links-link">Üzleteink</a>
+          <a href="Shops" class="header-links-link">Üzleteink</a>
         </div>
         <div class="header-links-container">
-          <a href="Webshop" class="header-links-link">Elérhetőségek</a>
+          <a href="Info" class="header-links-link">Elérhetőségek</a>
         </div>
       </div>
       <div class="header-icons">
@@ -64,7 +52,7 @@
               fill="#068FFF"
             /></svg
         ></a>
-        <a href="@{/logout}"
+        <a href="Profil"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.5em"
@@ -78,7 +66,7 @@
               fill-opacity="0.933333"
             /></svg
         ></a>
-        <a href=""
+        <a href="Cart"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.5em"
@@ -94,7 +82,6 @@
         ></a>
       </div>
     </header>
-
     <main>
       <!--Hero Section-->
       <div class="homepage-hero">
@@ -144,7 +131,7 @@
       </div>
 
       <!--Newsletter Section-->
-      <div class="homepage-newsLetter">
+      <div class="homepage-newsLetter" id="newsletter">
         <div class="homepage-newsLetter-textBox">
           <h3><span>i</span>Shop hírlevél</h3>
           <p>Ne maradjon le a új ajánlatainkról és termékeinkről</p>
@@ -200,7 +187,7 @@
               >
                 Rendelés
               </button>
-              <p>580 000Ft</p>
+              <p class="price">580 000Ft</p>
             </div>
           </div>
           <div class="homepage-newProducts-gridItem">
@@ -219,7 +206,7 @@
               >
                 Rendelés
               </button>
-              <p>580 000Ft</p>
+              <p class="price">580 000Ft</p>
             </div>
           </div>
           <div class="homepage-newProducts-gridItem">
@@ -238,7 +225,7 @@
               >
                 Rendelés
               </button>
-              <p>580 000Ft</p>
+              <p class="price">580 000Ft</p>
             </div>
           </div>
         </div>
@@ -267,7 +254,7 @@
               >
                 Rendelés
               </button>
-              <p>1 580 000Ft</p>
+              <p class="price">1 580 000Ft</p>
             </div>
           </div>
           <div class="homepage-newProducts-gridItem">
@@ -286,7 +273,7 @@
               >
                 Rendelés
               </button>
-              <p>1 580 000Ft</p>
+              <p class="price">1 580 000Ft</p>
             </div>
           </div>
           <div class="homepage-newProducts-gridItem">
@@ -305,13 +292,58 @@
               >
                 Rendelés
               </button>
-              <p>1 580 000Ft</p>
+              <p class="price">1 580 000Ft</p>
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <div id="footer"></div>
+    <footer>
+      <div class="footer">
+        <div class="footer-fastLinks">
+          <div class="footer-fastLinks-header">
+            <h3>Gyors linkek</h3>
+          </div>
+          <div class="footer-fastLinks-links">
+            <a href="Webshop">Áruház</a>
+            <a href="#newsletter">Hírlevél</a>
+            <a href="Info">Elérhetőségek</a>
+            <a href="ÁSZF">ÁSZF</a>
+          </div>
+        </div>
+        <div class="footer-logo">
+          <h2><span>i</span>Shop</h2>
+        </div>
+        <div class="footer-connection">
+          <div class="footer-connection-header">
+            <h3>Elérhetőségek</h3>
+          </div>
+          <div class="footer-connection-textContainer">
+            <div class="footer-connection-textContainer-element">
+              <img
+                src="pictures/FooterPic/alternate-map-marked.svg"
+                alt="map"
+              />
+              <p>Szeged, Ady tér 10, 6722</p>
+            </div>
+            <div class="footer-connection-textContainer-element">
+              <img src="pictures/FooterPic/envelope.svg" alt="email" />
+              <p>info@ishop.com</p>
+            </div>
+            <div class="footer-connection-textContainer-element">
+              <img src="pictures/FooterPic/alternate-phone.svg" alt="phone" />
+              <p>+36/20-000-000</p>
+            </div>
+            <div class="footer-connection-textContainer-element">
+              <img src="pictures/FooterPic/alternate-phone.svg" alt="phone" />
+              <p>+36/70-111-111</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Copyright © 2023. Minden jog fenntartva.</p>
+      </div>
+    </footer>
   </body>
 </html>

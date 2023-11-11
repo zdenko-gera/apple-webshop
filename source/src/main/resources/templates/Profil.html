@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iShop</title>
-    <link rel="stylesheet" href="Footer.css" />
-    <link rel="stylesheet" href="Header.css" />
-    <link rel="stylesheet" href="cart.css" />
-    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="/Header.css" />
+    <link rel="stylesheet" href="/Footer.css" />
+    <link rel="stylesheet" href="/profil.css" />
+    <link rel="stylesheet" href="/general.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +21,6 @@
       rel="stylesheet"
     />
   </head>
-
   <body>
     <header>
       <div class="header-logo">
@@ -84,79 +83,107 @@
     </header>
 
     <main>
-      <div class="cart-header">
-        <h2>Kosarad tartalma (3 termék)</h2>
-      </div>
-      <div class="cart">
-        <div class="cart-table">
-          <table>
-            <tr class="cart-table-head">
-              <th>Kép</th>
-              <th>Termék név</th>
-              <th>Ár</th>
-              <th>Mennyiség</th>
-            </tr>
-            <tr>
-              <td class="cart-table-imgContainer">
-                <img
-                  src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
-                  alt="iphone"
-                />
-              </td>
-              <td><h3>iPhone 15 max Pro</h3></td>
-              <td><h2>540 000 Ft</h2></td>
-              <td class="cart-amount">
-                <button class="cart-amount">+</button>
-                <span>4</span>
-                <button class="cart-amount">-</button>
-              </td>
-              <td class="cart-table-removeContainer">
-                <button>
-                  <img
-                    class="cart-table-remove"
-                    src="pictures/HeaderPic/x-circle-fill.png"
-                    alt="x"
-                  />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="cart-table-imgContainer">
-                <img
-                  src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
-                  alt="iphone"
-                />
-              </td>
-              <td><h3>iPhone 15 max Pro</h3></td>
-              <td><h2>540 000 Ft</h2></td>
-              <td class="cart-amount">
-                <button class="cart-amount">+</button>
-                <span>4</span>
-                <button class="cart-amount">-</button>
-              </td>
-              <td class="cart-table-removeContainer">
-                <button>
-                  <img
-                    class="cart-table-remove"
-                    src="pictures/HeaderPic/x-circle-fill.png"
-                    alt="x"
-                  />
-                </button>
-              </td>
-            </tr>
-
-            <tr class="cart-table-endPrice">
-              <td></td>
-              <td></td>
-              <td>Összesen:</td>
-              <td><h3>500 000 Ft</h3></td>
-            </tr>
-          </table>
-        </div>
-        <div class="order-button">
-          <button class="orderButton">Rendelés</button>
-        </div>
-      </div>
+      <form action="#" th:action="@{/}" method="post">
+        <fieldset>
+          <label for="firstname"> Vezetéknév: </label>
+          <input
+            type="text"
+            maxlength="100"
+            placeholder="Kis"
+            required
+            class="form-input"
+            id="firstname"
+            name="firstname"
+          />
+          <label for="lastname"> Keresztnév: </label>
+          <input
+            type="text"
+            maxlength="100"
+            placeholder="János"
+            required
+            class="form-input"
+            id="lastname"
+            name="lastname"
+          />
+          <label for="password"> Jelszó: </label>
+          <input
+            type="password"
+            placeholder="nyolhosszuminimum"
+            maxlength="100"
+            required
+            class="form-input"
+            id="password"
+            name="password"
+          />
+          <label for="passworAgain"> Jelszó mégegyszer: </label>
+          <input
+            type="password"
+            placeholder="nyolhosszuminimum"
+            maxlength="100"
+            required
+            class="form-input"
+            id="passwordAgain"
+            name="passwordAgain"
+          />
+          <h3>Szállítási adatok</h3>
+          <label for="country">Ország: </label>
+          <input
+            type="number"
+            maxlength="100"
+            placeholder="Magyarország"
+            required
+            class="form-input"
+            id="country"
+            name="country"
+          />
+          <label for="postalcode">Irányitoszám: </label>
+          <input
+            type="number"
+            maxlength="4"
+            required
+            class="form-input"
+            placeholder="3521"
+            id="postalcode"
+            name="postalcode"
+          />
+          <label for="city">Város: </label>
+          <input
+            type="text"
+            maxlength="100"
+            placeholder="Miskolc"
+            required
+            class="form-input"
+            id="city"
+            name="city"
+          />
+          <label for="street">Utca: </label>
+          <input
+            type="text"
+            maxlength="100"
+            placeholder="Balkán Sándor út"
+            required
+            class="form-input"
+            id="street"
+            name="street"
+          />
+          <label for="houseNumber">Házszám: </label>
+          <input
+            type="number"
+            maxlength="5"
+            placeholder="32."
+            required
+            class="form-input"
+            id="houseNumber"
+            name="houseNumber"
+          />
+        </fieldset>
+        <input
+          type="submit"
+          name="login-btn"
+          value="Frissít"
+          class="form-input gomb"
+        />
+      </form>
     </main>
 
     <footer>

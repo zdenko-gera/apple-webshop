@@ -24,7 +24,9 @@ public class UserDAO {
     }
 
     /**
-     * Ez a függvény valósítja meg egy új felhasználó regisztrációját
+     * Ez a függvény valósítja meg egy új felhasználó beillesztését az adatbázisba. Az sql-ben a kérdőjelek helyére a
+     * .update() fgv beilleszti a paraméterben kapott adatait. Az első paramétere maga az SQL kód. A jelszó hashelése a
+     * SpringSecurity.passwordEncoder().encode() fgv-nyel valósul meg
      * @param userModel A felhasználóról készült objektum
      * @return true ha sikeres regisztráció, false ha nem
      */
@@ -38,7 +40,10 @@ public class UserDAO {
     }
 
     /**
-     * A felhasználó bejelentkezését kezelő függvény
+     * A felhasználó bejelentkezését kezelő függvény. A kapott email címmel lekéri az ahhoz tartozó sort az adatbázisból. Ha
+     * nincs olyan email címmel bejegyzés az adatbázisban, akkor visszaad false-t, ha van, akkor a
+     * SpringSecurity.passwordEncoder().matches(password, user.getPassword()) fgv segítségével ellenőrzi, hogy a paraméterben
+     * kapott jelszó megegyezik-e az adatbázisból lekért hashelt jelszóval. Ha igen, visszaad true-t, ha nem akkor false-ot.
      * @param email A felhasználó email címe
      * @param password A fiók jelszava
      * @return true ha sikeres a bejelentkezés, false ha nem
@@ -55,13 +60,23 @@ public class UserDAO {
     /**
      * Ez a függvény valósítja meg a felhasználói fiók törlését
      * @param email A törlendő fiók email címe
-     * @param password A törlendő fiók jelszava (biztonsági okok miatt)
      * @return true ha sikeres a törlés, false ha nem
      */
-    public boolean deleteUser(String email, String password) {
-        return false;
+    public boolean deleteUser(String email) {
+        String sqlCode = "DELETE FROM user WHERE user.email = ?";
+        return jdbcTemplate.update(sqlCode, email) == 1;
     }
 
+    /**
+     * Lekér egy felhasználót az adatbázisból, amit egy Map-be rak bele. A .queryForMap() fgv azt csinálja, hogy ha talál
+     * megfelelő sort az adatbázisban, akkor a Map-be hoz létre olyan bejegyzéseket, aminek a Kulcsa az attribútum neve az
+     * adatbázisban, az értéke pedig az attribútum értéke. Például ha az adatbázisban az attribútum neve email, értéke
+     * elek@elek.com akkor a Mapben lesz egy olyan bejegyzés, hogy "email" => "elek@elek.com", és ezt a Mapből a
+     * 'valtozonev'.get("email")-el lehet elérni, ami a "elek@elek.com"-ot adja vissza. Ebből a Mapből hoz létre egy UserModelt,
+     * és adja vissza.
+     * @param email A lekérendő felhasználó email címe.
+     * @return A megfelelő sorból készült UserModelt adja vissza
+     */
     public UserModel getUserDataByEmail(String email) {
         String sqlCode = "SELECT * FROM user WHERE user.email = ?";
         Map<String, Object> user;
