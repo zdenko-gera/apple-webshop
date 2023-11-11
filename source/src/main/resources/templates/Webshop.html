@@ -99,7 +99,7 @@
           </div>
         </div>
         <div class="homepage-newProducts-gridContainer">
-          <div class="homepage-newProducts-gridItem">
+          <div class="homepage-newProducts-gridItem" th:each="product : ${products}">
             <div class="homepage-newProducts-gridItem-productPicture">
               <img
                 src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
@@ -107,170 +107,15 @@
               />
             </div>
             <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
+              <p th:text="${product['name']}">AirPods Pro 2 Lightning tokkal</p>
             </div>
             <div class="homepage-newProducts-gridItem-productBuy">
-              <a href="Productpage">
-                <button
-                  class="homepage-newProducts-gridItem-productBuy-Button orderButton"
-                >
-                  Rendelés
-                </button>
-              </a>
+              <form action="#" th:action="@{/Productpage}">
+                <input type="hidden" th:value="${product['productID']}" name="productID">
+                <input type="submit" class="orderButton">
+              </form>
 
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Button orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
-            </div>
-          </div>
-          <div class="homepage-newProducts-gridItem">
-            <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
-            </div>
-            <div class="homepage-newProducts-gridItem-productName">
-              <p>AirPods Pro 2 Lightning tokkal</p>
-            </div>
-            <div class="homepage-newProducts-gridItem-productBuy">
-              <button
-                class="homepage-newProducts-gridItem-productBuy-Butto orderButton"
-              >
-                Rendelés
-              </button>
-              <p class="price">580 000Ft</p>
+              <p class="price" th:text="${product['price']} + ' Ft'">580 000Ft</p>
             </div>
           </div>
         </div>

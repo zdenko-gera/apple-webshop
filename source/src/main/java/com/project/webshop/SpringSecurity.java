@@ -42,7 +42,8 @@ public class SpringSecurity {
                 .authorizeRequests(authorize -> authorize
                         .requestMatchers("/Index/**").permitAll()
                         .requestMatchers("/Webshop/**").permitAll()
-                        .requestMatchers("/Product/**").permitAll()
+                        .requestMatchers("/addToCart/**").permitAll()
+                        .requestMatchers("/Productpage/**").permitAll()
                         .requestMatchers("*.css").permitAll()
                         .requestMatchers("pictures/**").permitAll()
 

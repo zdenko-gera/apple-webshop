@@ -10,6 +10,7 @@ import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
@@ -116,6 +117,26 @@ public class ProductDAO {
                 (ArrayList<String>) product.get("images"));
     }
 
+
+    /**
+     * Visszaadja egy adott termék ProdectModeljét az ID-ja alapján
+     * @param productID A termék ID-ja
+     * @return egy termék ProductModelje
+     */
+    public Map<String, Object> getProduct(int productID) {
+        String sqlCode = "SELECT * FROM product WHERE productID = ?";
+        return jdbcTemplate.queryForList(sqlCode, productID).get(0);
+    }
+
+    /**
+     * Visszaadja az összes terméket egy lista formájában amiben Map-ek vannak melynek kulcsa az attribútum neve
+     * az adatbázisban, értéke meg az attribútum értéke
+     * @return A termékek listába rakva
+     */
+    public List<Map<String, Object>> getProducts() {
+        String sqlCode = "SELECT * FROM product";
+        return jdbcTemplate.queryForList(sqlCode);
+    }
 
     /**
      * Törli az adott nevű terméket az adatbázisból

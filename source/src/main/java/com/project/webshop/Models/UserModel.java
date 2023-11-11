@@ -1,9 +1,14 @@
 package com.project.webshop.Models;
 
+import com.project.webshop.DAO.BillingDetailsDAO;
+import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.DeliveryDetailsDAO;
 import com.project.webshop.DAO.UserDAO;
 
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class UserModel {
@@ -18,6 +23,20 @@ public class UserModel {
 
     UserDAO userDAO;
 
+    /**
+     * Ez egy konstruktor, de nagyon fontos, mivel bejelentkezéskor ez hozza létre a UserModelt ami belekerül a sessionbe, amivel
+     * később dolgozunk. <br> <br>
+     *
+     * Adatbázisból betölti a kosarat, számlázási és szállítási adatokat is. Ezt a DAO-n keresztül teszi meg, és a meglévő
+     * Modelleket a settereik segítségével állítja be. A kosár egy Lista amiben Map-ek vannak, amiben a kulcs a tábla egy
+     * attribútuma, az értéke az attribútum értéke.
+     * @param email A felhasználó email címe
+     * @param password A felhasználó jelszava
+     * @param firstname A felhasználó keresztneve
+     * @param lastname A felhasználó vezetékneve
+     * @param role A felhasználó szerepe a weboldalon
+     * @param registrationDate A felhasználó regisztrációjának dátuma
+     */
     public UserModel(String email, String password, String firstname, String lastname, String role, LocalDate registrationDate) {
         this.email = email;
         this.password = password;
@@ -26,12 +45,29 @@ public class UserModel {
         this.role = role;
         this.registrationDate = registrationDate;
 
-        cartModel = new CartModel(-1, -1, email, null);
+        cartModel = new CartModel(email, new ArrayList<>(), new ArrayList<>());
         billingDetailsModel = new BillingDetailsModel(email, -1, null, null, -1);
         deliveryDetailsModel = new DeliveryDetailsModel(email, -1, null, null, -1);
         commentModel = new CommentModel(-1, -1, -1, email, null, null);
         orderModel = new OrderModel(-1, -1, email, null, null);
         userDAO = new UserDAO();
+
+        List<Map<String, Object>> cart = cartModel.getCartDAO().getCart(email);
+        for(int i = 0; i < cart.size(); i++) {
+            cartModel.addItemToCart((Integer) cart.get(i).get("productID"), (Integer) cart.get(i).get("quantity"));
+        }
+
+        Map billingdetails = billingDetailsModel.billingDetailsDAO.getBillingDetails(email);
+        billingDetailsModel.setPostalcode((Integer) billingdetails.get("postalcode"));
+        billingDetailsModel.setCity((String) billingdetails.get("city"));
+        billingDetailsModel.setStreet((String) billingdetails.get("street"));
+        billingDetailsModel.setHousenumber((Integer) billingdetails.get("housenumber"));
+
+        Map deliverydetails = deliveryDetailsModel.getDeliveryDetailsDAO().getDeliveryDetails(email);
+        deliveryDetailsModel.setPostalcode((Integer) deliverydetails.get("postalcode"));
+        deliveryDetailsModel.setCity((String) deliverydetails.get("city"));
+        deliveryDetailsModel.setStreet((String) deliverydetails.get("street"));
+        deliveryDetailsModel.setHousenumber((Integer) deliverydetails.get("housenumber"));
     }
 
     public String getEmail() {

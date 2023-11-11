@@ -19,4 +19,47 @@ public class BillingDetailsModel {
     public BillingDetailsDAO getBillingDetailsDAO() {
         return billingDetailsDAO;
     }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getPostalcode() {
+        return postalcode;
+    }
+
+    public void setPostalcode(int postalcode) {
+        this.postalcode = postalcode;
+    }
+
+    public int getHousenumber() {
+        return housenumber;
+    }
+
+    public void setHousenumber(int housenumber) {
+        this.housenumber = housenumber;
+    }
+
+    @Override
+    public String toString() {
+        return "BillingDetailsModel{" +
+                "email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", postalcode=" + postalcode +
+                ", housenumber=" + housenumber +
+                '}';
+    }
 }
