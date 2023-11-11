@@ -21,6 +21,7 @@ public class UserDAO {
     public UserDAO() {
         appConfig = new AppConfig();
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
+        jdbcTemplate.setQueryTimeout(5);
     }
 
     /**

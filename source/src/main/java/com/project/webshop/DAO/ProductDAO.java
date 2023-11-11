@@ -26,6 +26,7 @@ public class ProductDAO {
     public ProductDAO() {
         appConfig = new AppConfig();
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
+        jdbcTemplate.setQueryTimeout(5);
     }
     /**
      * A termék létrehozása az adatbázisban.

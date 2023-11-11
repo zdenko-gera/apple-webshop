@@ -72,7 +72,7 @@ public class View {
 
         int fullprice = 0;
         for (Map<String, Object> stringObjectMap : cartContent) {
-            fullprice += (Integer) stringObjectMap.get("price");
+            fullprice += (Integer) stringObjectMap.get("price") * (Integer) stringObjectMap.get("quantity");
         }
 
         model.addAttribute("items", cartContent);

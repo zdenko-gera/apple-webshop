@@ -2,6 +2,7 @@ package com.project.webshop.Models;
 
 import com.project.webshop.DAO.CartDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartModel {
@@ -15,8 +16,8 @@ public class CartModel {
         this.quantityInCart = quantityInCart;
         this.email = email;
         this.itemsInCart = itemsInCart;
-        cartDAO = new CartDAO();
 
+        cartDAO = new CartDAO();
         this.cartID = cartDAO.getUserCartID(email);
     }
 
@@ -54,5 +55,10 @@ public class CartModel {
                 ", itemsInCart=" + itemsInCart +
                 ", quantityInCart=" + quantityInCart +
                 '}';
+    }
+
+    public void clearCart() {
+        itemsInCart = new ArrayList<Integer>();
+        quantityInCart = new ArrayList<Integer>();
     }
 }

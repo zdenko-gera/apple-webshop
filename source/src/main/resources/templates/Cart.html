@@ -130,7 +130,9 @@
           </table>
         </div>
         <div class="order-button">
-          <button class="orderButton">Rendelés</button>
+          <form action="#" th:action="@{createOrder}" method="post">
+            <input type="submit" class="orderButton" value="Rendelés">
+          </form>
         </div>
       </div>
     </main>

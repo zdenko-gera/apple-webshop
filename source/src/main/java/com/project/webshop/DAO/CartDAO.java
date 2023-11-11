@@ -3,6 +3,7 @@ package com.project.webshop.DAO;
 import com.project.webshop.AppConfig;
 import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -16,8 +17,8 @@ public class CartDAO {
     public CartDAO() {
         appConfig = new AppConfig();
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
+        jdbcTemplate.setQueryTimeout(5);
     }
-
     /**
      * Visszaadja az email címhez tartozó kosár ID-ját
      * @param email A felhasználó email címe
@@ -25,7 +26,13 @@ public class CartDAO {
      */
     public int getUserCartID(String email) {
         String sqlCode = "SELECT email, cartID FROM cart WHERE cart.email = ?";
-        return (int) jdbcTemplate.queryForList(sqlCode, email).get(0).get("cartID");
+        int cartID = -1;
+        try {
+            cartID = (int) jdbcTemplate.queryForMap(sqlCode, email).get("cartID");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return cartID;
     }
     public boolean insertCart(String email) {
         String sqlCode = "INSERT INTO cart (email) VALUES (?)";
@@ -63,6 +70,12 @@ public class CartDAO {
                          "INNER JOIN cart ON cart.cartID = itemsincart.cartID " +
                          "WHERE cart.email = ?";
         return jdbcTemplate.queryForList(sqlCode, email);
+    }
+
+    public void clearCart(String email) {
+        int cartID = getUserCartID(email);
+        String sqlCode = "DELETE FROM itemsincart WHERE cartID = ?";
+        jdbcTemplate.update(sqlCode, cartID);
     }
 
 }

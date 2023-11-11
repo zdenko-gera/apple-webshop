@@ -13,6 +13,7 @@ public class BillingDetailsDAO {
     public BillingDetailsDAO() {
         appConfig = new AppConfig();
         jdbcTemplate = new JdbcTemplate(appConfig.getDataSource());
+        jdbcTemplate.setQueryTimeout(5);
     }
 
     /**
