@@ -2,6 +2,7 @@ package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.DAO.UserDAO;
+import com.project.webshop.Models.ImagesModel;
 import com.project.webshop.Models.ProductModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 public class AdminController /*extends UserController*/ {
     @PostMapping(value="createProduct")
     public String addProduct(@RequestParam("type") String type,@RequestParam("price") int price,@RequestParam("name") String name,@RequestParam("description") String description,
-                           @RequestParam("quantity") int quantity, Model model) {
-        String images = "vmi.jpg";
+                           @RequestParam("quantity") int quantity, @RequestParam("images") String images, Model model) {
+        //String images = "vmi.jpg";
         boolean error = false;
 
         if(type.equals("")) {
