@@ -26,9 +26,9 @@ public class ProductModel {
      * Zdenkó, 11.05.
      */
     private String productType, name, description;
-    private ArrayList<String> images;
+    private String images;
     ProductDAO productDAO;
-    public ProductModel(int price, int quantity, String productType, String name, String description, ArrayList<String> images) {
+    public ProductModel(int price, int quantity, String productType, String name, String description, String images) {
         //this.productID = productID;
         this.price = price;
         this.quantity = quantity;
@@ -92,11 +92,11 @@ public class ProductModel {
         this.description = description;
     }
 
-    public ArrayList<String> getImages() {
+    public String getImages() {
         return images;
     }
 
-    public void setImages(ArrayList<String> images) {
+    public void setImages(String images) {
         this.images = images;
     }
 }

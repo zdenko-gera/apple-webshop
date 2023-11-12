@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Table(name="product")
@@ -37,9 +38,9 @@ public class ProductDAO {
      * @param quantity A raktáron lévő darabszám
      * @return true ha sikeres a hozzáadás, false ha nem
      */
-    public boolean createProduct(String name, String description, String productType, int price, int quantity) {
+    public boolean createProduct(String productType,int price, String name, String description, int quantity) {
         String sqlCode = "INSERT INTO product (productType, price, name, description, quantity) VALUES (?,?,?,?,?)";
-        return jdbcTemplate.update(sqlCode, name,description,productType,price, quantity) == 1;
+        return jdbcTemplate.update(sqlCode,productType,price, name,description,quantity) == 1;
     }
 
     /**
@@ -115,7 +116,7 @@ public class ProductDAO {
 
         return new ProductModel((int) product.get("price"), (int) product.get("quantity"),
                 product.get("productType").toString(), product.get("name").toString(),product.get("description").toString(),
-                (ArrayList<String>) product.get("images"));
+                product.get("images").toString());
     }
 
 

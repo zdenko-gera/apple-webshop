@@ -1,19 +1,23 @@
 package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.ProductDAO;
+import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.Models.ProductModel;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
-
-public class AdminController extends UserController {
-    @PostMapping("createProduct")
-    @ResponseBody
-    public String addProduct(@RequestParam String type,@RequestParam int price,@RequestParam String name,@RequestParam String description,
-                           @RequestParam int quantity,@RequestParam ArrayList<String> images, Model model) {
+@Controller
+public class AdminController /*extends UserController*/ {
+    @PostMapping(value="createProduct")
+    public String addProduct(@RequestParam("type") String type,@RequestParam("price") int price,@RequestParam("name") String name,@RequestParam("description") String description,
+                           @RequestParam("quantity") int quantity, Model model) {
+        String images = "vmi.jpg";
         boolean error = false;
 
         if(type.equals("")) {
@@ -28,7 +32,7 @@ public class AdminController extends UserController {
             model.addAttribute("emptyFieldName", "Terméknév megadása kötelező!");
             error = true;
         }
-        if(images.size() == 0) {
+        if(images.length() == 0) {
             model.addAttribute("emptyFieldImages", "Minimum 1 db kép megadása kötelező!");
             error = true;
         }
@@ -36,6 +40,7 @@ public class AdminController extends UserController {
         if(error) return "Admin";
 
         ProductModel product = new ProductModel(price,quantity,type,name,description,images);
+        product.getProductDAO().createProduct(type,price,name,description,quantity);
         return "redirect:/";
 
     }
