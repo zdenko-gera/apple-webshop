@@ -167,7 +167,7 @@ public class ProductDAO {
     }
 
     public void addToQuantityByID(int productID, int count) {
-        String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) - ?) WHERE productID = ?";
+        String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) + ?) WHERE productID = ?";
 
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
 

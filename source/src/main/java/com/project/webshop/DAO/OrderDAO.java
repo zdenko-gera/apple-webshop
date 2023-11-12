@@ -56,6 +56,17 @@ public class OrderDAO {
         return true;
     }
 
+    public List<Map<String, Object>> getOrdersByEmail(String email) {
+        String sqlCode = "SELECT orderID, orderDate, price FROM orders WHERE orders.email = ?";
+        return jdbcTemplate.queryForList(sqlCode, email);
+    }
+
+    public List<Map<String, Object>> getOrderItemsByID(int orderID) {
+        String sqlCode = "SELECT product.name, product.price, ordereditems.quantity FROM ordereditems INNER JOIN product ON ordereditems.productID = product.productID WHERE ordereditems.orderID = ?";
+        return jdbcTemplate.queryForList(sqlCode, orderID);
+    }
+
+
     /**
      * Töröl egy meglévő rendelést, ha rövid időn belül törli
      * @param email A felhasználó email címe

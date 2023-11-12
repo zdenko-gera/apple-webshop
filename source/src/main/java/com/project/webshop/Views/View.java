@@ -1,6 +1,7 @@
 package com.project.webshop.Views;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
@@ -68,7 +69,8 @@ public class View {
      */
     @GetMapping("Cart")
     public String Cart(HttpServletRequest request, Model model) {
-        if(request.getSession() == null || request.getSession().getAttribute("email") == null) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
             return "redirect:/Login";
         }
 
@@ -84,6 +86,24 @@ public class View {
         model.addAttribute("fullprice", fullprice);
 
         return "Cart.html";
+    }
+
+
+    @GetMapping("Order")
+    public String Order(HttpServletRequest request, Model model) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/Login";
+        }
+
+        OrderDAO orderDAO = new OrderDAO();
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        List<Map<String, Object>> orders = orderDAO.getOrdersByEmail(user.getEmail());
+        for(Map<String, Object> order : orders) {
+            order.put("ordereditems", orderDAO.getOrderItemsByID((Integer) order.get("orderID")));
+        }
+        model.addAttribute("orders", orders);
+        return "Order";
     }
 
     /**
@@ -106,6 +126,7 @@ public class View {
         model.addAttribute("product", product);
         return "Productpage";
     }
+
 
     @GetMapping("Signup")
     public String Signup(HttpServletRequest request) {

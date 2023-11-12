@@ -30,52 +30,25 @@
       </div>     
     </header>
     <main>
-    
-    	<div id="myNav" class="overlay">
-  			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  			<div class="overlay-content">
-   				<a href="Admin.html">Árukészlet</a>
-    			<a href="Admin_user.html">Felhasználókezelés</a>
-    			<a href="Admin_order.html">Rendelések</a>
- 			</div>
-		</div>
-		<span style="font-size:2em;cursor:pointer" onclick="openNav()">&#9776;</span>
-
-		<script>
-			function openNav() {
-  			document.getElementById("myNav").style.width = "30%";
-			}
-
-			function closeNav() {
-			  document.getElementById("myNav").style.width = "0%";
-			}
-		</script>
-    
 		<section>
 		    <h1>Rendelések</h1>
-				<table>
+            <div style="width: 80%; margin: 0 auto" th:each="order : ${orders}">
+				<table style="width: 100%">
+                  <p th:text="'Rendelés ideje: ' + ${order['orderDate']}">Rendelés ideje: 2023.12.12</p>
+                  <p th:text="'Összesen: ' + ${order['price'] + ' Ft'}"></p>
+                  <p>Kiszállítva: nem</p>
 				  <tr>
-				    <th>Megrendelő e-mail címe</th>
-				    <th>Rendelés megnevezése</th>
+				    <th>Termék neve</th>
 				    <th>Mennyiség (db)</th>
-				    <th>Összeg (Ft)</th>
-				    <th>Teljesítve</th>
+				    <th>Ára (Ft)</th>
 				  </tr>
-				  <tr>
-				    <td>Józsi@gmail.com</td>
-				    <td>Airpods</td>
-				    <td>2</td>
-				    <td>118 000</td>
-				    <td>igen</td>
+				  <tr th:each="item : ${order['ordereditems']}">
+				    <td th:text="${item['name']}">Airpods</td>
+				    <td th:text="${item['quantity']}">2</td>
+				    <td th:text="${item['price']}">118 000</td>
 				  </tr>
-				  <tr>
-				     <td>Laci@gmail.com</td>
-				    <td>Iphone 15</td>
-				    <td>1</td>
-				    <td>500 000</td>
-				    <td>nem</td>
-				  </tr>
-				</table>	
+				</table>
+            </div>
 		</section>
       	
     </main>
