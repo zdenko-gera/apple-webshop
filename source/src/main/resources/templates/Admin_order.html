@@ -60,6 +60,7 @@
 				    <th>Mennyiség (db)</th>
 				    <th>Összeg (Ft)</th>
 				    <th>Teljesítve</th>
+                      <th>Kezelés</th>
 				  </tr>
 				  <tr>
 				    <td>Józsi@gmail.com</td>
@@ -67,6 +68,12 @@
 				    <td>2</td>
 				    <td>118 000</td>
 				    <td>igen</td>
+                      <td>
+                      <form action="#" th:action="deleteOrder" method="post">
+                        <input type="hidden" value="">
+                        <button type="submit">Törlés</button>
+                      </form>
+                      </td>
 				  </tr>
 				  <tr>
 				     <td>Laci@gmail.com</td>
@@ -74,6 +81,12 @@
 				    <td>1</td>
 				    <td>500 000</td>
 				    <td>nem</td>
+                      <td>
+                          <form action="#" th:action="deleteOrder" method="post">
+                              <input type="hidden" value="">
+                              <button type="submit">Törlés</button>
+                          </form>
+                      </td>
 				  </tr>
 				</table>	
 		</section>

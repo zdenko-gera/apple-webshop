@@ -1,7 +1,9 @@
 package com.project.webshop.Controllers;
 
+import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.DAO.UserDAO;
+import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.ProductModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -143,8 +145,17 @@ public class AdminController extends UserController {
         }
     }
 
+    /**
+     * Kitörli az adatbázisból az adott ID-vel rendelkező rendelést, amennyiben az létezik.
+     * @param orderID a rendelés azonosítója
+     */
+    @PostMapping("deleteOrder")
     public void deleteOrder(int orderID) {
-
+        OrderDAO orderDAO = new OrderDAO();
+        OrderModel orderModel = orderDAO.getOrderById(orderID);
+        if(orderModel != null) {
+            orderDAO.deleteOrder(orderID);
+        }
     }
 
     public void shipOrder(int orderID) {

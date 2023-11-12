@@ -12,7 +12,7 @@ public class OrderModel {
     private List<ProductModel> orderedItems;
 
     OrderDAO orderDAO;
-    public OrderModel(int orderID, int price, String email, LocalDateTime orderDate, List<ProductModel> orderedItems) {
+    public OrderModel(int orderID, int price, String email, LocalDateTime orderDate/*, List<ProductModel> orderedItems*/) {
         this.orderID = orderID;
         this.price = price;
         this.email = email;
