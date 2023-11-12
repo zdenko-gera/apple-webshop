@@ -176,7 +176,6 @@ public class UserController {
         UserModel user = (UserModel) httpSession.getAttribute("email");
         new OrderDAO().createOrder(user);
 
-
         user.getCartModel().getCartDAO().clearCart(user.getEmail());
         user.getCartModel().clearCart();
         return "Index";

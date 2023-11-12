@@ -21,7 +21,7 @@ import java.util.Map;
 public class View {
     @GetMapping("Index")
     public String index() {
-		return "index.html";
+		return "redirect:/index.html";
     }
 
     @GetMapping("Login")
@@ -38,7 +38,12 @@ public class View {
     }
 
     @GetMapping("Profil")
-    public String Profil() {
+    public String Profil(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/Login";
+        }
+
         return "Profil.html";
     }
 
@@ -64,7 +69,7 @@ public class View {
     @GetMapping("Cart")
     public String Cart(HttpServletRequest request, Model model) {
         if(request.getSession() == null || request.getSession().getAttribute("email") == null) {
-            return "Login";
+            return "redirect:/Login";
         }
 
         UserModel user = (UserModel) request.getSession().getAttribute("email");

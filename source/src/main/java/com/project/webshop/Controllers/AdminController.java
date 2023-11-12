@@ -1,7 +1,10 @@
 package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.ProductDAO;
+import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.Models.ProductModel;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
