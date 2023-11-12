@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Nov 03. 18:47
+-- Létrehozás ideje: 2023. Nov 12. 18:36
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.2.0
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `webshop`
 --
+CREATE DATABASE IF NOT EXISTS `webshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `webshop`;
 
 -- --------------------------------------------------------
 
@@ -40,7 +42,21 @@ CREATE TABLE `billingdetails` (
 --
 
 INSERT INTO `billingdetails` (`email`, `postalcode`, `city`, `street`, `housenumber`) VALUES
-('admin@teszt.com', -1, '', '', -1);
+('admin@teszt.com', -1, '', '', -1),
+('bivalyulrich@gmail.com', -1, '', '', -1),
+('kisspista@gmail.com', -1, '', '', -1),
+('kovacsbertalan@gmail.com', -1, '', '', -1),
+('kowalskyvega@gmail.com', -1, '', '', -1),
+('lakatosemanuel@gmail.com', -1, '', '', -1),
+('nagyimre@gmail.com', -1, '', '', -1),
+('nagylajos@gmail.com', -1, '', '', -1),
+('nagymarika@gmail.com', -1, '', '', -1),
+('palpeter@gmail.com', -1, '', '', -1),
+('papucspeter@gmail.com', -1, '', '', -1),
+('peterpal@gmail.com', -1, '', '', -1),
+('sirlancelot@gmail.com', -1, '', '', -1),
+('tesztelek@tesztelek.com', -1, '', '', -1),
+('tisztasag@gmail.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
 
@@ -58,7 +74,21 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartID`, `email`) VALUES
-(3, 'admin@teszt.com');
+(3, 'admin@teszt.com'),
+(14, 'bivalyulrich@gmail.com'),
+(5, 'kisspista@gmail.com'),
+(8, 'kovacsbertalan@gmail.com'),
+(16, 'kowalskyvega@gmail.com'),
+(10, 'lakatosemanuel@gmail.com'),
+(6, 'nagyimre@gmail.com'),
+(9, 'nagylajos@gmail.com'),
+(7, 'nagymarika@gmail.com'),
+(12, 'palpeter@gmail.com'),
+(17, 'papucspeter@gmail.com'),
+(11, 'peterpal@gmail.com'),
+(15, 'sirlancelot@gmail.com'),
+(4, 'tesztelek@tesztelek.com'),
+(13, 'tisztasag@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -68,7 +98,7 @@ INSERT INTO `cart` (`cartID`, `email`) VALUES
 
 CREATE TABLE `comment` (
   `commentID` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `productID` int(11) NOT NULL,
   `publishDate` date NOT NULL,
   `comment` varchar(200) NOT NULL,
@@ -94,7 +124,21 @@ CREATE TABLE `deliverydetails` (
 --
 
 INSERT INTO `deliverydetails` (`email`, `postalcode`, `city`, `street`, `housenumber`) VALUES
-('admin@teszt.com', -1, '', '', -1);
+('admin@teszt.com', -1, '', '', -1),
+('bivalyulrich@gmail.com', -1, '', '', -1),
+('kisspista@gmail.com', -1, '', '', -1),
+('kovacsbertalan@gmail.com', -1, '', '', -1),
+('kowalskyvega@gmail.com', -1, '', '', -1),
+('lakatosemanuel@gmail.com', -1, '', '', -1),
+('nagyimre@gmail.com', -1, '', '', -1),
+('nagylajos@gmail.com', -1, '', '', -1),
+('nagymarika@gmail.com', -1, '', '', -1),
+('palpeter@gmail.com', -1, '', '', -1),
+('papucspeter@gmail.com', -1, '', '', -1),
+('peterpal@gmail.com', -1, '', '', -1),
+('sirlancelot@gmail.com', -1, '', '', -1),
+('tesztelek@tesztelek.com', -1, '', '', -1),
+('tisztasag@gmail.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +183,7 @@ CREATE TABLE `ordereditems` (
 
 CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `price` int(12) NOT NULL,
   `orderDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -164,8 +208,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productID`, `productType`, `price`, `name`, `description`, `quantity`) VALUES
-(1, 'phone', 550000, 'Apple iPhone 15', 'The latest Apple iPhone with advanced features.', 20),
-(3, 'tablet', 400000, 'Apple iPad Pro', 'Powerful tablet for work and entertainment.', 15),
+(1, 'phone', 550000, 'Apple iPhone 15', 'The latest Apple iPhone with advanced features.', 13),
+(3, 'tablet', 400000, 'Apple iPad Pro', 'Powerful tablet for work and entertainment.', 9),
 (4, 'watch', 280000, 'Apple Watch Series 7', 'Stay connected and track your fitness.', 30),
 (5, 'airpod', 130000, 'Apple AirPods 3', 'Wireless earbuds for a seamless audio experience.', 40),
 (6, 'phone', 300000, 'Apple iPhone 14', 'A high-quality smartphone with the latest features.', 25),
@@ -196,20 +240,20 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`email`, `password`, `firstname`, `lastname`, `registrationDate`, `role`) VALUES
 ('admin@teszt.com', '$2a$10$RNdFkyRtzQ3tDhLmsgjU7.vFoBYOiYiMXLMkagpQqgf.sUo4F0oK2', 'Admin', 'Teszt', '2023-11-03', 'admin'),
-('acsgabor@gmail.com', '$2a$10$WJ9TVwadswdlZ5kU9EnRWOJG6j5yIHpU4jXPZ0ApFidie3Nsp3SFe', 'Gábor', 'Ács', '2023-11-04', 'user'),
-('angelagriffin@gmail.com', '$2a$10$omlgCuJ3YUsNvtcy.cN0DOXV30LQsut1JNX7gPILh4AmqsEovGcpy', 'Angela', 'Griffin', '2023-11-05', 'user'),
-('anitaplain@gmail.com', '$2a$10$w.ZccVEnt4bhsVxJ.nPwFOvnaza4k09BOFC28cDKXQ3l8TLhKdecy', 'Anita', 'Plain', '2023-11-05', 'user'),
-('borbelyattila@gmail.com', '$2a$10$wNisriopHxVRQVHfm1Ty8eG8O6tEDx/ExmpCP2wRUU7lqJEE96sM.', 'Attila', 'Borbély', '2023-11-04', 'user'),
-('edwarddaum@outlook.com', '$2a$10$SEhf0pG30ySlEDJVXRkXkOjSiR5tg/IrfEp4LRHAOtRsXuQb11i/C', 'Edward', 'Daum', '2023-11-05', 'user'),
-('georgefriday@gmail.com', '$2a$10$BQyasHmNsFY6TU6yHdbDm.M2hUddOE16DBje5T0NAKaIA19fg8XEu', 'George', 'Friday', '2023-11-05', 'user'),
-('gerazdenko@gmail.com', '$2a$10$tsufDzjC4K90GhOqtujvnOincKQ0kxoQCWpShStw4214TcujZgaQa', 'Zdenkó', 'Gera', '2023-11-04', 'user'),
-('harmonika@gmail.com', '$2a$10$OQr5YBsUiwxoMfUMfKEAgO7fnzpmk6Ajr.y/jwwVVP/a6EZS6ND0y', 'Mónika', 'Har', '2023-11-05', 'user'),
-('johncena@gmail.com', '$2a$10$RN2rzmaRjhnPk4GPkamRcecKmevy/Qo90GeWcF6p7LVUGB5dWw73K', 'John', 'Cena', '2023-11-05', 'user'),
-('johndoe@gmail.com', '$2a$10$uNEjxgwuYkCLNLhwRHiP8.6D4WETgNgawSCxmuxoww2W2JFaT/Pa2', 'Doe', 'John', '2023-11-04', 'user'),
-('kathywade@gmail.com', '$2a$10$E.mr9rupvlwT4nZhwTOe8.0Ekffi6M70MjkhdZ85MxFkOr8dLemcK', 'Kathy', 'Wade', '2023-11-05', 'user'),
-('kovacsistvan@gmail.com', '$2a$10$Dv6xvKAw4RXoewpywE2.GOvt.qybFMfbY.bI67P9.uMiGpO1wCsGS', 'István', 'Kovács', '2023-11-04', 'user'),
-('parazita@gmail.com', '$2a$10$F/OsT73z0nvXZzN1L.eIm./xVQ5zjIWT9H9rI0bncp3g.yXZCqS2m', 'Zita', 'Para', '2023-11-04', 'user'),
-('tothjanos@gmail.com', '$2a$10$/gq8ERrjefkcibOgkxGR5eyBSD/0MhTVZCPhizRoDWSs3dsSAaEtG', 'János', 'Tóth', '2023-11-04', 'user');
+('bivalyulrich@gmail.com', '$2a$10$dkOUTSS4veD4R.7nAzemjOWQAKAa/wKfI.J3DXuU5MW.Xy0Th/Blu', 'Ulrich', 'Bivaly', '2023-11-11', 'user'),
+('kisspista@gmail.com', '$2a$10$kW3c0imV3f8f7Eb4kQGFGONqlBDEdf1E/7GGloIdo5BUTkpJ9xz.y', 'pista', 'kiss', '2023-11-06', 'user'),
+('kovacsbertalan@gmail.com', '$2a$10$U4M.K0XeHMRUcCdLdNo5qu8Dqwcysy7GE9dBcqXuh7KtAxLNOvA.i', 'Bertalan', 'Kovács', '2023-11-10', 'user'),
+('kowalskyvega@gmail.com', '$2a$10$LGYVWrfT8v.SpdEO45KvHuInAY5GnhK9am9zWmJft/V0KLGaMFb1S', 'vega', 'kowalsky', '2023-11-11', 'user'),
+('lakatosemanuel@gmail.com', '$2a$10$JxwOuTKX4goMICOAU/GCU.gJ0nIgbh9JFWGiA7UUw9wAvx6/97S16', 'emanuel', 'lakatos', '2023-11-11', 'user'),
+('nagyimre@gmail.com', '$2a$10$USmYkhCtW26a5bIk.4BOoeWCzNJz9kbBGt.eg7lTgpqfUQSEh7WPu', 'imre', 'nagy', '2023-11-06', 'user'),
+('nagylajos@gmail.com', '$2a$10$y3t7oRNwpFmBnK5CnqfixeCHTDwpIZ2Awjjye.Vre5UFJ0xfmEKGe', 'Lajos', 'Nagy ', '2023-11-11', 'user'),
+('nagymarika@gmail.com', '$2a$10$t0Ucr.TjgjEh989OpTPyNeDoHc/y3xCquxvMn49jvtWbbF5dnBIiC', 'marika', 'nagy', '2023-11-06', 'user'),
+('palpeter@gmail.com', '$2a$10$Kf8VSAuGNRpWDlaZurnHu.RSepkd8tOr9xV82uxyaSIzxR/XdxrZ6', 'peter', 'pal', '2023-11-11', 'user'),
+('papucspeter@gmail.com', '$2a$10$CJZUxy3owllvZay0q.jk7eAXM.4DFgk1OZpRBSMHcAllzMU18B7hS', 'péter', 'papucs', '2023-11-11', 'user'),
+('peterpal@gmail.com', '$2a$10$/IDPj51zKI8tEwj5l7sUqOciAbgI0y.efX7ZLWwJr6zlJbmTHcoc2', 'pál', 'peter', '2023-11-11', 'user'),
+('sirlancelot@gmail.com', '$2a$10$ACxD9kfrBdhj0qYAKR1Yie1457.9aswcqGs9ymJocdW2fU5Cs2Gx6', 'lancelot', 'sir', '2023-11-11', 'user'),
+('tesztelek@tesztelek.com', '$2a$10$zyv2yJ7T/PpiBff/hUa2Ruvc1eoOYhWlIhepY2x17P8ne7lK2Cuvy', 'Teszt', 'Elek', '2023-11-05', 'user'),
+('tisztasag@gmail.com', '$2a$10$UJOyNaNlLNSMvAJN94KWEey/K3CBIuGabkd9mODK2KFuKnuIpzraK', 'ság', 'tiszta', '2023-11-11', 'user');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -290,7 +334,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT a táblához `comment`
@@ -302,7 +346,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT a táblához `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT a táblához `product`
@@ -330,8 +374,8 @@ ALTER TABLE `cart`
 -- Megkötések a táblához `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
-  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `deliverydetails`
@@ -343,27 +387,27 @@ ALTER TABLE `deliverydetails`
 -- Megkötések a táblához `images`
 --
 ALTER TABLE `images`
-  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `itemsincart`
 --
 ALTER TABLE `itemsincart`
-  ADD CONSTRAINT `itemsincart_ibfk_1` FOREIGN KEY (`cartID`) REFERENCES `cart` (`cartID`),
-  ADD CONSTRAINT `itemsincart_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+  ADD CONSTRAINT `itemsincart_ibfk_1` FOREIGN KEY (`cartID`) REFERENCES `cart` (`cartID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `itemsincart_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `ordereditems`
 --
 ALTER TABLE `ordereditems`
-  ADD CONSTRAINT `ordereditems_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`),
-  ADD CONSTRAINT `ordereditems_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+  ADD CONSTRAINT `ordereditems_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ordereditems_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
