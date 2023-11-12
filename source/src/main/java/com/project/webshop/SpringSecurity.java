@@ -55,6 +55,8 @@ public class SpringSecurity {
                         .requestMatchers("/Signup/**").permitAll()
                         .requestMatchers("/registerUser/**").permitAll()
 
+                        //Itt azért van minden request engedélyezve, mert a jogosultságokat nem itt ellenőrzi a rendszer
+                        //hanem a View.java-ban
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form

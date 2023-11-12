@@ -165,4 +165,11 @@ public class ProductDAO {
         String sqlCode = "update product set type=?, price=? description=? quantity=? where name=?";
         jdbcTemplate.update(sqlCode, type, price, description, quantity, productModel.getName());
     }
+
+    public void addToQuantityByID(int productID, int count) {
+        String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) - ?) WHERE productID = ?";
+
+        jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
+
+    }
 }
