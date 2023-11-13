@@ -53,42 +53,29 @@
     
 		<section>
 		    <h1>Rendelések</h1>
-				<table>
-				  <tr>
-				    <th>Megrendelő e-mail címe</th>
-				    <th>Rendelés megnevezése</th>
-				    <th>Mennyiség (db)</th>
-				    <th>Összeg (Ft)</th>
-				    <th>Teljesítve</th>
-                      <th>Kezelés</th>
-				  </tr>
-				  <tr th:each="order : ${orders}">
-				    <td th:text="${order['email']}"></td>
-				    <td>Termék_neve</td>
-				    <td>2</td>
-				    <td th:text="${order['price']}">118 000</td>
-				    <td>igen</td>
-                      <td>
-                      <form action="#" th:action="deleteOrder" method="post">
-                        <input type="hidden" th:value="${order['orderID']}">
-                        <button type="submit">Törlés</button>
-                      </form>
-                      </td>
-				  </tr>
-				  <!--<tr>
-				     <td>Laci@gmail.com</td>
-				    <td>Iphone 15</td>
-				    <td>1</td>
-				    <td>500 000</td>
-				    <td>nem</td>
-                      <td>
-                          <form action="#" th:action="deleteOrder" method="post">
-                              <input type="hidden" value="">
-                              <button type="submit">Törlés</button>
-                          </form>
-                      </td>
-				  </tr>-->
-				</table>
+                <table style="width: 100%">
+                    <tr>
+                        <th>Megrendelő email címe</th>
+                        <th>Termék neve</th>
+                        <th>Mennyiség (db)</th>
+                        <th>Ára (Ft)</th>
+                        <th>Megrendelés ideje</th>
+                        <th>Lehetőség</th>
+                    </tr>
+                    <tr th:each="order : ${orders}">
+                        <td th:text="${order['email']}">Airpods</td>
+                        <td th:text="${order['name']}">pelda_nev</td>
+                        <td th:text="${order['quantity']}">-1</td>
+                        <td th:text="${order['price']}">-1000</td>
+                        <td th:text="${order['orderDate']}">-1</td>
+                        <td>
+                            <form action="#" th:action="@{/deleteOrder}" method="post">
+                            <input type="hidden" th:value="${order['orderID']}" name="orderID">
+                                <input type="submit" value="Törlés">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
 		</section>
       	
     </main>

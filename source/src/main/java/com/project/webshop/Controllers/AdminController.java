@@ -7,7 +7,9 @@ import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.ProductModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 
-public class AdminController extends UserController {
+@Controller
+public class AdminController {
     @PostMapping("createProduct")
     @ResponseBody
     public String addProduct(@RequestParam String type, @RequestParam int price, @RequestParam String name, @RequestParam String description,
@@ -146,13 +149,14 @@ public class AdminController extends UserController {
      * Kitörli az adatbázisból az adott ID-vel rendelkező rendelést, amennyiben az létezik.
      * @param orderID a rendelés azonosítója
      */
-    @PostMapping("deleteOrder")
-    public void deleteOrder(int orderID) {
+    @PostMapping(value="deleteOrder")
+    public String deleteOrder(@RequestParam("orderID") int orderID) {
         OrderDAO orderDAO = new OrderDAO();
         OrderModel orderModel = orderDAO.getOrderById(orderID);
         if(orderModel != null) {
             orderDAO.deleteOrder(orderID);
         }
+        return "redirect:/Admin_order";
     }
 
     public void shipOrder(int orderID) {
@@ -170,7 +174,7 @@ public class AdminController extends UserController {
      */
 
     @PostMapping(value = "deleteUser")
-    public void deleteUser(HttpServletRequest request) {
+    public String deleteUser(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
         UserDAO userDAO = new UserDAO();
@@ -179,5 +183,6 @@ public class AdminController extends UserController {
         if (object != null) {
             userDAO.deleteUser(object.toString());
         }
+        return "redirect:/";
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -162,13 +163,16 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+
         return "Admin_user.html";
     }
 
     @GetMapping("Admin_order")
-    public String Admin_order(HttpServletRequest request) {
+    public String Admin_order(HttpServletRequest request, Model model) {
         HttpSession httpSession = request.getSession(false);
         UserModel userModel = null;
+        OrderDAO orderDAO = new OrderDAO();
+
         if(httpSession != null) {
             userModel = (UserModel) httpSession.getAttribute("email");
         }
@@ -176,6 +180,12 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+        List<Map<String, Object>> orders = orderDAO.getAllOrders();
+        for(Map<String, Object> order : orders) {
+            order.put("ordereditems", orderDAO.getOrderItemsByID((Integer) order.get("orderID")));
+        }
+        model.addAttribute("orders", orders);
+
         return "Admin_order.html";
     }
 

@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -79,8 +80,8 @@ public class OrderDAO {
      * @return
      */
     public boolean deleteOrder(int orderID) {
-        String sqlCode ="DELETE FROM orders WHERE orders.orderID ="+orderID+";";
-        return jdbcTemplate.update(sqlCode) == 1;
+        String sqlCode ="DELETE FROM orders WHERE orderID = ?;";
+        return jdbcTemplate.update(sqlCode, orderID) == 1;
     }
 
     /**
@@ -89,7 +90,7 @@ public class OrderDAO {
      * @return A kért rendelés OrderModellje
      */
     public OrderModel getOrderById(int id) {
-        String sqlCode = "SELECT * FROM orders WHERE order.orderID = ?";
+        String sqlCode = "SELECT * FROM orders WHERE orderID = ?";
         Map<String, Object> order;
         try {
             order = jdbcTemplate.queryForMap(sqlCode, id);
@@ -99,6 +100,11 @@ public class OrderDAO {
         }
 
         return new OrderModel((int) order.get("orderID"), (int) order.get("price"),
-                order.get("email").toString(), (LocalDateTime) order.get("orderDate"));
+                order.get("email").toString(), (Date) order.get("orderDate"));
+    }
+
+    public List<Map<String, Object>> getAllOrders() {
+        String sqlCode = "SELECT * FROM orders;";
+        return jdbcTemplate.queryForList(sqlCode);
     }
 }
