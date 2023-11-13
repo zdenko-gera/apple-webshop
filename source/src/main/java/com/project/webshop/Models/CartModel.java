@@ -62,30 +62,11 @@ public class CartModel {
         }
     }
 
-    public int getQuantityByProductID(int productID) {
-        int index = itemsInCart.indexOf(productID);
-        if (index != -1) {
-            return quantityInCart.get(index);
-        }
-        return 0;
-    }
-
-    public void updateQuantityByID(int productID, int newQuantity) {
-        int index = itemsInCart.indexOf(productID);
-        if (index != -1) {
+    public void updateQuantityInCart(int productID, int newQuantity) {
+        if (hasItem(productID)) {
+            int index = itemsInCart.indexOf(productID);
             quantityInCart.set(index, newQuantity);
-        }
-    }
-
-    public void increaseQuantity(int productID) {
-        int currentQuantity = getQuantityByProductID(productID);
-        updateQuantityByID(productID, currentQuantity + 1);
-    }
-
-    public void decreaseQuantity(int productID) {
-        int currentQuantity = getQuantityByProductID(productID);
-        if (currentQuantity > 1) {
-            updateQuantityByID(productID, currentQuantity - 1);
+            cartDAO.updateQuantityByID(cartID, Integer.toString(productID), Integer.toString(newQuantity));
         }
     }
 

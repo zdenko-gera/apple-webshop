@@ -162,6 +162,14 @@ public class UserController {
         return "redirect:/Cart";
     }
 
+    /**
+     * Töröl egy terméket a kosárból, amennyiben a felhasználó be van jelentkezve. Lekéri a termék ID-ját egy hidden
+     * inputon keresztül. Illetve megnézi, hogy a termék a kosárban van-e, (ha nem akkor nem csinál semmit), és ha
+     * igen akkor törli. Azt, hogy benne van-e a kosárban nem az adatbázisból kéri le, hanem a sessionből lekéri a
+     * UserModelt, és abból a CartModelt, és abban nézi meg.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
     @PostMapping("removeFromCart")
     public String removeFromCart(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
@@ -182,22 +190,31 @@ public class UserController {
         return "redirect:/Cart";
     }
 
+    /**
+     * Módosítja a termék mennyiségét a kosárban, amennyiben a felhasználó be van jelentkezve.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó.
+     * @param productID A módosítandó termék azonosítója.
+     * @param newQuantity Az új mennyiség, amit be kell állítani a kosárban.
+     * @param action Az elvégzendő művelet típusa ("increase" vagy "decrease").
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
     @PostMapping("/updateCart")
-    public String updateCart(HttpServletRequest request, @RequestParam String action) {
+    public String updateCart(@RequestParam("productID") int productID,
+                             @RequestParam("newQuantity") int newQuantity,
+                             @RequestParam("action") String action,
+                             HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
         if (httpSession == null || httpSession.getAttribute("email") == null) {
             return "redirect:/login";
         }
 
         UserModel user = (UserModel) httpSession.getAttribute("email");
-        int cartID = user.getCartModel().getCartID();
-        String productID = request.getParameter("productID");
-        int currentQuantity = user.getCartModel().getQuantityByProductID(Integer.parseInt(productID));
+        CartModel cartModel = user.getCartModel();
 
         if ("increase".equals(action)) {
-            user.getCartModel().getCartDAO().updateQuantityByID(cartID, productID, String.valueOf(currentQuantity + 1));
-        } else if ("decrease".equals(action) && currentQuantity > 1) {
-            user.getCartModel().getCartDAO().updateQuantityByID(cartID, productID, String.valueOf(currentQuantity - 1));
+            cartModel.updateQuantityInCart(productID, newQuantity + 1);
+        } else if ("decrease".equals(action) && newQuantity > 0) {
+            cartModel.updateQuantityInCart(productID, newQuantity - 1);
         }
 
         return "redirect:/cart";
