@@ -161,9 +161,40 @@ public class UserController {
 
         return "redirect:/Cart";
     }
+    public String removeFromCart(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
-    public void updateCart(int itemID, int quantity) {
+        int productID = Integer.parseInt(request.getParameter("productID"));
 
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        CartModel cart = user.getCartModel();
+
+        if(!user.getCartModel().hasItem(productID)) {
+            cart.removeItemFromCart(productID);
+            cart.getCartDAO().removeFromCart(cart.getCartID(), productID);
+        }
+
+        return "redirect:/Cart";
+    }
+
+    public String updateCart(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
+
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        int newQuantity = (Integer) request.getAttribute("newQuantity");
+        int productID = (Integer) request.getAttribute("productID");
+        int cartID = user.getCartModel().getCartID();
+        if(newQuantity > 0) {
+            user.getCartModel().getCartDAO().updateQuantityByID(cartID, productID, newQuantity);
+        }
+
+        return "Cart";
     }
 
     @PostMapping("createOrder")

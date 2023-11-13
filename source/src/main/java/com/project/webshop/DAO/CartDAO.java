@@ -4,6 +4,7 @@ import com.project.webshop.AppConfig;
 import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
 import org.apache.catalina.User;
+import org.apache.catalina.valves.JDBCAccessLogValve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -49,6 +50,11 @@ public class CartDAO {
         return jdbcTemplate.update(sqlCode, cartID, productID, quantity) == 1;
     }
 
+    public void removeFromCart(int cartID, int productID) {
+        String sqlCode = "DELETE FROM itemsincart WHERE cartID = ? AND productID = ?";
+        jdbcTemplate.update(sqlCode);
+    }
+
 
     /**
      * Ebben a függvényben van megvalósítva a kosárból törlés
@@ -76,6 +82,11 @@ public class CartDAO {
         int cartID = getUserCartID(email);
         String sqlCode = "DELETE FROM itemsincart WHERE cartID = ?";
         jdbcTemplate.update(sqlCode, cartID);
+    }
+
+    public void updateQuantityByID(int cartID, int productID, int quantity) {
+        String sqlCode = "UPDATE itemsincart SET quantity = ? WHERE cartID = ? AND productID = ?";
+        jdbcTemplate.update(sqlCode, quantity, cartID, productID);
     }
 
 }
