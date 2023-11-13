@@ -11,14 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 
 public class AdminController extends UserController {
     @PostMapping("createProduct")
     @ResponseBody
-    public String addProduct(@RequestParam String type,@RequestParam int price,@RequestParam String name,@RequestParam String description,
-                           @RequestParam int quantity,@RequestParam ArrayList<String> images, Model model) {
+    public String addProduct(@RequestParam String type, @RequestParam int price, @RequestParam String name, @RequestParam String description,
+                             @RequestParam int quantity, @RequestParam ArrayList <MultipartFile> images, Model model) {
         boolean error = false;
 
         if(type.equals("")) {
@@ -31,10 +32,6 @@ public class AdminController extends UserController {
         }
         if(name.equals("")) {
             model.addAttribute("emptyFieldName", "Terméknév megadása kötelező!");
-            error = true;
-        }
-        if(images.size() == 0) {
-            model.addAttribute("emptyFieldImages", "Minimum 1 db kép megadása kötelező!");
             error = true;
         }
 

@@ -62,20 +62,20 @@
 				    <th>Teljesítve</th>
                       <th>Kezelés</th>
 				  </tr>
-				  <tr>
-				    <td>Józsi@gmail.com</td>
-				    <td>Airpods</td>
+				  <tr th:each="order : ${orders}">
+				    <td th:text="${order['email']}"></td>
+				    <td>Termék_neve</td>
 				    <td>2</td>
-				    <td>118 000</td>
+				    <td th:text="${order['price']}">118 000</td>
 				    <td>igen</td>
                       <td>
                       <form action="#" th:action="deleteOrder" method="post">
-                        <input type="hidden" value="">
+                        <input type="hidden" th:value="${order['orderID']}">
                         <button type="submit">Törlés</button>
                       </form>
                       </td>
 				  </tr>
-				  <tr>
+				  <!--<tr>
 				     <td>Laci@gmail.com</td>
 				    <td>Iphone 15</td>
 				    <td>1</td>
@@ -87,8 +87,8 @@
                               <button type="submit">Törlés</button>
                           </form>
                       </td>
-				  </tr>
-				</table>	
+				  </tr>-->
+				</table>
 		</section>
       	
     </main>
