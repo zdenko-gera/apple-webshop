@@ -204,25 +204,25 @@ public class UserController {
         UserModel user = (UserModel) httpSession.getAttribute("email");
         boolean error = false;
 
-        if(user.getEmail() == null){
+        if(user == null){
             System.out.println("hiba1");
-            model.addAttribute("emailNull", "Váratlan hiba történt!");
+            model.addAttribute("pwerror", "Váratlan hiba történt!");
             error = true;
             return "redirect:/";
         }
         if(!userDAO.checkCredentials(user.getEmail(), oldPassword)){
             System.out.println("hiba2");
-            model.addAttribute("wrongPw", "A megadott jelszó nem egyezik");
+            model.addAttribute("pwerror", "A megadott régi jelszó nem jó");
             error = true;
         }
         if(!newPassword1.equals(newPassword2)){
             System.out.println("hiba3");
-            model.addAttribute("pwNoMatch", "Az új jelszavak nem egyeznek!");
+            model.addAttribute("pwerror", "Az új jelszavak nem egyeznek!");
             error = true;
         }
         if(!passwordValidation(newPassword1) || !passwordValidation(newPassword2)) {
             System.out.println("hiba4");
-            model.addAttribute("pwNotValid", "A jelszónak 8 karakternél hosszabbnak kell lennie!");
+            model.addAttribute("pwerror", "A jelszónak 8 karakternél hosszabbnak kell lennie!");
             error = true;
         }
 
@@ -248,23 +248,81 @@ public class UserController {
         UserModel user = (UserModel) httpSession.getAttribute("email");
         boolean error = false;
 
-        if(user.getEmail() == null){
-            model.addAttribute("emailNull", "Váratlan hiba történt!");
+        if(user == null){
+            model.addAttribute("nameerror", "Váratlan hiba történt!");
             error = true;
             return "redirect:/";
         }
-        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z-9].*")){
-            model.addAttribute("wrongLastName", "A megadott utónév nem megfelelő formátumú");
+        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("nameerror", "A megadott utónév nem megfelelő formátumú");
             error = true;
         }
-        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z-9].*")){
-            model.addAttribute("wrongFirstName", "A megadott keresztnév nem megfelelő formátumú");
+        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("nameerror", "A megadott keresztnév nem megfelelő formátumú");
             error = true;
         }
 
         if(error) return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
 
         user.getUserDAO().updateUserNameByEmail(user, firstname, lastname);
+        return "redirect:/";
+    }
+
+    @PostMapping(value="changeDeliveryDetails")
+    public String changeDeliveryDetails( @RequestParam("postalcode") int postalCode,
+                                      @RequestParam("city") String city, @RequestParam("street") String street,
+                                      @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+                                      Model model){
+        HttpSession session = request.getSession();
+        UserModel user = (UserModel) session.getAttribute("email");
+        boolean error = false;
+
+        if(user == null){
+            model.addAttribute("dderror", "Váratlan hiba történt!");
+            error = true;
+            return "redirect:/";
+        }
+        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("dderror", "A megadott város nem megfelelő formátumú");
+            error = true;
+        }
+        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("dderror", "A megadott utca nem megfelelő formátumú");
+            error = true;
+        }
+
+        if(error) return "Profil";
+
+        user.getUserDAO().changeDeliveryDetailsByEmail(user, postalCode, city, street, housenumber);
+        return "redirect:/";
+    }
+
+    @PostMapping(value="changeBillingDetails")
+    public String changeBillingDetails( @RequestParam("postalcode") int postalCode,
+                                        @RequestParam("city") String city, @RequestParam("street") String street,
+                                        @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+                                        Model model){
+        HttpSession session = request.getSession();
+        UserModel user = (UserModel) session.getAttribute("email");
+        boolean error = false;
+
+        if(user == null){
+            model.addAttribute("bderror", "Váratlan hiba történt!");
+            error = true;
+            return "redirect:/";
+        }
+        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("bderror", "A megadott város nem megfelelő formátumú");
+            error = true;
+        }
+        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("bderror", "A megadott utca nem megfelelő formátumú");
+            error = true;
+        }
+
+        if(error) return "Profil";
+
+        user.getUserDAO().changeBillingDetailsByEmail(user, postalCode, city, street, housenumber);
         return "redirect:/";
     }
 
