@@ -178,7 +178,6 @@ public class UserController {
         }
 
         int productID = Integer.parseInt(request.getParameter("productID"));
-
         UserModel user = (UserModel) httpSession.getAttribute("email");
         CartModel cart = user.getCartModel();
 
@@ -186,7 +185,6 @@ public class UserController {
             cart.removeItemFromCart(productID);
             cart.getCartDAO().removeFromCart(cart.getCartID(), productID);
         }
-
         return "redirect:/Cart";
     }
 
@@ -199,10 +197,10 @@ public class UserController {
      * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
      */
     @PostMapping("/updateCart")
-    public String updateCart(@RequestParam("productID") int productID,
+    public String updateCart(HttpServletRequest request,
+                             @RequestParam("productID") int productID,
                              @RequestParam("newQuantity") int newQuantity,
-                             @RequestParam("action") String action,
-                             HttpServletRequest request) {
+                             @RequestParam("action") String action) {
         HttpSession httpSession = request.getSession(false);
         if (httpSession == null || httpSession.getAttribute("email") == null) {
             return "redirect:/login";
@@ -216,8 +214,7 @@ public class UserController {
         } else if ("decrease".equals(action) && newQuantity > 0) {
             cartModel.updateQuantityInCart(productID, newQuantity - 1);
         }
-
-        return "redirect:/cart";
+        return "redirect:/Cart";
     }
 
 
