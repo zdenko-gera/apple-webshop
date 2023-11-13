@@ -161,6 +161,8 @@ public class UserController {
 
         return "redirect:/Cart";
     }
+
+    @PostMapping("removeFromCart")
     public String removeFromCart(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null || httpSession.getAttribute("email") == null) {
@@ -172,7 +174,7 @@ public class UserController {
         UserModel user = (UserModel) httpSession.getAttribute("email");
         CartModel cart = user.getCartModel();
 
-        if(!user.getCartModel().hasItem(productID)) {
+        if(user.getCartModel().hasItem(productID)) {
             cart.removeItemFromCart(productID);
             cart.getCartDAO().removeFromCart(cart.getCartID(), productID);
         }
@@ -180,22 +182,27 @@ public class UserController {
         return "redirect:/Cart";
     }
 
-    public String updateCart(HttpServletRequest request) {
+    @PostMapping("/updateCart")
+    public String updateCart(HttpServletRequest request, @RequestParam String action) {
         HttpSession httpSession = request.getSession(false);
-        if(httpSession == null || httpSession.getAttribute("email") == null) {
-            return "Login";
+        if (httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/login";
         }
 
         UserModel user = (UserModel) httpSession.getAttribute("email");
-        int newQuantity = (Integer) request.getAttribute("newQuantity");
-        int productID = (Integer) request.getAttribute("productID");
         int cartID = user.getCartModel().getCartID();
-        if(newQuantity > 0) {
-            user.getCartModel().getCartDAO().updateQuantityByID(cartID, productID, newQuantity);
+        String productID = request.getParameter("productID");
+        int currentQuantity = user.getCartModel().getQuantityByProductID(Integer.parseInt(productID));
+
+        if ("increase".equals(action)) {
+            user.getCartModel().getCartDAO().updateQuantityByID(cartID, productID, String.valueOf(currentQuantity + 1));
+        } else if ("decrease".equals(action) && currentQuantity > 1) {
+            user.getCartModel().getCartDAO().updateQuantityByID(cartID, productID, String.valueOf(currentQuantity - 1));
         }
 
-        return "Cart";
+        return "redirect:/cart";
     }
+
 
     @PostMapping("createOrder")
     public String createOrder(HttpServletRequest request, Model model) {

@@ -39,6 +39,7 @@ public class CartDAO {
         String sqlCode = "INSERT INTO cart (email) VALUES (?)";
         return jdbcTemplate.update(sqlCode, email) == 1;
     }
+
     /**
      * Ebben a függvényben van megvalósítva a kosárhoz hozzáadás
      * @param cartID A kosár azonosítója amihez hozzáadunk
@@ -50,20 +51,25 @@ public class CartDAO {
         return jdbcTemplate.update(sqlCode, cartID, productID, quantity) == 1;
     }
 
-    public void removeFromCart(int cartID, int productID) {
-        String sqlCode = "DELETE FROM itemsincart WHERE cartID = ? AND productID = ?";
-        jdbcTemplate.update(sqlCode);
+    /**
+     * Ebben a függvényben van megvalósítva a mennyiség módosítás
+     * @param cartID A kosár azonosítója amit frissíteni akarunk
+     * @param productID A termék azonosító amit frissítünk
+     * @param quantity darabszám
+     */
+    public void updateQuantityByID(int cartID, String productID, String quantity) {
+        String sqlCode = "UPDATE itemsincart SET quantity = ? WHERE cartID = ? AND productID = ?";
+        jdbcTemplate.update(sqlCode, quantity, cartID, productID);
     }
-
 
     /**
      * Ebben a függvényben van megvalósítva a kosárból törlés
-     * @param email A felhasználó email címe
-     * @param product A termék amit hozzá akarunk adni
-     * @param quantity darabszám
+     * @param cartID A kosár azonosítója amiből törlünk
+     * @param productID A termék azonosító amit törlünk
      */
-    public boolean removeFromCart(String email, ProductModel product, int quantity) {
-        return false;
+    public void removeFromCart(int cartID, int productID) {
+        String sqlCode = "DELETE FROM itemsincart WHERE cartID = ? AND productID = ?";
+        jdbcTemplate.update(sqlCode, cartID, productID);
     }
 
     /**
@@ -83,10 +89,4 @@ public class CartDAO {
         String sqlCode = "DELETE FROM itemsincart WHERE cartID = ?";
         jdbcTemplate.update(sqlCode, cartID);
     }
-
-    public void updateQuantityByID(int cartID, int productID, int quantity) {
-        String sqlCode = "UPDATE itemsincart SET quantity = ? WHERE cartID = ? AND productID = ?";
-        jdbcTemplate.update(sqlCode, quantity, cartID, productID);
-    }
-
 }
