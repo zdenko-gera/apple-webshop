@@ -101,10 +101,9 @@
         <div class="homepage-newProducts-gridContainer">
           <div class="homepage-newProducts-gridItem" th:each="product : ${products}">
             <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                src="../Pictures/HomepagePic/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
+              <img th:src="${product['images'].get(0)['imagePath']}"
+                src="../pictures/ProductPage/gbpqy8wkncs5lyoorw7c.png"
+                alt="airpods"/>
             </div>
             <div class="homepage-newProducts-gridItem-productName">
               <p th:text="${product['name']}">AirPods Pro 2 Lightning tokkal</p>
@@ -112,7 +111,7 @@
             <div class="homepage-newProducts-gridItem-productBuy">
               <form action="#" th:action="@{/Productpage}">
                 <input type="hidden" th:value="${product['productID']}" name="productID">
-                <input type="submit" class="orderButton">
+                <input type="submit" class="orderButton" value="Megtekintés">
               </form>
 
               <p class="price" th:text="${product['price']} + ' Ft'">580 000Ft</p>

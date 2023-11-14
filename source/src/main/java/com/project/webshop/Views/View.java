@@ -94,8 +94,13 @@ public class View {
      * @return A weboldal neve, amire át akarjuk irányítani a felhasználót
      */
     @GetMapping("Webshop")
-    public String Webshop(Model model) {
+    public String Webshop(HttpServletRequest request, Model model) {
         List<Map<String, Object>> products = new ProductDAO().getProducts();
+
+        for(Map product: products) {
+            List productImages = new ImageDAO().getImage((Integer) product.get("productID"));
+            product.put("images", productImages);
+        }
         model.addAttribute("products", products);
         return "Webshop.html";
     }
