@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -121,5 +122,29 @@ public class UserDAO {
         user.setLastname(lastname);
         String sqlCode = "UPDATE user SET firstname = ?, lastname=? WHERE email=?;";
         jdbcTemplate.update(sqlCode, firstname, lastname, user.getEmail());
+    }
+
+    public void changeDeliveryDetailsByEmail(UserModel user, int postalCode, String city,
+                                             String street, int housenumber){
+        user.getDeliveryDetailsModel().setCity(city);
+        user.getDeliveryDetailsModel().setHousenumber(housenumber);
+        user.getDeliveryDetailsModel().setPostalcode(postalCode);
+        user.getDeliveryDetailsModel().setStreet(street);
+        user.getDeliveryDetailsModel().setCity(city);
+
+        String sqlCode = "Update deliverydetails set postalCode = ?, city = ?, street = ?, housenumber = ? where email = ?";
+        jdbcTemplate.update(sqlCode, postalCode, city, street, housenumber, user.getEmail());
+    }
+
+    public void changeBillingDetailsByEmail(UserModel user, int postalCode, String city,
+                                             String street, int housenumber){
+        user.getBillingDetailsModel().setCity(city);
+        user.getBillingDetailsModel().setHousenumber(housenumber);
+        user.getBillingDetailsModel().setPostalcode(postalCode);
+        user.getBillingDetailsModel().setStreet(street);
+        user.getBillingDetailsModel().setCity(city);
+
+        String sqlCode = "Update billingdetails set postalCode = ?, city = ?, street = ?, housenumber = ? where email = ?";
+        jdbcTemplate.update(sqlCode,postalCode, city, street, housenumber, user.getEmail());
     }
 }

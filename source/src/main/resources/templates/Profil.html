@@ -88,6 +88,11 @@
     <main>
       <form action="#" th:action="@{/changeName}" method="post">
         <fieldset>
+          <p
+                  class="error-container"
+                  th:if="${nameerror != null}"
+                  th:text="${nameerror}"
+          ></p>
           <label for="firstname"> Vezetéknév: </label>
           <input
             type="text"
@@ -113,6 +118,11 @@
       </form>
       <form action="#" th:action="@{/changePassword}" method="post">
         <fieldset>
+          <p
+                  class="error-container"
+                  th:if="${pwerror != null}"
+                  th:text="${pwerror}"
+          ></p>
           <label for="newPassword1"> Új jelszó: </label>
           <input
             type="password"
@@ -146,18 +156,13 @@
         </fieldset>
         <input type="submit">
       </form>
-      <form action="#" th:action="@{/}" method="post">
+      <!-- <form action="#" th:action="@{/changeDeliveryDetails}" method="post">
+        <p
+                class="error-container"
+                th:if="${dderror != null}"
+                th:text="${dderror}"
+        ></p>
           <h3>Szállítási adatok</h3>
-          <label for="deliveryDetailsCountry">Ország: </label>
-          <input
-            type="text"
-            maxlength="100"
-            placeholder="Magyarország"
-            required
-            class="form-input"
-            id="deliveryDetailsCountry"
-            name="deliveryDetailsCountry"
-          />
           <label for="deliveryDetailsPostalcode">Irányitoszám: </label>
           <input
             type="number"
@@ -198,7 +203,6 @@
             id="deliveryDetailsHouseNumber"
             name="deliveryDetailsHouseNumber"
           />
-        </fieldset>
         <input
           type="submit"
           name="login-btn"
@@ -206,18 +210,13 @@
           class="form-input gomb"
         />
       </form>
-      <form action="#" th:action="@{/}" method="post">
+      <form action="#" th:action="@{/changeBillingDetails}" method="post">
         <h3>Számlázási adatok</h3>
-        <label for="billingDetailsCountry">Ország: </label>
-        <input
-                type="text"
-                maxlength="100"
-                placeholder="Magyarország"
-                required
-                class="form-input"
-                id="billingDetailsCountry"
-                name="billingDetailsCountry"
-        />
+        <p
+                class="error-container"
+                th:if="${bderror != null}"
+                th:text="${bderror}"
+        ></p>
         <label for="billingDetailsPostalCode">Irányitoszám: </label>
         <input
                 type="number"
@@ -258,14 +257,13 @@
                 id="billingDetailsHouseNumber"
                 name="billingDetailsHouseNumber"
         />
-        </fieldset>
         <input
                 type="submit"
                 name="login-btn"
                 value="Frissít"
                 class="form-input gomb"
         />
-      </form>
+      </form>-->
 
       <form action="#" th:action="@{/logout}" method="post" style="box-shadow: none">
           <input type="submit" class="form-input gomb" style="background-color: red" value="Kijelentkezés">
