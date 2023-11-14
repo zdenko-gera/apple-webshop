@@ -69,6 +69,8 @@
   ##### A feladat elvégzését alátámasztó commit(ok):
 
   https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/90ab451e8d3b13166357bcdc7f1ea39c1d7cf92d
+  
+  https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/2adebea8c2443e4538e85248b775d6897eb2aead
 
 - Egyéb apróságok amikhez nem hoztunk létre issuekat (például Kommentek írása, vagy csak nem tartozott senkihez a feladat, és én megcsináltam):
 
