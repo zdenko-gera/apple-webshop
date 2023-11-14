@@ -51,7 +51,7 @@ public class UserModel {
         billingDetailsModel = new BillingDetailsModel(email, -1, null, null, -1);
         deliveryDetailsModel = new DeliveryDetailsModel(email, -1, null, null, -1);
         commentModel = new CommentModel(-1, -1, -1, email, null, null);
-        orderModel = new OrderModel(-1, -1, email, null, null);
+        orderModel = new OrderModel(-1, -1, email, null/*, null*/);
         userDAO = new UserDAO();
 
         List<Map<String, Object>> cart = cartModel.getCartDAO().getCart(email);

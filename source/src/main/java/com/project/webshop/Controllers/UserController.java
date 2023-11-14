@@ -4,6 +4,7 @@ import com.project.webshop.DAO.CartDAO;
 import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
@@ -125,7 +126,7 @@ public class UserController {
             httpSession.invalidate();
         }
 
-        return "redirect:/Index?logout=success";
+        return "redirect:/";
     }
 
     /**
@@ -249,7 +250,6 @@ public class UserController {
         UserModel user = (UserModel) httpSession.getAttribute("email");
         new OrderDAO().createOrder(user);
 
-
         user.getCartModel().getCartDAO().clearCart(user.getEmail());
         user.getCartModel().clearCart();
         return "Index";
@@ -275,23 +275,27 @@ public class UserController {
 
         HttpSession httpSession = request.getSession(false);
         UserDAO userDAO = new UserDAO();
-        Object email = httpSession.getAttribute("email");
+        UserModel user = (UserModel) httpSession.getAttribute("email");
         boolean error = false;
 
-        if(email == null){
-            model.addAttribute("emailNull", "Váratlen hiba történt!");
+        if(user.getEmail() == null){
+            System.out.println("hiba1");
+            model.addAttribute("emailNull", "Váratlan hiba történt!");
             error = true;
             return "redirect:/";
         }
-        if(!userDAO.checkCredentials(email.toString(), oldPassword)){
+        if(!userDAO.checkCredentials(user.getEmail(), oldPassword)){
+            System.out.println("hiba2");
             model.addAttribute("wrongPw", "A megadott jelszó nem egyezik");
             error = true;
         }
         if(!newPassword1.equals(newPassword2)){
+            System.out.println("hiba3");
             model.addAttribute("pwNoMatch", "Az új jelszavak nem egyeznek!");
             error = true;
         }
         if(!passwordValidation(newPassword1) || !passwordValidation(newPassword2)) {
+            System.out.println("hiba4");
             model.addAttribute("pwNotValid", "A jelszónak 8 karakternél hosszabbnak kell lennie!");
             error = true;
         }
@@ -300,8 +304,7 @@ public class UserController {
             return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
         }
 
-        UserModel user = userDAO.getUserDataByEmail(email.toString());
-        userDAO.updateUserPasswordByEmail(user, oldPassword, newPassword1, newPassword2);
+        userDAO.updateUserPasswordByEmail(user, newPassword1);
         return "redirect:/";
     }
 
@@ -315,13 +318,12 @@ public class UserController {
     @PostMapping(value="changeName")
     public String changeName(@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname
             , HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-        UserDAO userDAO = new UserDAO();
-        Object email = session.getAttribute("email");
+        HttpSession httpSession = request.getSession(false);
+        UserModel user = (UserModel) httpSession.getAttribute("email");
         boolean error = false;
 
-        if(email == null){
-            model.addAttribute("emailNull", "Váratlen hiba történt!");
+        if(user.getEmail() == null){
+            model.addAttribute("emailNull", "Váratlan hiba történt!");
             error = true;
             return "redirect:/";
         }
@@ -336,8 +338,7 @@ public class UserController {
 
         if(error) return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
 
-        UserModel user = userDAO.getUserDataByEmail(email.toString());
-        userDAO.updateUserNameByEmail(user, firstname, lastname);
+        user.getUserDAO().updateUserNameByEmail(user, firstname, lastname);
         return "redirect:/";
     }
 
@@ -388,5 +389,15 @@ public class UserController {
 
     public static boolean passwordValidation(String password) {
         return password.length() >= 8;
+    }
+
+    @PostMapping(value="deleteUserOrder")
+    public String deleteUserOrder(@RequestParam("orderIdentification") int orderID) {
+        OrderDAO orderDAO = new OrderDAO();
+        OrderModel orderModel = orderDAO.getOrderById(orderID);
+        if(orderModel != null) {
+            orderDAO.deleteUserOrder(orderID);
+        }
+        return "redirect:/Order";
     }
 }

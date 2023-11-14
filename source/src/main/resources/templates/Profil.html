@@ -24,7 +24,7 @@
   <body>
     <header>
       <div class="header-logo">
-        <a href="index"><span>i</span>Shop</a>
+        <a href="/"><span>i</span>Shop</a>
       </div>
       <div class="header-links">
         <div class="header-links-container">
@@ -35,6 +35,9 @@
         </div>
         <div class="header-links-container">
           <a href="Info" class="header-links-link">Elérhetőségek</a>
+        </div>
+        <div class="header-links-container">
+          <a href="Order" class="header-links-link">Rendeléseim</a>
         </div>
       </div>
       <div class="header-icons">
@@ -83,7 +86,7 @@
     </header>
 
     <main>
-      <form action="#" th:action="@{/}" method="post">
+      <form action="#" th:action="@{/changeName}" method="post">
         <fieldset>
           <label for="firstname"> Vezetéknév: </label>
           <input
@@ -105,76 +108,95 @@
             id="lastname"
             name="lastname"
           />
-          <label for="password"> Jelszó: </label>
+        </fieldset>
+        <input type="submit" class="form-input gomb">
+      </form>
+      <form action="#" th:action="@{/changePassword}" method="post">
+        <fieldset>
+          <label for="newPassword1"> Új jelszó: </label>
           <input
             type="password"
-            placeholder="nyolhosszuminimum"
+            placeholder="MintaJelszó"
             maxlength="100"
             required
             class="form-input"
-            id="password"
-            name="password"
+            id="newPassword1"
+            name="newPassword1"
           />
-          <label for="passworAgain"> Jelszó mégegyszer: </label>
+          <label for="newPassword2"> Új jelszó mégegyszer: </label>
           <input
             type="password"
-            placeholder="nyolhosszuminimum"
+            placeholder="MintaJelszó"
             maxlength="100"
             required
             class="form-input"
-            id="passwordAgain"
-            name="passwordAgain"
+            id="newPassword2"
+            name="newPassword2"
           />
+          <label for="oldPassword"> Régi jelszó: </label>
+          <input
+            type="password"
+            placeholder="MintaJelszó"
+            maxlength="100"
+            required
+            class="form-input"
+            id="oldPassword"
+            name="oldPassword"
+          />
+        </fieldset>
+        <input type="submit">
+      </form>
+      <form action="#" th:action="@{/}" method="post">
           <h3>Szállítási adatok</h3>
-          <label for="country">Ország: </label>
+          <label for="deliveryDetailsCountry">Ország: </label>
           <input
-            type="number"
+            type="text"
             maxlength="100"
             placeholder="Magyarország"
             required
             class="form-input"
-            id="country"
-            name="country"
+            id="deliveryDetailsCountry"
+            name="deliveryDetailsCountry"
           />
-          <label for="postalcode">Irányitoszám: </label>
+          <label for="deliveryDetailsPostalcode">Irányitoszám: </label>
           <input
             type="number"
             maxlength="4"
             required
             class="form-input"
             placeholder="3521"
-            id="postalcode"
-            name="postalcode"
+            id="deliveryDetailsPostalcode"
+            name="deliveryDetailsPostalcode"
           />
-          <label for="city">Város: </label>
+          <label for="deliveryDetailsCity">Város: </label>
           <input
             type="text"
             maxlength="100"
             placeholder="Miskolc"
             required
             class="form-input"
-            id="city"
-            name="city"
+            id="deliveryDetailsCity"
+            name="deliveryDetailsCity"
           />
-          <label for="street">Utca: </label>
+          <label for="deliveryDetailsStreet">Utca: </label>
           <input
             type="text"
             maxlength="100"
             placeholder="Balkán Sándor út"
             required
             class="form-input"
-            id="street"
-            name="street"
+            id="deliveryDetailsStreet"
+            name="deliveryDetailsStreet"
           />
-          <label for="houseNumber">Házszám: </label>
+          <label for="deliveryDetailsHouseNumber">Házszám: </label>
           <input
             type="number"
             maxlength="5"
             placeholder="32."
             required
             class="form-input"
-            id="houseNumber"
-            name="houseNumber"
+            id="deliveryDetailsHouseNumber"
+            name="deliveryDetailsHouseNumber"
           />
         </fieldset>
         <input
@@ -184,8 +206,69 @@
           class="form-input gomb"
         />
       </form>
-      <form action="#" th:action="@{/deleteUser}" method="post">
-        <input type="submit" value="Fiók törlése">
+      <form action="#" th:action="@{/}" method="post">
+        <h3>Számlázási adatok</h3>
+        <label for="billingDetailsCountry">Ország: </label>
+        <input
+                type="text"
+                maxlength="100"
+                placeholder="Magyarország"
+                required
+                class="form-input"
+                id="billingDetailsCountry"
+                name="billingDetailsCountry"
+        />
+        <label for="billingDetailsPostalCode">Irányitoszám: </label>
+        <input
+                type="number"
+                maxlength="4"
+                required
+                class="form-input"
+                placeholder="3521"
+                id="billingDetailsPostalCode"
+                name="billingDetailsPostalCode"
+        />
+        <label for="billingDetailsCity">Város: </label>
+        <input
+                type="text"
+                maxlength="100"
+                placeholder="Miskolc"
+                required
+                class="form-input"
+                id="billingDetailsCity"
+                name="billingDetailsCity"
+        />
+        <label for="billingDetailsStreet">Utca: </label>
+        <input
+                type="text"
+                maxlength="100"
+                placeholder="Balkán Sándor út"
+                required
+                class="form-input"
+                id="billingDetailsStreet"
+                name="billingDetailsStreet"
+        />
+        <label for="billingDetailsHouseNumber">Házszám: </label>
+        <input
+                type="number"
+                maxlength="5"
+                placeholder="32."
+                required
+                class="form-input"
+                id="billingDetailsHouseNumber"
+                name="billingDetailsHouseNumber"
+        />
+        </fieldset>
+        <input
+                type="submit"
+                name="login-btn"
+                value="Frissít"
+                class="form-input gomb"
+        />
+      </form>
+
+      <form action="#" th:action="@{/logout}" method="post" style="box-shadow: none">
+          <input type="submit" class="form-input gomb" style="background-color: red" value="Kijelentkezés">
       </form>
     </main>
 
