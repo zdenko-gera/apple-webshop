@@ -9,6 +9,7 @@ import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -125,6 +126,26 @@ public class UserController {
         }
 
         return "redirect:/Index?logout=success";
+    }
+
+    /**
+     * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban
+     * (amennyiben létezik), majd törli az adatait.
+     *
+     * @param request
+     */
+    @PostMapping(value = "/deleteUser")
+    public String deleteUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        UserDAO userDAO = new UserDAO();
+        UserModel user = (UserModel) session.getAttribute("email");
+
+        if (user != null) {
+            userDAO.deleteUser(user.getEmail());
+            session.invalidate();
+            return "redirect:/Login";
+        }
+        return "redirect:/Profil";
     }
 
     /**

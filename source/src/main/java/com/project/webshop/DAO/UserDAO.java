@@ -64,7 +64,7 @@ public class UserDAO {
      * @return true ha sikeres a törlés, false ha nem
      */
     public boolean deleteUser(String email) {
-        String sqlCode = "DELETE FROM user WHERE user.email = ?";
+        String sqlCode = "DELETE FROM user WHERE email = ?";
         return jdbcTemplate.update(sqlCode, email) == 1;
     }
 

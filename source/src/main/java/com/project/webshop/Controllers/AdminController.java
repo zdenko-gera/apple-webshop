@@ -154,22 +154,4 @@ public class AdminController extends UserController {
     public void deleteComment(int commentID) {
 
     }
-
-    /**
-     * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban
-     * (amennyiben létezik), majd törli az adatait.
-     * @param request
-     */
-
-    @PostMapping(value = "deleteUser")
-    public void deleteUser(HttpServletRequest request) {
-
-        HttpSession session = request.getSession(false);
-        UserDAO userDAO = new UserDAO();
-        Object object = session.getAttribute("email");
-
-        if (object != null) {
-            userDAO.deleteUser(object.toString());
-        }
-    }
 }
