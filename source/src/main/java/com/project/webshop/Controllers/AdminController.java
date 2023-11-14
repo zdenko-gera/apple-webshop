@@ -41,6 +41,7 @@ public class AdminController {
         if(error) return "Admin";
 
         ProductModel product = new ProductModel(price,quantity,type,name,description,images);
+        product.getProductDAO().createProduct(type,price,name,description,quantity);
         return "redirect:/";
 
     }

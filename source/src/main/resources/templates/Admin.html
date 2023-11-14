@@ -67,6 +67,90 @@
 				  </tr>
 				</table>	
 		</section>
+        <form action="#" th:action="@{/createProduct}" method="post">
+            <fieldset>
+                <p
+                        class="error-container"
+                        th:if="${emptyFieldType != null}"
+                        th:text="${emptyFieldType}"
+                ></p>
+                <label for="type"> Típus: </label>
+                <input
+                        type="text"
+                        maxlength="100"
+                        placeholder=""
+                        required
+                        class="form-input"
+                        id="type"
+                        name="type"
+                />
+                <p
+                        class="error-container"
+                        th:if="${emptyFieldPrice != null}"
+                        th:text="${emptyFieldPrice}"
+                ></p>
+                <label for="price"> Ár: </label>
+                <input
+                        type="text"
+                        maxlength="100"
+                        required
+                        class="form-input"
+                        id="price"
+                        name="price"
+                />
+                <p
+                        class="error-container"
+                        th:if="${emptyFieldName != null}"
+                        th:text="${emptyFieldName}"
+                ></p>
+                <label for="name"> Név: </label>
+                <input
+                        type="text"
+                        maxlength="100"
+                        required
+                        class="form-input"
+                        id="name"
+                        name="name"
+                />
+                <label for="description"> Leírás: </label>
+                <textarea
+                        required
+                        class="form-input"
+                        id="description"
+                        name="description"
+                ></textarea>
+                <label for="quantity"> Mennyiség: </label>
+                <input
+                        type="text"
+                        maxlength="100"
+                        required
+                        class="form-input"
+                        id="quantity"
+                        name="quantity"
+                />
+                <p
+                        class="error-container"
+                        th:if="${emptyFieldImages != null}"
+                        th:text="${emptyFieldImages}"
+                ></p>
+                <label for="images"> Képek: </label>
+                <input
+                        type="file"
+                        maxlength="100"
+
+                        class="form-input"
+                        id="images"
+                        name="images"
+                        multiple
+                />
+            </fieldset>
+            <input
+                    type="submit"
+                    name="create-product-btn"
+                    value="Árucikk hozzáadása"
+                    class="form-input gomb"
+            />
+        </form>
       	
     </main>
     <footer>

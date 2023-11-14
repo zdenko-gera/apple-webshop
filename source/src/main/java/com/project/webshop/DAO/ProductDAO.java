@@ -39,9 +39,9 @@ public class ProductDAO {
      * @param quantity A raktáron lévő darabszám
      * @return true ha sikeres a hozzáadás, false ha nem
      */
-    public boolean createProduct(String name, String description, String productType, int price, int quantity) {
+    public boolean createProduct(String productType,int price, String name, String description, int quantity) {
         String sqlCode = "INSERT INTO product (productType, price, name, description, quantity) VALUES (?,?,?,?,?)";
-        return jdbcTemplate.update(sqlCode, name,description,productType,price, quantity) == 1;
+        return jdbcTemplate.update(sqlCode,productType,price, name,description,quantity) == 1;
     }
 
     /**
