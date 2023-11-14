@@ -117,7 +117,7 @@ public class ProductDAO {
 
         return new ProductModel((int) product.get("price"), (int) product.get("quantity"),
                 product.get("productType").toString(), product.get("name").toString(),product.get("description").toString(),
-                (ArrayList<MultipartFile>) product.get("images"));
+                product.get("images").toString());
     }
 
 

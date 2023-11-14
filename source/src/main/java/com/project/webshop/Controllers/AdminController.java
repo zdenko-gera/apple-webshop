@@ -20,9 +20,8 @@ import java.util.ArrayList;
 @Controller
 public class AdminController {
     @PostMapping(value="createProduct")
-    @ResponseBody
-    public String addProduct(@RequestParam String type, @RequestParam int price, @RequestParam String name, @RequestParam String description,
-                             @RequestParam int quantity, @RequestParam ArrayList <MultipartFile> images, Model model) {
+    public String addProduct(@RequestParam("type") String type, @RequestParam("price") int price, @RequestParam("name") String name, @RequestParam("description") String description,
+                             @RequestParam("quantity") int quantity, @RequestParam("images") String images, Model model) {
         boolean error = false;
 
         if(type.equals("")) {

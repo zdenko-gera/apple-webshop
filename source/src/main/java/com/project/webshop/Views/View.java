@@ -204,9 +204,12 @@ public class View {
     }
 
     @GetMapping("Admin")
-    public String Admin(HttpServletRequest request) {
+    public String Admin(HttpServletRequest request, Model model) {
         HttpSession httpSession = request.getSession(false);
         UserModel userModel = null;
+        ProductDAO productDAO = new ProductDAO();
+
+        List<Map<String, Object>> products = productDAO.getProducts();
         if(httpSession != null) {
             userModel = (UserModel) httpSession.getAttribute("email");
         }
@@ -214,6 +217,7 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+        model.addAttribute("products", products);
         return "Admin.html";
     }
 }

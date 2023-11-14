@@ -57,13 +57,9 @@
 				    <th>Áru megnevezése</th>
 				    <th>Készleten</th>
 				  </tr>
-				  <tr>
-				    <td>xy</td>
-				    <td>1</td>
-				  </tr>
-				  <tr>
-				    <td>z</td>
-				    <td>3</td>
+				  <tr th:each="product : ${products}">
+				    <td th:text="${product['name']}"></td>
+				    <td th:text="${product['quantity']}"></td>
 				  </tr>
 				</table>	
 		</section>
