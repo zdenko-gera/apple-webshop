@@ -99,7 +99,10 @@
           </div>
         </div>
         <div class="homepage-newProducts-gridContainer">
-          <div class="homepage-newProducts-gridItem" th:each="product : ${products}">
+          <div
+            class="homepage-newProducts-gridItem"
+            th:each="product : ${products}"
+          >
             <div class="homepage-newProducts-gridItem-productPicture">
               <img th:src="${product['images'].get(0)['imagePath']}"
                 src="../pictures/ProductPage/gbpqy8wkncs5lyoorw7c.png"
@@ -110,11 +113,17 @@
             </div>
             <div class="homepage-newProducts-gridItem-productBuy">
               <form action="#" th:action="@{/Productpage}">
-                <input type="hidden" th:value="${product['productID']}" name="productID">
-                <input type="submit" class="orderButton" value="Megtekintés">
+                <input
+                  type="hidden"
+                  th:value="${product['productID']}"
+                  name="productID"
+                />
+                <input type="submit" class="orderButton" value="Kosárba" />
               </form>
 
-              <p class="price" th:text="${product['price']} + ' Ft'">580 000Ft</p>
+              <p class="price" th:text="${product['price']} + ' Ft'">
+                580 000Ft
+              </p>
             </div>
           </div>
         </div>

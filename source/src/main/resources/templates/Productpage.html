@@ -29,8 +29,7 @@
   </head>
 
   <body>
-
-  <header>
+    <header>
       <div class="header-logo">
         <a href="/"><span>i</span>Shop</a>
       </div>
@@ -45,9 +44,7 @@
           <a href="Info" class="header-links-link">Elérhetőségek</a>
         </div>
       </div>
-      <div class="header-icons">
-
-      </div>
+      <div class="header-icons"></div>
     </header>
 
     <main>
@@ -103,7 +100,12 @@
             </div>
             <p>40 vélemény</p>
           </div>
-          <div class="productpage-main-textContainer-price" th:text="${product['price']} + ' Ft'">510 000 Ft</div>
+          <div
+            class="productpage-main-textContainer-price"
+            th:text="${product['price']} + ' Ft'"
+          >
+            510 000 Ft
+          </div>
           <div class="productpage-main-textContainer-information">
             <p th:text="${product['description']}">
               6,7"-es Super Retina XDR OLED kijelző 2796 × 1290 felbontással 128
@@ -116,27 +118,47 @@
           </div>
           <div class="productpage-main-textContainer-buttons">
             <div class="productpage-main-textContainer-buttons-counter">
-              <button class="productpage-main-textContainer-buttons-minus">
-                +
-              </button>
-              <p class="counter">1</p>
-              <button class="productpage-main-textContainer-buttons-plus">
-                -
-              </button>
-            </div>
-            <div>
-              <form xmlns:th="http://www.thymeleaf.org" action="#" th:action="@{/addToCart}" method="post">
-                <input type="number" name="quantity" id="quantity">
-                <input type="hidden" th:value="${product['productID']}" name="productID" id="productID">
+              <form
+                xmlns:th="http://www.thymeleaf.org"
+                action="#"
+                th:action="@{/addToCart}"
+                method="post"
+              >
                 <input
-                        type="submit"
-                        name="signup-btn"
-                        value="Kosárba"
-                        class="orderButton"
+                  type="button"
+                  name="plusminus"
+                  id="minus"
+                  value="-"
+                  onclick=""
+                />
+                <input
+                  class="number"
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                  value="1"
+                />
+                <input
+                  type="hidden"
+                  th:value="${product['productID']}"
+                  name="productID"
+                  id="productID"
+                />
+                <input
+                  type="button"
+                  name="plusminus"
+                  id="plus"
+                  value="+"
+                  onclick=""
+                />
+                <input
+                  type="submit"
+                  name="signup-btn"
+                  value="Kosárba"
+                  class="orderButton"
                 />
               </form>
             </div>
-
           </div>
         </div>
       </div>
