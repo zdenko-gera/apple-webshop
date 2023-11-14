@@ -57,3 +57,7 @@ ___
 
  - Egyéb commitok:
       - https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/26b68a3d279b142ace5964273de087d720f40259
+
+      - https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/b900b74a0da41261a76e38bdfbb06d67d934dc9e
+
+      - https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/bf81ec6fe650ba6a0463b3cc02e51a223ebbec6f
