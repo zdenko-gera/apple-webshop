@@ -1,6 +1,7 @@
 package com.project.webshop.Views;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.ImageDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ import java.util.Map;
 public class View {
     @GetMapping("Index")
     public String index() {
-		return "index.html";
+		return "redirect:/index.html";
     }
 
     @GetMapping("Login")
@@ -38,7 +39,12 @@ public class View {
     }
 
     @GetMapping("Profil")
-    public String Profil() {
+    public String Profil(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/Login";
+        }
+
         return "Profil.html";
     }
 
@@ -64,7 +70,7 @@ public class View {
     @GetMapping("Cart")
     public String Cart(HttpServletRequest request, Model model) {
         if(request.getSession() == null || request.getSession().getAttribute("email") == null) {
-            return "Login";
+            return "redirect:/Login";
         }
 
         UserModel user = (UserModel) request.getSession().getAttribute("email");
@@ -88,8 +94,13 @@ public class View {
      * @return A weboldal neve, amire át akarjuk irányítani a felhasználót
      */
     @GetMapping("Webshop")
-    public String Webshop(Model model) {
+    public String Webshop(HttpServletRequest request, Model model) {
         List<Map<String, Object>> products = new ProductDAO().getProducts();
+
+        for(Map product: products) {
+            List productImages = new ImageDAO().getImage((Integer) product.get("productID"));
+            product.put("images", productImages);
+        }
         model.addAttribute("products", products);
         return "Webshop.html";
     }
@@ -98,7 +109,9 @@ public class View {
     public String Productpage(HttpServletRequest request, Model model) {
         int productID = Integer.parseInt(request.getParameter("productID"));
         Map<String, Object> product = new ProductDAO().getProduct(productID);
+        List<Map<String, Object>> image = new ImageDAO().getImage(productID);
         model.addAttribute("product", product);
+        model.addAttribute("images",image);
         return "Productpage";
     }
 

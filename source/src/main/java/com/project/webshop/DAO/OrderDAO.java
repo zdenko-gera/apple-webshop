@@ -24,8 +24,7 @@ public class OrderDAO {
 
     /**
      * Egy új rendelést ad hozzá az adatbázishoz
-     * @param email A felhasználó email címe
-     * @param cart A felhasználó kosara
+     * @param user A felhasználó Modelje
      * @return
      */
     public boolean createOrder(UserModel user) {
@@ -46,10 +45,11 @@ public class OrderDAO {
         } catch (Exception e) {
             System.err.println("Nem talált megfelelő sort az adatbázisban: [Tábla: orders] [attribútum: orderID]");
         }
-        String insertItemsSQL = "INSERT INTO ordereditems (orderID, productID, quantity) VALUES (?,?,?)";
 
+        String insertItemsSQL = "INSERT INTO ordereditems (orderID, productID, quantity) VALUES (?,?,?)";
         for (Map<String, Object> item : cartContent) {
             jdbcTemplate.update(insertItemsSQL, maxOrderID, item.get("productID"), item.get("quantity"));
+            new ProductDAO().addToQuantityByID((Integer) item.get("productID"), -1 * (Integer) item.get("quantity"));
         }
 
 

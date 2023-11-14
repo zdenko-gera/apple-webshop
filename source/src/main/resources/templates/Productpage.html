@@ -31,7 +31,7 @@
   <body>
     <header>
       <div class="header-logo">
-        <a href="index"><span>i</span>Shop</a>
+        <a href="/"><span>i</span>Shop</a>
       </div>
       <div class="header-links">
         <div class="header-links-container">
@@ -51,26 +51,26 @@
       <div class="productpage-main">
         <div class="productpage-main-productPicture">
           <div class="productpage-main-productMainPicture">
-            <img
+            <img th:if="${not images.isEmpty()}" th:src="${images.get(0)['imagePath']}"
               src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
               alt="iphone"
             />
           </div>
           <div class="productpage-main-productPicture-Slider">
             <div class="productpage-main-productPicture-Slider-element">
-              <img
+              <img th:if="${not images.isEmpty()}" th:src="${images.get(1)['imagePath']}"
+                src="pictures/ProductPage/Apple-Logo.jpeg"
+                alt=""
+              />
+            </div>
+            <div class="productpage-main-productPicture-Slider-element">
+              <img th:if="${not images.isEmpty()}" th:src="${images.get(2)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg"
                 alt=""
               />
             </div>
             <div class="productpage-main-productPicture-Slider-element">
-              <img
-                src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg"
-                alt=""
-              />
-            </div>
-            <div class="productpage-main-productPicture-Slider-element">
-              <img
+              <img th:if="${not images.isEmpty()}" th:src="${images.get(3)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg"
                 alt=""
               />

@@ -33,10 +33,11 @@ public class UserDAO {
      */
     public boolean insertUser(UserModel userModel) {
         String sqlCode = "INSERT INTO user (email, firstname, lastname, password, registrationDate, role) VALUES (?,?,?,?,?,?)";
+        userModel.setPassword(SpringSecurity.passwordEncoder().encode(userModel.getPassword()));
         return jdbcTemplate.update(sqlCode, userModel.getEmail(),
                 userModel.getFirstname(),
                 userModel.getLastname(),
-                SpringSecurity.passwordEncoder().encode(userModel.getPassword()),
+                userModel.getPassword(),
                 userModel.getRegistrationDate(), "user") == 1;
     }
 
@@ -98,15 +99,15 @@ public class UserDAO {
 
     /**
      * A user jelszavát módosítja, majd az adatbázisba is bekerül a módosítás.
-     * @param user
-     * @param oldPassword
-     * @param newPassword1
-     * @param newPassword2
+     * @param user a felhasználó
+     * @param newPassword  az új jelszó
      */
-    public void updateUserPasswordByEmail(UserModel user, String oldPassword, String newPassword1, String newPassword2) {
-        user.setPassword(newPassword1);
-        String sqlCode = "update user set password = '" + user.getPassword() + "' where email='" + user.getEmail() + "';";
-        jdbcTemplate.update(sqlCode);
+    public void updateUserPasswordByEmail(UserModel user, String newPassword) {
+        user.setPassword(SpringSecurity.passwordEncoder().encode(newPassword));
+        String sqlCode = "UPDATE user SET password = ? WHERE email = ?";
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
+        jdbcTemplate.update(sqlCode, user.getPassword(), user.getEmail());
     }
 
     /**
@@ -118,7 +119,7 @@ public class UserDAO {
     public void updateUserNameByEmail(UserModel user, String firstname, String lastname){
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        String sqlCode = "update user set firstname = '"+firstname+"', lastname = '"+lastname+"' where email = '"+user.getEmail()+"';";
-        jdbcTemplate.update(sqlCode);
+        String sqlCode = "UPDATE user SET firstname = ?, lastname=? WHERE email=?;";
+        jdbcTemplate.update(sqlCode, firstname, lastname, user.getEmail());
     }
 }
