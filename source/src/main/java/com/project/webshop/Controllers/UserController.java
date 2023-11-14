@@ -10,6 +10,7 @@ import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -129,6 +130,26 @@ public class UserController {
     }
 
     /**
+     * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban
+     * (amennyiben létezik), majd törli az adatait.
+     *
+     * @param request
+     */
+    @PostMapping(value = "/deleteUser")
+    public String deleteUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        UserDAO userDAO = new UserDAO();
+        UserModel user = (UserModel) session.getAttribute("email");
+
+        if (user != null) {
+            userDAO.deleteUser(user.getEmail());
+            session.invalidate();
+            return "redirect:/Login";
+        }
+        return "redirect:/Profil";
+    }
+
+    /**
      * Hozzáad egy új terméket a kosárhoz, amennyiben a felhasználó be van jelentkezve. Lekéri a termék ID-ját egy hidden
      * inputon keresztül, illetve a darabszámot, megnézi, hogy a termék a kosárban van-e, (ha igen nem csinál semmit), és ha
      * nincs akkor hozzáadja. Azt, hogy benne van-e a kosárban nem az adatbázisból kéri le, hanem a sessionből lekéri a
@@ -163,9 +184,61 @@ public class UserController {
         return "redirect:/Cart";
     }
 
-    public void updateCart(int itemID, int quantity) {
+    /**
+     * Töröl egy terméket a kosárból, amennyiben a felhasználó be van jelentkezve. Lekéri a termék ID-ját egy hidden
+     * inputon keresztül. Illetve megnézi, hogy a termék a kosárban van-e, (ha nem akkor nem csinál semmit), és ha
+     * igen akkor törli. Azt, hogy benne van-e a kosárban nem az adatbázisból kéri le, hanem a sessionből lekéri a
+     * UserModelt, és abból a CartModelt, és abban nézi meg.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
+    @PostMapping("removeFromCart")
+    public String removeFromCart(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        CartModel cart = user.getCartModel();
+
+        if(user.getCartModel().hasItem(productID)) {
+            cart.removeItemFromCart(productID);
+            cart.getCartDAO().removeFromCart(cart.getCartID(), productID);
+        }
+        return "redirect:/Cart";
     }
+
+    /**
+     * Módosítja a termék mennyiségét a kosárban, amennyiben a felhasználó be van jelentkezve.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó.
+     * @param productID A módosítandó termék azonosítója.
+     * @param newQuantity Az új mennyiség, amit be kell állítani a kosárban.
+     * @param action Az elvégzendő művelet típusa ("increase" vagy "decrease").
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
+    @PostMapping("/updateCart")
+    public String updateCart(HttpServletRequest request,
+                             @RequestParam("productID") int productID,
+                             @RequestParam("newQuantity") int newQuantity,
+                             @RequestParam("action") String action) {
+        HttpSession httpSession = request.getSession(false);
+        if (httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/login";
+        }
+
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        CartModel cartModel = user.getCartModel();
+
+        if ("increase".equals(action)) {
+            cartModel.updateQuantityInCart(productID, newQuantity + 1);
+        } else if ("decrease".equals(action) && newQuantity > 0) {
+            cartModel.updateQuantityInCart(productID, newQuantity - 1);
+        }
+        return "redirect:/Cart";
+    }
+
 
     @PostMapping("createOrder")
     public String createOrder(HttpServletRequest request, Model model) {

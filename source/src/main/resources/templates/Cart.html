@@ -109,18 +109,18 @@
               <td><h3 th:text="${item['name']}"></h3></td>
               <td><h2 th:text="${item['price']}"></h2></td>
               <td class="cart-amount">
-                <button class="cart-amount">+</button>
-                <span th:text="${item['quantity']}">4</span>
-                <button class="cart-amount">-</button>
+                <form action="#" th:action="@{/updateCart}" method="post">
+                  <button type="submit" class="cart-amount" name="action" value="increase">+</button>
+                  <input type="number" th:value="${item['quantity']}" id="newQuantity" name="newQuantity">
+                  <button type="submit" class="cart-amount" name="action" value="decrease">-</button>
+                  <input type="hidden" th:value="${item['productId']}" name="productID">
+                </form>
               </td>
               <td class="cart-table-removeContainer">
-                <button>
-                  <img
-                    class="cart-table-remove"
-                    src="pictures/HeaderPic/x-circle-fill.png"
-                    alt="x"
-                  />
-                </button>
+                <form action="#" th:action="@{/removeFromCart}" method="post">
+                  <input type="hidden" th:value="${item['productID']}" name="productID">
+                  <input type="submit" value="Törlés" class="orderButton">
+                </form>
               </td>
             </tr>
 

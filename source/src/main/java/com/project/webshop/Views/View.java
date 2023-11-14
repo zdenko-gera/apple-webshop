@@ -40,6 +40,12 @@ public class View {
         return "Shops.html";
     }
 
+    /**
+     * Megnézi, hogy be van-e jelentkezve a felhasználó, ha nincs átirányítja a Login oldalra. Ha bevan,
+     * akkor átdobja a profil-ra.
+     * @param request Ebből kérjük le a sessiont, amiben a felhasználó adatai vannak
+     * @return
+     */
     @GetMapping("Profil")
     public String Profil(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);

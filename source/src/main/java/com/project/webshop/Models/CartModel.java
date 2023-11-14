@@ -47,6 +47,29 @@ public class CartModel {
         quantityInCart.add(quantity);
     }
 
+    public void removeItemFromCart(int productID) {
+        int index = -1;
+        for(int i = 0; i < itemsInCart.size(); i++) {
+            if(itemsInCart.get(i) == productID) {
+                index = i;
+                break;
+            }
+        }
+
+        if(index != -1) {
+            itemsInCart.remove(index);
+            quantityInCart.remove(index);
+        }
+    }
+
+    public void updateQuantityInCart(int productID, int newQuantity) {
+        if (hasItem(productID)) {
+            int index = itemsInCart.indexOf(productID);
+            quantityInCart.set(index, newQuantity);
+            cartDAO.updateQuantityByID(cartID, Integer.toString(productID), Integer.toString(newQuantity));
+        }
+    }
+
     @Override
     public String toString() {
         return "CartModel{" +
