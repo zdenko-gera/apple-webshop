@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class UserModel {
@@ -49,7 +51,7 @@ public class UserModel {
         billingDetailsModel = new BillingDetailsModel(email, -1, null, null, -1);
         deliveryDetailsModel = new DeliveryDetailsModel(email, -1, null, null, -1);
         commentModel = new CommentModel(-1, -1, -1, email, null, null);
-        orderModel = new OrderModel(-1, -1, email, null, null);
+        orderModel = new OrderModel(-1, -1, email, null/*, null*/);
         userDAO = new UserDAO();
 
         List<Map<String, Object>> cart = cartModel.getCartDAO().getCart(email);
@@ -123,5 +125,12 @@ public class UserModel {
     }
     public DeliveryDetailsModel getDeliveryDetailsModel() {
         return deliveryDetailsModel;
+    }
+
+    public static boolean emailValidation(String email) {
+        String regex = "([a-zA-Z]([a-zA-Z0-9]*))@([a-zA-Z]{1,})[.]([a-zA-Z]{1,})$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.find();
     }
 }

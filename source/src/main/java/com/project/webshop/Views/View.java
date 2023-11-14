@@ -1,6 +1,8 @@
 package com.project.webshop.Views;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.OrderDAO;
+import com.project.webshop.DAO.ImageDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +24,7 @@ import java.util.Map;
 public class View {
     @GetMapping("Index")
     public String index() {
-		return "index.html";
+		return "redirect:/index.html";
     }
 
     @GetMapping("Login")
@@ -37,8 +40,19 @@ public class View {
         return "Shops.html";
     }
 
+    /**
+     * Megnézi, hogy be van-e jelentkezve a felhasználó, ha nincs átirányítja a Login oldalra. Ha bevan,
+     * akkor átdobja a profil-ra.
+     * @param request Ebből kérjük le a sessiont, amiben a felhasználó adatai vannak
+     * @return
+     */
     @GetMapping("Profil")
-    public String Profil() {
+    public String Profil(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/Login";
+        }
+
         return "Profil.html";
     }
 
@@ -63,8 +77,9 @@ public class View {
      */
     @GetMapping("Cart")
     public String Cart(HttpServletRequest request, Model model) {
-        if(request.getSession() == null || request.getSession().getAttribute("email") == null) {
-            return "Login";
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/Login";
         }
 
         UserModel user = (UserModel) request.getSession().getAttribute("email");
@@ -81,6 +96,24 @@ public class View {
         return "Cart.html";
     }
 
+
+    @GetMapping("Order")
+    public String Order(HttpServletRequest request, Model model) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/Login";
+        }
+
+        OrderDAO orderDAO = new OrderDAO();
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        List<Map<String, Object>> orders = orderDAO.getOrdersByEmail(user.getEmail());
+        for(Map<String, Object> order : orders) {
+            order.put("ordereditems", orderDAO.getOrderItemsByID((Integer) order.get("orderID")));
+        }
+        model.addAttribute("orders", orders);
+        return "Order";
+    }
+
     /**
      * A paraméterben kapott modelhez hozzáadja az összes terméket egy attribútum formájában, és ezt a listát a
      * thymeleaf-fel lehet elérni, és dinamikusan megjeleníteni a tartalmat az oldalon
@@ -88,8 +121,13 @@ public class View {
      * @return A weboldal neve, amire át akarjuk irányítani a felhasználót
      */
     @GetMapping("Webshop")
-    public String Webshop(Model model) {
+    public String Webshop(HttpServletRequest request, Model model) {
         List<Map<String, Object>> products = new ProductDAO().getProducts();
+
+        for(Map product: products) {
+            List productImages = new ImageDAO().getImage((Integer) product.get("productID"));
+            product.put("images", productImages);
+        }
         model.addAttribute("products", products);
         return "Webshop.html";
     }
@@ -98,9 +136,12 @@ public class View {
     public String Productpage(HttpServletRequest request, Model model) {
         int productID = Integer.parseInt(request.getParameter("productID"));
         Map<String, Object> product = new ProductDAO().getProduct(productID);
+        List<Map<String, Object>> image = new ImageDAO().getImage(productID);
         model.addAttribute("product", product);
+        model.addAttribute("images",image);
         return "Productpage";
     }
+
 
     @GetMapping("Signup")
     public String Signup(HttpServletRequest request) {
@@ -136,13 +177,16 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+
         return "Admin_user.html";
     }
 
     @GetMapping("Admin_order")
-    public String Admin_order(HttpServletRequest request) {
+    public String Admin_order(HttpServletRequest request, Model model) {
         HttpSession httpSession = request.getSession(false);
         UserModel userModel = null;
+        OrderDAO orderDAO = new OrderDAO();
+
         if(httpSession != null) {
             userModel = (UserModel) httpSession.getAttribute("email");
         }
@@ -150,6 +194,12 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+        List<Map<String, Object>> orders = orderDAO.getAllOrders();
+        for(Map<String, Object> order : orders) {
+            order.put("ordereditems", orderDAO.getOrderItemsByID((Integer) order.get("orderID")));
+        }
+        model.addAttribute("orders", orders);
+
         return "Admin_order.html";
     }
 

@@ -3,7 +3,9 @@ package com.project.webshop.Models;
 import com.project.webshop.DAO.ProductDAO;
 import lombok.Generated;
 import org.springframework.data.annotation.Id;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.channels.MulticastChannel;
 import java.util.ArrayList;
 
 public class ProductModel {
@@ -26,9 +28,9 @@ public class ProductModel {
      * Zdenkó, 11.05.
      */
     private String productType, name, description;
-    private String images;
+    private ArrayList<MultipartFile> images;
     ProductDAO productDAO;
-    public ProductModel(int price, int quantity, String productType, String name, String description, String images) {
+    public ProductModel(int price, int quantity, String productType, String name, String description, ArrayList<MultipartFile> images) {
         //this.productID = productID;
         this.price = price;
         this.quantity = quantity;
@@ -92,11 +94,11 @@ public class ProductModel {
         this.description = description;
     }
 
-    public String getImages() {
+    public ArrayList<MultipartFile> getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(ArrayList<MultipartFile> images) {
         this.images = images;
     }
 }

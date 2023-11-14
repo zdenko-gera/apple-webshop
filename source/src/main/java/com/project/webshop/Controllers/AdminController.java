@@ -1,24 +1,28 @@
 package com.project.webshop.Controllers;
 
+import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.DAO.UserDAO;
-import com.project.webshop.Models.ImagesModel;
+import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.ProductModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+
 @Controller
-public class AdminController /*extends UserController*/ {
-    @PostMapping(value="createProduct")
-    public String addProduct(@RequestParam("type") String type,@RequestParam("price") int price,@RequestParam("name") String name,@RequestParam("description") String description,
-                           @RequestParam("quantity") int quantity, @RequestParam("images") String images, Model model) {
-        //String images = "vmi.jpg";
+public class AdminController {
+    @PostMapping("createProduct")
+    @ResponseBody
+    public String addProduct(@RequestParam String type, @RequestParam int price, @RequestParam String name, @RequestParam String description,
+                             @RequestParam int quantity, @RequestParam ArrayList <MultipartFile> images, Model model) {
         boolean error = false;
 
         if(type.equals("")) {
@@ -31,10 +35,6 @@ public class AdminController /*extends UserController*/ {
         }
         if(name.equals("")) {
             model.addAttribute("emptyFieldName", "Terméknév megadása kötelező!");
-            error = true;
-        }
-        if(images.length() == 0) {
-            model.addAttribute("emptyFieldImages", "Minimum 1 db kép megadása kötelező!");
             error = true;
         }
 
@@ -146,8 +146,18 @@ public class AdminController /*extends UserController*/ {
         }
     }
 
-    public void deleteOrder(int orderID) {
-
+    /**
+     * Kitörli az adatbázisból az adott ID-vel rendelkező rendelést, amennyiben az létezik.
+     * @param orderID a rendelés azonosítója
+     */
+    @PostMapping(value="deleteOrder")
+    public String deleteOrder(@RequestParam("orderID") int orderID) {
+        OrderDAO orderDAO = new OrderDAO();
+        OrderModel orderModel = orderDAO.getOrderById(orderID);
+        if(orderModel != null) {
+            orderDAO.deleteOrder(orderID);
+        }
+        return "redirect:/Admin_order";
     }
 
     public void shipOrder(int orderID) {
@@ -165,7 +175,7 @@ public class AdminController /*extends UserController*/ {
      */
 
     @PostMapping(value = "deleteUser")
-    public void deleteUser(HttpServletRequest request) {
+    public String deleteUser(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
         UserDAO userDAO = new UserDAO();
@@ -174,5 +184,6 @@ public class AdminController /*extends UserController*/ {
         if (object != null) {
             userDAO.deleteUser(object.toString());
         }
+        return "redirect:/";
     }
 }

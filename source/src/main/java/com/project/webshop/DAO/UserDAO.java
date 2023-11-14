@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -33,10 +34,11 @@ public class UserDAO {
      */
     public boolean insertUser(UserModel userModel) {
         String sqlCode = "INSERT INTO user (email, firstname, lastname, password, registrationDate, role) VALUES (?,?,?,?,?,?)";
+        userModel.setPassword(SpringSecurity.passwordEncoder().encode(userModel.getPassword()));
         return jdbcTemplate.update(sqlCode, userModel.getEmail(),
                 userModel.getFirstname(),
                 userModel.getLastname(),
-                SpringSecurity.passwordEncoder().encode(userModel.getPassword()),
+                userModel.getPassword(),
                 userModel.getRegistrationDate(), "user") == 1;
     }
 
@@ -64,7 +66,7 @@ public class UserDAO {
      * @return true ha sikeres a törlés, false ha nem
      */
     public boolean deleteUser(String email) {
-        String sqlCode = "DELETE FROM user WHERE user.email = ?";
+        String sqlCode = "DELETE FROM user WHERE email = ?";
         return jdbcTemplate.update(sqlCode, email) == 1;
     }
 
@@ -98,15 +100,15 @@ public class UserDAO {
 
     /**
      * A user jelszavát módosítja, majd az adatbázisba is bekerül a módosítás.
-     * @param user
-     * @param oldPassword
-     * @param newPassword1
-     * @param newPassword2
+     * @param user a felhasználó
+     * @param newPassword  az új jelszó
      */
-    public void updateUserPasswordByEmail(UserModel user, String oldPassword, String newPassword1, String newPassword2) {
-        user.setPassword(newPassword1);
-        String sqlCode = "update user set password = '" + user.getPassword() + "' where email='" + user.getEmail() + "';";
-        jdbcTemplate.update(sqlCode);
+    public void updateUserPasswordByEmail(UserModel user, String newPassword) {
+        user.setPassword(SpringSecurity.passwordEncoder().encode(newPassword));
+        String sqlCode = "UPDATE user SET password = ? WHERE email = ?";
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
+        jdbcTemplate.update(sqlCode, user.getPassword(), user.getEmail());
     }
 
     /**
@@ -118,7 +120,31 @@ public class UserDAO {
     public void updateUserNameByEmail(UserModel user, String firstname, String lastname){
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        String sqlCode = "update user set firstname = '"+firstname+"', lastname = '"+lastname+"' where email = '"+user.getEmail()+"';";
-        jdbcTemplate.update(sqlCode);
+        String sqlCode = "UPDATE user SET firstname = ?, lastname=? WHERE email=?;";
+        jdbcTemplate.update(sqlCode, firstname, lastname, user.getEmail());
+    }
+
+    public void changeDeliveryDetailsByEmail(UserModel user, int postalCode, String city,
+                                             String street, int housenumber){
+        user.getDeliveryDetailsModel().setCity(city);
+        user.getDeliveryDetailsModel().setHousenumber(housenumber);
+        user.getDeliveryDetailsModel().setPostalcode(postalCode);
+        user.getDeliveryDetailsModel().setStreet(street);
+        user.getDeliveryDetailsModel().setCity(city);
+
+        String sqlCode = "Update deliverydetails set postalCode = ?, city = ?, street = ?, housenumber = ? where email = ?";
+        jdbcTemplate.update(sqlCode, postalCode, city, street, housenumber, user.getEmail());
+    }
+
+    public void changeBillingDetailsByEmail(UserModel user, int postalCode, String city,
+                                             String street, int housenumber){
+        user.getBillingDetailsModel().setCity(city);
+        user.getBillingDetailsModel().setHousenumber(housenumber);
+        user.getBillingDetailsModel().setPostalcode(postalCode);
+        user.getBillingDetailsModel().setStreet(street);
+        user.getBillingDetailsModel().setCity(city);
+
+        String sqlCode = "Update billingdetails set postalCode = ?, city = ?, street = ?, housenumber = ? where email = ?";
+        jdbcTemplate.update(sqlCode,postalCode, city, street, housenumber, user.getEmail());
     }
 }

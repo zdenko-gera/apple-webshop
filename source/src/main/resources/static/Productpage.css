@@ -167,3 +167,33 @@
   text-align: right;
   font-style: italic;
 }
+
+.productpage-main-textContainer-buttons-counter input[name="plusminus"] {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border: 1px solid #8f8f8f;
+  cursor: pointer;
+}
+input[name="quantity"] {
+  text-align: center;
+  height: 35px;
+  width: 35px;
+}
+.productpage-main-textContainer-buttons-counter {
+  position: relative;
+}
+input[type="submit"] {
+  position: relative;
+  left: 0;
+}
+
+.number {
+  -moz-appearance: textfield;
+}
+
+.number::-webkit-outer-spin-button,
+.number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

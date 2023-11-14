@@ -4,11 +4,13 @@ import com.project.webshop.DAO.CartDAO;
 import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -124,7 +126,27 @@ public class UserController {
             httpSession.invalidate();
         }
 
-        return "redirect:/Index?logout=success";
+        return "redirect:/";
+    }
+
+    /**
+     * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban
+     * (amennyiben létezik), majd törli az adatait.
+     *
+     * @param request
+     */
+    @PostMapping(value = "/deleteUser")
+    public String deleteUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        UserDAO userDAO = new UserDAO();
+        UserModel user = (UserModel) session.getAttribute("email");
+
+        if (user != null) {
+            userDAO.deleteUser(user.getEmail());
+            session.invalidate();
+            return "redirect:/Login";
+        }
+        return "redirect:/Profil";
     }
 
     /**
@@ -162,9 +184,61 @@ public class UserController {
         return "redirect:/Cart";
     }
 
-    public void updateCart(int itemID, int quantity) {
+    /**
+     * Töröl egy terméket a kosárból, amennyiben a felhasználó be van jelentkezve. Lekéri a termék ID-ját egy hidden
+     * inputon keresztül. Illetve megnézi, hogy a termék a kosárban van-e, (ha nem akkor nem csinál semmit), és ha
+     * igen akkor törli. Azt, hogy benne van-e a kosárban nem az adatbázisból kéri le, hanem a sessionből lekéri a
+     * UserModelt, és abból a CartModelt, és abban nézi meg.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
+    @PostMapping("removeFromCart")
+    public String removeFromCart(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        CartModel cart = user.getCartModel();
+
+        if(user.getCartModel().hasItem(productID)) {
+            cart.removeItemFromCart(productID);
+            cart.getCartDAO().removeFromCart(cart.getCartID(), productID);
+        }
+        return "redirect:/Cart";
     }
+
+    /**
+     * Módosítja a termék mennyiségét a kosárban, amennyiben a felhasználó be van jelentkezve.
+     * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó.
+     * @param productID A módosítandó termék azonosítója.
+     * @param newQuantity Az új mennyiség, amit be kell állítani a kosárban.
+     * @param action Az elvégzendő művelet típusa ("increase" vagy "decrease").
+     * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
+     */
+    @PostMapping("/updateCart")
+    public String updateCart(HttpServletRequest request,
+                             @RequestParam("productID") int productID,
+                             @RequestParam("newQuantity") int newQuantity,
+                             @RequestParam("action") String action) {
+        HttpSession httpSession = request.getSession(false);
+        if (httpSession == null || httpSession.getAttribute("email") == null) {
+            return "redirect:/login";
+        }
+
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        CartModel cartModel = user.getCartModel();
+
+        if ("increase".equals(action)) {
+            cartModel.updateQuantityInCart(productID, newQuantity + 1);
+        } else if ("decrease".equals(action) && newQuantity > 0) {
+            cartModel.updateQuantityInCart(productID, newQuantity - 1);
+        }
+        return "redirect:/Cart";
+    }
+
 
     @PostMapping("createOrder")
     public String createOrder(HttpServletRequest request, Model model) {
@@ -175,7 +249,6 @@ public class UserController {
 
         UserModel user = (UserModel) httpSession.getAttribute("email");
         new OrderDAO().createOrder(user);
-
 
         user.getCartModel().getCartDAO().clearCart(user.getEmail());
         user.getCartModel().clearCart();
@@ -202,24 +275,28 @@ public class UserController {
 
         HttpSession httpSession = request.getSession(false);
         UserDAO userDAO = new UserDAO();
-        Object email = httpSession.getAttribute("email");
+        UserModel user = (UserModel) httpSession.getAttribute("email");
         boolean error = false;
 
-        if(email == null){
-            model.addAttribute("emailNull", "Váratlen hiba történt!");
+        if(user == null){
+            System.out.println("hiba1");
+            model.addAttribute("pwerror", "Váratlan hiba történt!");
             error = true;
             return "redirect:/";
         }
-        if(!userDAO.checkCredentials(email.toString(), oldPassword)){
-            model.addAttribute("wrongPw", "A megadott jelszó nem egyezik");
+        if(!userDAO.checkCredentials(user.getEmail(), oldPassword)){
+            System.out.println("hiba2");
+            model.addAttribute("pwerror", "A megadott régi jelszó nem jó");
             error = true;
         }
         if(!newPassword1.equals(newPassword2)){
-            model.addAttribute("pwNoMatch", "Az új jelszavak nem egyeznek!");
+            System.out.println("hiba3");
+            model.addAttribute("pwerror", "Az új jelszavak nem egyeznek!");
             error = true;
         }
         if(!passwordValidation(newPassword1) || !passwordValidation(newPassword2)) {
-            model.addAttribute("pwNotValid", "A jelszónak 8 karakternél hosszabbnak kell lennie!");
+            System.out.println("hiba4");
+            model.addAttribute("pwerror", "A jelszónak 8 karakternél hosszabbnak kell lennie!");
             error = true;
         }
 
@@ -227,8 +304,7 @@ public class UserController {
             return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
         }
 
-        UserModel user = userDAO.getUserDataByEmail(email.toString());
-        userDAO.updateUserPasswordByEmail(user, oldPassword, newPassword1, newPassword2);
+        userDAO.updateUserPasswordByEmail(user, newPassword1);
         return "redirect:/";
     }
 
@@ -242,29 +318,85 @@ public class UserController {
     @PostMapping(value="changeName")
     public String changeName(@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname
             , HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-        UserDAO userDAO = new UserDAO();
-        Object email = session.getAttribute("email");
+        HttpSession httpSession = request.getSession(false);
+        UserModel user = (UserModel) httpSession.getAttribute("email");
         boolean error = false;
 
-        if(email == null){
-            model.addAttribute("emailNull", "Váratlen hiba történt!");
+        if(user == null){
+            model.addAttribute("nameerror", "Váratlan hiba történt!");
             error = true;
             return "redirect:/";
         }
-        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z-9].*")){
-            model.addAttribute("wrongLastName", "A megadott utónév nem megfelelő formátumú");
+        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("nameerror", "A megadott utónév nem megfelelő formátumú");
             error = true;
         }
-        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z-9].*")){
-            model.addAttribute("wrongFirstName", "A megadott keresztnév nem megfelelő formátumú");
+        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("nameerror", "A megadott keresztnév nem megfelelő formátumú");
             error = true;
         }
 
         if(error) return "Profil"; //ezt meg kell változtatni, ha a profil oldal más nevet kap majd!!!!
 
-        UserModel user = userDAO.getUserDataByEmail(email.toString());
-        userDAO.updateUserNameByEmail(user, firstname, lastname);
+        user.getUserDAO().updateUserNameByEmail(user, firstname, lastname);
+        return "redirect:/";
+    }
+
+    @PostMapping(value="changeDeliveryDetails")
+    public String changeDeliveryDetails( @RequestParam("postalcode") int postalCode,
+                                      @RequestParam("city") String city, @RequestParam("street") String street,
+                                      @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+                                      Model model){
+        HttpSession session = request.getSession();
+        UserModel user = (UserModel) session.getAttribute("email");
+        boolean error = false;
+
+        if(user == null){
+            model.addAttribute("dderror", "Váratlan hiba történt!");
+            error = true;
+            return "redirect:/";
+        }
+        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("dderror", "A megadott város nem megfelelő formátumú");
+            error = true;
+        }
+        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("dderror", "A megadott utca nem megfelelő formátumú");
+            error = true;
+        }
+
+        if(error) return "Profil";
+
+        user.getUserDAO().changeDeliveryDetailsByEmail(user, postalCode, city, street, housenumber);
+        return "redirect:/";
+    }
+
+    @PostMapping(value="changeBillingDetails")
+    public String changeBillingDetails( @RequestParam("postalcode") int postalCode,
+                                        @RequestParam("city") String city, @RequestParam("street") String street,
+                                        @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+                                        Model model){
+        HttpSession session = request.getSession();
+        UserModel user = (UserModel) session.getAttribute("email");
+        boolean error = false;
+
+        if(user == null){
+            model.addAttribute("bderror", "Váratlan hiba történt!");
+            error = true;
+            return "redirect:/";
+        }
+        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("bderror", "A megadott város nem megfelelő formátumú");
+            error = true;
+        }
+        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+            model.addAttribute("bderror", "A megadott utca nem megfelelő formátumú");
+            error = true;
+        }
+
+        if(error) return "Profil";
+
+        user.getUserDAO().changeBillingDetailsByEmail(user, postalCode, city, street, housenumber);
         return "redirect:/";
     }
 
@@ -315,5 +447,15 @@ public class UserController {
 
     public static boolean passwordValidation(String password) {
         return password.length() >= 8;
+    }
+
+    @PostMapping(value="deleteUserOrder")
+    public String deleteUserOrder(@RequestParam("orderIdentification") int orderID) {
+        OrderDAO orderDAO = new OrderDAO();
+        OrderModel orderModel = orderDAO.getOrderById(orderID);
+        if(orderModel != null) {
+            orderDAO.deleteUserOrder(orderID);
+        }
+        return "redirect:/Order";
     }
 }
