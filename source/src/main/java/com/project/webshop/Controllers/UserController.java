@@ -4,6 +4,7 @@ import com.project.webshop.DAO.CartDAO;
 import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
@@ -315,5 +316,15 @@ public class UserController {
 
     public static boolean passwordValidation(String password) {
         return password.length() >= 8;
+    }
+
+    @PostMapping(value="deleteUserOrder")
+    public String deleteUserOrder(@RequestParam("orderIdentification") int orderID) {
+        OrderDAO orderDAO = new OrderDAO();
+        OrderModel orderModel = orderDAO.getOrderById(orderID);
+        if(orderModel != null) {
+            orderDAO.deleteUserOrder(orderID);
+        }
+        return "redirect:/Order";
     }
 }

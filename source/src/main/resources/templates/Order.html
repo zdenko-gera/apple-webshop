@@ -27,53 +27,46 @@
     <header>
       <div class="header-logo">
         <a href="../"><span>i</span>Shop</a>
-      </div>     
+      </div>
+      <div class="header-links">
+        <div class="header-links-container">
+          <a href="Webshop" class="header-links-link">Webáruház</a>
+        </div>
+        <div class="header-links-container">
+          <a href="Shops" class="header-links-link">Üzleteink</a>
+        </div>
+        <div class="header-links-container">
+          <a href="Info" class="header-links-link">Elérhetőségek</a>
+        </div>
+        <div class="header-links-container">
+          <a href="Order" class="header-links-link">Rendeléseim</a>
+        </div>
+      </div>
     </header>
     <main>
-    
-    	<div id="myNav" class="overlay">
-  			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  			<div class="overlay-content">
-   				<a href="Admin.html">Árukészlet</a>
-    			<a href="Admin_user.html">Felhasználókezelés</a>
-    			<a href="Admin_order.html">Rendelések</a>
- 			</div>
-		</div>
-		<span style="font-size:2em;cursor:pointer" onclick="openNav()">&#9776;</span>
-
-		<script>
-			function openNav() {
-  			document.getElementById("myNav").style.width = "30%";
-			}
-
-			function closeNav() {
-			  document.getElementById("myNav").style.width = "0%";
-			}
-		</script>
-    
 		<section>
 		    <h1>Rendelések</h1>
-                <table style="width: 100%">
-                    <tr>
-                        <th>Megrendelő email címe</th>
-                        <th>Rendelés azonosító </th>
-                        <th>Ára (Ft)</th>
-                        <th>Megrendelés ideje</th>
-                        <th>Lehetőség</th>
-                    </tr>
-                    <tr th:each="order : ${orders}">
-                        <td th:text="${order['email']}">Airpods</td>
-                        <td th:text="${order['orderID']}"></td>
-                        <td th:text="${order['price']}"></td>
-                        <td th:text="${order['orderDate']}"></td>
-                        <td>
-                            <form action="#" th:action="@{/deleteOrder}" method="post">
-                            <input type="hidden" th:value="${order['orderID']}" name="orderID">
-                                <input type="submit" value="Törlés">
-                            </form>
-                        </td>
-                    </tr>
-                </table>
+            <div style="width: 80%; margin: 0 auto" th:each="order : ${orders}">
+				<table style="width: 100%">
+                  <p th:text="'Rendelés ideje: ' + ${order['orderDate']}">Rendelés ideje: 2023.12.12</p>
+                  <p th:text="'Összesen: ' + ${order['price'] + ' Ft'}"></p>
+                  <p>Kiszállítva: nem</p>
+				  <tr>
+				    <th>Termék neve</th>
+				    <th>Mennyiség (db)</th>
+				    <th>Ára (Ft)</th>
+				  </tr>
+				  <tr th:each="item : ${order['ordereditems']}">
+				    <td th:text="${item['name']}">Airpods</td>
+				    <td th:text="${item['quantity']}">2</td>
+				    <td th:text="${item['price']*item['quantity']}">118 000</td>
+				  </tr>
+				</table>
+              <form action="#" th:action="@{/deleteUserOrder}" method="post">
+                <input type="hidden" th:value="${order['orderID']}" id="orderIdentification" name="orderIdentification">
+                <input type="submit" value="Rendelés törlése">
+              </form>
+            </div>
 		</section>
       	
     </main>

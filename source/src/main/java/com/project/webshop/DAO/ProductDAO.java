@@ -12,6 +12,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -116,7 +117,7 @@ public class ProductDAO {
 
         return new ProductModel((int) product.get("price"), (int) product.get("quantity"),
                 product.get("productType").toString(), product.get("name").toString(),product.get("description").toString(),
-                (ArrayList<String>) product.get("images"));
+                (ArrayList<MultipartFile>) product.get("images"));
     }
 
 
@@ -167,7 +168,7 @@ public class ProductDAO {
     }
 
     public void addToQuantityByID(int productID, int count) {
-        String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) - ?) WHERE productID = ?";
+        String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) + ?) WHERE productID = ?";
 
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
 

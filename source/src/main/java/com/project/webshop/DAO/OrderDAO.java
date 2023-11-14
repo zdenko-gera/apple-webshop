@@ -2,11 +2,17 @@ package com.project.webshop.DAO;
 
 import com.project.webshop.AppConfig;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.OrderModel;
+import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -56,13 +62,54 @@ public class OrderDAO {
         return true;
     }
 
+    public List<Map<String, Object>> getOrdersByEmail(String email) {
+        String sqlCode = "SELECT orderID, orderDate, price FROM orders WHERE orders.email = ?";
+        return jdbcTemplate.queryForList(sqlCode, email);
+    }
+
+    public List<Map<String, Object>> getOrderItemsByID(int orderID) {
+        String sqlCode = "SELECT product.name, product.price, ordereditems.quantity FROM ordereditems INNER JOIN product ON ordereditems.productID = product.productID WHERE ordereditems.orderID = ?";
+        return jdbcTemplate.queryForList(sqlCode, orderID);
+    }
+
+
     /**
      * Töröl egy meglévő rendelést, ha rövid időn belül törli
-     * @param email A felhasználó email címe
+     //* @param email A felhasználó email címe
      * @param orderID A rendelés azonosítója
      * @return
      */
-    public boolean deleteOrder(String email, int orderID) {
-        return false;
+    public boolean deleteOrder(int orderID) {
+        String sqlCode ="DELETE FROM orders WHERE orderID = ?;";
+        return jdbcTemplate.update(sqlCode, orderID) == 1;
+    }
+
+    public boolean deleteUserOrder(int orderID) {
+        String sqlCode ="DELETE FROM orders WHERE orderID = ?;";
+        return jdbcTemplate.update(sqlCode, orderID) == 1;
+    }
+
+    /**
+     * Visszaadja egy rendelés OrderModeljét ID alapján.
+     * @param id A visszatérítendő rendelés ID-je
+     * @return A kért rendelés OrderModellje
+     */
+    public OrderModel getOrderById(int id) {
+        String sqlCode = "SELECT * FROM orders WHERE orderID = ?";
+        Map<String, Object> order;
+        try {
+            order = jdbcTemplate.queryForMap(sqlCode, id);
+        } catch (EmptyResultDataAccessException erdae) {
+            System.err.println(erdae.toString());
+            return null;
+        }
+
+        return new OrderModel((int) order.get("orderID"), (int) order.get("price"),
+                order.get("email").toString(), (Date) order.get("orderDate"));
+    }
+
+    public List<Map<String, Object>> getAllOrders() {
+        String sqlCode = "SELECT * FROM orders;";
+        return jdbcTemplate.queryForList(sqlCode);
     }
 }
