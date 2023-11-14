@@ -154,6 +154,55 @@ CREATE TABLE `images` (
 -- --------------------------------------------------------
 
 --
+-- A tábla adatainak kiíratása `images`
+--
+
+INSERT INTO `images` (`imagePath`, `productID`) VALUES
+('pictures/ProductPage/airpods-3-1.jpg', 5),
+('pictures/ProductPage/airpods-3-2.jpg', 5),
+('pictures/ProductPage/airpods-3-3.jpg', 5),
+('pictures/ProductPage/airpods-3-4.jpg', 5),
+('pictures/ProductPage/airpods-pro-1.jpg', 9),
+('pictures/ProductPage/airpods-pro-2.jpg', 9),
+('pictures/ProductPage/airpods-pro-3.jpg', 9),
+('pictures/ProductPage/airpods-pro-4.jpg', 9),
+('pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png', 1),
+('pictures/ProductPage/Apple-Logo.jpeg', 1),
+('pictures/ProductPage/ipad-air-5-1.jpg', 7),
+('pictures/ProductPage/ipad-air-5-2.jpg', 7),
+('pictures/ProductPage/ipad-air-5-3.jpg', 7),
+('pictures/ProductPage/ipad-air-5-4.jpg', 7),
+('pictures/ProductPage/ipad-mini-6-1.jpg', 11),
+('pictures/ProductPage/ipad-mini-6-2.png', 11),
+('pictures/ProductPage/ipad-mini-6-3.jpg', 11),
+('pictures/ProductPage/ipad-mini-6-4.jpg', 11),
+('pictures/ProductPage/ipad-pro-1.jpg', 3),
+('pictures/ProductPage/ipad-pro-2.jpg', 3),
+('pictures/ProductPage/ipad-pro-3.jpg', 3),
+('pictures/ProductPage/ipad-pro-4.jpg', 3),
+('pictures/ProductPage/iphone-13-mini-1.jpg', 10),
+('pictures/ProductPage/iphone-13-mini-2.jpg', 10),
+('pictures/ProductPage/iphone-13-mini-3.png', 10),
+('pictures/ProductPage/iphone-13-mini-4.jpg', 10),
+('pictures/ProductPage/iphone-14-1.jpg', 6),
+('pictures/ProductPage/iphone-14-2.png', 6),
+('pictures/ProductPage/iphone-14-3.jpg', 6),
+('pictures/ProductPage/iphone-14-4.jpg', 6),
+('pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg', 1),
+('pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg', 1),
+('pictures/ProductPage/watch-se-1.png', 8),
+('pictures/ProductPage/watch-se-2.png', 8),
+('pictures/ProductPage/watch-se-3.png', 8),
+('pictures/ProductPage/watch-se-4.jpg', 8),
+('pictures/ProductPage/watch-se-4.png', 8),
+('pictures/ProductPage/watch-series-7-1.jpeg', 4),
+('pictures/ProductPage/watch-series-7-2.jpeg', 4),
+('pictures/ProductPage/watch-series-7-3.jpg', 4),
+('pictures/ProductPage/watch-series-7-4.jpg', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `itemsincart`
 --
 
