@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 @Controller
 public class AdminController {
-    @PostMapping("createProduct")
+    @PostMapping(value="createProduct")
     @ResponseBody
     public String addProduct(@RequestParam String type, @RequestParam int price, @RequestParam String name, @RequestParam String description,
                              @RequestParam int quantity, @RequestParam ArrayList <MultipartFile> images, Model model) {
@@ -174,7 +174,7 @@ public class AdminController {
      * @param request
      */
 
-    @PostMapping(value = "deleteUser")
+    @PostMapping(value = "deleteUserByAdmin")
     public String deleteUser(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);

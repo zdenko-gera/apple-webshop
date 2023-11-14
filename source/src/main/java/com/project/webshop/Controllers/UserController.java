@@ -118,7 +118,7 @@ public class UserController {
      * @param request Ebben van eltárolva a session is többek között
      * @return Egy stringet, ami redirectel a főoldalra.
      */
-    @GetMapping("logout")
+    @GetMapping(value="logout")
     public String logoutUser(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
         if(httpSession != null) {
@@ -135,7 +135,7 @@ public class UserController {
      *
      * @param request
      */
-    @PostMapping(value = "/deleteUser")
+    @PostMapping(value = "deleteUser")
     public String deleteUser(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         UserDAO userDAO = new UserDAO();
@@ -157,7 +157,7 @@ public class UserController {
      * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó
      * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
      */
-    @PostMapping("addToCart")
+    @PostMapping(value="addToCart")
     public String addToCart(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null || httpSession.getAttribute("email") == null) {
@@ -192,7 +192,7 @@ public class UserController {
      * @param request Ebben van eltárolva a session is többek között, ami ahhoz kell, hogy be van-e jelentkezve a felhasználó
      * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
      */
-    @PostMapping("removeFromCart")
+    @PostMapping(value="removeFromCart")
     public String removeFromCart(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null || httpSession.getAttribute("email") == null) {
@@ -218,7 +218,7 @@ public class UserController {
      * @param action Az elvégzendő művelet típusa ("increase" vagy "decrease").
      * @return Egy stringet ami átdobja a felhasználót a kosár oldalra.
      */
-    @PostMapping("/updateCart")
+    @PostMapping(value="updateCart")
     public String updateCart(HttpServletRequest request,
                              @RequestParam("productID") int productID,
                              @RequestParam("newQuantity") int newQuantity,
@@ -240,7 +240,7 @@ public class UserController {
     }
 
 
-    @PostMapping("createOrder")
+    @PostMapping(value="createOrder")
     public String createOrder(HttpServletRequest request, Model model) {
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null || httpSession.getAttribute("email") == null) {
