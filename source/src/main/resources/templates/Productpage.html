@@ -29,8 +29,7 @@
   </head>
 
   <body>
-
-  <header>
+    <header>
       <div class="header-logo">
         <a href="/"><span>i</span>Shop</a>
       </div>
@@ -48,35 +47,33 @@
           <a href="Order" class="header-links-link">Rendeléseim</a>
         </div>
       </div>
-      <div class="header-icons">
-
-      </div>
+      <div class="header-icons"></div>
     </header>
 
     <main>
       <div class="productpage-main">
         <div class="productpage-main-productPicture">
           <div class="productpage-main-productMainPicture">
-            <img
+            <img th:if="${not images.isEmpty()}" th:src="${images.get(0)['imagePath']}"
               src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
               alt="iphone"
             />
           </div>
           <div class="productpage-main-productPicture-Slider">
             <div class="productpage-main-productPicture-Slider-element">
-              <img
+              <img th:if="${not images.isEmpty()}" th:src="${images.get(1)['imagePath']}"
+                src="pictures/ProductPage/Apple-Logo.jpeg"
+                alt=""
+              />
+            </div>
+            <div class="productpage-main-productPicture-Slider-element">
+              <img th:if="${not images.isEmpty()}" th:src="${images.get(2)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg"
                 alt=""
               />
             </div>
             <div class="productpage-main-productPicture-Slider-element">
-              <img
-                src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg"
-                alt=""
-              />
-            </div>
-            <div class="productpage-main-productPicture-Slider-element">
-              <img
+              <img th:if="${not images.isEmpty()}" th:src="${images.get(3)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg"
                 alt=""
               />
@@ -106,7 +103,12 @@
             </div>
             <p>40 vélemény</p>
           </div>
-          <div class="productpage-main-textContainer-price" th:text="${product['price']} + ' Ft'">510 000 Ft</div>
+          <div
+            class="productpage-main-textContainer-price"
+            th:text="${product['price']} + ' Ft'"
+          >
+            510 000 Ft
+          </div>
           <div class="productpage-main-textContainer-information">
             <p th:text="${product['description']}">
               6,7"-es Super Retina XDR OLED kijelző 2796 × 1290 felbontással 128
@@ -119,27 +121,47 @@
           </div>
           <div class="productpage-main-textContainer-buttons">
             <div class="productpage-main-textContainer-buttons-counter">
-              <button class="productpage-main-textContainer-buttons-minus">
-                +
-              </button>
-              <p class="counter">1</p>
-              <button class="productpage-main-textContainer-buttons-plus">
-                -
-              </button>
-            </div>
-            <div>
-              <form xmlns:th="http://www.thymeleaf.org" action="#" th:action="@{/addToCart}" method="post">
-                <input type="number" name="quantity" id="quantity">
-                <input type="hidden" th:value="${product['productID']}" name="productID" id="productID">
+              <form
+                xmlns:th="http://www.thymeleaf.org"
+                action="#"
+                th:action="@{/addToCart}"
+                method="post"
+              >
                 <input
-                        type="submit"
-                        name="signup-btn"
-                        value="Kosárba"
-                        class="orderButton"
+                  type="button"
+                  name="plusminus"
+                  id="minus"
+                  value="-"
+                  onclick=""
+                />
+                <input
+                  class="number"
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                  value="1"
+                />
+                <input
+                  type="hidden"
+                  th:value="${product['productID']}"
+                  name="productID"
+                  id="productID"
+                />
+                <input
+                  type="button"
+                  name="plusminus"
+                  id="plus"
+                  value="+"
+                  onclick=""
+                />
+                <input
+                  type="submit"
+                  name="signup-btn"
+                  value="Kosárba"
+                  class="orderButton"
                 />
               </form>
             </div>
-
           </div>
         </div>
       </div>
