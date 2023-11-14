@@ -84,6 +84,11 @@ public class OrderDAO {
         return jdbcTemplate.update(sqlCode, orderID) == 1;
     }
 
+    public boolean deleteUserOrder(int orderID) {
+        String sqlCode ="DELETE FROM orders WHERE orderID = ?;";
+        return jdbcTemplate.update(sqlCode, orderID) == 1;
+    }
+
     /**
      * Visszaadja egy rendelés OrderModeljét ID alapján.
      * @param id A visszatérítendő rendelés ID-je

@@ -45,9 +45,13 @@
 				  <tr th:each="item : ${order['ordereditems']}">
 				    <td th:text="${item['name']}">Airpods</td>
 				    <td th:text="${item['quantity']}">2</td>
-				    <td th:text="${item['price']}">118 000</td>
+				    <td th:text="${item['price']*item['quantity']}">118 000</td>
 				  </tr>
 				</table>
+              <form action="#" th:action="@{/deleteUserOrder}" method="post">
+                <input type="hidden" th:value="${order['orderID']}" id="orderIdentification" name="orderIdentification">
+                <input type="submit" value="Rendelés törlése">
+              </form>
             </div>
 		</section>
       	

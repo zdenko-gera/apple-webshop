@@ -1,4 +1,4 @@
-package com.project.webshop;
+spackage com.project.webshop;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

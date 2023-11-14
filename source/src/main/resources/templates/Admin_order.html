@@ -56,18 +56,16 @@
                 <table style="width: 100%">
                     <tr>
                         <th>Megrendelő email címe</th>
-                        <th>Termék neve</th>
-                        <th>Mennyiség (db)</th>
+                        <th>Rendelés azonosító </th>
                         <th>Ára (Ft)</th>
                         <th>Megrendelés ideje</th>
                         <th>Lehetőség</th>
                     </tr>
                     <tr th:each="order : ${orders}">
                         <td th:text="${order['email']}">Airpods</td>
-                        <td th:text="${order['name']}">pelda_nev</td>
-                        <td th:text="${order['quantity']}">-1</td>
-                        <td th:text="${order['price']}">-1000</td>
-                        <td th:text="${order['orderDate']}">-1</td>
+                        <td th:text="${order['orderID']}"></td>
+                        <td th:text="${order['price']}"></td>
+                        <td th:text="${order['orderDate']}"></td>
                         <td>
                             <form action="#" th:action="@{/deleteOrder}" method="post">
                             <input type="hidden" th:value="${order['orderID']}" name="orderID">
