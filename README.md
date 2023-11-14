@@ -12,3 +12,5 @@ SET GLOBAL max_connections = 9999999;
 megoldja a gondot.
 
 továbbá a projekttervet változtató commit nevének a végén szerepel egy 'sziaocsi', utólag jöttünk rá, hogy ez akár félreérthető is lehet, de ez csak egy belsős poén :D .
+
+a projektet idő hiányában nem sikerült kitelepíteni éles környezetbe
