@@ -105,6 +105,11 @@ public class UserController {
             }
 
             httpSession.setAttribute("email", new UserDAO().getUserDataByEmail(email));
+            UserModel user = (UserModel)httpSession.getAttribute(email);
+            /*if(user.getRole().equals("admin")){
+                return "redirect:/Admin";
+            }*/
+
             return "redirect:/";
         }
 
