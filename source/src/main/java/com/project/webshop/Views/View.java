@@ -1,6 +1,7 @@
 package com.project.webshop.Views;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.ImageDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
@@ -103,7 +104,9 @@ public class View {
     public String Productpage(HttpServletRequest request, Model model) {
         int productID = Integer.parseInt(request.getParameter("productID"));
         Map<String, Object> product = new ProductDAO().getProduct(productID);
+        List<Map<String, Object>> image = new ImageDAO().getImage(productID);
         model.addAttribute("product", product);
+        model.addAttribute("images",image);
         return "Productpage";
     }
 
