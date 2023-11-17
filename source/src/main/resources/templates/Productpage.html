@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="general.css" />
     <link rel="stylesheet" href="Productpage.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,6 +27,23 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <script>
+      const container = document.querySelector(".rating");
+      const items = container.querySelectorAll(".rating-item");
+      container.onclick = (e) => {
+        const elClass = e.target.classList;
+        // change the rating if the user clicks on a different star
+        if (!elClass.contains("active")) {
+          items.forEach(
+            // reset the active class on the star
+            (item) => item.classList.remove("active")
+          );
+          console.log(e.target.getAttribute("data-rate"));
+          elClass.add("active"); // add active class to the clicked star
+        }
+      };
+    </script>
   </head>
 
   <body>
@@ -54,26 +72,34 @@
       <div class="productpage-main">
         <div class="productpage-main-productPicture">
           <div class="productpage-main-productMainPicture">
-            <img th:if="${not images.isEmpty()}" th:src="${images.get(0)['imagePath']}"
+            <img
+              th:if="${not images.isEmpty()}"
+              th:src="${images.get(0)['imagePath']}"
               src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
               alt="iphone"
             />
           </div>
           <div class="productpage-main-productPicture-Slider">
             <div class="productpage-main-productPicture-Slider-element">
-              <img th:if="${not images.isEmpty()}" th:src="${images.get(1)['imagePath']}"
+              <img
+                th:if="${not images.isEmpty()}"
+                th:src="${images.get(1)['imagePath']}"
                 src="pictures/ProductPage/Apple-Logo.jpeg"
                 alt=""
               />
             </div>
             <div class="productpage-main-productPicture-Slider-element">
-              <img th:if="${not images.isEmpty()}" th:src="${images.get(2)['imagePath']}"
+              <img
+                th:if="${not images.isEmpty()}"
+                th:src="${images.get(2)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg"
                 alt=""
               />
             </div>
             <div class="productpage-main-productPicture-Slider-element">
-              <img th:if="${not images.isEmpty()}" th:src="${images.get(3)['imagePath']}"
+              <img
+                th:if="${not images.isEmpty()}"
+                th:src="${images.get(3)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg"
                 alt=""
               />
@@ -164,6 +190,26 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="productpage-rwrite">
+        <h2>Ossza meg élményét másokkal is</h2>
+        <form action="" class="rwrite">
+          <textarea name="rwrite" id="" cols="100%" rows="3"></textarea>
+
+          <div class="rating-container">
+            <input type="submit" name="rwriteSubmit" id="rwriteSubmit" />
+
+            <h3>Értékelés:</h3>
+            <ul class="rating">
+              <li class="rating-item" data-rate="1"></li>
+              <li class="rating-item" data-rate="2"></li>
+              <li class="rating-item active" data-rate="3"></li>
+              <li class="rating-item" data-rate="4"></li>
+              <li class="rating-item" data-rate="5"></li>
+            </ul>
+          </div>
+        </form>
       </div>
 
       <div class="productpage-review">
