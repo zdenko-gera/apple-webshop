@@ -95,27 +95,26 @@
         ></p>
         <div class="login">
           <form action="#" th:action="@{/loginUser}" method="post">
-            <fieldset>
-              <label for="email"> E-mail cím: </label>
-              <input
-                type="text"
-                maxlength="100"
-                placeholder="jozsika@gmail.com"
-                required
-                class="form-input"
-                id="email"
-                name="email"
-              />
-              <label for="password"> Jelszó: </label>
-              <input
-                type="password"
-                maxlength="100"
-                required
-                class="form-input"
-                id="password"
-                name="password"
-              />
-            </fieldset>
+            <label for="email"> E-mail cím: </label>
+            <input
+              type="text"
+              maxlength="100"
+              placeholder="jozsika@gmail.com"
+              required
+              class="form-input"
+              id="email"
+              name="email"
+            />
+            <label for="password"> Jelszó: </label>
+            <input
+              type="password"
+              maxlength="100"
+              required
+              class="form-input"
+              id="password"
+              name="password"
+            />
+
             <input
               type="submit"
               name="login-btn"
@@ -125,14 +124,16 @@
           </form>
         </div>
       </section>
-      <h2>Ha még nem regisztrált</h2>
-      <a href="Signup"
-        ><input
-          type="submit"
-          name="signup-btn"
-          value="Regisztráció"
-          class="form-input btn"
-      /></a>
+      <div class="login-notregistered">
+        <h2>Ha még nem regisztrált</h2>
+        <a href="Signup"
+          ><input
+            type="submit"
+            name="signup-btn"
+            value="Regisztráció"
+            class="form-input btn"
+        /></a>
+      </div>
     </main>
     <footer>
       <div class="footer">
