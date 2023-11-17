@@ -12,7 +12,6 @@
 .homepage-newProducts {
   display: flex;
   flex-direction: column;
-  height: 120%;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -22,19 +21,21 @@
 
 .homepage-newProducts-gridContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   grid-auto-rows: minmax(2rem, auto);
   padding: 2.5rem 5rem;
   flex: 1.5;
+  grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
 }
 .homepage-newProducts-gridItem {
   border: 1px solid #8f8f8f;
   background: #fff;
   text-align: center;
+  padding: 1rem;
 }
 .homepage-newProducts-gridItem-productPicture img {
-  height: 300px;
+  height: 270px;
+  max-width: 100%;
 }
 .webshop-filter {
   margin-top: 2.2rem;
@@ -59,4 +60,16 @@
 .price {
   font-weight: 600;
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 1100px) {
+  .webshop-container {
+    flex-direction: column;
+  }
+  .webshop-filter {
+    width: 60%;
+  }
+  .webshop-container {
+    align-items: center;
+  }
 }

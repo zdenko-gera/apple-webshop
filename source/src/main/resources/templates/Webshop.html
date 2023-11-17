@@ -107,9 +107,11 @@
             th:each="product : ${products}"
           >
             <div class="homepage-newProducts-gridItem-productPicture">
-              <img th:src="${product['images'].get(0)['imagePath']}"
+              <img
+                th:src="${product['images'].get(0)['imagePath']}"
                 src="../pictures/ProductPage/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"/>
+                alt="airpods"
+              />
             </div>
             <div class="homepage-newProducts-gridItem-productName">
               <p th:text="${product['name']}">AirPods Pro 2 Lightning tokkal</p>
