@@ -2,20 +2,22 @@ main {
   text-align: center;
 }
 .google-map {
-  width: 100vh;
+  height: 80%;
+  width: 80%;
   padding-bottom: 50%;
   text-align: center;
   position: relative;
+  margin: auto;
 }
 
 .google-map iframe {
   display: block;
   height: 100%;
   width: 100%;
-  left: 30%;
-  top: 0;
-  margin: 0 auto;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1 {
@@ -46,4 +48,10 @@ h1 {
 }
 .shops-element-text {
   flex: 2;
+}
+
+@media screen and (max-width: 800px) {
+  .shops-element {
+    flex-direction: column;
+  }
 }
