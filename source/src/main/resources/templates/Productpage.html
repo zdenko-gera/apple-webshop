@@ -194,7 +194,7 @@
 
       <div class="productpage-rwrite">
         <h2>Ossza meg élményét másokkal is</h2>
-        <form action="" class="rwrite">
+        <form action="#" class="rwrite">
           <textarea name="rwrite" id="" cols="100%" rows="3"></textarea>
 
           <div class="rating-container">
@@ -216,7 +216,28 @@
         <h2>Visszajelzések</h2>
         <p>Mások ezeket gondolják.</p>
         <div class="productpage-review-container">
-          <div class="productpage-review-container-element">
+          <div class="productpage-review-container-element"   th:each="comment : ${comments}">
+            <div class="productpage-review-container-head">
+              <div><h3 th:text="${comment['firstname']} + ' ' + ${comment['lastname']} "></h3></div>
+              <div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+            </div>
+            <div class="productpage-review-container-body">
+              <p th:text="${comment['comment']}">
+                Elképesztően hosszú akkumlátor- idő. Könnyű kezelhetőség
+                mellett, rengeteg funkciók.
+              </p>
+            </div>
+            <div class="productpage-review-container-foot">
+              <p th:text="${comment['publishDate']}">2023.05.20.</p>
+            </div>
+          </div>
+          <!--<div class="productpage-review-container-element">
             <div class="productpage-review-container-head">
               <div><h3>ZoliZoltán</h3></div>
               <div>
@@ -236,8 +257,8 @@
             <div class="productpage-review-container-foot">
               <p>2023.05.20.</p>
             </div>
-          </div>
-          <div class="productpage-review-container-element">
+          </div>-->
+          <!--<div class="productpage-review-container-element">
             <div class="productpage-review-container-head">
               <div><h3>ZoliZoltán</h3></div>
               <div>
@@ -257,28 +278,7 @@
             <div class="productpage-review-container-foot">
               <p>2023.05.20.</p>
             </div>
-          </div>
-          <div class="productpage-review-container-element">
-            <div class="productpage-review-container-head">
-              <div><h3>ZoliZoltán</h3></div>
-              <div>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </div>
-            </div>
-            <div class="productpage-review-container-body">
-              <p>
-                Elképesztően hosszú akkumlátor- idő. Könnyű kezelhetőség
-                mellett, rengeteg funkciók.
-              </p>
-            </div>
-            <div class="productpage-review-container-foot">
-              <p>2023.05.20.</p>
-            </div>
-          </div>
+          </div>-->
         </div>
       </div>
 

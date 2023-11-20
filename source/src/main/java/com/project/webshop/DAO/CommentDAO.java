@@ -1,9 +1,15 @@
 package com.project.webshop.DAO;
 
 import com.project.webshop.AppConfig;
+import com.project.webshop.Models.CommentModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CommentDAO {
@@ -31,8 +37,14 @@ public class CommentDAO {
      *  Visszaadja a kommentet minden szükséges információval együtt egy Map formájában
      * @return
      */
-    public Map getComment() {
-        return null;
+    public List<Map<String,Object>> getComment(int productID) {
+        List<Map<String,Object>> comments;
+        String sqlCode = "SELECT * FROM comment INNER JOIN user ON comment.email = user.email WHERE comment.productID = ?;";
+        comments = jdbcTemplate.queryForList(sqlCode, productID);
+
+        /*CommentModel resultComment = CommentModel(((int) comment.get("productID"), (int) comment.get("rate"), comment.get("email").toString(),
+                comment.get("comment").toString(), LocalDate.parse(comment.get("publishDate").toString()));*/
+        return comments;
     }
 
     /**
