@@ -219,12 +219,8 @@
           <div class="productpage-review-container-element"   th:each="comment : ${comments}">
             <div class="productpage-review-container-head">
               <div><h3 th:text="${comment['firstname']} + ' ' + ${comment['lastname']} "></h3></div>
-              <div>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
+              <div >
+                <span th:each="rating : ${#numbers.sequence(1,5)}" th:class="${rating<=comment['rate']}? 'fa fa-star checked': 'fa fa-star'"></span>
               </div>
             </div>
             <div class="productpage-review-container-body">

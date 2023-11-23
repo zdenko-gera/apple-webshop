@@ -34,8 +34,9 @@ public class CommentDAO {
     }
 
     /**
-     *  Visszaadja a kommentet minden szükséges információval együtt egy Map formájában
-     * @return
+     *  Visszaadja a kommenteket minden szükséges információval együtt egy List formájában
+     * @param productID ehhez a termékhez kérjük le a kommenteket
+     * @return kommentek
      */
     public List<Map<String,Object>> getComment(int productID) {
         List<Map<String,Object>> comments;
