@@ -1,9 +1,11 @@
 package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.CommentDAO;
 import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.CommentModel;
 import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
@@ -260,8 +262,22 @@ public class UserController {
         return "Index";
     }
 
-    public void addComment(int productID, String comment, int rating) {
+    @PostMapping(value="writeComment")
+    public String addComment(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+        new OrderDAO().createOrder(user);
+
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        String comment = request.getParameter("comment");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        CommentModel commentModel = new CommentModel(productID, rating, user.getEmail(), comment, java.time.LocalDate.now());
+        new CommentDAO().createComment(commentModel);
+        return "Index";
     }
 
     /**

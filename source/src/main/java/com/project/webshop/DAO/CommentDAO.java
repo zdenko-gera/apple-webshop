@@ -2,6 +2,7 @@ package com.project.webshop.DAO;
 
 import com.project.webshop.AppConfig;
 import com.project.webshop.Models.CommentModel;
+import com.project.webshop.SpringSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,8 +30,13 @@ public class CommentDAO {
      * @param rate A termékre adott értékelés
      * @param comment A termékre adott értékelés szövege
      */
-    public void createComment(String email, int rate, String comment) {
-
+    public void createComment(CommentModel commentModel) {
+        String sqlCode = "INSERT INTO comment (email, productID, publishDate, comment, rate) VALUES (?,?,?,?,?)";
+        jdbcTemplate.update(sqlCode, commentModel.getEmail(),
+                commentModel.getProductID(),
+                commentModel.getPublishDate(),
+                commentModel.getComment(),
+                commentModel.getRate());
     }
 
     /**

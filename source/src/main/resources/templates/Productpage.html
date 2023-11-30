@@ -29,8 +29,11 @@
     />
 
     <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
       const container = document.querySelector(".rating");
       const items = container.querySelectorAll(".rating-item");
+      const hiddenInput = document.querySelector('input[name="rating"]');
       container.onclick = (e) => {
         const elClass = e.target.classList;
         // change the rating if the user clicks on a different star
@@ -40,9 +43,13 @@
             (item) => item.classList.remove("active")
           );
           console.log(e.target.getAttribute("data-rate"));
+          hiddenInput.value = e.target.getAttribute("data-rate");
+          console.log(hiddenInput.value);
           elClass.add("active"); // add active class to the clicked star
         }
       };
+      });
+
     </script>
   </head>
 
@@ -194,19 +201,20 @@
 
       <div class="productpage-rwrite">
         <h2>Ossza meg élményét másokkal is</h2>
-        <form action="#" class="rwrite">
-          <textarea name="rwrite" id="" cols="100%" rows="3"></textarea>
+        <form action="#" th:action="@{/writeComment}" method="post" class="rwrite">
+          <textarea name="comment" cols="100%" rows="3"></textarea>
 
           <div class="rating-container">
-            <input type="submit" name="rwriteSubmit" id="rwriteSubmit" />
-
-            <h3>Értékelés:</h3>
-            <ul class="rating">
+          <h3>Értékelés:</h3>
+            <input type="submit" name="rwriteSubmit" id="rwriteSubmit"/>
+            <input type="hidden" name="rating" value="5">
+            <input type="hidden" th:value="${product['productID']}" name="productID"/>
+            <ul class="rating" data-rate="5">
               <li class="rating-item" data-rate="1"></li>
               <li class="rating-item" data-rate="2"></li>
-              <li class="rating-item active" data-rate="3"></li>
+              <li class="rating-item" data-rate="3"></li>
               <li class="rating-item" data-rate="4"></li>
-              <li class="rating-item" data-rate="5"></li>
+              <li class="rating-item active" data-rate="5"></li>
             </ul>
           </div>
         </form>
