@@ -135,6 +135,16 @@ public class View {
         Map<String, Object> product = new ProductDAO().getProduct(productID);
         List<Map<String, Object>> image = new ImageDAO().getImage(productID);
         List<Map<String,Object>> comments = new CommentDAO().getComment(productID);
+
+        HttpSession session = request.getSession(false);
+        UserModel userModel;
+        if(session != null) {
+            userModel = (UserModel) session.getAttribute("email");
+        } else {
+            userModel = null;
+        }
+
+        model.addAttribute("email", userModel != null ? userModel.getEmail() : null);
         model.addAttribute("product", product);
         model.addAttribute("images",image);
         model.addAttribute("comments", comments);

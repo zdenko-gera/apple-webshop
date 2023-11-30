@@ -69,7 +69,8 @@ public class CommentDAO {
      * @param commentID A termékre adott értékelés szövege
      * @return True ha sikeres a törlés, false különben
      */
-    public Boolean deleteComment(String email, int commentID) {
-        return false;
+    public void deleteComment(int commentID) {
+        String sqlCode = "DELETE FROM comment WHERE commentID = ?";
+        jdbcTemplate.update(sqlCode, commentID);
     }
 }

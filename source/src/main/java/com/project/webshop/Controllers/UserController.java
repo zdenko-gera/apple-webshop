@@ -280,6 +280,19 @@ public class UserController {
         return "Index";
     }
 
+    @PostMapping(value="deleteComment")
+    public String deleteComment(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
+
+        int commentID = Integer.parseInt(request.getParameter("commentID"));
+        new CommentDAO().deleteComment(commentID);
+
+        return "Index";
+    }
+
     /**
      * Lekérdezi a felhasználó emailjét a sessionből. Ez alapján beazonosítja a felhasználót az adatbázisban (amennyiben létezik
      * a felhasználó), majd lekéri az adatait. Leellenőrzi, hogy a formban megadott régi jelszó egyezik-e a user jelenlegi jelszavával.

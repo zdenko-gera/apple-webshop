@@ -240,6 +240,10 @@
             <div class="productpage-review-container-foot">
               <p th:text="${comment['publishDate']}">2023.05.20.</p>
             </div>
+            <form th:if="${comment['email'] == email}" action="#" th:action="@{/deleteComment}" method="post">
+              <input type="hidden" name="commentID" th:value="${comment['commentID']}">
+              <input type="submit" value="Törlés">
+            </form>
           </div>
           <!--<div class="productpage-review-container-element">
             <div class="productpage-review-container-head">
