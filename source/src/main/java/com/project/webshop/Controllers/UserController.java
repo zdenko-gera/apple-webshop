@@ -1,10 +1,12 @@
 package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
 import com.project.webshop.Models.OrderModel;
+import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -463,4 +466,21 @@ public class UserController {
         }
         return "redirect:/Order";
     }
+
+    // Termékek szűrése ár alapján
+    /**
+     * Megvalósítja a termékek szűrését ár alapján.
+     * @param minPrice A minimális ár
+     * @param maxPrice A maximális ár
+     * @param model A Spring Model objektum, amelynek segítségével adatokat lehet átadni a Thymeleaf sablonnak
+     * @return A megjelenítendő nézet neve
+     */
+    @GetMapping("/filterProducts")
+    public String filterProductsByPrice(@RequestParam int minPrice, @RequestParam int maxPrice, Model model) {
+        ProductDAO productDAO = new ProductDAO();
+        List<ProductModel> filteredProducts = productDAO.filterProductsByPrice(minPrice, maxPrice);
+        model.addAttribute("filteredProducts", filteredProducts);
+        return "filteredProductsView";
+    }
+
 }

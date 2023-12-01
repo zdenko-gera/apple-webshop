@@ -9,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -171,6 +172,10 @@ public class ProductDAO {
         String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) + ?) WHERE productID = ?";
 
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
+    }
 
+    public List<ProductModel> filterProductsByPrice(int minPrice, int maxPrice) {
+        String sqlCode = "SELECT * FROM product WHERE price BETWEEN ? AND ?";
+        return jdbcTemplate.query(sqlCode, new BeanPropertyRowMapper<>(ProductModel.class), minPrice, maxPrice);
     }
 }
