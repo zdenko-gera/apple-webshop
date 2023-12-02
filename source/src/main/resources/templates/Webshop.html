@@ -122,8 +122,8 @@
           <div class="homepage-newProducts-gridItem" th:each="product : ${#strings.isEmpty(filteredProducts) ? (searchProducts ?: products) : filteredProducts}">
             <div class="homepage-newProducts-gridItem-productPicture">
               <img th:if="${product['images'] != null and product['images'].size() > 0}"
-                   th:src="${product['images'][0]['imagePath']}"
-                   alt="airpods" />
+                   th:src="${product['images'].get(0)['imagePath']}"
+              />
             </div>
             <div class="homepage-newProducts-gridItem-productName">
               <p th:text="${product['name']}">AirPods Pro 2 Lightning tokkal</p>

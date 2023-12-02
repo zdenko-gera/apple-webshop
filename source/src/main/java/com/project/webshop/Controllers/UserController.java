@@ -1,9 +1,6 @@
 package com.project.webshop.Controllers;
 
-import com.project.webshop.DAO.CartDAO;
-import com.project.webshop.DAO.ProductDAO;
-import com.project.webshop.DAO.UserDAO;
-import com.project.webshop.DAO.OrderDAO;
+import com.project.webshop.DAO.*;
 import com.project.webshop.Models.CartModel;
 import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.ProductModel;
@@ -473,19 +470,25 @@ public class UserController {
                                  @RequestParam(required = false) Double maxPrice,
                                  Model model) {
         ProductDAO productDAO = new ProductDAO();
-        List<Map<String, Object>> filteredProductMaps;
+        List<Map<String, Object>> filteredProduct;
 
         if (minPrice != null && maxPrice != null) {
-            filteredProductMaps = productDAO.filterProductsByPrice(minPrice, maxPrice);
+            filteredProduct = productDAO.filterProductsByPrice(minPrice, maxPrice);
         } else if (minPrice != null) {
-            filteredProductMaps = productDAO.filterProductsByPrice(minPrice, 999999999);
+            filteredProduct = productDAO.filterProductsByPrice(minPrice, 999999999);
         } else if (maxPrice != null) {
-            filteredProductMaps = productDAO.filterProductsByPrice(-1, maxPrice);
+            filteredProduct = productDAO.filterProductsByPrice(-1, maxPrice);
         } else {
-            filteredProductMaps = productDAO.getProducts();
+            filteredProduct = productDAO.getProducts();
         }
 
-        model.addAttribute("filteredProducts", filteredProductMaps);
+        for (Map<String, Object> product : filteredProduct) {
+            int productID = (int) product.get("productID");
+            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
+            product.put("images", images);
+        }
+
+        model.addAttribute("filteredProducts", filteredProduct);
 
         return "Webshop";
     }
@@ -494,6 +497,12 @@ public class UserController {
     public String sortProductsDesc(Model model) {
         ProductDAO productDAO = new ProductDAO();
         List<Map<String, Object>> sortedProducts = productDAO.getProductsSortedByPriceDesc();
+
+        for (Map<String, Object> product : sortedProducts) {
+            int productID = (int) product.get("productID");
+            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
+            product.put("images", images);
+        }
 
         model.addAttribute("products", sortedProducts);
 
@@ -505,6 +514,12 @@ public class UserController {
         ProductDAO productDAO = new ProductDAO();
         List<Map<String, Object>> sortedProducts = productDAO.getProductsSortedByPriceAsc();
 
+        for (Map<String, Object> product : sortedProducts) {
+            int productID = (int) product.get("productID");
+            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
+            product.put("images", images);
+        }
+
         model.addAttribute("products", sortedProducts);
 
         return "Webshop";
@@ -514,6 +529,12 @@ public class UserController {
     public String searchProducts(@RequestParam("searchProducts") String productName, Model model) {
         ProductDAO productDAO = new ProductDAO();
         List<Map<String, Object>> searchProducts = productDAO.searchProductsByName(productName);
+
+        for (Map<String, Object> product : searchProducts) {
+            int productID = (int) product.get("productID");
+            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
+            product.put("images", images);
+        }
 
         if (!searchProducts.isEmpty()) {
             model.addAttribute("searchProducts", searchProducts);
