@@ -348,9 +348,9 @@ public class UserController {
     }
 
     @PostMapping(value="changeDeliveryDetails")
-    public String changeDeliveryDetails( @RequestParam("postalcode") int postalCode,
-                                      @RequestParam("city") String city, @RequestParam("street") String street,
-                                      @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+    public String changeDeliveryDetails( @RequestParam("deliveryDetailsPostalcode") int postalCode,
+                                      @RequestParam("deliveryDetailsCity") String city, @RequestParam("deliveryDetailsStreet") String street,
+                                      @RequestParam("deliveryDetailsHouseNumber") int housenumber, HttpServletRequest request,
                                       Model model){
         HttpSession session = request.getSession();
         UserModel user = (UserModel) session.getAttribute("email");
@@ -377,9 +377,9 @@ public class UserController {
     }
 
     @PostMapping(value="changeBillingDetails")
-    public String changeBillingDetails( @RequestParam("postalcode") int postalCode,
-                                        @RequestParam("city") String city, @RequestParam("street") String street,
-                                        @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+    public String changeBillingDetails( @RequestParam("billingDetailsPostalCode") int postalCode,
+                                        @RequestParam("billingDetailsCity") String city, @RequestParam("billingDetailsStreet") String street,
+                                        @RequestParam("billingDetailsHouseNumber") int housenumber, HttpServletRequest request,
                                         Model model){
         HttpSession session = request.getSession();
         UserModel user = (UserModel) session.getAttribute("email");
