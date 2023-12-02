@@ -94,12 +94,16 @@
         <div class="webshop-filter">
           <div class="webshop-filter-f">
             <h2>Szűrők</h2>
+            <form action="#" th:action="@{searchProducts}" method="post">
+              <input class="webshop-filter-input" type="text" name="searchProducts" placeholder="Iphone 15" />
+              <button class="webshop-filter-szures" type="submit">Keresés</button>
+            </form>
+            <br>
             <form action="#" th:action="@{filterProducts}" method="post">
               <input class="webshop-filter-input1"  type="number" id="minPrice" name="minPrice" placeholder="Minimum ár">
               <input class="webshop-filter-input2" type="number" id="maxPrice" name="maxPrice" placeholder="Maximum ár">
               <button class="webshop-filter-szures" type="submit">Szűrés</button>
             </form>
-            <br>
           </div>
           <div class="websohp-filter-s">
             <form action="#" th:action="@{sortProductsDesc}" method="post">
@@ -112,7 +116,10 @@
           </div>
         </div>
         <div class="homepage-newProducts-gridContainer">
-          <div class="homepage-newProducts-gridItem" th:each="product : ${#strings.isEmpty(filteredProducts) ? products : filteredProducts}">
+          <div th:if="${not #strings.isEmpty(noResultsMessage)}" class="no-results-message">
+            <p th:text="${noResultsMessage}"></p>
+          </div>
+          <div class="homepage-newProducts-gridItem" th:each="product : ${#strings.isEmpty(filteredProducts) ? (searchProducts ?: products) : filteredProducts}">
             <div class="homepage-newProducts-gridItem-productPicture">
               <img th:if="${product['images'] != null and product['images'].size() > 0}"
                    th:src="${product['images'][0]['imagePath']}"

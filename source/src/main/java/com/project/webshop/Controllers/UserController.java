@@ -509,4 +509,18 @@ public class UserController {
 
         return "Webshop";
     }
+
+    @PostMapping(value = "searchProducts")
+    public String searchProducts(@RequestParam("searchProducts") String productName, Model model) {
+        ProductDAO productDAO = new ProductDAO();
+        List<Map<String, Object>> searchProducts = productDAO.searchProductsByName(productName);
+
+        if (!searchProducts.isEmpty()) {
+            model.addAttribute("searchProducts", searchProducts);
+        } else {
+            model.addAttribute("noResultsMessage", "Nincs találat a keresésre.");
+        }
+
+        return "Webshop";
+    }
 }

@@ -199,4 +199,14 @@ public class ProductDAO {
         String sqlCode = "SELECT * FROM product ORDER BY price ASC";
         return jdbcTemplate.queryForList(sqlCode);
     }
+
+    /**
+     * Kikeresi az adatbázisból azokat a termékek, amelyek tartalmazzák a beírt termék név részletet
+     * @param name A termék neve
+     */
+    public List<Map<String, Object>> searchProductsByName(String name) {
+        String sqlCode = "SELECT * FROM product WHERE LOWER(product.name) LIKE LOWER(?)";
+        String searchTerm = "%" + name + "%";
+        return jdbcTemplate.queryForList(sqlCode, searchTerm);
+    }
 }
