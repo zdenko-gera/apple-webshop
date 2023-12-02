@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -263,21 +264,27 @@ public class UserController {
     }
 
     @PostMapping(value="writeComment")
-    public String addComment(HttpServletRequest request) {
+    public String addComment(HttpServletRequest request, RedirectAttributes attributes) {
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null || httpSession.getAttribute("email") == null) {
             return "Login";
         }
 
+        String referer = request.getHeader("Referer");
         UserModel user = (UserModel) httpSession.getAttribute("email");
-        new OrderDAO().createOrder(user);
 
         int productID = Integer.parseInt(request.getParameter("productID"));
         String comment = request.getParameter("comment");
         int rating = Integer.parseInt(request.getParameter("rating"));
-        CommentModel commentModel = new CommentModel(productID, rating, user.getEmail(), comment, java.time.LocalDate.now());
-        new CommentDAO().createComment(commentModel);
-        return "Index";
+
+        if(comment.trim().equals("")) {
+            attributes.addFlashAttribute("message", "Sikertelen az értékelés írása");
+        } else {
+            CommentModel commentModel = new CommentModel(productID, rating, user.getEmail(), comment, java.time.LocalDate.now());
+            new CommentDAO().createComment(commentModel);
+        }
+
+        return "redirect:" + referer;
     }
 
     @PostMapping(value="deleteComment")

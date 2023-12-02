@@ -49,7 +49,11 @@
         }
       };
       });
+      </script>
 
+    <script th:inline="javascript" th:if="${message != null}">
+      var message = [[${message}]];
+    alert(message);
     </script>
   </head>
 
@@ -226,7 +230,8 @@
         <div class="productpage-review-container">
           <div class="productpage-review-container-element"   th:each="comment : ${comments}">
             <div class="productpage-review-container-head">
-              <div><h3 th:text="${comment['firstname']} + ' ' + ${comment['lastname']} "></h3></div>
+              <div th:if="${comment['email'] != null}"><h3 th:text="${comment['firstname']} + ' ' + ${comment['lastname']} "></h3></div>
+              <div th:if="${comment['email'] == null}"><h3>Törölt felhasználó</h3></div>
               <div >
                 <span th:each="rating : ${#numbers.sequence(1,5)}" th:class="${rating<=comment['rate']}? 'fa fa-star checked': 'fa fa-star'"></span>
               </div>
@@ -240,7 +245,7 @@
             <div class="productpage-review-container-foot">
               <p th:text="${comment['publishDate']}">2023.05.20.</p>
             </div>
-            <form th:if="${comment['email'] == email}" action="#" th:action="@{/deleteComment}" method="post">
+            <form th:if="${comment['email'] == email && email != null}" action="#" th:action="@{/deleteComment}" method="post">
               <input type="hidden" name="commentID" th:value="${comment['commentID']}">
               <input type="submit" value="Törlés">
             </form>
