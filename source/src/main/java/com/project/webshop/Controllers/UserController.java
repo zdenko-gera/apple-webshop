@@ -468,13 +468,6 @@ public class UserController {
         return "redirect:/Order";
     }
 
-    /**
-     * Megvalósítja a termékek szűrését ár alapján.
-     * @param minPrice A minimális ár
-     * @param maxPrice A maximális ár
-     * @param model
-     * @return A megjelenítendő nézet neve
-     */
     @PostMapping(value = "filterProducts")
     public String filterProducts(@RequestParam(required = false) Double minPrice,
                                  @RequestParam(required = false) Double maxPrice,
@@ -485,14 +478,24 @@ public class UserController {
         if (minPrice != null && maxPrice != null) {
             filteredProductMaps = productDAO.filterProductsByPrice(minPrice, maxPrice);
         } else if (minPrice != null) {
-            filteredProductMaps = productDAO.filterProductsByPrice(minPrice, 0);
+            filteredProductMaps = productDAO.filterProductsByPrice(minPrice, 999999999);
         } else if (maxPrice != null) {
-            filteredProductMaps = productDAO.filterProductsByPrice(0, maxPrice);
+            filteredProductMaps = productDAO.filterProductsByPrice(-1, maxPrice);
         } else {
             filteredProductMaps = productDAO.getProducts();
         }
 
         model.addAttribute("filteredProducts", filteredProductMaps);
+
+        return "Webshop";
+    }
+
+    @PostMapping(value = "sortProductsDesc")
+    public String sortProductsDesc(Model model) {
+        ProductDAO productDAO = new ProductDAO();
+        List<Map<String, Object>> sortedProducts = productDAO.getProductsSortedByPriceDesc();
+
+        model.addAttribute("products", sortedProducts);
 
         return "Webshop";
     }

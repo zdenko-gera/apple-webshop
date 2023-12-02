@@ -174,8 +174,21 @@ public class ProductDAO {
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
     }
 
+    /**
+     * Kikeresi az adatbázisból azokat a termékeket, amelyek benne vannak a maximum és a minimum ár között
+     * @param minPrice a minimum ár
+     * @param maxPrice a maximum ár
+     */
     public List<Map<String, Object>> filterProductsByPrice(double minPrice, double maxPrice) {
         String sqlCode = "SELECT * FROM product WHERE price BETWEEN ? AND ?";
         return jdbcTemplate.queryForList(sqlCode, minPrice, maxPrice);
+    }
+
+    /**
+     * A termékeket ár alapján csökkenő sorrendbe állítja
+     */
+    public List<Map<String, Object>> getProductsSortedByPriceDesc() {
+        String sqlCode = "SELECT * FROM product ORDER BY price DESC";
+        return jdbcTemplate.queryForList(sqlCode);
     }
 }

@@ -93,19 +93,21 @@
       <div class="webshop-container">
         <div class="webshop-filter">
           <div class="websohp-filter-f">
-            <h2>Ár alapján szűrés</h2>
+            <h2>Szűrők</h2>
             <form action="#" th:action="@{filterProducts}" method="post">
               <label for="minPrice">Min ár:</label>
-              <input type="number" id="minPrice" name="minPrice" placeholder="Min ár">
+              <input type="number" id="minPrice" name="minPrice" placeholder="Min ár" th:value="${currentMinPrice}">
               <br>
               <label for="maxPrice">Max ár:</label>
-              <input type="number" id="maxPrice" name="maxPrice" placeholder="Max ár">
+              <input type="number" id="maxPrice" name="maxPrice" placeholder="Max ár" th:value="${currentMaxPrice}">
+              <br>
               <button type="submit">Szűrés</button>
             </form>
           </div>
           <div class="websohp-filter-s">
-            <h2>Rendezés</h2>
-            <button class="webshop-filter-button">Ár szerint csökkenő</button>
+            <form action="#" th:action="@{sortProductsDesc}" method="post">
+              <button type="submit" class="webshop-filter-button">Ár szerint csökkenő</button>
+            </form>
           </div>
         </div>
         <div class="homepage-newProducts-gridContainer">
