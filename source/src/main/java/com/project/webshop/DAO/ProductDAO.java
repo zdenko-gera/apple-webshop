@@ -174,8 +174,8 @@ public class ProductDAO {
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
     }
 
-    public List<ProductModel> filterProductsByPrice(int minPrice, int maxPrice) {
+    public List<Map<String, Object>> filterProductsByPrice(double minPrice, double maxPrice) {
         String sqlCode = "SELECT * FROM product WHERE price BETWEEN ? AND ?";
-        return jdbcTemplate.query(sqlCode, new BeanPropertyRowMapper<>(ProductModel.class), minPrice, maxPrice);
+        return jdbcTemplate.queryForList(sqlCode, minPrice, maxPrice);
     }
 }

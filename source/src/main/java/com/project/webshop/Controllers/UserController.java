@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -467,20 +468,32 @@ public class UserController {
         return "redirect:/Order";
     }
 
-    // Termékek szűrése ár alapján
     /**
      * Megvalósítja a termékek szűrését ár alapján.
      * @param minPrice A minimális ár
      * @param maxPrice A maximális ár
-     * @param model A Spring Model objektum, amelynek segítségével adatokat lehet átadni a Thymeleaf sablonnak
+     * @param model
      * @return A megjelenítendő nézet neve
      */
-    @GetMapping("/filterProducts")
-    public String filterProductsByPrice(@RequestParam int minPrice, @RequestParam int maxPrice, Model model) {
+    @PostMapping(value = "filterProducts")
+    public String filterProducts(@RequestParam(required = false) Double minPrice,
+                                 @RequestParam(required = false) Double maxPrice,
+                                 Model model) {
         ProductDAO productDAO = new ProductDAO();
-        List<ProductModel> filteredProducts = productDAO.filterProductsByPrice(minPrice, maxPrice);
-        model.addAttribute("filteredProducts", filteredProducts);
-        return "filteredProductsView";
-    }
+        List<Map<String, Object>> filteredProductMaps;
 
+        if (minPrice != null && maxPrice != null) {
+            filteredProductMaps = productDAO.filterProductsByPrice(minPrice, maxPrice);
+        } else if (minPrice != null) {
+            filteredProductMaps = productDAO.filterProductsByPrice(minPrice, 0);
+        } else if (maxPrice != null) {
+            filteredProductMaps = productDAO.filterProductsByPrice(0, maxPrice);
+        } else {
+            filteredProductMaps = productDAO.getProducts();
+        }
+
+        model.addAttribute("filteredProducts", filteredProductMaps);
+
+        return "Webshop";
+    }
 }

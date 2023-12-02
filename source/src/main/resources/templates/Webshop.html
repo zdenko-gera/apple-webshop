@@ -94,14 +94,13 @@
         <div class="webshop-filter">
           <div class="websohp-filter-f">
             <h2>Ár alapján szűrés</h2>
-            <form id="filterForm">
+            <form action="#" th:action="@{filterProducts}" method="post">
               <label for="minPrice">Min ár:</label>
               <input type="number" id="minPrice" name="minPrice" placeholder="Min ár">
               <br>
               <label for="maxPrice">Max ár:</label>
               <input type="number" id="maxPrice" name="maxPrice" placeholder="Max ár">
-
-              <button type="button">Szűrés</button>
+              <button type="submit">Szűrés</button>
             </form>
           </div>
           <div class="websohp-filter-s">
@@ -110,16 +109,11 @@
           </div>
         </div>
         <div class="homepage-newProducts-gridContainer">
-          <div
-            class="homepage-newProducts-gridItem"
-            th:each="product : ${products}"
-          >
+          <div class="homepage-newProducts-gridItem" th:each="product : ${#strings.isEmpty(filteredProducts) ? products : filteredProducts}">
             <div class="homepage-newProducts-gridItem-productPicture">
-              <img
-                th:src="${product['images'].get(0)['imagePath']}"
-                src="../pictures/ProductPage/gbpqy8wkncs5lyoorw7c.png"
-                alt="airpods"
-              />
+              <img th:if="${product['images'] != null and product['images'].size() > 0}"
+                   th:src="${product['images'][0]['imagePath']}"
+                   alt="airpods" />
             </div>
             <div class="homepage-newProducts-gridItem-productName">
               <p th:text="${product['name']}">AirPods Pro 2 Lightning tokkal</p>
@@ -127,9 +121,9 @@
             <div class="homepage-newProducts-gridItem-productBuy">
               <form action="#" th:action="@{/Productpage}">
                 <input
-                  type="hidden"
-                  th:value="${product['productID']}"
-                  name="productID"
+                        type="hidden"
+                        th:value="${product['productID']}"
+                        name="productID"
                 />
                 <input type="submit" class="orderButton" value="Kosárba" />
               </form>
