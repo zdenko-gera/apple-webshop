@@ -191,4 +191,12 @@ public class ProductDAO {
         String sqlCode = "SELECT * FROM product ORDER BY price DESC";
         return jdbcTemplate.queryForList(sqlCode);
     }
+
+    /**
+     * A termékeket ár alapján növekvő sorrendbe állítja
+     */
+    public List<Map<String, Object>> getProductsSortedByPriceAsc() {
+        String sqlCode = "SELECT * FROM product ORDER BY price ASC";
+        return jdbcTemplate.queryForList(sqlCode);
+    }
 }

@@ -499,4 +499,14 @@ public class UserController {
 
         return "Webshop";
     }
+
+    @PostMapping(value = "sortProductsAsc")
+    public String sortProductsAsc(Model model) {
+        ProductDAO productDAO = new ProductDAO();
+        List<Map<String, Object>> sortedProducts = productDAO.getProductsSortedByPriceAsc();
+
+        model.addAttribute("products", sortedProducts);
+
+        return "Webshop";
+    }
 }
