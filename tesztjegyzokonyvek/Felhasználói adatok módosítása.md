@@ -87,8 +87,3 @@ Várható eredmény: A rendszer hibajelzést ad, hogy az új jelszó nem elég h
 
 Teszt lezárása:
 Az összes teszteset sikeresen lefutott és a várható eredmények megfelelnek az elvárt működésnek.
-
-Hibajelentések rögzítve és továbbítva a fejlesztői csapatnak.
-
-Tesztelő: [Tesztelő neve]
-
