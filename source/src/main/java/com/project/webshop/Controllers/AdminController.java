@@ -25,7 +25,7 @@ public class AdminController {
 
     @PostMapping(value="createProduct")
     public String addProduct(@RequestParam("type") String type, @RequestParam("price") int price, @RequestParam("name") String name, @RequestParam("description") String description,
-                             @RequestParam("quantity") int quantity, @RequestParam("images") MultipartFile image, Model model) throws IOException {
+                             @RequestParam("quantity") int quantity, @RequestParam("images[]") MultipartFile[] images, Model model) throws IOException {
         boolean error = false;
         System.out.println(UPLOAD_DIRECTORY);
         if(type.equals("")) {
@@ -43,13 +43,15 @@ public class AdminController {
 
         if(error) return "Admin";
 
-        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, image.getOriginalFilename());
-        Files.write(fileNameAndPath, image.getBytes());
-
         ProductDAO productDAO = new ProductDAO();
         productDAO.createProduct(type,price,name,description,quantity);
 
-        new ImageDAO().newImage(productDAO.getMaxProductID(), image.getOriginalFilename());
+        for (MultipartFile image : images) {
+            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, image.getOriginalFilename());
+            Files.write(fileNameAndPath, image.getBytes());
+            new ImageDAO().newImage(productDAO.getMaxProductID(), image.getOriginalFilename());
+        }
+
         return "redirect:/";
 
     }
