@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -466,22 +467,22 @@ public class UserController {
     }
 
     @PostMapping(value = "filterProducts")
-    public String filterProducts(@RequestParam(required = false) Double minPrice,
-                                 @RequestParam(required = false) Double maxPrice,
+    public String filterProducts(@RequestParam("order") String order,
+                                 @RequestParam(value = "productName", required = false) String productName,
+                                 @RequestParam(value = "minPrice", required = false) Integer minPrice,
+                                 @RequestParam(value = "maxPrice", required = false) Integer maxPrice,
                                  Model model) {
         ProductDAO productDAO = new ProductDAO();
         List<Map<String, Object>> filteredProduct;
 
-        if (minPrice != null && maxPrice != null) {
-            filteredProduct = productDAO.filterProductsByPrice(minPrice, maxPrice);
-        } else if (minPrice != null) {
-            filteredProduct = productDAO.filterProductsByPrice(minPrice, 999999999);
-        } else if (maxPrice != null) {
-            filteredProduct = productDAO.filterProductsByPrice(-1, maxPrice);
-        } else {
-            filteredProduct = productDAO.getProducts();
-        }
+        String filterSQL = "price BETWEEN {0} AND {1} AND LOWER(product.name) LIKE ''{2}'' ORDER BY price {3}";
+        filterSQL = java.text.MessageFormat.format(filterSQL,
+                minPrice != null ? String.valueOf(minPrice) : "-1",
+                maxPrice != null ? String.valueOf(maxPrice) : "9999999",
+                productName != null ? "%" + productName + "%" : "%",
+                order);
 
+        filteredProduct = productDAO.filterProducts(filterSQL);
         for (Map<String, Object> product : filteredProduct) {
             int productID = (int) product.get("productID");
             List<Map<String, Object>> images = new ImageDAO().getImage(productID);
@@ -489,58 +490,10 @@ public class UserController {
         }
 
         model.addAttribute("filteredProducts", filteredProduct);
-
-        return "Webshop";
-    }
-
-    @PostMapping(value = "sortProductsDesc")
-    public String sortProductsDesc(Model model) {
-        ProductDAO productDAO = new ProductDAO();
-        List<Map<String, Object>> sortedProducts = productDAO.getProductsSortedByPriceDesc();
-
-        for (Map<String, Object> product : sortedProducts) {
-            int productID = (int) product.get("productID");
-            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
-            product.put("images", images);
-        }
-
-        model.addAttribute("products", sortedProducts);
-
-        return "Webshop";
-    }
-
-    @PostMapping(value = "sortProductsAsc")
-    public String sortProductsAsc(Model model) {
-        ProductDAO productDAO = new ProductDAO();
-        List<Map<String, Object>> sortedProducts = productDAO.getProductsSortedByPriceAsc();
-
-        for (Map<String, Object> product : sortedProducts) {
-            int productID = (int) product.get("productID");
-            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
-            product.put("images", images);
-        }
-
-        model.addAttribute("products", sortedProducts);
-
-        return "Webshop";
-    }
-
-    @PostMapping(value = "searchProducts")
-    public String searchProducts(@RequestParam("searchProducts") String productName, Model model) {
-        ProductDAO productDAO = new ProductDAO();
-        List<Map<String, Object>> searchProducts = productDAO.searchProductsByName(productName);
-
-        for (Map<String, Object> product : searchProducts) {
-            int productID = (int) product.get("productID");
-            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
-            product.put("images", images);
-        }
-
-        if (!searchProducts.isEmpty()) {
-            model.addAttribute("searchProducts", searchProducts);
-        } else {
-            model.addAttribute("noResultsMessage", "Nincs találat a keresésre.");
-        }
+        model.addAttribute("productName", productName);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("order", order);
 
         return "Webshop";
     }

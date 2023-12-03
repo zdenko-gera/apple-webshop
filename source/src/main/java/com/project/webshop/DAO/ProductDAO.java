@@ -179,34 +179,9 @@ public class ProductDAO {
      * @param minPrice a minimum ár
      * @param maxPrice a maximum ár
      */
-    public List<Map<String, Object>> filterProductsByPrice(double minPrice, double maxPrice) {
-        String sqlCode = "SELECT * FROM product WHERE price BETWEEN ? AND ?";
-        return jdbcTemplate.queryForList(sqlCode, minPrice, maxPrice);
-    }
-
-    /**
-     * A termékeket ár alapján csökkenő sorrendbe állítja
-     */
-    public List<Map<String, Object>> getProductsSortedByPriceDesc() {
-        String sqlCode = "SELECT * FROM product ORDER BY price DESC";
+    public List<Map<String, Object>> filterProducts(String condition) {
+        String sqlCode = "SELECT * FROM product WHERE {0}";
+        sqlCode = java.text.MessageFormat.format(sqlCode, condition);
         return jdbcTemplate.queryForList(sqlCode);
-    }
-
-    /**
-     * A termékeket ár alapján növekvő sorrendbe állítja
-     */
-    public List<Map<String, Object>> getProductsSortedByPriceAsc() {
-        String sqlCode = "SELECT * FROM product ORDER BY price ASC";
-        return jdbcTemplate.queryForList(sqlCode);
-    }
-
-    /**
-     * Kikeresi az adatbázisból azokat a termékek, amelyek tartalmazzák a beírt termék név részletet
-     * @param name A termék neve
-     */
-    public List<Map<String, Object>> searchProductsByName(String name) {
-        String sqlCode = "SELECT * FROM product WHERE LOWER(product.name) LIKE LOWER(?)";
-        String searchTerm = "%" + name + "%";
-        return jdbcTemplate.queryForList(sqlCode, searchTerm);
     }
 }

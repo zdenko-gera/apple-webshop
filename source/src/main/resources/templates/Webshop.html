@@ -94,24 +94,19 @@
         <div class="webshop-filter">
           <div class="webshop-filter-f">
             <h2>Szűrők</h2>
-            <form action="#" th:action="@{searchProducts}" method="post">
-              <input class="webshop-filter-input" type="text" name="searchProducts" placeholder="Iphone 15" />
-              <button class="webshop-filter-szures" type="submit">Keresés</button>
-            </form>
-            <br>
-            <form action="#" th:action="@{filterProducts}" method="post">
-              <input class="webshop-filter-input1"  type="number" id="minPrice" name="minPrice" placeholder="Minimum ár">
-              <input class="webshop-filter-input2" type="number" id="maxPrice" name="maxPrice" placeholder="Maximum ár">
+            <form action="#" th:action="@{filterProducts}" method="post" th:object="${filter}">
+              <label for="productName">Szűrés név szerint: </label>
+              <input class="webshop-filter-input" type="text" id="productName" name="productName" placeholder="Iphone 15" th:value="${productName != null ? productName : ''}"/>
+              <br>
+              <input class="webshop-filter-input" type="number" id="minPrice" name="minPrice" placeholder="Minimum ár" th:value="${minPrice != null ? minPrice : ''}">
+              <input class="webshop-filter-input" type="number" id="maxPrice" name="maxPrice" placeholder="Maximum ár" th:value="${maxPrice != null ? maxPrice : ''}">
+
+              <br>
+              <select class="webshop-filter-input" name="order" id="order" >
+                <option value="DESC" th:selected="${order == 'DESC'}">Ár szerint csökkenő</option>
+                <option value="ASC" th:selected="${order == 'ASC'}">Ár szerint növekvő</option>
+              </select>
               <button class="webshop-filter-szures" type="submit">Szűrés</button>
-            </form>
-          </div>
-          <div class="websohp-filter-s">
-            <form action="#" th:action="@{sortProductsDesc}" method="post">
-              <button type="submit" class="webshop-filter-button">Ár szerint csökkenő</button>
-            </form>
-            <br>
-            <form action="#" th:action="@{sortProductsAsc}" method="post">
-              <button type="submit" class="webshop-filter-button">Ár szerint növekvő</button>
             </form>
           </div>
         </div>
