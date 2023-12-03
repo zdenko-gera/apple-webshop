@@ -73,8 +73,8 @@
         <div class="productpage-main-productPicture">
           <div class="productpage-main-productMainPicture">
             <img
-              th:if="${not images.isEmpty()}"
-              th:src="${images.get(0)['imagePath']}"
+              th:if="${images != null and not #lists.isEmpty(images) and #lists.size(images) > 0}"
+              th:src="${'/uploads/' + images.get(0)['imagePath']}"
               src="pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png"
               alt="iphone"
             />
@@ -82,24 +82,24 @@
           <div class="productpage-main-productPicture-Slider">
             <div class="productpage-main-productPicture-Slider-element">
               <img
-                th:if="${not images.isEmpty()}"
-                th:src="${images.get(1)['imagePath']}"
+                th:if="${images != null and not #lists.isEmpty(images) and #lists.size(images) > 1}"
+                th:src="${'/uploads/' + images.get(1)['imagePath']}"
                 src="pictures/ProductPage/Apple-Logo.jpeg"
                 alt=""
               />
             </div>
             <div class="productpage-main-productPicture-Slider-element">
               <img
-                th:if="${not images.isEmpty()}"
-                th:src="${images.get(2)['imagePath']}"
+                th:if="${images != null and not #lists.isEmpty(images) and #lists.size(images) > 2}"
+                th:src="${'/uploads/' + images.get(2)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg"
                 alt=""
               />
             </div>
             <div class="productpage-main-productPicture-Slider-element">
               <img
-                th:if="${not images.isEmpty()}"
-                th:src="${images.get(3)['imagePath']}"
+                th:if="${images != null and not #lists.isEmpty(images) and #lists.size(images) > 3}"
+                th:src="${'/uploads/' + images.get(3)['imagePath']}"
                 src="pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg"
                 alt=""
               />

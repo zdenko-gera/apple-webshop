@@ -171,6 +171,10 @@ public class ProductDAO {
         String removeItemFromProduct = "UPDATE product SET quantity = ((SELECT quantity FROM product WHERE productID = ?) + ?) WHERE productID = ?";
 
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
+    }
 
+    public int getMaxProductID() {
+        String sqlCode = "SELECT MAX(productID) as productID FROM product";
+        return (Integer) jdbcTemplate.queryForList(sqlCode).get(0).get("productID");
     }
 }

@@ -28,4 +28,9 @@ public class ImageDAO {
         String sqlCode = "SELECT * FROM images WHERE productID = ?";
         return jdbcTemplate.queryForList(sqlCode, productID);
     }
+
+    public void newImage(int productID, String fileName) {
+        String sqlCode = "INSERT INTO images (imagePath, productID) VALUES (?, ?)";
+        jdbcTemplate.update(sqlCode, fileName, productID);
+    }
 }
