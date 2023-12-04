@@ -105,10 +105,10 @@ public class UserController {
             }
 
             httpSession.setAttribute("email", new UserDAO().getUserDataByEmail(email));
-            UserModel user = (UserModel)httpSession.getAttribute(email);
-            /*if(user.getRole().equals("admin")){
+            UserModel user = new UserDAO().getUserDataByEmail(email);
+            if(user.getRole().equals("admin")){
                 return "redirect:/Admin";
-            }*/
+            }
 
             return "redirect:/";
         }
@@ -332,11 +332,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z0-9].*")){
+        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("nameerror", "A megadott utónév nem megfelelő formátumú");
             error = true;
         }
-        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z0-9].*")){
+        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("nameerror", "A megadott keresztnév nem megfelelő formátumú");
             error = true;
         }
@@ -361,11 +361,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+        if(city.length() < 1 || !city.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("dderror", "A megadott város nem megfelelő formátumú");
             error = true;
         }
-        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+        if(street.length() < 1 || !street.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("dderror", "A megadott utca nem megfelelő formátumú");
             error = true;
         }
@@ -390,11 +390,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+        if(city.length() < 1 || !city.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("bderror", "A megadott város nem megfelelő formátumú");
             error = true;
         }
-        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+        if(street.length() < 1 || !street.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("bderror", "A megadott utca nem megfelelő formátumú");
             error = true;
         }

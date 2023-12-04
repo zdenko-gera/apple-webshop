@@ -30,3 +30,5 @@
   https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/da65e56c337fd15f43b18cf86c33d68369abdbcc
   https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/6e57a17078e45ea292a14565ea404465a42db08f
   https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/ee6f11b87154109080e3cff2aceed46be4e9a3b5
+  https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/d08a474a93c453c2a3df374a1a7d74b1cd8a4a42
+  https://git-okt.sed.inf.szte.hu/2023_IB153I-4_webshop/webshop/-/commit/ab229fcccfdf6ce6e3b5ab501d6a5739bd8a2f4e
