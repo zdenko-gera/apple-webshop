@@ -297,7 +297,8 @@ public class UserController {
         int commentID = Integer.parseInt(request.getParameter("commentID"));
         new CommentDAO().deleteComment(commentID);
 
-        return "Index";
+        String referer = request.getHeader("referer");
+        return "redirect:" + referer;
     }
 
     /**

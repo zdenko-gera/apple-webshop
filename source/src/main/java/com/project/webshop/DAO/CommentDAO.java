@@ -46,7 +46,7 @@ public class CommentDAO {
      */
     public List<Map<String,Object>> getComment(int productID) {
         List<Map<String,Object>> comments;
-        String sqlCode = "SELECT user.firstname, user.lastname, comment.rate, comment.comment, comment.publishDate, comment.email\n" +
+        String sqlCode = "SELECT comment.commentID, user.firstname, user.lastname, comment.rate, comment.comment, comment.publishDate, comment.email\n" +
                 "FROM comment\n" +
                 "LEFT JOIN user ON comment.email = user.email\n" +
                 "WHERE productID = ?\n" +
