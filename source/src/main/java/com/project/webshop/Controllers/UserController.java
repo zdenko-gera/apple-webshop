@@ -1,12 +1,10 @@
 package com.project.webshop.Controllers;
 
-import com.project.webshop.DAO.CartDAO;
-import com.project.webshop.DAO.CommentDAO;
-import com.project.webshop.DAO.UserDAO;
-import com.project.webshop.DAO.OrderDAO;
+import com.project.webshop.DAO.*;
 import com.project.webshop.Models.CartModel;
 import com.project.webshop.Models.CommentModel;
 import com.project.webshop.Models.OrderModel;
+import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,10 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -499,5 +500,37 @@ public class UserController {
             orderDAO.deleteUserOrder(orderID);
         }
         return "redirect:/Order";
+    }
+
+    @PostMapping(value = "filterProducts")
+    public String filterProducts(@RequestParam("order") String order,
+                                 @RequestParam(value = "productName", required = false) String productName,
+                                 @RequestParam(value = "minPrice", required = false) Integer minPrice,
+                                 @RequestParam(value = "maxPrice", required = false) Integer maxPrice,
+                                 Model model) {
+        ProductDAO productDAO = new ProductDAO();
+        List<Map<String, Object>> filteredProduct;
+
+        String filterSQL = "price BETWEEN {0} AND {1} AND LOWER(product.name) LIKE ''{2}'' ORDER BY price {3}";
+        filterSQL = java.text.MessageFormat.format(filterSQL,
+                minPrice != null ? String.valueOf(minPrice) : "-1",
+                maxPrice != null ? String.valueOf(maxPrice) : "9999999",
+                productName != null ? "%" + productName + "%" : "%",
+                order);
+
+        filteredProduct = productDAO.filterProducts(filterSQL);
+        for (Map<String, Object> product : filteredProduct) {
+            int productID = (int) product.get("productID");
+            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
+            product.put("images", images);
+        }
+
+        model.addAttribute("filteredProducts", filteredProduct);
+        model.addAttribute("productName", productName);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("order", order);
+
+        return "Webshop";
     }
 }
