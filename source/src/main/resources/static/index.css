@@ -72,6 +72,7 @@
   font-size: 1.2em;
   letter-spacing: 2.25px;
   cursor: pointer;
+  text-decoration: none;
 }
 .homepage-buyAttract {
   height: 100%;
