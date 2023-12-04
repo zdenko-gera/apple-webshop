@@ -55,7 +55,6 @@ INSERT INTO `billingdetails` (`email`, `postalcode`, `city`, `street`, `housenum
 ('papucspeter@gmail.com', -1, '', '', -1),
 ('peterpal@gmail.com', -1, '', '', -1),
 ('sirlancelot@gmail.com', -1, '', '', -1),
-('tesztelek@tesztelek.com', -1, '', '', -1),
 ('tisztasag@gmail.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
@@ -87,7 +86,6 @@ INSERT INTO `cart` (`cartID`, `email`) VALUES
 (17, 'papucspeter@gmail.com'),
 (11, 'peterpal@gmail.com'),
 (15, 'sirlancelot@gmail.com'),
-(4, 'tesztelek@tesztelek.com'),
 (13, 'tisztasag@gmail.com');
 
 -- --------------------------------------------------------
@@ -163,7 +161,6 @@ INSERT INTO `deliverydetails` (`email`, `postalcode`, `city`, `street`, `housenu
 ('papucspeter@gmail.com', -1, '', '', -1),
 ('peterpal@gmail.com', -1, '', '', -1),
 ('sirlancelot@gmail.com', -1, '', '', -1),
-('tesztelek@tesztelek.com', -1, '', '', -1),
 ('tisztasag@gmail.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
@@ -182,47 +179,47 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`imagePath`, `productID`) VALUES
-('pictures/ProductPage/airpods-3-1.jpg', 5),
-('pictures/ProductPage/airpods-3-2.jpg', 5),
-('pictures/ProductPage/airpods-3-3.jpg', 5),
-('pictures/ProductPage/airpods-3-4.jpg', 5),
-('pictures/ProductPage/airpods-pro-1.jpg', 9),
-('pictures/ProductPage/airpods-pro-2.jpg', 9),
-('pictures/ProductPage/airpods-pro-3.jpg', 9),
-('pictures/ProductPage/airpods-pro-4.jpg', 9),
-('pictures/ProductPage/Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png', 1),
-('pictures/ProductPage/Apple-Logo.jpeg', 1),
-('pictures/ProductPage/ipad-air-5-1.jpg', 7),
-('pictures/ProductPage/ipad-air-5-2.jpg', 7),
-('pictures/ProductPage/ipad-air-5-3.jpg', 7),
-('pictures/ProductPage/ipad-air-5-4.jpg', 7),
-('pictures/ProductPage/ipad-mini-6-1.jpg', 11),
-('pictures/ProductPage/ipad-mini-6-2.png', 11),
-('pictures/ProductPage/ipad-mini-6-3.jpg', 11),
-('pictures/ProductPage/ipad-mini-6-4.jpg', 11),
-('pictures/ProductPage/ipad-pro-1.jpg', 3),
-('pictures/ProductPage/ipad-pro-2.jpg', 3),
-('pictures/ProductPage/ipad-pro-3.jpg', 3),
-('pictures/ProductPage/ipad-pro-4.jpg', 3),
-('pictures/ProductPage/iphone-13-mini-1.jpg', 10),
-('pictures/ProductPage/iphone-13-mini-2.jpg', 10),
-('pictures/ProductPage/iphone-13-mini-3.png', 10),
-('pictures/ProductPage/iphone-13-mini-4.jpg', 10),
-('pictures/ProductPage/iphone-14-1.jpg', 6),
-('pictures/ProductPage/iphone-14-2.png', 6),
-('pictures/ProductPage/iphone-14-3.jpg', 6),
-('pictures/ProductPage/iphone-14-4.jpg', 6),
-('pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg', 1),
-('pictures/ProductPage/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg', 1),
-('pictures/ProductPage/watch-se-1.png', 8),
-('pictures/ProductPage/watch-se-2.png', 8),
-('pictures/ProductPage/watch-se-3.png', 8),
-('pictures/ProductPage/watch-se-4.jpg', 8),
-('pictures/ProductPage/watch-se-4.png', 8),
-('pictures/ProductPage/watch-series-7-1.jpeg', 4),
-('pictures/ProductPage/watch-series-7-2.jpeg', 4),
-('pictures/ProductPage/watch-series-7-3.jpg', 4),
-('pictures/ProductPage/watch-series-7-4.jpg', 4);
+('airpods-3-1.jpg', 5),
+('airpods-3-2.jpg', 5),
+('airpods-3-3.jpg', 5),
+('airpods-3-4.jpg', 5),
+('airpods-pro-1.jpg', 9),
+('airpods-pro-2.jpg', 9),
+('airpods-pro-3.jpg', 9),
+('airpods-pro-4.jpg', 9),
+('Apple-iPhone-15-Pro-Max-Black-Titanium-frontimage.png', 1),
+('Apple-Logo.jpeg', 1),
+('ipad-air-5-1.jpg', 7),
+('ipad-air-5-2.jpg', 7),
+('ipad-air-5-3.jpg', 7),
+('ipad-air-5-4.jpg', 7),
+('ipad-mini-6-1.jpg', 11),
+('ipad-mini-6-2.png', 11),
+('ipad-mini-6-3.jpg', 11),
+('ipad-mini-6-4.jpg', 11),
+('ipad-pro-1.jpg', 3),
+('ipad-pro-2.jpg', 3),
+('ipad-pro-3.jpg', 3),
+('ipad-pro-4.jpg', 3),
+('iphone-13-mini-1.jpg', 10),
+('iphone-13-mini-2.jpg', 10),
+('iphone-13-mini-3.png', 10),
+('iphone-13-mini-4.jpg', 10),
+('iphone-14-1.jpg', 6),
+('iphone-14-2.png', 6),
+('iphone-14-3.jpg', 6),
+('iphone-14-4.jpg', 6),
+('iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV2.jpeg', 1),
+('iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium_AV3.jpeg', 1),
+('watch-se-1.png', 8),
+('watch-se-2.png', 8),
+('watch-se-3.png', 8),
+('watch-se-4.jpg', 8),
+('watch-se-4.png', 8),
+('watch-series-7-1.jpeg', 4),
+('watch-series-7-2.jpeg', 4),
+('watch-series-7-3.jpg', 4),
+('watch-series-7-4.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -248,6 +245,22 @@ CREATE TABLE `ordereditems` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `ordereditems`
+--
+
+INSERT INTO `ordereditems` (`orderID`, `productID`, `quantity`) VALUES
+(27, 1, 1),
+(29, 1, 3),
+(29, 3, 1),
+(30, 1, 1),
+(31, 1, 1),
+(32, 1, 10),
+(33, 1, 1),
+(34, 1, 1),
+(35, 1, 1),
+(36, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -260,6 +273,35 @@ CREATE TABLE `orders` (
   `price` int(12) NOT NULL,
   `orderDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `orders`
+--
+
+INSERT INTO `orders` (`orderID`, `email`, `price`, `orderDate`) VALUES
+(16, NULL, 0, '2023-11-30'),
+(17, NULL, 0, '2023-11-30'),
+(18, NULL, 0, '2023-11-30'),
+(19, NULL, 0, '2023-11-30'),
+(20, NULL, 0, '2023-11-30'),
+(21, NULL, 0, '2023-11-30'),
+(22, 'kisspista@gmail.com', 0, '2023-11-30'),
+(23, 'kisspista@gmail.com', 0, '2023-11-30'),
+(24, NULL, 0, '2023-11-30'),
+(25, NULL, 0, '2023-11-30'),
+(26, NULL, 0, '2023-11-30'),
+(27, NULL, 550000, '2023-12-01'),
+(29, NULL, 2050000, '2023-12-01'),
+(30, NULL, 550000, '2023-12-01'),
+(31, NULL, 550000, '2023-12-01'),
+(32, NULL, 5500000, '2023-12-01'),
+(33, NULL, 550000, '2023-12-01'),
+(34, NULL, 550000, '2023-12-01'),
+(35, NULL, 550000, '2023-12-01'),
+(36, NULL, 550000, '2023-12-02'),
+(37, NULL, 0, '2023-12-02'),
+(38, NULL, 0, '2023-12-02'),
+(39, NULL, 0, '2023-12-02');
 
 -- --------------------------------------------------------
 
@@ -281,8 +323,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productID`, `productType`, `price`, `name`, `description`, `quantity`) VALUES
-(1, 'phone', 550000, 'Apple iPhone 15', 'The latest Apple iPhone with advanced features.', 13),
-(3, 'tablet', 400000, 'Apple iPad Pro', 'Powerful tablet for work and entertainment.', 9),
+(1, 'phone', 550000, 'Apple iPhone 15', 'The latest Apple iPhone with advanced features.', -7),
+(3, 'tablet', 400000, 'Apple iPad Pro', 'Powerful tablet for work and entertainment.', 8),
 (4, 'watch', 280000, 'Apple Watch Series 7', 'Stay connected and track your fitness.', 30),
 (5, 'airpod', 130000, 'Apple AirPods 3', 'Wireless earbuds for a seamless audio experience.', 40),
 (6, 'phone', 300000, 'Apple iPhone 14', 'A high-quality smartphone with the latest features.', 25),
@@ -325,7 +367,6 @@ INSERT INTO `user` (`email`, `password`, `firstname`, `lastname`, `registrationD
 ('papucspeter@gmail.com', '$2a$10$CJZUxy3owllvZay0q.jk7eAXM.4DFgk1OZpRBSMHcAllzMU18B7hS', 'péter', 'papucs', '2023-11-11', 'user'),
 ('peterpal@gmail.com', '$2a$10$/IDPj51zKI8tEwj5l7sUqOciAbgI0y.efX7ZLWwJr6zlJbmTHcoc2', 'pál', 'peter', '2023-11-11', 'user'),
 ('sirlancelot@gmail.com', '$2a$10$ACxD9kfrBdhj0qYAKR1Yie1457.9aswcqGs9ymJocdW2fU5Cs2Gx6', 'lancelot', 'sir', '2023-11-11', 'user'),
-('tesztelek@tesztelek.com', '$2a$10$zyv2yJ7T/PpiBff/hUa2Ruvc1eoOYhWlIhepY2x17P8ne7lK2Cuvy', 'Teszt', 'Elek', '2023-11-05', 'user'),
 ('tisztasag@gmail.com', '$2a$10$UJOyNaNlLNSMvAJN94KWEey/K3CBIuGabkd9mODK2KFuKnuIpzraK', 'ság', 'tiszta', '2023-11-11', 'user');
 
 --
@@ -407,7 +448,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT a táblához `comment`
@@ -419,13 +460,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT a táblához `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT a táblához `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Megkötések a kiírt táblákhoz

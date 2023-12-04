@@ -116,8 +116,10 @@
           </div>
           <div class="homepage-newProducts-gridItem" th:each="product : ${#strings.isEmpty(filteredProducts) ? (searchProducts ?: products) : filteredProducts}">
             <div class="homepage-newProducts-gridItem-productPicture">
-              <img th:if="${product['images'] != null and product['images'].size() > 0}"
-                   th:src="${product['images'].get(0)['imagePath']}"
+              <img
+                th:src="${'/uploads/' + product['images'].get(0)['imagePath']}"
+                src="../pictures/ProductPage/gbpqy8wkncs5lyoorw7c.png"
+                alt="airpods"
               />
             </div>
             <div class="homepage-newProducts-gridItem-productName">

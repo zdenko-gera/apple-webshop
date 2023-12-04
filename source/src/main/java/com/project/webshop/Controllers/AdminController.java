@@ -1,5 +1,6 @@
 package com.project.webshop.Controllers;
 
+import com.project.webshop.DAO.ImageDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.DAO.ProductDAO;
 import com.project.webshop.DAO.UserDAO;
@@ -9,21 +10,24 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class AdminController {
+    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static/uploads";
+
     @PostMapping(value="createProduct")
     public String addProduct(@RequestParam("type") String type, @RequestParam("price") int price, @RequestParam("name") String name, @RequestParam("description") String description,
-                             @RequestParam("quantity") int quantity, @RequestParam("images") String images, Model model) {
+                             @RequestParam("quantity") int quantity, @RequestParam("images[]") MultipartFile[] images, Model model) throws IOException {
         boolean error = false;
-
+        System.out.println(UPLOAD_DIRECTORY);
         if(type.equals("")) {
             model.addAttribute("emptyFieldType", "Típus megadása kötelező!");
             error = true;
@@ -39,8 +43,15 @@ public class AdminController {
 
         if(error) return "Admin";
 
-        ProductModel product = new ProductModel(price,quantity,type,name,description,images);
-        product.getProductDAO().createProduct(type,price,name,description,quantity);
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.createProduct(type,price,name,description,quantity);
+
+        for (MultipartFile image : images) {
+            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, image.getOriginalFilename());
+            Files.write(fileNameAndPath, image.getBytes());
+            new ImageDAO().newImage(productDAO.getMaxProductID(), image.getOriginalFilename());
+        }
+
         return "redirect:/";
 
     }
