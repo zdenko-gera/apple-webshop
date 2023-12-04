@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 @Table(name="user")
@@ -146,5 +147,10 @@ public class UserDAO {
 
         String sqlCode = "Update billingdetails set postalCode = ?, city = ?, street = ?, housenumber = ? where email = ?";
         jdbcTemplate.update(sqlCode,postalCode, city, street, housenumber, user.getEmail());
+    }
+
+    public List<Map<String, Object>> getAllUsers(){
+        String sql = "select * from user";
+        return jdbcTemplate.queryForList(sql);
     }
 }

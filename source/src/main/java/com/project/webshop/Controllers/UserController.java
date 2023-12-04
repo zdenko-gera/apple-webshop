@@ -1,10 +1,10 @@
 package com.project.webshop.Controllers;
 
-import com.project.webshop.DAO.CartDAO;
-import com.project.webshop.DAO.UserDAO;
-import com.project.webshop.DAO.OrderDAO;
+import com.project.webshop.DAO.*;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.CommentModel;
 import com.project.webshop.Models.OrderModel;
+import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,9 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -105,10 +109,10 @@ public class UserController {
             }
 
             httpSession.setAttribute("email", new UserDAO().getUserDataByEmail(email));
-            UserModel user = (UserModel)httpSession.getAttribute(email);
-            /*if(user.getRole().equals("admin")){
+            UserModel user = new UserDAO().getUserDataByEmail(email);
+            if(user.getRole().equals("admin")){
                 return "redirect:/Admin";
-            }*/
+            }
 
             return "redirect:/";
         }
@@ -260,8 +264,42 @@ public class UserController {
         return "Index";
     }
 
-    public void addComment(int productID, String comment, int rating) {
+    @PostMapping(value="writeComment")
+    public String addComment(HttpServletRequest request, RedirectAttributes attributes) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        String referer = request.getHeader("Referer");
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        String comment = request.getParameter("comment");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+
+        if(comment.trim().equals("")) {
+            attributes.addFlashAttribute("message", "Sikertelen az értékelés írása");
+        } else {
+            CommentModel commentModel = new CommentModel(productID, rating, user.getEmail(), comment, java.time.LocalDate.now());
+            new CommentDAO().createComment(commentModel);
+        }
+
+        return "redirect:" + referer;
+    }
+
+    @PostMapping(value="deleteComment")
+    public String deleteComment(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
+
+        int commentID = Integer.parseInt(request.getParameter("commentID"));
+        new CommentDAO().deleteComment(commentID);
+
+        String referer = request.getHeader("referer");
+        return "redirect:" + referer;
     }
 
     /**
@@ -332,11 +370,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z0-9].*")){
+        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("nameerror", "A megadott utónév nem megfelelő formátumú");
             error = true;
         }
-        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z0-9].*")){
+        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("nameerror", "A megadott keresztnév nem megfelelő formátumú");
             error = true;
         }
@@ -361,11 +399,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+        if(city.length() < 1 || !city.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("dderror", "A megadott város nem megfelelő formátumú");
             error = true;
         }
-        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+        if(street.length() < 1 || !street.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("dderror", "A megadott utca nem megfelelő formátumú");
             error = true;
         }
@@ -390,11 +428,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+        if(city.length() < 1 || !city.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("bderror", "A megadott város nem megfelelő formátumú");
             error = true;
         }
-        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+        if(street.length() < 1 || !street.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("bderror", "A megadott utca nem megfelelő formátumú");
             error = true;
         }
@@ -462,5 +500,37 @@ public class UserController {
             orderDAO.deleteUserOrder(orderID);
         }
         return "redirect:/Order";
+    }
+
+    @PostMapping(value = "filterProducts")
+    public String filterProducts(@RequestParam("order") String order,
+                                 @RequestParam(value = "productName", required = false) String productName,
+                                 @RequestParam(value = "minPrice", required = false) Integer minPrice,
+                                 @RequestParam(value = "maxPrice", required = false) Integer maxPrice,
+                                 Model model) {
+        ProductDAO productDAO = new ProductDAO();
+        List<Map<String, Object>> filteredProduct;
+
+        String filterSQL = "price BETWEEN {0} AND {1} AND LOWER(product.name) LIKE ''{2}'' ORDER BY price {3}";
+        filterSQL = java.text.MessageFormat.format(filterSQL,
+                minPrice != null ? String.valueOf(minPrice) : "-1",
+                maxPrice != null ? String.valueOf(maxPrice) : "9999999",
+                productName != null ? "%" + productName + "%" : "%",
+                order);
+
+        filteredProduct = productDAO.filterProducts(filterSQL);
+        for (Map<String, Object> product : filteredProduct) {
+            int productID = (int) product.get("productID");
+            List<Map<String, Object>> images = new ImageDAO().getImage(productID);
+            product.put("images", images);
+        }
+
+        model.addAttribute("filteredProducts", filteredProduct);
+        model.addAttribute("productName", productName);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("order", order);
+
+        return "Webshop";
     }
 }

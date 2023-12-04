@@ -9,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -173,8 +174,14 @@ public class ProductDAO {
         jdbcTemplate.update(removeItemFromProduct, productID, count, productID);
     }
 
-    public int getMaxProductID() {
-        String sqlCode = "SELECT MAX(productID) as productID FROM product";
-        return (Integer) jdbcTemplate.queryForList(sqlCode).get(0).get("productID");
+    /**
+     * Kikeresi az adatbázisból azokat a termékeket, amelyek benne vannak a maximum és a minimum ár között
+     * @param minPrice a minimum ár
+     * @param maxPrice a maximum ár
+     */
+    public List<Map<String, Object>> filterProducts(String condition) {
+        String sqlCode = "SELECT * FROM product WHERE {0}";
+        sqlCode = java.text.MessageFormat.format(sqlCode, condition);
+        return jdbcTemplate.queryForList(sqlCode);
     }
 }

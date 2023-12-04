@@ -1,9 +1,6 @@
 package com.project.webshop.Views;
 
-import com.project.webshop.DAO.CartDAO;
-import com.project.webshop.DAO.OrderDAO;
-import com.project.webshop.DAO.ImageDAO;
-import com.project.webshop.DAO.ProductDAO;
+import com.project.webshop.DAO.*;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -137,8 +134,22 @@ public class View {
         int productID = Integer.parseInt(request.getParameter("productID"));
         Map<String, Object> product = new ProductDAO().getProduct(productID);
         List<Map<String, Object>> image = new ImageDAO().getImage(productID);
+        List<Map<String,Object>> comments = new CommentDAO().getComment(productID);
+
+        System.out.println(comments);
+        HttpSession session = request.getSession(false);
+        UserModel userModel;
+        if(session != null) {
+            userModel = (UserModel) session.getAttribute("email");
+        } else {
+            userModel = null;
+        }
+
+        model.addAttribute("email", userModel != null ? userModel.getEmail() : null);
         model.addAttribute("product", product);
         model.addAttribute("images",image);
+        model.addAttribute("comments", comments);
+
         return "Productpage";
     }
 
@@ -167,9 +178,10 @@ public class View {
     }
 
     @GetMapping("Admin_user")
-    public String Admin_user(HttpServletRequest request) {
+    public String Admin_user(HttpServletRequest request, Model model) {
         HttpSession httpSession = request.getSession(false);
         UserModel userModel = null;
+        UserDAO userDAO = new UserDAO();
         if(httpSession != null) {
             userModel = (UserModel) httpSession.getAttribute("email");
         }
@@ -177,6 +189,10 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+
+        List<Map<String, Object>> users = userDAO.getAllUsers();
+        model.addAttribute("users", users);
+
 
         return "Admin_user.html";
     }
