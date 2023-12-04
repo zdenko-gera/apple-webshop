@@ -174,15 +174,9 @@ public class AdminController {
      */
 
     @PostMapping(value = "deleteUserByAdmin")
-    public String deleteUser(HttpServletRequest request) {
-
-        HttpSession session = request.getSession(false);
+    public String deleteUser(@RequestParam("userEmail") String email) {
         UserDAO userDAO = new UserDAO();
-        Object object = session.getAttribute("email");
-
-        if (object != null) {
-            userDAO.deleteUser(object.toString());
-        }
-        return "redirect:/";
+        userDAO.deleteUser(email);
+        return "redirect:/Admin_user";
     }
 }

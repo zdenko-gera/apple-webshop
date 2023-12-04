@@ -50,23 +50,30 @@
 				  document.getElementById("myNav").style.width = "0%";
 				}
 			</script>
-		    <section>
-			    <h1>Felhasználókezelés</h1>
-					<table>
-					  <tr>
-					    <th>Felhasználó e-mail címe</th>
-					    <th>Letiltás</th>
-					  </tr>
-					  <tr>
-					    <td>Józsi</td>
-					    <td><a href="Block.html" class ="block">Letiltás</a></td>
-					  </tr>
-					  <tr>
-					    <td>Béla</td>
-					    <td><a href="Block.html" class ="block">Letiltás</a></td>
-					  </tr>
-					</table>	
-			</section>
+        <section>
+            <h1>Felhasználók</h1>
+            <table style="width: 100%">
+                <tr>
+                    <th>Email</th>
+                    <th>Vezetéknév</th>
+                    <th>Keresztnév</th>
+                    <th>Szerep</th>
+                    <th>Törlés</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user['email']}">Airpods</td>
+                    <td th:text="${user['lastname']}"></td>
+                    <td th:text="${user['firstname']}"></td>
+                    <td th:text="${user['role']}"></td>
+                    <td>
+                        <form action="#" th:action="@{/deleteUserByAdmin}" method="post">
+                            <input type="hidden" th:value="${user['email']}" name="userEmail">
+                            <input type="submit" value="Törlés">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </section>
       	
     </main>
     <footer>

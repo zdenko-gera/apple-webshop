@@ -50,7 +50,7 @@ public class UserModel {
         cartModel = new CartModel(email, new ArrayList<>(), new ArrayList<>());
         billingDetailsModel = new BillingDetailsModel(email, -1, null, null, -1);
         deliveryDetailsModel = new DeliveryDetailsModel(email, -1, null, null, -1);
-        commentModel = new CommentModel(-1, -1, -1, email, null, null);
+        commentModel = new CommentModel( -1, -1, email, null, null);
         orderModel = new OrderModel(-1, -1, email, null/*, null*/);
         userDAO = new UserDAO();
 

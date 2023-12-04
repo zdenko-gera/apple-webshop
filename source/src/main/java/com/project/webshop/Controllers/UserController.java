@@ -2,6 +2,7 @@ package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.*;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.CommentModel;
 import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.ProductModel;
 import com.project.webshop.Models.UserModel;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Map;
@@ -107,10 +109,10 @@ public class UserController {
             }
 
             httpSession.setAttribute("email", new UserDAO().getUserDataByEmail(email));
-            UserModel user = (UserModel)httpSession.getAttribute(email);
-            /*if(user.getRole().equals("admin")){
+            UserModel user = new UserDAO().getUserDataByEmail(email);
+            if(user.getRole().equals("admin")){
                 return "redirect:/Admin";
-            }*/
+            }
 
             return "redirect:/";
         }
@@ -262,8 +264,42 @@ public class UserController {
         return "Index";
     }
 
-    public void addComment(int productID, String comment, int rating) {
+    @PostMapping(value="writeComment")
+    public String addComment(HttpServletRequest request, RedirectAttributes attributes) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        String referer = request.getHeader("Referer");
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        String comment = request.getParameter("comment");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+
+        if(comment.trim().equals("")) {
+            attributes.addFlashAttribute("message", "Sikertelen az értékelés írása");
+        } else {
+            CommentModel commentModel = new CommentModel(productID, rating, user.getEmail(), comment, java.time.LocalDate.now());
+            new CommentDAO().createComment(commentModel);
+        }
+
+        return "redirect:" + referer;
+    }
+
+    @PostMapping(value="deleteComment")
+    public String deleteComment(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
+
+        int commentID = Integer.parseInt(request.getParameter("commentID"));
+        new CommentDAO().deleteComment(commentID);
+
+        String referer = request.getHeader("referer");
+        return "redirect:" + referer;
     }
 
     /**
@@ -334,11 +370,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-z0-9].*")){
+        if(lastname.length() < 1 || !lastname.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("nameerror", "A megadott utónév nem megfelelő formátumú");
             error = true;
         }
-        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-z0-9].*")){
+        if(firstname.length() < 1 || !firstname.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("nameerror", "A megadott keresztnév nem megfelelő formátumú");
             error = true;
         }
@@ -350,9 +386,9 @@ public class UserController {
     }
 
     @PostMapping(value="changeDeliveryDetails")
-    public String changeDeliveryDetails( @RequestParam("postalcode") int postalCode,
-                                      @RequestParam("city") String city, @RequestParam("street") String street,
-                                      @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+    public String changeDeliveryDetails( @RequestParam("deliveryDetailsPostalcode") int postalCode,
+                                      @RequestParam("deliveryDetailsCity") String city, @RequestParam("deliveryDetailsStreet") String street,
+                                      @RequestParam("deliveryDetailsHouseNumber") int housenumber, HttpServletRequest request,
                                       Model model){
         HttpSession session = request.getSession();
         UserModel user = (UserModel) session.getAttribute("email");
@@ -363,11 +399,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+        if(city.length() < 1 || !city.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("dderror", "A megadott város nem megfelelő formátumú");
             error = true;
         }
-        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+        if(street.length() < 1 || !street.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("dderror", "A megadott utca nem megfelelő formátumú");
             error = true;
         }
@@ -379,9 +415,9 @@ public class UserController {
     }
 
     @PostMapping(value="changeBillingDetails")
-    public String changeBillingDetails( @RequestParam("postalcode") int postalCode,
-                                        @RequestParam("city") String city, @RequestParam("street") String street,
-                                        @RequestParam("housenumber") int housenumber, HttpServletRequest request,
+    public String changeBillingDetails( @RequestParam("billingDetailsPostalCode") int postalCode,
+                                        @RequestParam("billingDetailsCity") String city, @RequestParam("billingDetailsStreet") String street,
+                                        @RequestParam("billingDetailsHouseNumber") int housenumber, HttpServletRequest request,
                                         Model model){
         HttpSession session = request.getSession();
         UserModel user = (UserModel) session.getAttribute("email");
@@ -392,11 +428,11 @@ public class UserController {
             error = true;
             return "redirect:/";
         }
-        if(city.length() < 1 || !city.matches(".*[A-Za-z0-9].*")){
+        if(city.length() < 1 || !city.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("bderror", "A megadott város nem megfelelő formátumú");
             error = true;
         }
-        if(street.length() < 1 || !street.matches(".*[A-Za-z0-9].*")){
+        if(street.length() < 1 || !street.matches(".*[A-Za-zÀ-ÖØ-öø-ÿŰűŐő].*")){
             model.addAttribute("bderror", "A megadott utca nem megfelelő formátumú");
             error = true;
         }

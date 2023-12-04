@@ -29,8 +29,11 @@
     />
 
     <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
       const container = document.querySelector(".rating");
       const items = container.querySelectorAll(".rating-item");
+      const hiddenInput = document.querySelector('input[name="rating"]');
       container.onclick = (e) => {
         const elClass = e.target.classList;
         // change the rating if the user clicks on a different star
@@ -40,9 +43,17 @@
             (item) => item.classList.remove("active")
           );
           console.log(e.target.getAttribute("data-rate"));
+          hiddenInput.value = e.target.getAttribute("data-rate");
+          console.log(hiddenInput.value);
           elClass.add("active"); // add active class to the clicked star
         }
       };
+      });
+      </script>
+
+    <script th:inline="javascript" th:if="${message != null}">
+      var message = [[${message}]];
+    alert(message);
     </script>
   </head>
 
@@ -65,7 +76,8 @@
           <a href="Order" class="header-links-link">Rendeléseim</a>
         </div>
       </div>
-      <div class="header-icons"></div>
+      <div class="header-icons">
+      </div>
     </header>
 
     <main>
@@ -109,7 +121,7 @@
 
         <div class="productpage-main-textContainer">
           <div class="productpage-main-textContainer-backTo">
-            <p>Vissza <a href="">Iphoneok</a> oldalra</p>
+            <p>Vissza a <a href="Webshop">termékek</a> oldalra</p>
             <img
               class="productpage-main-textContainer-backToImg"
               src="pictures/ProductPage/greater-than-square.svg"
@@ -194,19 +206,20 @@
 
       <div class="productpage-rwrite">
         <h2>Ossza meg élményét másokkal is</h2>
-        <form action="" class="rwrite">
-          <textarea name="rwrite" id="" cols="100%" rows="3"></textarea>
+        <form action="#" th:action="@{/writeComment}" method="post" class="rwrite">
+          <textarea name="comment" cols="100%" rows="3"></textarea>
 
           <div class="rating-container">
-            <input type="submit" name="rwriteSubmit" id="rwriteSubmit" />
-
-            <h3>Értékelés:</h3>
-            <ul class="rating">
+          <h3>Értékelés:</h3>
+            <input type="submit" name="rwriteSubmit" id="rwriteSubmit"/>
+            <input type="hidden" name="rating" value="5">
+            <input type="hidden" th:value="${product['productID']}" name="productID"/>
+            <ul class="rating" data-rate="5">
               <li class="rating-item" data-rate="1"></li>
               <li class="rating-item" data-rate="2"></li>
-              <li class="rating-item active" data-rate="3"></li>
+              <li class="rating-item" data-rate="3"></li>
               <li class="rating-item" data-rate="4"></li>
-              <li class="rating-item" data-rate="5"></li>
+              <li class="rating-item active" data-rate="5"></li>
             </ul>
           </div>
         </form>
@@ -216,7 +229,29 @@
         <h2>Visszajelzések</h2>
         <p>Mások ezeket gondolják.</p>
         <div class="productpage-review-container">
-          <div class="productpage-review-container-element">
+          <div class="productpage-review-container-element"   th:each="comment : ${comments}">
+            <div class="productpage-review-container-head">
+              <div th:if="${comment['email'] != null}"><h3 th:text="${comment['firstname']} + ' ' + ${comment['lastname']} "></h3></div>
+              <div th:if="${comment['email'] == null}"><h3>Törölt felhasználó</h3></div>
+              <div >
+                <span th:each="rating : ${#numbers.sequence(1,5)}" th:class="${rating<=comment['rate']}? 'fa fa-star checked': 'fa fa-star'"></span>
+              </div>
+            </div>
+            <div class="productpage-review-container-body">
+              <p th:text="${comment['comment']}">
+                Elképesztően hosszú akkumlátor- idő. Könnyű kezelhetőség
+                mellett, rengeteg funkciók.
+              </p>
+            </div>
+            <div class="productpage-review-container-foot">
+              <p th:text="${comment['publishDate']}">2023.05.20.</p>
+            </div>
+            <form th:if="${comment['email'] == email && comment['email'] != null}" action="#" th:action="@{/deleteComment}" method="post">
+              <input type="hidden" name="commentID" th:value="${comment['commentID']}">
+              <input type="submit" value="Törlés">
+            </form>
+          </div>
+          <!--<div class="productpage-review-container-element">
             <div class="productpage-review-container-head">
               <div><h3>ZoliZoltán</h3></div>
               <div>
@@ -236,8 +271,8 @@
             <div class="productpage-review-container-foot">
               <p>2023.05.20.</p>
             </div>
-          </div>
-          <div class="productpage-review-container-element">
+          </div>-->
+          <!--<div class="productpage-review-container-element">
             <div class="productpage-review-container-head">
               <div><h3>ZoliZoltán</h3></div>
               <div>
@@ -257,28 +292,7 @@
             <div class="productpage-review-container-foot">
               <p>2023.05.20.</p>
             </div>
-          </div>
-          <div class="productpage-review-container-element">
-            <div class="productpage-review-container-head">
-              <div><h3>ZoliZoltán</h3></div>
-              <div>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </div>
-            </div>
-            <div class="productpage-review-container-body">
-              <p>
-                Elképesztően hosszú akkumlátor- idő. Könnyű kezelhetőség
-                mellett, rengeteg funkciók.
-              </p>
-            </div>
-            <div class="productpage-review-container-foot">
-              <p>2023.05.20.</p>
-            </div>
-          </div>
+          </div>-->
         </div>
       </div>
 
