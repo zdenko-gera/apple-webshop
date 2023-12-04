@@ -1,9 +1,6 @@
 package com.project.webshop.Views;
 
-import com.project.webshop.DAO.CartDAO;
-import com.project.webshop.DAO.OrderDAO;
-import com.project.webshop.DAO.ImageDAO;
-import com.project.webshop.DAO.ProductDAO;
+import com.project.webshop.DAO.*;
 import com.project.webshop.Models.UserModel;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -167,9 +164,10 @@ public class View {
     }
 
     @GetMapping("Admin_user")
-    public String Admin_user(HttpServletRequest request) {
+    public String Admin_user(HttpServletRequest request, Model model) {
         HttpSession httpSession = request.getSession(false);
         UserModel userModel = null;
+        UserDAO userDAO = new UserDAO();
         if(httpSession != null) {
             userModel = (UserModel) httpSession.getAttribute("email");
         }
@@ -177,6 +175,10 @@ public class View {
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
             return "redirect:/Index?error=noPermission";
         }
+
+        List<Map<String, Object>> users = userDAO.getAllUsers();
+        model.addAttribute("users", users);
+
 
         return "Admin_user.html";
     }
