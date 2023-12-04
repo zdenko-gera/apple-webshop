@@ -1,9 +1,11 @@
 package com.project.webshop.Controllers;
 
 import com.project.webshop.DAO.CartDAO;
+import com.project.webshop.DAO.CommentDAO;
 import com.project.webshop.DAO.UserDAO;
 import com.project.webshop.DAO.OrderDAO;
 import com.project.webshop.Models.CartModel;
+import com.project.webshop.Models.CommentModel;
 import com.project.webshop.Models.OrderModel;
 import com.project.webshop.Models.UserModel;
 import com.project.webshop.SpringSecurity;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -260,8 +263,41 @@ public class UserController {
         return "Index";
     }
 
-    public void addComment(int productID, String comment, int rating) {
+    @PostMapping(value="writeComment")
+    public String addComment(HttpServletRequest request, RedirectAttributes attributes) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
 
+        String referer = request.getHeader("Referer");
+        UserModel user = (UserModel) httpSession.getAttribute("email");
+
+        int productID = Integer.parseInt(request.getParameter("productID"));
+        String comment = request.getParameter("comment");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+
+        if(comment.trim().equals("")) {
+            attributes.addFlashAttribute("message", "Sikertelen az értékelés írása");
+        } else {
+            CommentModel commentModel = new CommentModel(productID, rating, user.getEmail(), comment, java.time.LocalDate.now());
+            new CommentDAO().createComment(commentModel);
+        }
+
+        return "redirect:" + referer;
+    }
+
+    @PostMapping(value="deleteComment")
+    public String deleteComment(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null || httpSession.getAttribute("email") == null) {
+            return "Login";
+        }
+
+        int commentID = Integer.parseInt(request.getParameter("commentID"));
+        new CommentDAO().deleteComment(commentID);
+
+        return "Index";
     }
 
     /**
