@@ -136,6 +136,7 @@ public class View {
         List<Map<String, Object>> image = new ImageDAO().getImage(productID);
         List<Map<String,Object>> comments = new CommentDAO().getComment(productID);
 
+        System.out.println(comments);
         HttpSession session = request.getSession(false);
         UserModel userModel;
         if(session != null) {

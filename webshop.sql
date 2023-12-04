@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Nov 12. 18:36
+-- Létrehozás ideje: 2023. Dec 04. 20:13
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.2.0
 
@@ -105,6 +105,32 @@ CREATE TABLE `comment` (
   `rate` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `comment`
+--
+
+INSERT INTO `comment` (`commentID`, `email`, `productID`, `publishDate`, `comment`, `rate`) VALUES
+(1, 'bivalyulrich@gmail.com', 5, '2023-12-04', 'Nekem nagyon tetszett', 5),
+(2, 'bivalyulrich@gmail.com', 7, '2023-12-04', 'Picit drága ahhoz, ahhoz képest, hogy mit tud', 3),
+(3, 'bivalyulrich@gmail.com', 8, '2023-12-04', 'Nagyon rossz termék, nekem 1 hét után tönkrement, és még csak ki sem cserélték garanciálisan', 1),
+(4, 'bivalyulrich@gmail.com', 11, '2023-12-04', 'Nagyon pacek, ajánlom mindenkinek', 5),
+(5, 'sirlancelot@gmail.com', 5, '2023-12-04', 'Tudom ajánlani, én is az árán kívűl csak jókat tudok mondani róla', 5),
+(6, 'sirlancelot@gmail.com', 1, '2023-12-04', 'Nagyon drága, sokkal olcsóbban is lehet jót venni', 1),
+(7, 'sirlancelot@gmail.com', 4, '2023-12-04', 'Nagyon szép divatos, picit drága', 4),
+(8, 'sirlancelot@gmail.com', 8, '2023-12-04', 'Nekem másokkal ellentétben nagyon is tetszett, sokáig is bírja az akksija', 5),
+(9, 'nagyimre@gmail.com', 1, '2023-12-04', 'Jaj, hát az én időmben még nem voltak ilyen dolgok, de az onokámnak vettem egyet az óvodás ballagására, nagyon szereti', 5),
+(10, 'nagyimre@gmail.com', 3, '2023-12-04', 'Nagyon drága kéremszépen, tessék leakciózni', 5),
+(11, 'nagyimre@gmail.com', 4, '2023-12-04', 'Nagyon patika a kijelzője, ezt is az onokámnak vettem', 5),
+(12, 'nagyimre@gmail.com', 5, '2023-12-04', 'Hát, nagyon drága, a kevéske nyugdíjamból alig futja rá, de megleptem vele a másik onokámat', 5),
+(13, 'nagyimre@gmail.com', 6, '2023-12-04', 'Ezzel már magamat leptem meg nem az onokát', 5),
+(14, 'nagyimre@gmail.com', 11, '2023-12-04', 'Nagyon pacek', 5),
+(16, 'lakatosemanuel@gmail.com', 1, '2023-12-04', 'Jaj, hát nagyon jó telefon, remélem 5 évig bírni fogja', 5),
+(17, 'lakatosemanuel@gmail.com', 3, '2023-12-04', 'Nagyon komoly tablet', 5),
+(18, 'lakatosemanuel@gmail.com', 4, '2023-12-04', 'Nagyon jó, mostmár nem kell megkérdezni, hogy a telefonján mennyi az idő', 5),
+(19, 'lakatosemanuel@gmail.com', 6, '2023-12-04', 'Nagyon király ez az eszköz, ajánlo mmindenkinek', 5),
+(20, 'lakatosemanuel@gmail.com', 7, '2023-12-04', 'Ez is nagyon királyság', 5),
+(21, 'lakatosemanuel@gmail.com', 8, '2023-12-04', 'Nagyon drága he', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -150,8 +176,6 @@ CREATE TABLE `images` (
   `imagePath` varchar(200) NOT NULL,
   `productID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
--- --------------------------------------------------------
 
 --
 -- A tábla adatainak kiíratása `images`
@@ -389,7 +413,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT a táblához `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT a táblához `orders`
@@ -458,8 +482,6 @@ ALTER TABLE `ordereditems`
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
-
-set global max_connections = 999999999;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
