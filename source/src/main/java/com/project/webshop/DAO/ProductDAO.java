@@ -184,4 +184,9 @@ public class ProductDAO {
         sqlCode = java.text.MessageFormat.format(sqlCode, condition);
         return jdbcTemplate.queryForList(sqlCode);
     }
+
+    public int getMaxProductID() {
+        String sqlCode = "SELECT MAX(productID) as productID FROM product";
+        return (int) jdbcTemplate.queryForList(sqlCode).get(0).get("productID");
+    }
 }
