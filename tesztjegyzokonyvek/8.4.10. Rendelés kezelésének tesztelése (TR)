@@ -1,0 +1,46 @@
+# Tesztjegyzőkönyv-Rendelés kezelése
+
+Az alábbi tesztdokumentum a Webshop projekthez tartozó 8.4.10. Rendelés kezelésének tesztelése (TR) issuehoz készült. Felelőse: Molnár-Farkas Noel 
+
+
+
+## 1. Teszteljárások (TP)
+
+### 1.1. Rendelés kezelésének tesztelése 
+- Azonosító: TP-01
+- Tesztesetek: TC-01
+- Leírás: Rendelés kezelésének tesztelése a webshopban
+    0. lépés: Nyissuk meg az alkalmazást.
+    1. lépés: Kattintsunk a jobb felső sarokban elhelyezkedő profil gombra, majd jelentkezzünk be.
+    2. lépés: Nyomjuk meg a menü gombot. Majd válasszuk ki a "Rendelések" menügombot.
+    3. lépés: Itt láthatjuk a leadott rendeléseket kilistázva. 
+    4. lépés: Ha törölni szeretnénk egy adott rendelést, rákell nyomni a "Törlés" gombra.
+    5. lépés: Az "iShop" logó megnyomása után nyomjuk meg a jobb felső sarokban lévő profil gombot.
+    6. lépés: Jelentkezzünk ki a "Kijelentkezés" gombbal.
+
+
+## 2. Teszesetek (TC)
+
+### 2.1. Rendelés kezelésének tesztelése
+
+#### 2.1.1. TC-01
+- TP: TP-01
+- Leírás: Rendelés kezelésének tesztelése.
+- Bemenet: Bejelentkezés, rendelések kilistázása, rendelés törlése.
+- Művelet: Kijelentkezés.
+- Elvárt kimenet: A felhasználó minden gomb/link használata után megfelelően van átirányítva, illetve a rendelés törlése megtörténik.
+
+
+## 3. Tesztriportok (TR)
+
+### 3.1. Rendelés kezelésének tesztriportjai
+
+#### 3.1.1. TR-01 (TC-01)
+- TP: TP-01
+    1. lépés: Bejelentkeztem a tesztelek@tesztelek.com fiókba.
+    2. lépés: Megrendeltem az "Apple Iphone 15" nevű termékből 1 darabot.
+    3. lépés: Kijelentkeztem az oldalról.
+    4. lépés: Bejelentkeztem a admin@teszt.com fiókba.
+    5. lépés: Beléptem a "Rendelések" menüpontba.
+    6. lépés: Töröltem a tesztelek@tesztelek.com emaillel rendelkező felhasználó rendelését.
+    7. lépés: Kijelentkeztem az oldalról.
