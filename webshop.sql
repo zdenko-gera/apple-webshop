@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Dec 04. 20:13
+-- Létrehozás ideje: 2023. Dec 05. 21:13
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.2.0
 
@@ -44,18 +44,15 @@ CREATE TABLE `billingdetails` (
 INSERT INTO `billingdetails` (`email`, `postalcode`, `city`, `street`, `housenumber`) VALUES
 ('admin@teszt.com', -1, '', '', -1),
 ('bivalyulrich@gmail.com', -1, '', '', -1),
-('kisspista@gmail.com', -1, '', '', -1),
 ('kovacsbertalan@gmail.com', -1, '', '', -1),
 ('kowalskyvega@gmail.com', -1, '', '', -1),
 ('lakatosemanuel@gmail.com', -1, '', '', -1),
 ('nagyimre@gmail.com', -1, '', '', -1),
 ('nagylajos@gmail.com', -1, '', '', -1),
-('nagymarika@gmail.com', -1, '', '', -1),
 ('palpeter@gmail.com', -1, '', '', -1),
 ('papucspeter@gmail.com', -1, '', '', -1),
 ('peterpal@gmail.com', -1, '', '', -1),
-('sirlancelot@gmail.com', -1, '', '', -1),
-('tisztasag@gmail.com', -1, '', '', -1);
+('sirlancelot@gmail.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
 
@@ -75,18 +72,15 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`cartID`, `email`) VALUES
 (3, 'admin@teszt.com'),
 (14, 'bivalyulrich@gmail.com'),
-(5, 'kisspista@gmail.com'),
 (8, 'kovacsbertalan@gmail.com'),
 (16, 'kowalskyvega@gmail.com'),
 (10, 'lakatosemanuel@gmail.com'),
 (6, 'nagyimre@gmail.com'),
 (9, 'nagylajos@gmail.com'),
-(7, 'nagymarika@gmail.com'),
 (12, 'palpeter@gmail.com'),
 (17, 'papucspeter@gmail.com'),
 (11, 'peterpal@gmail.com'),
-(15, 'sirlancelot@gmail.com'),
-(13, 'tisztasag@gmail.com');
+(15, 'sirlancelot@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -114,7 +108,6 @@ INSERT INTO `comment` (`commentID`, `email`, `productID`, `publishDate`, `commen
 (4, 'bivalyulrich@gmail.com', 11, '2023-12-04', 'Nagyon pacek, ajánlom mindenkinek', 5),
 (5, 'sirlancelot@gmail.com', 5, '2023-12-04', 'Tudom ajánlani, én is az árán kívűl csak jókat tudok mondani róla', 5),
 (6, 'sirlancelot@gmail.com', 1, '2023-12-04', 'Nagyon drága, sokkal olcsóbban is lehet jót venni', 1),
-(7, 'sirlancelot@gmail.com', 4, '2023-12-04', 'Nagyon szép divatos, picit drága', 4),
 (8, 'sirlancelot@gmail.com', 8, '2023-12-04', 'Nekem másokkal ellentétben nagyon is tetszett, sokáig is bírja az akksija', 5),
 (9, 'nagyimre@gmail.com', 1, '2023-12-04', 'Jaj, hát az én időmben még nem voltak ilyen dolgok, de az onokámnak vettem egyet az óvodás ballagására, nagyon szereti', 5),
 (10, 'nagyimre@gmail.com', 3, '2023-12-04', 'Nagyon drága kéremszépen, tessék leakciózni', 5),
@@ -150,18 +143,15 @@ CREATE TABLE `deliverydetails` (
 INSERT INTO `deliverydetails` (`email`, `postalcode`, `city`, `street`, `housenumber`) VALUES
 ('admin@teszt.com', -1, '', '', -1),
 ('bivalyulrich@gmail.com', -1, '', '', -1),
-('kisspista@gmail.com', -1, '', '', -1),
 ('kovacsbertalan@gmail.com', -1, '', '', -1),
 ('kowalskyvega@gmail.com', -1, '', '', -1),
 ('lakatosemanuel@gmail.com', -1, '', '', -1),
 ('nagyimre@gmail.com', -1, '', '', -1),
 ('nagylajos@gmail.com', -1, '', '', -1),
-('nagymarika@gmail.com', -1, '', '', -1),
 ('palpeter@gmail.com', -1, '', '', -1),
 ('papucspeter@gmail.com', -1, '', '', -1),
 ('peterpal@gmail.com', -1, '', '', -1),
-('sirlancelot@gmail.com', -1, '', '', -1),
-('tisztasag@gmail.com', -1, '', '', -1);
+('sirlancelot@gmail.com', -1, '', '', -1);
 
 -- --------------------------------------------------------
 
@@ -245,22 +235,6 @@ CREATE TABLE `ordereditems` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `ordereditems`
---
-
-INSERT INTO `ordereditems` (`orderID`, `productID`, `quantity`) VALUES
-(27, 1, 1),
-(29, 1, 3),
-(29, 3, 1),
-(30, 1, 1),
-(31, 1, 1),
-(32, 1, 10),
-(33, 1, 1),
-(34, 1, 1),
-(35, 1, 1),
-(36, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -273,35 +247,6 @@ CREATE TABLE `orders` (
   `price` int(12) NOT NULL,
   `orderDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `orders`
---
-
-INSERT INTO `orders` (`orderID`, `email`, `price`, `orderDate`) VALUES
-(16, NULL, 0, '2023-11-30'),
-(17, NULL, 0, '2023-11-30'),
-(18, NULL, 0, '2023-11-30'),
-(19, NULL, 0, '2023-11-30'),
-(20, NULL, 0, '2023-11-30'),
-(21, NULL, 0, '2023-11-30'),
-(22, 'kisspista@gmail.com', 0, '2023-11-30'),
-(23, 'kisspista@gmail.com', 0, '2023-11-30'),
-(24, NULL, 0, '2023-11-30'),
-(25, NULL, 0, '2023-11-30'),
-(26, NULL, 0, '2023-11-30'),
-(27, NULL, 550000, '2023-12-01'),
-(29, NULL, 2050000, '2023-12-01'),
-(30, NULL, 550000, '2023-12-01'),
-(31, NULL, 550000, '2023-12-01'),
-(32, NULL, 5500000, '2023-12-01'),
-(33, NULL, 550000, '2023-12-01'),
-(34, NULL, 550000, '2023-12-01'),
-(35, NULL, 550000, '2023-12-01'),
-(36, NULL, 550000, '2023-12-02'),
-(37, NULL, 0, '2023-12-02'),
-(38, NULL, 0, '2023-12-02'),
-(39, NULL, 0, '2023-12-02');
 
 -- --------------------------------------------------------
 
@@ -323,7 +268,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productID`, `productType`, `price`, `name`, `description`, `quantity`) VALUES
-(1, 'phone', 550000, 'Apple iPhone 15', 'The latest Apple iPhone with advanced features.', -7),
+(1, 'phone', 550000, 'Apple iPhone 15', 'The latest Apple iPhone with advanced features.', 15),
 (3, 'tablet', 400000, 'Apple iPad Pro', 'Powerful tablet for work and entertainment.', 8),
 (4, 'watch', 280000, 'Apple Watch Series 7', 'Stay connected and track your fitness.', 30),
 (5, 'airpod', 130000, 'Apple AirPods 3', 'Wireless earbuds for a seamless audio experience.', 40),
@@ -356,18 +301,15 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`email`, `password`, `firstname`, `lastname`, `registrationDate`, `role`) VALUES
 ('admin@teszt.com', '$2a$10$RNdFkyRtzQ3tDhLmsgjU7.vFoBYOiYiMXLMkagpQqgf.sUo4F0oK2', 'Admin', 'Teszt', '2023-11-03', 'admin'),
 ('bivalyulrich@gmail.com', '$2a$10$dkOUTSS4veD4R.7nAzemjOWQAKAa/wKfI.J3DXuU5MW.Xy0Th/Blu', 'Ulrich', 'Bivaly', '2023-11-11', 'user'),
-('kisspista@gmail.com', '$2a$10$kW3c0imV3f8f7Eb4kQGFGONqlBDEdf1E/7GGloIdo5BUTkpJ9xz.y', 'pista', 'kiss', '2023-11-06', 'user'),
 ('kovacsbertalan@gmail.com', '$2a$10$U4M.K0XeHMRUcCdLdNo5qu8Dqwcysy7GE9dBcqXuh7KtAxLNOvA.i', 'Bertalan', 'Kovács', '2023-11-10', 'user'),
 ('kowalskyvega@gmail.com', '$2a$10$LGYVWrfT8v.SpdEO45KvHuInAY5GnhK9am9zWmJft/V0KLGaMFb1S', 'vega', 'kowalsky', '2023-11-11', 'user'),
 ('lakatosemanuel@gmail.com', '$2a$10$JxwOuTKX4goMICOAU/GCU.gJ0nIgbh9JFWGiA7UUw9wAvx6/97S16', 'emanuel', 'lakatos', '2023-11-11', 'user'),
 ('nagyimre@gmail.com', '$2a$10$USmYkhCtW26a5bIk.4BOoeWCzNJz9kbBGt.eg7lTgpqfUQSEh7WPu', 'imre', 'nagy', '2023-11-06', 'user'),
 ('nagylajos@gmail.com', '$2a$10$y3t7oRNwpFmBnK5CnqfixeCHTDwpIZ2Awjjye.Vre5UFJ0xfmEKGe', 'Lajos', 'Nagy ', '2023-11-11', 'user'),
-('nagymarika@gmail.com', '$2a$10$t0Ucr.TjgjEh989OpTPyNeDoHc/y3xCquxvMn49jvtWbbF5dnBIiC', 'marika', 'nagy', '2023-11-06', 'user'),
 ('palpeter@gmail.com', '$2a$10$Kf8VSAuGNRpWDlaZurnHu.RSepkd8tOr9xV82uxyaSIzxR/XdxrZ6', 'peter', 'pal', '2023-11-11', 'user'),
 ('papucspeter@gmail.com', '$2a$10$CJZUxy3owllvZay0q.jk7eAXM.4DFgk1OZpRBSMHcAllzMU18B7hS', 'péter', 'papucs', '2023-11-11', 'user'),
 ('peterpal@gmail.com', '$2a$10$/IDPj51zKI8tEwj5l7sUqOciAbgI0y.efX7ZLWwJr6zlJbmTHcoc2', 'pál', 'peter', '2023-11-11', 'user'),
-('sirlancelot@gmail.com', '$2a$10$ACxD9kfrBdhj0qYAKR1Yie1457.9aswcqGs9ymJocdW2fU5Cs2Gx6', 'lancelot', 'sir', '2023-11-11', 'user'),
-('tisztasag@gmail.com', '$2a$10$UJOyNaNlLNSMvAJN94KWEey/K3CBIuGabkd9mODK2KFuKnuIpzraK', 'ság', 'tiszta', '2023-11-11', 'user');
+('sirlancelot@gmail.com', '$2a$10$ACxD9kfrBdhj0qYAKR1Yie1457.9aswcqGs9ymJocdW2fU5Cs2Gx6', 'lancelot', 'sir', '2023-11-11', 'user');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -466,7 +408,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT a táblához `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Megkötések a kiírt táblákhoz
