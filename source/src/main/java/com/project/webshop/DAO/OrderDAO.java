@@ -105,7 +105,7 @@ public class OrderDAO {
         }
 
         return new OrderModel((int) order.get("orderID"), (int) order.get("price"),
-                order.get("email").toString(), (Date) order.get("orderDate"));
+                order.get("email") != null ? order.get("email").toString() : null, (Date) order.get("orderDate"));
     }
 
     public List<Map<String, Object>> getAllOrders() {

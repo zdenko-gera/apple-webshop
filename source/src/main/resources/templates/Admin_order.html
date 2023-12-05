@@ -68,7 +68,7 @@
                         <td th:text="${order['orderDate']}"></td>
                         <td>
                             <form action="#" th:action="@{/deleteOrder}" method="post">
-                            <input type="hidden" th:value="${order['orderID']}" name="orderID">
+                                <input type="hidden" th:value="${order['orderID']}" name="orderID">
                                 <input type="submit" value="Törlés">
                             </form>
                         </td>
