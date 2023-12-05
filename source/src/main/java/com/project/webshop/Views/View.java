@@ -172,7 +172,7 @@ public class View {
         }
 
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
-            return "redirect:/Index?error=noPermission";
+            return "redirect:/";
         }
         return "Block.html";
     }
@@ -187,7 +187,7 @@ public class View {
         }
 
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
-            return "redirect:/Index?error=noPermission";
+            return "redirect:/";
         }
 
         List<Map<String, Object>> users = userDAO.getAllUsers();
@@ -208,7 +208,7 @@ public class View {
         }
 
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
-            return "redirect:/Index?error=noPermission";
+            return "redirect:/";
         }
         List<Map<String, Object>> orders = orderDAO.getAllOrders();
         for(Map<String, Object> order : orders) {
@@ -231,7 +231,7 @@ public class View {
         }
 
         if(userModel == null || userModel.getEmail() == null || !userModel.getRole().equals("admin")) {
-            return "redirect:/Index?error=noPermission";
+            return "redirect:/";
         }
         model.addAttribute("products", products);
         return "Admin.html";
