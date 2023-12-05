@@ -26,6 +26,7 @@
   padding: 2.5rem 5rem;
   flex: 1.5;
   grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
+  align-items: center;
 }
 .homepage-newProducts-gridItem {
   border: 1px solid #8f8f8f;
@@ -107,7 +108,7 @@
     align-items: center;
   }
   .homepage-newProducts-gridContainer {
-    
-    grid-template-columns: repeat(1, minmax(33.33%, 1fr));
+    grid-template-columns: 1fr;
+    margin: auto;
   }
 }
