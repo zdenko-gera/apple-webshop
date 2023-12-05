@@ -49,7 +49,7 @@ public class AdminController {
         for (MultipartFile image : images) {
             Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, image.getOriginalFilename());
             Files.write(fileNameAndPath, image.getBytes());
-            new ImageDAO().newImage(productDAO.getMaxProductID(), image.getOriginalFilename());
+            //new ImageDAO().newImage(productDAO.getMaxProductID(), image.getOriginalFilename());
         }
 
         return "redirect:/";
