@@ -179,6 +179,8 @@
   font-size: 1.2em;
 }
 
+
+
 @media screen and (max-width: 1050px) {
   .homepage-hero {
     flex-direction: column;
