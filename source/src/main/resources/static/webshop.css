@@ -34,7 +34,7 @@
   padding: 1rem;
 }
 .homepage-newProducts-gridItem-productPicture img {
-  height: 270px;
+  max-height: 100%;
   max-width: 100%;
 }
 .webshop-filter {
@@ -105,5 +105,9 @@
   }
   .webshop-container {
     align-items: center;
+  }
+  .homepage-newProducts-gridContainer {
+    
+    grid-template-columns: repeat(1, minmax(33.33%, 1fr));
   }
 }
