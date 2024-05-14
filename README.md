@@ -11,10 +11,6 @@ az sql beimportálásával át lesz állítva a max_connections változó, de ha
 SET GLOBAL max_connections = 9999999; 
 megoldja a gondot.
 
-továbbá a projekttervet változtató commit nevének a végén szerepel egy 'sziaocsi', utólag jöttünk rá, hogy ez akár félreérthető is lehet, de ez csak egy belsős poén :D .
-
-a projektet idő hiányában nem sikerült kitelepíteni éles környezetbe
-
 az admin oldalait az admin@teszt.com , adminadmin bejelentkezéssel lehet elérni. A böngészősávot kell átírni:
 http://localhost:8081/Admin
 majd bal oldalt a menüben lehet váltogatni az admin oldalak között
